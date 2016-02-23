@@ -12,7 +12,7 @@
   
   correo: on.torres@alumnos.urjc.es
 
-  github: 
+  github: https://github.com/nieltorres
   
 + Pablo Daganzo del Val
 
@@ -20,21 +20,25 @@
   
   github: https://github.com/patspats
 
-### Titulo de la web
+### Titulo de la web:
+  
+  Wallacomic
 
 ### Temática de la web
 
-+ Parte pública:
+  Web de compra-venta de comics usados online.
+
++ Parte pública: Visualización de los productos ofertados por los vendedores. visualización de los productos buscados por los compradores. Visualización de los perfiles de otros usuarios (valoraciones, otras ventas anteriores, otros productos a la venta...)
     
-+ Parte privada:
++ Parte privada: Gestión de la cuenta, gestión del producto a la venta (precio, estado del producto, número de unidades...), poner en contacto de forma privada a comprador y vendedor.
     
 ### Entidades principales
 
-    1. Entidad:
+    1. Entidad: Producto (cómic)
     
-    2. Entidad:
+    2. Entidad: Usuario 
     
-    3. Entidad:
+    3. Entidad: 
     
     4. Entidad:
     
