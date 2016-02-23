@@ -38,11 +38,11 @@
     
     2. Entidad: Usuario 
     
-    3. Entidad: 
+    3. Entidad: Usuario-Vendedor
     
-    4. Entidad:
+    4. Entidad: Usuario-Comprador
     
-    5. Entidad:
+    5. Entidad: Valoraciones
     
     
 
