@@ -36,11 +36,11 @@
 
     1. Entidad: Producto (cómic)
     
-    2. Entidad: Usuario 
+    2. Entidad: Usuario (Comprador y Vendedor)
     
-    3. Entidad: Usuario-Vendedor
+    3. Entidad: 
     
-    4. Entidad: Usuario-Comprador
+    4. Entidad: 
     
     5. Entidad: Valoraciones
     
