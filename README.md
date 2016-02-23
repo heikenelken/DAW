@@ -40,9 +40,11 @@
     
     3. Entidad: Gestion de Favoritos (vendedor favorito, producto favorito, etc)
     
-    4. Entidad: Comunicación comprador-vendedor
+    4. Entidad: Comunicación comprador-vendedor (mensajes)
     
     5. Entidad: Valoraciones (vendedor, comprador, producto)
+    
+    6. Entidad: Anuncios (productos ofertados)
     
     
 
