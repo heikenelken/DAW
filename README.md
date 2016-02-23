@@ -38,11 +38,11 @@
     
     2. Entidad: Usuario (Comprador y Vendedor)
     
-    3. Entidad: 
+    3. Entidad: Gestion de Favoritos (vendedor favorito, producto favorito, etc)
     
-    4. Entidad: 
+    4. Entidad: Comunicación comprador-vendedor
     
-    5. Entidad: Valoraciones
+    5. Entidad: Valoraciones (vendedor, comprador, producto)
     
     
 
