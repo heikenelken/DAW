@@ -38,7 +38,7 @@
     
     2. Entidad: Usuario (Comprador y Vendedor)
     
-    3. Entidad: Gestion de Favoritos (vendedor favorito, producto favorito, etc)
+    3. Entidad: Gestion de Productos deseados
     
     4. Entidad: Comunicación comprador-vendedor (mensajes)
     
