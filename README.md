@@ -8,6 +8,12 @@
   
   github: https://github.com/adoptaunalien
   
++ Niel Torres
+  
+  correo: on.torres@alumnos.urjc.es
+
+  github: 
+  
 + Pablo Daganzo del Val
 
   correo: p.daganzo@alumnos.urjc.es
