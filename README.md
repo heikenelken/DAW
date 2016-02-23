@@ -1,11 +1,13 @@
 # PRACTICA DAW
 
 ### Integrantes del grupo:
+
 + Carlos Sevilla Lozano
 
-  correo:
+  correo: c.sevilla@alumnos.urjc.es
   
-  github:
+  github: https://github.com/adoptaunalien
+  
 + Pablo Daganzo del Val
 
   correo: p.daganzo@alumnos.urjc.es
