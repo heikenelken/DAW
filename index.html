@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wallacomic</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
@@ -22,18 +23,39 @@
                 <a class="navbar-brand navbar-left" href="#">Wallacomic</a>
             </div>
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!--/Nav-->
     
-    <div class="row-fluid">
-        <div class="col-md-3">
+    <!--Comic Search-->
+    <div class="container-fluid jumbotron">
+         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 align-center">
+                <h1 class="title-jumbotron text-center">Encuentra tu cómic</h1>
+                <p class="text-center">Con Wallacomic podrás comprar aquel cómic que tanto tiempo llevas buscando o poner a la venta uno de tu propia colección.</p>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control input-lg" placeholder="Título">
+                    </div>
+                 </div>
+                 <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+            </div>
+            <div class="col-md-3"></div>
+        </div>   
+    </div>
+    <!--/Comic Search-->
+    
+    <!--Comics Grid-->
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
             <div class="card">
                 <div class="card-image">
                     <img class="img-responsive" src="img/spiderman_cover.jpg">
@@ -57,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card">
                 <div class="card-image">
                     <img class="img-responsive" src="img/privateye_cover.png">
@@ -81,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card">
                 <div class="card-image">
                     <img class="img-responsive" src="img/groot_cover.jpg">
@@ -105,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card">
                 <div class="card-image">
                     <img class="img-responsive" src="img/batman_cover.jpg">
@@ -129,7 +151,9 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-2"></div>
     </div>
+    <!--/Comics Grid-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

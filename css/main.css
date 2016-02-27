@@ -1,18 +1,44 @@
 body {
     background: url("/img/crossword.png") repeat;
-    margin-top: 80px;
+    margin-top: 50px;
+    font-family: sans-serif;
 }
 
 .navbar {
     border: 0px;
 }
 
-.navbar-brand {
-    background-color: aqua;
+.navbar-inverse .navbar-brand {
+    font-family: 'Ubuntu', sans-serif;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
 }
 
 .navbar-shadow {
-    -moz-box-shadow:    0px 4px 7px 0px #2F2E2E;
-    -webkit-box-shadow: 0px 4px 7px 0px #2F2E2E;
-    box-shadow:         0px 4px 7px 0px #2F2E2E;
+    -moz-box-shadow:    0px 2px 7px 0px #2F2E2E;
+    -webkit-box-shadow: 0px 2px 7px 0px #2F2E2E;
+    box-shadow:         0px 2px 7px 0px #2F2E2E;
+}
+
+.jumbotron {
+    background: url(/img/search-section-background.jpg) no-repeat;
+    padding-bottom: 100px;
+    color: #ffffff;
+    -moz-box-shadow:    0px 1px 12px 0px #2F2E2E;
+    -webkit-box-shadow: 0px 1px 12px 0px #2F2E2E;
+    box-shadow:         0px 1px 12px 0px #2F2E2E;
+}
+
+.title-jumbotron {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.align-center {
+    margin: auto;
 }
