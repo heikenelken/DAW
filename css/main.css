@@ -1,0 +1,18 @@
+body {
+    background: url("/img/crossword.png") repeat;
+    margin-top: 80px;
+}
+
+.navbar {
+    border: 0px;
+}
+
+.navbar-brand {
+    background-color: aqua;
+}
+
+.navbar-shadow {
+    -moz-box-shadow:    0px 4px 7px 4px #ccc;
+    -webkit-box-shadow: 0px 4px 7px 4px #ccc;
+    box-shadow:         0px 4px 7px 4px #ccc;
+}
