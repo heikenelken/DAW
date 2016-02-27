@@ -1,12 +1,12 @@
 body {
     background: url("/img/crossword.png") repeat;
-    margin-top: 50px;
+    padding-top: 50px;
     font-family: sans-serif;
 }
 
 footer {
     min-height: 100px;
-    background-color: darkslategrey;
+    background-color: #4A235A;
     -moz-box-shadow:    0px 1px 12px 0px #2F2E2E;
     -webkit-box-shadow: 0px 1px 12px 0px #2F2E2E;
     box-shadow:         0px 1px 12px 0px #2F2E2E;
@@ -18,14 +18,29 @@ footer {
 
 .navbar-inverse .navbar-brand {
     font-family: 'Ubuntu', sans-serif;
-    padding-left: 120px;
-    padding-right: 80px;
+    padding-left: 100px;
+    padding-right: 100px;
+    color: #ffffff;
+    background-color: #4A235A;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    background-color: #7D3C98;
+}
+
+.navbar-inverse .navbar-nav > li {
+    font-family: 'Ubuntu', sans-serif;
     color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > li > a {
     font-family: 'Ubuntu', sans-serif;
     color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    font-family: 'Ubuntu', sans-serif;
+    color: #979A9A;
 }
 
 .navbar-nav {
@@ -57,4 +72,16 @@ footer {
 
 .comic-grid {
     padding-bottom: 50px;
+}
+
+.footer-separator {
+    height: 4px;
+    background-color: #17202A;
+}
+
+.footer-content {
+    background-color: #4A235A;
+    padding: 20px 60px 20px 60px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
 }
