@@ -1,4 +1,4 @@
-#principal{
+#contenedor{
     background-image: url(http://img9.uploadhouse.com/fileuploads/15106/1510695497e20abcff408a9fb57449b624af6d64.jpg);
     
 }
@@ -15,11 +15,39 @@ img{
 aside{
     font-family: 'Ubuntu', sans-serif;
     color: white;
-    padding-top: 10%;
+    padding-top: 8%;
     text-align:center;
 }
 #cuadroTexto{
-    margin-right:10%;
-    padding:10%;
+    font-size:85%;
+    padding-left:3%;
+    padding-right:3%;
+    padding-bottom:3%;
     background:#141414;
 }
+#cuadroTexto2{
+    font-size:85%;
+    margin-top:3%;
+    background:#141414;
+}
+#textoVenta{
+    font-family:'Ubuntu', sans-serif;
+    font-size:150%;
+    text-align:center;
+    color: white;
+}
+.cuadroCompradores{
+    font-family:'Ubuntu', sans-serif;
+    font-size:75%;
+    text-align:left;
+    padding-left:20%;
+    
+}
+.cuadroCompradores a{
+    padding-left:15%;
+}
+.cuadroCompradores .precio{
+   
+    padding-left:15%;
+}
+
