@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wallacomic</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/registro.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/cards.css">
+</head>
+
+<body>
+
+    <!--Nav-->
+    <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-left" href="index.html">Wallacomic</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                      <a href="perfil.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AdoptaUnAlien <span class="badge">2</span><span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Perfil</a></li>
+                          <li><a href="#">Mis Anuncios</a></li>
+                          <li><a href="">Mensajes <span class="badge">2</span></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+                      </ul>
+                    </li>
+                    <li><img src="img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/Nav-->
+    
+    <!-- CUERPO REGISTRO -->
+    <div class="container-fluid" >
+        <section class="main row" id="registro">
+            <article class="col-xs-12 col-sm-3">
+            </article>
+            <article class="col-xs-12 col-sm-6">
+                <form role="form">
+                    <div class="datosPersonales">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="campoNombre" placeholder="introduce tu nombre">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" class="form-control" id="campoApellidos" placeholder="introduce tus apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label for="mail">Email:</label>
+                        <input type="mail" class="form-control" id="campoEmail" placeholder="introduce tu Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario">Nombre usuario:</label>
+                        <input type="text" class="form-control" id="campoUsuario" placeholder="introduce tu nombre de usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="contraseña">Contraseña:</label>
+                        <input type="password" class="form-control" id="campoContraseña" placeholder="Contraseña">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Acepto las condiciones de registro.
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Enviar</button>
+
+                </form>
+            </article>  
+            <article class="col-xs-12 col-sm-3">
+            </article>
+            <article class="col-xs-12 col-sm-6">
+            </article>
+            
+        </section>
+    </div>
+    <!-- /CUERPO COMIC -->
+   <!--Footer-->
+    <footer>
+        <div class="footer-separator"></div>
+        <div class="footer-content">
+            <p>WallaComic | Proyecto 'Desarrollo de Aplicaciones Web' · URJC 2015-2016</p>
+            <p>Pablo Daganzo del Val · Niel Torres Mariluz · Carlos Sevilla Lozano</p>
+        </div>
+    </footer>
+    <!--/Footer-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+
+</html>
