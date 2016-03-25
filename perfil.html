@@ -59,7 +59,59 @@
                             <p><em>Correo: </em><a href="mailto:adoptaunalien@gmail.com">adoptaunalien@gmail.com</a></p>
                             <p><em>Facebook: </em><a href="https://www.facebook.com/CarlosSevillaLozano">facebook.com/CarlosSevillaLozano</a></p>
                             <p><em>Twitter: </em><a href="https://twitter.com/AdoptaUnAlien">@AdoptaUnAlien</a></p>
-                            <button type="button" class="btn btn-default">Configuración</button>
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#popUpConfiguracion" >Configuración</button>
+                            
+                            <!-- Código popUp -->
+                            <div class="modal fade" id="popUpConfiguracion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Configuración</h4>
+                                  </div>
+                                  <div id="configuracion" class="modal-body">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="usuario">Nombre usuario:</label>
+                                                <input type="text" class="form-control" id="cambioUsuario" placeholder="introduce tu nuevo nombre de usuario">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mail">Email:</label>
+                                                <input type="mail" class="form-control" id="cambioMail" placeholder="introduce tu nuevo Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="facebook">Cuenta facebook:</label>
+                                                <input type="text" class="form-control" id="cambioFacebook" placeholder="por ejemplo: facebook.com/YoSoyTuPadreLuck">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="twitter">Usuario Twitter:</label>
+                                                <input type="text" class="form-control" id="cambioTwitter" placeholder="por ejemplo: @JonDoe">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contraseña">Contraseña:</label>
+                                                <input type="password" class="form-control" id="cambioContraseña" placeholder="Introduce tu nueva contraseña">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="descripcion">Sobre tí:</label>
+                                                <br>
+                                                <textarea name="descripcion" rows="5" cols="40" placeholder="Cuéntanos algo sobre tí."></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="avatar">Selecciona tu imagen de avatar:</label>
+                                                <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+                                            </div>
+                                            
+                                        </form>      
+                                  </div>
+                                  <!-- footer del popUp, con los botones de guardar cambios y descartar. -->
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Descartar</button>
+                                    <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>        
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- /Código popUp -->
                         </div>
                     </div>
                     <div class="panel-body row">
