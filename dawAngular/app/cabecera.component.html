@@ -1,0 +1,96 @@
+<!--Nav-->
+    <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-left" href="index.html">Wallacomic</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
+                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/Nav-->
+
+    <!-- Código popUp Registro -->
+    <div class="modal fade" id="popupRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Registro en WallaComic</h4>
+                </div>
+                <div id="registro" class="modal-body">
+                    <form role="form">
+                        <div class="datosPersonales">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="campoNombre" placeholder="Introduce tu nombre">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" class="form-control" id="campoApellidos" placeholder="Introduce tus apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Email:</label>
+                            <input type="mail" class="form-control" id="campoEmail" placeholder="Introduce tu Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Nombre usuario:</label>
+                            <input type="text" class="form-control" id="campoUsuario" placeholder="Introduce tu nombre de usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" id="campoContraseña" placeholder="Contraseña">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Acepto las condiciones de registro.
+                            </label>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- footer del popUp, con los botones de creación y cerrar. -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Codigo popUp Registro-->
+    
+    <!-- Código popUp Acceso -->
+    <div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
+                </div>
+                <div id="registro" class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="usuario">Nombre usuario:</label>
+                            <input type="text" class="form-control" id="campoUsuario" placeholder="Introduce tu nombre de usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" id="campoContraseña" placeholder="Contraseña">
+                        </div>
+                    </form>
+                </div>
+                <!-- footer del popUp, con los botones de creación y cerrar. -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="botonCrear">Acceder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Codigo popUp Acceso-->

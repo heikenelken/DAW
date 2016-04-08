@@ -1,0 +1,18 @@
+<!--Comics Grid-->
+    <div class="row comic-grid">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <div *ngFor="#comic of comics" class="card">
+                <div class="card-image">
+                    <img class="img-responsive" src="{{comic.foto}}">
+                </div>
+                <div class="card-content">
+                    <p>{{comic.titulo}}</p>
+                </div>
+                <div class="card-action">
+                    <a [routerLink]="['MostrarComic', {id: comic.ic}]">{{comic.titulo}}</a>
+                </div>
+            </div>
+        <div class="col-md-2"></div>
+    </div>
+    <!--/Comics Grid-->
