@@ -26,4 +26,8 @@ export class AppComponent {
     search(){
       this.comics = this.comicService.getComics();
     }
+
+    hiddenTitle(hidden: boolean){
+      console.log("Hidden: "+hidden)
+    }
 }
