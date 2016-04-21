@@ -18,4 +18,12 @@ import {Comic, ComicService}   from './comic.service';
     {path: '/mostrarComic/:id', name: 'MostrarComic', component: MostrarComicComponent}
 ])
 
-export class AppComponent { }
+export class AppComponent {
+    private comics: Comic[] = [];
+
+    constructor(private comicService: ComicService){}
+
+    search(){
+      this.comics = this.comicService.getComics();
+    }
+}

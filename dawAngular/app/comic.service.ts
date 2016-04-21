@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {withObserver} from './utils';
 
 export class Comic{
-    
+
 constructor(
     public id: number,
     public titulo: string,
@@ -17,7 +17,7 @@ constructor(
 
 @Injectable()
 export class ComicService{
-    
+
 private comics=[
     new Comic(1,'The Amazing Spiderman #001','John Freeman','John Freeman','A pesar de su poderes, Parker se esfuerza por ayudar a su viuda tía May a pagar el alquiler de su casa. Parker es molestado a veces por algunos de sus colegas (especialmente la estrella de fútbol, Flash Thompson) y, como Spider-Man, engendra la ira del editor J. Jonah Jameson. Cuando pelea contra sus enemigos por primera vez, Parker se encuentra haciendo malabares en su vida personal y se le dificulta aventurarse como Spider-Man. Con el tiempo, Peter se gradúa de la preparatoria y se inscribe en la Empire State University, donde se encuentra con su mejor amigo Harry Osborn y su primer interés amoroso Gwen Stacy, y su tía May le presenta a Mary Jane Watson.','spiderman_cover.jpg'),
     new Comic(2,'Private Eye #001','Carlos González','Carlos González','La serie tiene lugar en 2076 tras la "explosión de la nube", un hecho que reveló los secretos de todo el mundo. Como resultado de esto ya no hay Internet, y la gente es excesivamente celosa respecto a su privacidad, llegando hasta el punto de aparecer en público completamente enmascarados. La historia narra la aventura de un periodista sin licencia, un "paparazzi", que se ve envuelto en un misteriosa trama.','privateye_cover.png'),
@@ -28,16 +28,16 @@ private comics=[
     new Comic(7,'The Amazing Spiderman #002','John Freeman','John Freeman','A pesar de su poderes, Parker se esfuerza por ayudar a su viuda tía May a pagar el alquiler de su casa. Parker es molestado a veces por algunos de sus colegas (especialmente la estrella de fútbol, Flash Thompson) y, como Spider-Man, engendra la ira del editor J. Jonah Jameson. Cuando pelea contra sus enemigos por primera vez, Parker se encuentra haciendo malabares en su vida personal y se le dificulta aventurarse como Spider-Man. Con el tiempo, Peter se gradúa de la preparatoria y se inscribe en la Empire State University, donde se encuentra con su mejor amigo Harry Osborn y su primer interés amoroso Gwen Stacy, y su tía May le presenta a Mary Jane Watson.','spiderman_cover.jpg'),
     new Comic(8,'Barrier #001','Sergio Santos','Sergio Santos','Barrier es un alumno de la URJC desesperado, que lucha contra el villano Micael por aprobar la asignatura de DAW sin morir en el intento. Sus compañeros, typescript y angular2 le ayudan en su cruzada que, de momento, no tiene muy buena pinta','barrier_cover.png')
     ];
-    
+
 getComics(){
-    return withOberser(this.comics);
+    return withObserver(this.comics);
 }
 
 /*getComic(id:number){
     for(let i=0;i<this.comics.length;i++){
         if(this.comics[i].id===id){
             return withObserver(new Comic(comic.id, comic.titulo, comic.autor, comic.dibujante, comic.descripcion, comic.foto));
-            
+
             break;
         }
     }
@@ -46,5 +46,5 @@ getComic(id: number | string) {
     let comic = this.comics.filter(h => h.id === +id)[0]
     return withObserver(new Comic(comic.id, comic.titulo, comic.autor, comic.dibujante, comic.descripcion, comic.foto));
   }
-    
+
 }

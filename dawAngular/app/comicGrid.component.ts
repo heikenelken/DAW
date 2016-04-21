@@ -5,16 +5,16 @@ import {Comic, ComicService}   from './comic.service';
 @Component({
   selector: 'comicGrid',
   templateUrl: 'app/comicGrid.component.html',
-//providers:  [BookService],
+  //providers:  [ComicService],
   directives: [ROUTER_DIRECTIVES]
 })
 
-export class ComicGridComponent implements OnInit { 
-    
-comics: Comic[];
+export class ComicGridComponent implements OnInit {
+
+comics: Comic[] = [];
 
 constructor (private router: Router, private service: ComicService){}
-    
+
     ngOnInit(){
         this.service.getComics().subscribe(
             comics=> this.comics = comics,
