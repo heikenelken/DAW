@@ -5,7 +5,6 @@ import {NgIf} from 'angular2/common';
 @Component({
   selector: 'cabecera',
   templateUrl: 'app/cabecera.component.html',
-//providers:  [BookService],
   directives: [ROUTER_DIRECTIVES]
 })
 
@@ -14,7 +13,7 @@ export class CabeceraComponent {
   @Output()
   hidden = new EventEmitter<boolean>();
 
-  logeado = false;
+  logeado = true;
   click(){
     this.logeado = !this.logeado;
     this.hidden.next(this.logeado);

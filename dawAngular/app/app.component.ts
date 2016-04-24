@@ -5,6 +5,7 @@ import {ComicGridComponent} from './comicGrid.component';
 import {FooterComponent} from './footer.component';
 import {PrincipalBuscadorComponent} from './principalBuscador.component';
 import {MostrarComicComponent} from './mostrarComic.component';
+import {PerfilComponent} from './perfil.component';
 import {Comic, ComicService}   from './comic.service';
 
 @Component({
@@ -15,7 +16,8 @@ import {Comic, ComicService}   from './comic.service';
 })
 @RouteConfig([
     {path: '/principal/...', name: 'Principal', component: PrincipalBuscadorComponent, useAsDefault: true},
-    {path: '/mostrarComic/:id', name: 'MostrarComic', component: MostrarComicComponent}
+    {path: '/mostrarComic/:id', name: 'MostrarComic', component: MostrarComicComponent},
+    {path: '/perfil', name: 'Perfil', component: PerfilComponent}
 ])
 
 export class AppComponent {
