@@ -1,7 +1,8 @@
-import {Component}   from 'angular2/core';
+import {Component, OnInit}   from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteParams, Router} from 'angular2/router';
 import {SearchComponent} from './search.component';
 import {ComicGridComponent} from './comicGrid.component';
+import {Comic, ComicService} from './comic.service'
 
 
 @Component({
