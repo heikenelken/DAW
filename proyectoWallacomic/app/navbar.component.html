@@ -1,3 +1,4 @@
+
 <!--Nav-->
     <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
         <div class="container-fluid">
@@ -90,17 +91,17 @@
           <form role="form">
               <div class="form-group">
                   <label for="usuario">Nombre usuario:</label>
-                  <input type="text" class="form-control" id="campoUsuario" placeholder="Introduce tu nombre de usuario">
+                  <input #nombreAcceso type="text" class="form-control" id="campoUsuario" placeholder="Introduce tu nombre de usuario">
               </div>
               <div class="form-group">
                   <label for="contraseña">Contraseña:</label>
-                  <input type="password" class="form-control" id="campoContraseña" placeholder="Contraseña">
+                  <input #contrAcceso type="password" class="form-control" id="campoContraseña" placeholder="Contraseña">
               </div>
           </form>
       </modal-body>
       <!-- footer del popUp, con los botones de creación y cerrar. -->
       <modal-footer class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="botonCrear" (click)="clickLogin() ">Acceder</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="botonCrear" (click)="clickLogin(nombreAcceso.value, contrAcceso.value) ">Acceder</button>
       </modal-footer>
     </modal>
     <!--/Codigo popUp Acceso-->

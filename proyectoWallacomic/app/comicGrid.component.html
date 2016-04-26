@@ -3,14 +3,10 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div *ngFor="#comic of comics" class="card">
-                <div class="card-image">
-                    <!--<img class="img-responsive" src="{{comic.foto}}">-->
-                </div>
                 <div class="card-content">
                     <p>{{comic.titulo}}</p>
-                </div>
-                <div class="card-action">
-                    <a [routerLink]="['MostrarComic', {id: comic.id}]">{{comic.titulo}}</a>
+                    <p>{{comic.autor}}</p>
+                    <p><a [routerLink]="['ComicDetail', {id: comic.id}]">Mostrar Anuncio</a></p>
                 </div>
             </div>
         <div class="col-md-2"></div>

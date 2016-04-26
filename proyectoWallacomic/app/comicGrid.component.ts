@@ -19,7 +19,4 @@ export class ComicGridComponent {
         );
       }
 
-      newComic() {
-        this.router.navigate(['PublicarAnuncio']);
-      }
 }
