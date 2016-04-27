@@ -17,6 +17,11 @@ footer {
     background-color: #4A235A;
 }
 
+.navbar-inverse {
+    border: 0px;
+    background-color: #4A235A;
+}
+
 .navbar-inverse .navbar-brand {
     font-family: 'Ubuntu', sans-serif;
     padding-left: 100px;
