@@ -19,6 +19,12 @@
   correo: p.daganzo@alumnos.urjc.es
   
   github: https://github.com/patspats
+  
++ Jesús Amores Fernández-Caballero
+
+  correo: j.amoresf@alumnos.urjc.es
+  
+  github: https://github.com/jesusAmores
 
 ### Titulo de la web:
   
