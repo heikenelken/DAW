@@ -44,7 +44,7 @@
     
     2. Entidad: Usuario (Comprador y Vendedor)
     
-    3. Entidad: Gestion de Productos deseados
+    (3. Entidad: Gestion de Productos deseados)
     
     4. Entidad: Comunicación comprador-vendedor (mensajes)
     
