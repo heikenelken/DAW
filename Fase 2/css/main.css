@@ -170,20 +170,34 @@ footer {
 
 /*animación valoración estrellas*/
 
+#valueSystem{
+    padding-bottom: 1em;
+}
+
 .inputRadio{
     display: none;
 }
 
 .evaluar {
-  direction: rtl;
-  unicode-bidi: bidi-override;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label > span {
+    opacity: 0.5;
 }
 
 label > span:hover,
 label > span:hover ~ label > span {
-  color: orange;
+    color:#edc900;
+    opacity: 1;
 }
 
 .inputRadio:checked ~ label > span {
-  color: orange;
+    color:#edc900;
+    opacity: 1;
+}
+
+#comment{
+    padding-left: 1em;
 }
