@@ -46,5 +46,6 @@
     
     6. Entidad: Anuncios (productos ofertados)
     
-    
+### Capturas de pantalla
+   
 

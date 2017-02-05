@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
+    <script src="js/clicks.js"></script>
 </head>
 
 <body>
@@ -64,7 +65,7 @@
                                 <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-3" id="buttonComment">
-                                <button id="commentsButton" type="button" class="btn btn-default">Ver comentarios</button>
+                                <button id="commentsButton" type="button" class="btn btn-default" onclick="clickar()">Ver comentarios</button>
                             </div>
                         </div>
                         
@@ -164,7 +165,7 @@
                     <div class="col-md-1"></div>
                 </div>
                 
-                <div class="panel-body row">
+                <div id="commentsTable" class="panel-body row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10 row">
                         <h3 class="text-purple">Comentarios</h3>
