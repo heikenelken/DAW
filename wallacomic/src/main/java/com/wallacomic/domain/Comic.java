@@ -1,4 +1,4 @@
-package com.wallacomic;
+package com.wallacomic.domain;
 
 import java.util.ArrayList;
 import java.util.List;
