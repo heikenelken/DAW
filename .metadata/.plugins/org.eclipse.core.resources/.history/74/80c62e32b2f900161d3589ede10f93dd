@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wallacomic</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/cards.css">
+</head>
+
+<body>
+
+    <!--Nav-->
+    <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-left" href="index.html">Wallacomic</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                      <a href="perfil.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AdoptaUnAlien <span class="badge">2</span><span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Perfil</a></li>
+                          <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="index-registro.html"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+                      </ul>
+                    </li>
+                    <li><img src="img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/Nav-->
+
+    <!--Comic Search-->
+    <div class="container-fluid jumbotron">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 align-center">
+                <h1 class="title-jumbotron text-center">Wallacomic</h1>
+                <h2 class="title-jumbotron text-center">Encuentra tu cómic</h2>
+                <p class="text-center">Con Wallacomic podrás comprar aquel cómic que tanto tiempo llevas buscando o poner a la venta uno de tu propia colección.</p>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control input-lg" placeholder="Título">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <!--/Comic Search-->
+
+    <!--Comics Grid-->
+    <div class="row comic-grid">
+    	{{#comics}}
+    	<div class="col-md-2"></div>
+    	
+        <div class="col-md-2">
+            	<div class="card-image">
+                    <img class="img-responsive" src="img/spiderman_cover.jpg">
+                </div>
+                <div class="card-content">
+                    <p>{{titulo}}</p>
+                    <p>{{autor}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="comic.html" target="new_blank">Link</a>
+                </div>
+        </div>
+        <div class="col-md-2">
+            	<div class="card-image">
+                    <img class="img-responsive" src="img/spiderman_cover.jpg">
+                </div>
+                <div class="card-content">
+                    <p>{{titulo}}</p>
+                    <p>{{autor}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="comic.html" target="new_blank">Link</a>
+                </div>
+        </div>
+        <div class="col-md-2">
+            	<div class="card-image">
+                    <img class="img-responsive" src="img/spiderman_cover.jpg">
+                </div>
+                <div class="card-content">
+                    <p>{{titulo}}</p>
+                    <p>{{autor}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="comic.html" target="new_blank">Link</a>
+                </div>
+        </div>
+        <div class="col-md-2">
+            	<div class="card-image">
+                    <img class="img-responsive" src="img/spiderman_cover.jpg">
+                </div>
+                <div class="card-content">
+                    <p>{{titulo}}</p>
+                    <p>{{autor}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="comic.html" target="new_blank">Link</a>
+                </div>
+        </div>
+       
+        <div class="col-md-2"></div>
+        {{/comics}}
+    </div>
+    <!--/Comics Grid-->
+
+    <!--Footer-->
+    <footer>
+        <div class="footer-separator"></div>
+        <div class="footer-content">
+            <p>WallaComic | Proyecto 'Desarrollo de Aplicaciones Web' · URJC 2016-2017</p>
+            <p>Pablo Daganzo del Val · Niel Torres Mariluz · Carlos Sevilla Lozano · Jesús Amores Fernández-Caballero</p>
+        </div>
+    </footer>
+    <!--/Footer-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+
+</html>
