@@ -6,12 +6,12 @@
     <title>Wallacomic</title>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/cards.css">
 </head>
 
 <body>
-
+    
     <!--Nav-->
     <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
         <div class="container-fluid">
@@ -35,55 +35,44 @@
                         <li><a href="index-registro.html"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
                       </ul>
                     </li>
-                    <li><img src="img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
+                    <li><img src="../img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!--/Nav-->
-
-    <!--Comic Search-->
-    <div class="container-fluid jumbotron">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 align-center">
-                <h1 class="title-jumbotron text-center">Wallacomic</h1>
-                <h2 class="title-jumbotron text-center">Encuentra tu cómic</h2>
-                <p class="text-center">Con Wallacomic podrás comprar aquel cómic que tanto tiempo llevas buscando o poner a la venta uno de tu propia colección.</p>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input type="text" class="form-control input-lg" placeholder="Título">
+    
+    <!--Content-->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="panel">
+                <div class="panel-body row">
+                    <div class="col-md-4">
+                        <img class="img-responsive img-card" src="../img/{{comic.foto}}.jpg">
+                    </div>
+                    <div class="col-md-8">
+                        <h1>{{comic.titulo}}</h1>
+                        <br>
+                        <h4>Autor: {{comic.autor}}</h4>
+                        <h4>Dibujante: {{comic.dibujante}}</h4>
+                        <br>
+                        <p>{{comic.argumento}}</p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
             </div>
-            <div class="col-md-3"></div>
         </div>
+        <div class="col-md-1"></div>
     </div>
-    <!--/Comic Search-->
-
-    <!--Comics Grid-->
-    <div class="row comic-grid">
-    	<div class="col-md-2"></div>
-        <div class="col-md-2">
-        {{#comics}}
-            	<div class="card-image">
-                    <img class="img-responsive" src="../img/{{id}}.jpg">
-                </div>
-                <div class="card-content">
-                    <p>{{titulo}}</p>
-                    <p>{{autor}}</p>
-                </div>
-                <div class="card-action">
-                    <a href="/comic/{{id}}" target="new_blank">Link</a>
-                </div>
-       {{/comics}}
-        </div>
-        <div class="col-md-2"></div>
-        
-    </div>
-    <!--/Comics Grid-->
-
+    
+   <!--INTRODUCIR AQUI EL CUADRO DE COMPRA Y VENTA CUANDO ESTEN LAS CLASES HECHAS-->
+   <!--INTRODUCIR AQUI EL CUADRO DE COMPRA Y VENTA CUANDO ESTEN LAS CLASES HECHAS-->
+   <!--INTRODUCIR AQUI EL CUADRO DE COMPRA Y VENTA CUANDO ESTEN LAS CLASES HECHAS-->
+   <!--Content-->
+    
+   <!--/INTRODUCIR AQUI EL CUADRO DE COMPRA Y VENTA CUANDO ESTEN LAS CLASES HECHAS-->
+   <!--/INTRODUCIR AQUI EL CUADRO DE COMPRA Y VENTA CUANDO ESTEN LAS CLASES HECHAS-->
+   <!--/INTRODUCIR AQUI EL CUADRO DE COMPRA Y VENTA CUANDO ESTEN LAS CLASES HECHAS-->
     <!--Footer-->
     <footer>
         <div class="footer-separator"></div>
@@ -96,6 +85,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>
