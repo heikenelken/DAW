@@ -20,6 +20,7 @@ public class Usuario {
 	
 	//Atributos basicos
 	private String nombre;
+	private String contraseña; // al loro con esto, que no se si funciona así
 	private String descripcion;
 	private String correo;
 	private String facebook;
@@ -34,8 +35,9 @@ public class Usuario {
 	private List<Valoracion> valoraciones = new ArrayList<>();*/
 	
 	protected Usuario(){}
-	public Usuario(String nombre, String descrip, String correo, String face, String twitter, String foto){
+	public Usuario(String nombre, String contraseña, String descrip, String correo, String face, String twitter, String foto){
 		this.nombre=nombre;
+		this.contraseña=contraseña;
 		this.descripcion=descrip;
 		this.correo=correo;
 		this.facebook=face;
@@ -53,6 +55,12 @@ public class Usuario {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getContraseña() {
+		return contraseña;
+	}
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 	public String getDescripcion() {
 		return descripcion;
