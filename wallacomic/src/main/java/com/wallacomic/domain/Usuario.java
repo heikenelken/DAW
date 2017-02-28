@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -27,12 +27,12 @@ public class Usuario {
 	private String twitter;
 	private String foto;
 	
-/*	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
     private List<Anuncio> anuncios = new ArrayList<>();
+/*	@OneToMany(cascade = CascadeType.ALL)
+	private List<Conversacion> conversaciones = new ArrayList<>();*/
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Conversacion> conversaciones = new ArrayList<>();
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Valoracion> valoraciones = new ArrayList<>();*/
+	private List<Valoracion> valoraciones = new ArrayList<>();
 	
 	protected Usuario(){}
 	public Usuario(String nombre, String contraseña, String descrip, String correo, String face, String twitter, String foto){
@@ -92,24 +92,24 @@ public class Usuario {
 	public void setFoto(String f){
 		this.foto=f;
 	}
-/*	public List<Anuncio> getAnuncios() {
+	public List<Anuncio> getAnuncios() {
 		return anuncios;
 	}
 	public void setAnuncios(List<Anuncio> anuncios) {
 		this.anuncios = anuncios;
 	}
-	public List<Conversacion> getConversaciones() {
+/*	public List<Conversacion> getConversaciones() {
 		return conversaciones;
 	}
 	public void setConversaciones(List<Conversacion> conversaciones) {
 		this.conversaciones = conversaciones;
-	}
+	}*/
 	public List<Valoracion> getValoraciones() {
 		return valoraciones;
 	}
 	public void setValoraciones(List<Valoracion> valoraciones) {
 		this.valoraciones = valoraciones;
-	}*/
+	}
 
 	
 }
