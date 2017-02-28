@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Valoracion {
@@ -14,6 +15,7 @@ public class Valoracion {
 	private long id;
 	
 	//Atributos basicos
+	@ManyToOne
 	private Usuario usuario;
 	private String comentario;
 	private int numEstrellas;
