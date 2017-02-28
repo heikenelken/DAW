@@ -33,10 +33,10 @@ public class Comic {
 	//Anotados con cascade porque no tiene sentido vender un comic que hemos borrado(no existe)...
 	//... por lo que al borrar el comic borramos tb los anuncios referidos a ese comic
 	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<Anuncio> anunciosCompra = new ArrayList<>();
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<Anuncio> anunciosVenta = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Anuncio> anunciosCompra = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Anuncio> anunciosVenta = new ArrayList<>();
 	
 	//Constructores
 	protected Comic(){}
@@ -86,7 +86,7 @@ public class Comic {
 	public void setDibujante(String dibujante) {
 		this.dibujante = dibujante;
 	}
-/*	public List<Anuncio> getAnunciosCompra() {
+	public List<Anuncio> getAnunciosCompra() {
 		return anunciosCompra;
 	}
 	public void setAnunciosCompra(List<Anuncio> anunciosCompra) {
@@ -98,7 +98,7 @@ public class Comic {
 	public void setAnunciosVenta(List<Anuncio> anunciosVenta) {
 		this.anunciosVenta = anunciosVenta;
 	}
-*/
+
 
 	
 }

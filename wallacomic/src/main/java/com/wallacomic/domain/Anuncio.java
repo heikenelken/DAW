@@ -15,13 +15,18 @@ public class Anuncio {
 	private boolean type;//true if its "lo compro", false if its "lo vendo"
 	
 	private double price;//price of the announce
+	
+	private String comment;//short description of the announce
 
+	//para mostrar toda la info de un anuncio se ha de mostar el usuario que lo vende/compra.
+	//falta meter atributo Usuario asociado al anuncio
 	protected Anuncio(){}
 	
-	public Anuncio(boolean tipo, double precio) {
+	public Anuncio(boolean tipo, double precio, String comentario) {
 		super();
 		this.type = tipo;//verificar como añadir atributos comic y usuario al cargar url´s
 		this.price = precio;
+		this.comment = comentario;
 	}
 
 	public long getId() {
@@ -47,11 +52,21 @@ public class Anuncio {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	@Override
 	public String toString() {
-		return "Anuncio [id=" + id + ", type=" + type + ", price=" + price +"]";
+		return "Anuncio [id=" + id + ", type=" + type + ", price=" + price +", comment= "+ comment +"]";
 	}
+
+	
 
 
 }
