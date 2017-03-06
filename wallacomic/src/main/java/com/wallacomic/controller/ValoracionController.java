@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import com.wallacomic.domain.Valoracion;
 import com.wallacomic.repository.UsuarioRepository;
 import com.wallacomic.repository.ValoracionRepository;
 
-@RestController
+@Controller
 public class ValoracionController {
 
 	@Autowired
@@ -34,27 +35,22 @@ public class ValoracionController {
 	}
 	
 	@RequestMapping("/valoracion/{id}")
-	@ResponseBody
-	public ModelAndView valoracion(Model model, @PathVariable int id) throws Exception {
-		
-		ModelAndView mav = new ModelAndView();
-	    mav.setViewName("usuario");
+	public String valoracion(Model model, @PathVariable int id) throws Exception {
 	    
 		Valoracion valoracion= valoracionRepository.findById(id);
-		mav.addObject("usuario", valoracion);
-	    return mav;
+		model.addAttribute("usuario", valoracion);
+	    return "usuario";
 	}
 	
 	@RequestMapping("/guardarValoracion")
-	public ModelAndView guardarValoracion(Model model, @RequestParam Usuario usuario, @RequestParam String comentario,
+	public String guardarValoracion(Model model, @RequestParam Usuario usuario, @RequestParam String comentario,
 			@RequestParam int numEstrellas)throws Exception{
 		
 		Valoracion valoracion = new Valoracion(usuario, comentario, numEstrellas);
 		
 		valoracionRepository.save(valoracion);
-		ModelAndView mav = new ModelAndView();
-	    mav.setViewName("usuario_guardado");
-	    return mav;
+		
+	    return "usuario_guardado";
 	}
 	@RequestMapping("/valoraciones")
 	@ResponseBody

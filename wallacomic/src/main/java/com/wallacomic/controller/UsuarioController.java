@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,7 @@ import com.wallacomic.domain.Usuario;
 import com.wallacomic.repository.ComicRepository;
 import com.wallacomic.repository.UsuarioRepository;
 
-@RestController
+@Controller
 public class UsuarioController {
 
 	@Autowired
@@ -32,35 +33,30 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("/usuario/{id}")
-	@ResponseBody
-	public ModelAndView usuario(Model model, @PathVariable int id) throws Exception {
+	public String usuario(Model model, @PathVariable int id) throws Exception {
 		
-		ModelAndView mav = new ModelAndView();
-	    mav.setViewName("usuario");
-	    
 		Usuario usuario= usuarioRepository.findById(id);
-		mav.addObject("usuario", usuario);
-	    return mav;
+		model.addAttribute("usuario", usuario);
+	    return "usuario";
 	}
 	
 	@RequestMapping("/guardarUsuario")
-	public ModelAndView guardarUsuario(Model model, @RequestParam String nombre, @RequestParam String contraseña,
+	public String guardarUsuario(Model model, @RequestParam String nombre, @RequestParam String contraseña,
 			@RequestParam String correo)throws Exception{
 		
 		Usuario usuario = new Usuario(nombre, contraseña, "", correo, "", "", "");
 		
 		usuarioRepository.save(usuario);
-		ModelAndView mav = new ModelAndView();
-	    mav.setViewName("usuario_guardado");
-	    return mav;
+		
+	    return "usuario_guardado";
 	}
+	
 	@RequestMapping("/usuarios")
 	@ResponseBody
 	public List<Usuario> usuario() throws Exception {
 		
-		
-	    
 		List<Usuario> usuarios= usuarioRepository.findAll();
+		
 	    return usuarios;
 	}
 	

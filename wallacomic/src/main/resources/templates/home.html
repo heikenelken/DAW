@@ -126,7 +126,7 @@
     <div class="row comic-grid">
     	<div class="col-md-2"></div>
         <div class="col-md-2">
-        {{#comics}}
+        {{#comPag}}
             	<div class="card-image">
                     <img class="img-responsive" src="../img/{{id}}.jpg">
                 </div>
@@ -136,7 +136,12 @@
                 <div class="card-action">
                     <a href="/comic/{{id}}" target="new_blank">Link</a>
                 </div>
-       {{/comics}}
+       {{/comPag}}
+       {{#numComics}}
+       <div>
+       		<button>Ver más</button>
+       </div>
+       {{/numComics}}
         </div>
         <div class="col-md-2"></div>
         
