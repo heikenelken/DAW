@@ -26,8 +26,16 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
-                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
+                    <li class="dropdown">
+                      <a href="perfil.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{usuario.nombre}} <span class="badge">2</span><span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Perfil</a></li>
+                          <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/home"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+                      </ul>
+                    </li>
+                    <li><img src="../img/{{usuario.id}}.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
             </div>
         </div>

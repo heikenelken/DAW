@@ -13,7 +13,7 @@
 
 <body>
 
-    <!--Nav-->
+   <!--Nav-->
     <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -27,8 +27,16 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
-                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
+                    <li class="dropdown">
+                      <a href="perfil.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{usuario.nombre}} <span class="badge">2</span><span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Perfil</a></li>
+                          <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/home"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+                      </ul>
+                    </li>
+                    <li><img src="../img/{{usuario.id}}.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
             </div>
         </div>
@@ -47,7 +55,7 @@
                     <div class="col-md-8">
                         <div class="row" id="info-header">
                             <div class="col-md-6">
-                                <h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
+                                <h1 id="name-profile" class="text-purple">Pdr Snchz</h1>
                             </div>
                             <div class="col-md-3" id="stars">
                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>

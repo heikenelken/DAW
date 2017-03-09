@@ -28,8 +28,8 @@ public class UsuarioController {
 	
 	@PostConstruct
 	public void init(){
-		usuarioRepository.save(new Usuario("AdoptaUnAlien","123456", "Pequeña descripción sin sentido contando lo chupiguay que soy.", "adoptaunalien@gmail.com", "facebook/adoptaunalien", "@adoptaunalien","1"));
-		usuarioRepository.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2"));
+		//usuarioRepository.save(new Usuario("AdoptaUnAlien","123456", "Pequeña descripción sin sentido contando lo chupiguay que soy.", "adoptaunalien@gmail.com", "facebook/adoptaunalien", "@adoptaunalien","1","ROLE_USER"));
+		//usuarioRepository.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2","ROLE_USER"));
 	}
 	
 	@RequestMapping("/usuario/{id}")
@@ -59,5 +59,13 @@ public class UsuarioController {
 		
 	    return usuarios;
 	}
+	/*@RequestMapping("/login")
+    public String login() {
+    	return "login";
+    }*/
+	@RequestMapping("/loginerror")
+    public String loginerror() {
+    	return "loginerror";
+    }
 	
 }

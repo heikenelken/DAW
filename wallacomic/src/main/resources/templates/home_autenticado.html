@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="js/pagination.js"></script>
 </head>
 
 <body>
@@ -28,8 +26,16 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
-                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
+                    <li class="dropdown">
+                      <a href="perfil.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{usuario.nombre}} <span class="badge">2</span><span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="perfil.html">Perfil</a></li>
+                          <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/home"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+                      </ul>
+                    </li>
+                    <li><img src="../img/{{usuario.id}}.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
             </div>
         </div>
@@ -67,7 +73,6 @@
                		    <div class="modal-footer">
                     		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     		<button type="submit" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
-                    		<input type="hidden" name="_csrf" value="{{token}}"/>
                 		</div>
              		</form>
                 </div>
@@ -75,12 +80,7 @@
         </div>
     </div>
     <!--/Codigo popUp Registro-->
-    <form action="/login" method="post">
-		<label>User Name:</label><input type="text" name="username" /><br />
-		<label>Password:</label><input type="password" name="password" /><br />
-		<input type="submit" value="Sign In" /><br />				
-		<input type="hidden" name="_csrf" value="{{token}}"/>
-	</form>
+    
     <!-- Código popUp Acceso -->
     <div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -90,21 +90,20 @@
                     <h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
                 </div>
                 <div id="registro" class="modal-body">
-                    <form role="form" action="/login" method="post">
+                    <form role="form">
                         <div class="form-group">
                             <label for="usuario">Nombre usuario:</label>
-                            <input class="form-control" type="text" name="username"  placeholder="Introduce tu nombre de usuario">
+                            <input type="text" class="form-control" id="campoUsuario" placeholder="Introduce tu nombre de usuario">
                         </div>
                         <div class="form-group">
                             <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                            <input type="password" class="form-control" id="campoContraseña" placeholder="Contraseña">
                         </div>
                     </form>
                 </div>
                 <!-- footer del popUp, con los botones de creación y cerrar. -->
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" value="Sign In" >Acceder</button>
-                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <button type="button" class="btn btn-success" id="botonCrear">Acceder</button>
                 </div>
             </div>
         </div>
@@ -130,7 +129,7 @@
         </div>
     </div>
     <!--/Comic Search-->
-	
+
     <!--Comics Grid-->
     <div class="row comic-grid">
     	<div class="col-md-2"></div>
@@ -146,25 +145,13 @@
                     <a href="/comic/{{id}}" target="new_blank">Link</a>
                 </div>
        {{/comPag}}
-       {{#comMas}}
-       			<div class="card-image">
-                    <img class="img-responsive" src="../img/{{id}}.jpg">
-                </div>
-                <div class="card-content">
-                    <p>{{titulo}}</p>
-                </div>
-                <div class="card-action">
-                    <a href="/comic/{{id}}" target="new_blank">Link</a>
-                </div>
-       {{/comMas}}
-       </div>
        {{#numComics}}
        <div>
-       		<!--  <button id="moreComics">Ver más</button>-->
-       		<a href="/home?page={{nextPage}}&size=10">Ver más</a>
+       		<button>Ver más</button>
        </div>
        {{/numComics}}
-       <div class="col-md-2"></div>
+        </div>
+        <div class="col-md-2"></div>
         
     </div>
     <!--/Comics Grid-->

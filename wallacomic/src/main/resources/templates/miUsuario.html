@@ -6,7 +6,7 @@
     <title>Wallacomic</title>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/cards.css">
     <script src="js/clicks.js"></script>
 </head>
@@ -27,8 +27,16 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
-                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
+                    <li class="dropdown">
+                        <a href="perfil.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AdoptaUnAlien <span class="badge">2</span><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="perfil.html">Perfil</a></li>
+                            <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="index-registro.html"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+                        </ul>
+                    </li>
+                    <li><img src="img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
             </div>
         </div>
@@ -42,7 +50,7 @@
             <div class="panel">
                 <div class="panel-body row">
                     <div class="col-md-4">
-                        <img src="img/pdrSnchz.jpg" class="circular-avatar-perfil img-responsive" alt="">
+                        <img src="../imgUsers/{{id}}.jpg" class="circular-avatar-perfil img-responsive" alt="">
                     </div>
                     <div class="col-md-8">
                         <div class="row" id="info-header">
@@ -60,15 +68,67 @@
                                 <button id="commentsButton" type="button" class="btn btn-default" onclick="clickar()">Ver comentarios</button>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>{{usuario.descripcion}}</p>
-                                <hr>
-                                <p><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
-                                <p><em>Facebook: </em><a href="https://www.{{usuario.facebook}}">{{usuario.facebook}}</a></p>
-                                <p><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
+                        
+                        <p>{{usuario.descripcion}}</p>
+                        <hr>
+                        <p><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
+                        <p><em>Facebook: </em><a href="https://www.{{usuario.facebook}}">{{usuario.facebook}}</a></p>
+                        <p><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#popUpConfiguracion">Configuración</button>
+                        <a href="creacionAnuncio.html" class="btn btn-info">Publicar Anuncio</a>
+                        
+                        
+                        <!-- Código popUp -->
+                        <div class="modal fade" id="popUpConfiguracion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Configuración</h4>
+                                    </div>
+                                    <div id="configuracion" class="modal-body">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <label for="usuario">Nombre usuario:</label>
+                                                <input type="text" class="form-control" id="cambioUsuario" placeholder="introduce tu nuevo nombre de usuario">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mail">Email:</label>
+                                                <input type="mail" class="form-control" id="cambioMail" placeholder="introduce tu nuevo Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="facebook">Cuenta facebook:</label>
+                                                <input type="text" class="form-control" id="cambioFacebook" placeholder="por ejemplo: facebook.com/YoSoyTuPadreLuck">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="twitter">Usuario Twitter:</label>
+                                                <input type="text" class="form-control" id="cambioTwitter" placeholder="por ejemplo: @JonDoe">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contraseña">Contraseña:</label>
+                                                <input type="password" class="form-control" id="cambioContraseña" placeholder="Introduce tu nueva contraseña">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="descripcion">Sobre tí:</label>
+                                                <br>
+                                                <textarea name="descripcion" rows="5" cols="40" placeholder="Cuéntanos algo sobre tí."></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="avatar">Selecciona tu imagen de avatar:</label>
+                                                <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <!-- footer del popUp, con los botones de guardar cambios y descartar. -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Descartar</button>
+                                        <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <!-- /Código popUp -->
                     </div>
                 </div>
                 <div class="panel-body row">
@@ -83,13 +143,11 @@
                                     <th>Comic</th>
                                     <th>Observaciones</th>
                                     <th>Precio</th>
-                                    <th>Contactar</th>
                                 </thead>
                                 <tr>
-                                    <td class="text-info"><a href="comic.html">The Amazing Spider-Man #001</a></td>
+                                    <td class="text-info"><a class="linkUser" href="comic.html">The Amazing Spider-Man #001</a></td>
                                     <td>En buen estado, como nuevo</td>
                                     <td class="text-success">5€</td>
-                                    <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
                                 </tr>
                             </table>
                         </div>
@@ -100,7 +158,6 @@
                                     <th>Comic</th>
                                     <th>Observaciones</th>
                                     <th>Precio</th>
-                                    <th>Contactar</th>
                                 </thead>
                             </table>
                         </div>
@@ -186,53 +243,6 @@
                                 </div>
                             </li>
                         </ul>
-                        <!-- bonton valorar y modal -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#valorarUsuario">Valorar usuario</button>
-                            </div>
-                            <div class="modal fade" id="valorarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Valorar usuario</h4>
-                                    </div>
-                                    <div id="configuracion" class="modal-body">
-                                        <form role="form">
-                                            <div id="comment" class="form-group">
-                                                <label for="comentario">Tu comentario:</label>
-                                                <br>
-                                                <textarea name="comentario" rows="5" cols="60" placeholder="introduce un breve comentario"></textarea>
-                                            </div>
-                                            <div id="valueSystem" class="form-group">
-                                                <div class="col-md-3">
-                                                    <label for="valoracion">Valoración:</label>
-                                                </div>
-                                                <div class="col-md-4 evaluar">
-                                                    <input id="radioS1" class="inputRadio" type="radio" name="starsV" value="5"><!--
-                                                    --><label for="radioS1"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></label><!--
-                                                    --><input id="radioS2" class="inputRadio" type="radio" name="starsV" value="4"><!--
-                                                    --><label for="radioS2"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></label><!--
-                                                    --><input id="radioS3" class="inputRadio" type="radio" name="starsV" value="3"><!--
-                                                    --><label for="radioS3"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></label><!--
-                                                    --><input id="radioS4" class="inputRadio" type="radio" name="starsV" value="2"><!--
-                                                    --><label for="radioS4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></label><!--
-                                                    --><input id="radioS5" class="inputRadio" type="radio" name="starsV" value="1"><!--
-                                                    --><label for="radioS5"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></label>
-                                                </div>
-                                                <div class="col-md-5"></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-success" id="botonGuardar">Enviar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
                     </div>
                     </div>
                     <div class="col-md-1"></div>
@@ -255,7 +265,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    
 </body>
 
 </html>
