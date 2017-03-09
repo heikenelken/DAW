@@ -86,25 +86,40 @@ public class ComicController {
 		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
 		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
 		
+		List<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10)).getContent();
+		for(Comic com: comFirst){
+			totalComics.add(com);
+		}
 	}
 	
 	@RequestMapping("/home")
 	public String home(Model model, Pageable page) throws Exception {
+		List<Comic> comEven = new ArrayList<Comic>();
+		List<Comic> comOdd = new ArrayList<Comic>();
+		//List<Comic> comPrimeros = comicRepository.findAll(new PageRequest(0,10)).getContent();//extraemos los primeros y ponemos flag a true para mostrar mas resultados
 		
-		Page<Comic> comPrimeros = comicRepository.findAll(new PageRequest(0,10));//extraemos los primeros y ponemos flag a true para mostrar mas resultados
-		model.addAttribute("comPag", comPrimeros);
+		//model.addAttribute("comPag", comPrimeros);
 		boolean numeroComics = true;
 		
 		if(page.hasPrevious()){
 			
 			List<Comic> listPrev = comicRepository.findAll(page).getContent();
 			for(Comic c: listPrev){
+				
 				totalComics.add(c);
 			}
-			model.addAttribute("comMas", totalComics);
+			
 			numeroComics = (comicRepository.findAll(page).hasNext());
 		}
-		
+		for(Comic com: totalComics){
+			if(com.getId() % 2 == 0){//par
+				comEven.add(com);
+			}else{
+				comOdd.add(com);
+			}
+		}
+		model.addAttribute("comEven", comEven);
+		model.addAttribute("comOdd", comOdd);
 		model.addAttribute("numComics", numeroComics);
 		
 		int nextPage = page.getPageNumber() + 1;
