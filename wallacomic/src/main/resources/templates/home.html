@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="js/pagination.js"></script>
 </head>
 
 <body>
@@ -137,13 +139,25 @@
                     <a href="/comic/{{id}}" target="new_blank">Link</a>
                 </div>
        {{/comPag}}
+       {{#comMas}}
+       			<div class="card-image">
+                    <img class="img-responsive" src="../img/{{id}}.jpg">
+                </div>
+                <div class="card-content">
+                    <p>{{titulo}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/comic/{{id}}" target="new_blank">Link</a>
+                </div>
+       {{/comMas}}
+       </div>
        {{#numComics}}
        <div>
-       		<button>Ver más</button>
+       		<!--  <button id="moreComics">Ver más</button>-->
+       		<a href="/home?page={{nextPage}}&size=10">Ver más</a>
        </div>
        {{/numComics}}
-        </div>
-        <div class="col-md-2"></div>
+       <div class="col-md-2"></div>
         
     </div>
     <!--/Comics Grid-->

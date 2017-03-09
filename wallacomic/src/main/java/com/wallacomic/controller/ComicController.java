@@ -1,16 +1,20 @@
 package com.wallacomic.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +38,8 @@ public class ComicController {
 	
 	@Autowired
 	private AnuncioRepository anuncioRepository;
+	
+	private List<Comic> totalComics = new ArrayList<Comic>();
 	
 	@PostConstruct
 	public void init(){
@@ -78,20 +84,40 @@ public class ComicController {
 		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
 		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
 		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
+		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
+		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
+		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
+		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
+		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
+		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
+		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
+		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
+		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
 		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
 		
 	}
 	
 	@RequestMapping("/home")
-	public String home(Model model) throws Exception {
+	public String home(Model model, Pageable page) throws Exception {
 		
-		/*List<Comic> comics= comicRepository.findAll();
-		model.addAttribute("comics", comics);*/
-		//comics paginados
-		Page<Comic> comPaginados = comicRepository.findAll(new PageRequest(0,10));
-		model.addAttribute("comPag", comPaginados);
-		boolean numeroComics = (10 < comicRepository.findAll().size());
+		Page<Comic> comPrimeros = comicRepository.findAll(new PageRequest(0,10));//extraemos los primeros y ponemos flag a true para mostrar mas resultados
+		model.addAttribute("comPag", comPrimeros);
+		boolean numeroComics = true;
+		
+		if(page.hasPrevious()){
+			
+			List<Comic> listPrev = comicRepository.findAll(page).getContent();
+			for(Comic c: listPrev){
+				totalComics.add(c);
+			}
+			model.addAttribute("comMas", totalComics);
+			numeroComics = (comicRepository.findAll(page).hasNext());
+		}
+		
 		model.addAttribute("numComics", numeroComics);
+		
+		int nextPage = page.getPageNumber() + 1;
+		model.addAttribute("nextPage", nextPage);
 		
 	    return "home";
 	}
