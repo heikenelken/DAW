@@ -30,8 +30,6 @@ public class ValoracionController {
 	
 	@PostConstruct
 	public void init(){
-		valoracionRepository.save(new Valoracion(usuarioRepository.findById(1), "Comic muy bonito. Me ha gustado mucho.", 4));
-		valoracionRepository.save(new Valoracion(usuarioRepository.findById(2), "Buen tío, fiable, comic en perfecto estado", 5));
 	}
 	
 	@RequestMapping("/valoracion/{id}")
@@ -43,10 +41,11 @@ public class ValoracionController {
 	}
 	
 	@RequestMapping("/guardarValoracion")
-	public String guardarValoracion(Model model, @RequestParam Usuario usuario, @RequestParam String comentario,
+	public String guardarValoracion(Model model, @RequestParam Usuario user_give, @RequestParam Usuario user_receive, @RequestParam String comentario,
 			@RequestParam int numEstrellas)throws Exception{
 		
-		Valoracion valoracion = new Valoracion(usuario, comentario, numEstrellas);
+		// TO-DO: Comprobar que user_give != user_receive antes de crear y guardar
+		Valoracion valoracion = new Valoracion(user_give, user_receive, comentario, numEstrellas);
 		
 		valoracionRepository.save(valoracion);
 		

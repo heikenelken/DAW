@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -34,13 +32,6 @@ public class Usuario {
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-    private List<Anuncio> anuncios = new ArrayList<>();
-/*	@OneToMany(cascade = CascadeType.ALL)
-	private List<Conversacion> conversaciones = new ArrayList<>();*/
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Valoracion> valoraciones = new ArrayList<>();
 	
 	protected Usuario(){}
 	public Usuario(String nombre, String contraseña, String descrip, String correo, String face, String twitter, String foto, String... roles){
@@ -108,24 +99,11 @@ public class Usuario {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
-	public List<Anuncio> getAnuncios() {
-		return anuncios;
-	}
-	public void setAnuncios(List<Anuncio> anuncios) {
-		this.anuncios = anuncios;
-	}
 /*	public List<Conversacion> getConversaciones() {
 		return conversaciones;
 	}
 	public void setConversaciones(List<Conversacion> conversaciones) {
 		this.conversaciones = conversaciones;
 	}*/
-	public List<Valoracion> getValoraciones() {
-		return valoraciones;
-	}
-	public void setValoraciones(List<Valoracion> valoraciones) {
-		this.valoraciones = valoraciones;
-	}
-
 	
 }

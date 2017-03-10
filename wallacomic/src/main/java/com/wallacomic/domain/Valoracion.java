@@ -16,15 +16,18 @@ public class Valoracion {
 	
 	//Atributos basicos
 	@ManyToOne
-	private Usuario usuario;
+	private Usuario user_give; //User who gives the score
+	
+	private Usuario user_receive; //User who receives the score
 	private String comentario;
 	private int numEstrellas;
 
 
 	
 	protected Valoracion(){}
-	public Valoracion(Usuario usuario, String comentario, int numEstrellas){
-		this.usuario=usuario;
+	public Valoracion(Usuario user_give, Usuario user_receive, String comentario, int numEstrellas){
+		this.user_give=user_give;
+		this.user_receive=user_receive;
 		this.comentario=comentario;
 		this.numEstrellas=numEstrellas;
 	}
@@ -34,11 +37,17 @@ public class Valoracion {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Usuario getUsuario() {
-		return usuario;
+	public Usuario getUser_give() {
+		return user_give;
 	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUser_give(Usuario user_give) {
+		this.user_give = user_give;
+	}
+	public Usuario getUser_receive() {
+		return user_receive;
+	}
+	public void setUser_receive(Usuario user_receive) {
+		this.user_receive = user_receive;
 	}
 	public String getComentario() {
 		return comentario;
