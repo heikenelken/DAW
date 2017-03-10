@@ -55,7 +55,6 @@ public class ComicController {
 		List<Comic> comOdd = new ArrayList<Comic>();
 		//List<Comic> comPrimeros = comicRepository.findAll(new PageRequest(0,10)).getContent();//extraemos los primeros y ponemos flag a true para mostrar mas resultados
 		
-		//model.addAttribute("comPag", comPrimeros);
 		boolean numeroComics = true;
 		
 		if(page.hasPrevious()){

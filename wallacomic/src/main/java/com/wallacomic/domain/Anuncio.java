@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Anuncio {
@@ -17,9 +18,9 @@ public class Anuncio {
 	private double price;//price of the announce
 	
 	private String comment;//short description of the announce
-	
+	@OneToOne
 	private Usuario user;
-	
+	@OneToOne
 	private Comic comic;
 
 	//para mostrar toda la info de un anuncio se ha de mostar el usuario que lo vende/compra.
