@@ -98,9 +98,12 @@ public class ComicController {
 
 	@RequestMapping("/comic/{id}")
 	public String comic(Model model, @PathVariable int id) throws Exception {
-		
+		//obtener anuncios de un determinado comic
 		Comic comic= comicRepository.findById(id);
 		model.addAttribute("comic", comic);
+		
+		model.addAttribute("adsCompra", anuncioRepository.findByComicAndType(comic,true));
+		model.addAttribute("adsVenta", anuncioRepository.findByComicAndType(comic,false));
 	    return "comic";
 	}
 }

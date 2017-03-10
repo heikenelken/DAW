@@ -75,16 +75,14 @@
                                 <th>Precio</th>
                                 <th>Contactar</th>
                             </thead>
-                            {{#comic.anunciosCompra}}
+                            {{#adsVenta}}
                             <tr>
-                            	{{#user}}
-                                <td class="text-info"><a class="linkUser" href="verUsuario.html">{{nombre}}</a></td>
-                                {{/user}}
+                                <td class="text-info"><a class="linkUser" href="/usuario/{{user.id}}">{{user.nombre}}</a></td>
                                 <td>{{comment}}</td>
                                 <td class="text-success">{{price}}€</td>
                                 <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
                             </tr>
-                            {{/comic.anunciosCompra}}
+                            {{/adsVenta}}
                         </table>
                     </div>
                     <div class="col-md-6">
@@ -96,16 +94,14 @@
                                 <th>Precio</th>
                                 <th>Contactar</th>
                             </thead>
-                            {{#comic.anunciosVenta}}
+                            {{#adsCompra}}
                             <tr>
-                            	{{#user}}
-                                <td class="text-info"><a class="linkUser" href="">{{nombre}}</a></td>
-                                {{/user}}
+                                <td class="text-info"><a class="linkUser" href="/usuario/{{user.id}}">{{user.nombre}}</a></td>
                                 <td>{{comment}}</td>
                                 <td class="text-success">{{price}}€</td>
                                 <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
                             </tr>
-                            {{/comic.anunciosVenta}}                 
+                            {{/adsCompra}}                 
                         </table>
                     </div>
                 </div>

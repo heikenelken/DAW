@@ -7,7 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/cards.css">
-    <link rel="stylesheet" type="text/css" href="../css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <script src="js/clicks.js"></script>
 </head>
 
@@ -93,12 +93,14 @@
                                     <th>Precio</th>
                                     <th>Contactar</th>
                                 </thead>
+                                {{#adsLoVendo}}
                                 <tr>
-                                    <td class="text-info"><a href="comic.html">The Amazing Spider-Man #001</a></td>
-                                    <td>En buen estado, como nuevo</td>
-                                    <td class="text-success">5€</td>
+                                    <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
+                                    <td>{{comment}}</td>
+                                    <td class="text-success">{{price}}€</td>
                                     <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
                                 </tr>
+                                {{/adsLoVendo}}
                             </table>
                         </div>
                         <div class="col-md-6">
@@ -110,6 +112,14 @@
                                     <th>Precio</th>
                                     <th>Contactar</th>
                                 </thead>
+                                {{#adsLoCompro}}
+                                <tr>
+                                    <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
+                                    <td>{{comment}}</td>
+                                    <td class="text-success">{{price}}€</td>
+                                    <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
+                                </tr>
+                                {{/adsLoCompro}}
                             </table>
                         </div>
                     </div>

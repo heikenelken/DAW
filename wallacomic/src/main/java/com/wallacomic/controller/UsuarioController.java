@@ -68,9 +68,12 @@ public class UsuarioController {
 	
 	@RequestMapping("/usuario/{id}")
 	public String usuario(Model model, @PathVariable int id) throws Exception {
-		
+		//obtener anuncios de un determinado usuario
 		Usuario usuario= usuarioRepository.findById(id);
 		model.addAttribute("usuario", usuario);
+		
+		model.addAttribute("adsLoCompro", anuncioRepository.findByUserAndType(usuario,true));
+		model.addAttribute("adsLoVendo", anuncioRepository.findByUserAndType(usuario,false));
 	    return "usuario";
 	}
 	
