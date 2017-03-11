@@ -58,11 +58,11 @@
                                 <h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
                             </div>
                             <div class="col-md-3" id="stars">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star{{avS1}}" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star{{avS2}}" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star{{avS3}}" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star{{avS4}}" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-star{{avS5}}" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-3" id="buttonComment">
                                 <button id="commentsButton" type="button" class="btn btn-default" onclick="clickar()">Ver comentarios</button>
@@ -144,11 +144,13 @@
                                     <th>Observaciones</th>
                                     <th>Precio</th>
                                 </thead>
+                                {{#adsLoVendo}}
                                 <tr>
-                                    <td class="text-info"><a class="linkUser" href="comic.html">The Amazing Spider-Man #001</a></td>
-                                    <td>En buen estado, como nuevo</td>
-                                    <td class="text-success">5€</td>
+                                    <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
+                                    <td>{{comment}}</td>
+                                    <td class="text-success">{{price}}€</td>
                                 </tr>
+                                {{/adsLoVendo}}
                             </table>
                         </div>
                         <div class="col-md-6">
@@ -159,6 +161,13 @@
                                     <th>Observaciones</th>
                                     <th>Precio</th>
                                 </thead>
+                                {{#adsLoCompro}}
+                                <tr>
+                                    <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
+                                    <td>{{comment}}</td>
+                                    <td class="text-success">{{price}}€</td>
+                                </tr>
+                                {{/adsLoCompro}}
                             </table>
                         </div>
                     </div>
@@ -172,76 +181,23 @@
                         <hr>
                         <div class="col-md-12">
                         <ul class="list-group">
+                        	{{#comments}}
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-md-10">
-                                        <p><span class="text-info text-rigth">AdoptaUnAlien: </span> Hola, khbjhvjbsvckjbsdvcsjbc sjdc sjbc sdj csc skcnb dsbc asbnc </p>
+                                        <p><span class="text-info text-rigth">{{user_give.nombre}}: </span>{{comentario}}</p>
                                     </div>
                                     <div class="col-md-2">
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                    	<span class="sComments glyphicon glyphicon-star{{s1}}" aria-hidden="true"></span>
+                                    	<span class="sComments glyphicon glyphicon-star{{s2}}" aria-hidden="true"></span>
+                                    	<span class="sComments glyphicon glyphicon-star{{s3}}" aria-hidden="true"></span>
+                                    	<span class="sComments glyphicon glyphicon-star{{s4}}" aria-hidden="true"></span>
+                                    	<span class="sComments glyphicon glyphicon-star{{s5}}" aria-hidden="true"></span>
+                            
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p><span class="text-info text-rigth">AdoptaUnAlien: </span> Hola, khbjhvjbsvckjbsdvcsjbc sjdc sjbc sdj csc skcnb dsbc asbnc </p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star" aria-hidden="true"></span>
-                                        <span class="sComments glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                    </div>
-                                </div>
-                            </li>
+                            {{/comments}}
                         </ul>
                     </div>
                     </div>

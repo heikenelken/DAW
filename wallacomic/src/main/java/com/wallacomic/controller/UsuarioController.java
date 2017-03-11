@@ -77,7 +77,31 @@ public class UsuarioController {
 		model.addAttribute("adsLoVendo", anuncioRepository.findByUserAndType(usuario,false));
 		//cargar valoraciones del usuario
 		model.addAttribute("comments", valoracionRepository.findByuserReceive(usuario));
-
+		//extraer valoracion media del usuario
+		int totalValuations = 0;
+		int cont = 0;
+		List<Valoracion> valuations = valoracionRepository.findByuserReceive(usuario);
+		for(Valoracion v: valuations){
+			totalValuations += v.getNumEstrellas();
+			cont += 1;
+		}
+		int averageValuation = totalValuations / cont;
+		
+		String [] averageStars = new String[5];
+		for(int i=0; i < averageStars.length; i++){
+			if(averageValuation-1 >= i){
+				averageStars[i] = "";
+			}else{
+				averageStars[i] = "-empty";
+			}
+		}
+		
+		model.addAttribute("avS1", averageStars[0]);
+		model.addAttribute("avS2", averageStars[1]);
+		model.addAttribute("avS3", averageStars[2]);
+		model.addAttribute("avS4", averageStars[3]);
+		model.addAttribute("avS5", averageStars[4]);
+		
 	    return "usuario";
 	}
 	
