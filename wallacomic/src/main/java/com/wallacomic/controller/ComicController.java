@@ -41,24 +41,22 @@ public class ComicController {
 	
     private List<Comic> totalComics = new ArrayList<Comic>();
     
-	@PostConstruct
+	/*@PostConstruct
 	public void init(){
 		List<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10)).getContent();
 		for(Comic com: comFirst){
 			totalComics.add(com);
 		}
 	}
-	
+	*/
 	@RequestMapping("/home")
 	public String home(Model model, Pageable page) throws Exception {
 		List<Comic> comEven = new ArrayList<Comic>();
 		List<Comic> comOdd = new ArrayList<Comic>();
-		//List<Comic> comPrimeros = comicRepository.findAll(new PageRequest(0,10)).getContent();//extraemos los primeros y ponemos flag a true para mostrar mas resultados
-		
-		boolean numeroComics = true;
+		boolean numeroComics;
 		
 		if(page.hasPrevious()){
-			
+			//resto de paginas 
 			List<Comic> listPrev = comicRepository.findAll(page).getContent();
 			for(Comic c: listPrev){
 				
@@ -66,7 +64,16 @@ public class ComicController {
 			}
 			
 			numeroComics = (comicRepository.findAll(page).hasNext());
+		}else{
+			//primeros 10 comics
+			numeroComics = (comicRepository.findAll().size() > 10);
+			
+			List<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10)).getContent();
+			for(Comic com: comFirst){
+				totalComics.add(com);
+			}
 		}
+		
 		for(Comic com: totalComics){
 			if(com.getId() % 2 == 0){//par
 				comEven.add(com);
@@ -74,6 +81,7 @@ public class ComicController {
 				comOdd.add(com);
 			}
 		}
+		
 		model.addAttribute("comEven", comEven);
 		model.addAttribute("comOdd", comOdd);
 		model.addAttribute("numComics", numeroComics);

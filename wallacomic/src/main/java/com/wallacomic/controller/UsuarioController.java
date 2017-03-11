@@ -51,6 +51,7 @@ public class UsuarioController {
 		comicRepository.save(new Comic("The amazing Spiderman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "8"));
 		comicRepository.save(new Comic("Private Eye #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "9"));
 		comicRepository.save(new Comic("Groot #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "10"));
+		comicRepository.save(new Comic("The amazing Spiderman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "1"));
 		
 		
 		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioRepository.findById(1), comicRepository.findById(1)));
@@ -74,6 +75,9 @@ public class UsuarioController {
 		
 		model.addAttribute("adsLoCompro", anuncioRepository.findByUserAndType(usuario,true));
 		model.addAttribute("adsLoVendo", anuncioRepository.findByUserAndType(usuario,false));
+		//cargar valoraciones del usuario
+		model.addAttribute("comments", valoracionRepository.findByuserReceive(usuario));
+
 	    return "usuario";
 	}
 	
