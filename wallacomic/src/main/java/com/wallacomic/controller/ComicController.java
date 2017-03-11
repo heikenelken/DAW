@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.wallacomic.domain.Anuncio;
 import com.wallacomic.domain.Comic;
 import com.wallacomic.domain.Usuario;
+import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.repository.AnuncioRepository;
 import com.wallacomic.repository.ComicRepository;
 import com.wallacomic.repository.UsuarioRepository;
@@ -35,6 +36,9 @@ public class ComicController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private UsuarioComponent usuarioComponent;
 	
 	@Autowired
 	private AnuncioRepository anuncioRepository;
@@ -89,7 +93,59 @@ public class ComicController {
 		int nextPage = page.getPageNumber() + 1;
 		model.addAttribute("nextPage", nextPage);
 		
-	    return "home";
+		if(usuarioComponent.isLoggedUser()){
+			Usuario user = usuarioComponent.getLoggedUser();
+			model.addAttribute("user", user);
+			return "home_autenticado";
+		}else{
+			return "home";
+		}
+	}
+	
+	@RequestMapping("/home_autenticado")
+	public String home_autenticado(Model model, Pageable page) throws Exception {
+		List<Comic> comEven = new ArrayList<Comic>();
+		List<Comic> comOdd = new ArrayList<Comic>();
+		boolean numeroComics;
+		
+		if(page.hasPrevious()){
+			//resto de paginas 
+			List<Comic> listPrev = comicRepository.findAll(page).getContent();
+			for(Comic c: listPrev){
+				
+				totalComics.add(c);
+			}
+			
+			numeroComics = (comicRepository.findAll(page).hasNext());
+		}else{
+			//primeros 10 comics
+			numeroComics = (comicRepository.findAll().size() > 10);
+			
+			List<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10)).getContent();
+			for(Comic com: comFirst){
+				totalComics.add(com);
+			}
+		}
+		
+		for(Comic com: totalComics){
+			if(com.getId() % 2 == 0){//par
+				comEven.add(com);
+			}else{
+				comOdd.add(com);
+			}
+		}
+		
+		model.addAttribute("comEven", comEven);
+		model.addAttribute("comOdd", comOdd);
+		model.addAttribute("numComics", numeroComics);
+		
+		int nextPage = page.getPageNumber() + 1;
+		model.addAttribute("nextPage", nextPage);
+		
+		Usuario user = usuarioComponent.getLoggedUser();
+		model.addAttribute("user", user);
+		
+	    return "home_autenticado";
 	}
 	
 	//Este método según los apuntes deberia devolver el valor de la lista comics junto con 
@@ -112,6 +168,12 @@ public class ComicController {
 		
 		model.addAttribute("adsCompra", anuncioRepository.findByComicAndType(comic,true));
 		model.addAttribute("adsVenta", anuncioRepository.findByComicAndType(comic,false));
-	    return "comic";
+		if(usuarioComponent.isLoggedUser()){
+			Usuario user = usuarioComponent.getLoggedUser();
+			model.addAttribute("user", user);
+			return "comic_autenticado";
+		}else{
+			return "comic";
+		}
 	}
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.wallacomic.domain.Anuncio;
 import com.wallacomic.domain.Comic;
 import com.wallacomic.domain.Usuario;
+import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.domain.Valoracion;
 import com.wallacomic.repository.AnuncioRepository;
 import com.wallacomic.repository.ComicRepository;
@@ -26,6 +27,9 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private UsuarioComponent usuarioComponent;
 	
 	@Autowired
 	private ComicRepository comicRepository;
@@ -102,7 +106,18 @@ public class UsuarioController {
 		model.addAttribute("avS4", averageStars[3]);
 		model.addAttribute("avS5", averageStars[4]);
 		
-	    return "usuario";
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.getLoggedUser().getId()==id){
+			return "miUsuario";
+		}else{
+			if(usuarioComponent.isLoggedUser()){
+				Usuario user = usuarioComponent.getLoggedUser();
+				model.addAttribute("user", user);
+				return "usuario_autenticado";
+			}else{
+				return "usuario";
+			}
+		}
+	    
 	}
 	
 	@RequestMapping("/guardarUsuario")

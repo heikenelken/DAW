@@ -25,12 +25,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/logout").permitAll();
-
+        http.authorizeRequests().antMatchers("/home_autenticado").permitAll();
+        http.authorizeRequests().antMatchers("/comic_autenticado").permitAll();
+        http.authorizeRequests().antMatchers("/usuario_autenticado").permitAll();
+        http.authorizeRequests().antMatchers("/miUsuario").permitAll();
+        
         // Private pages (all other pages)
-        http.authorizeRequests().antMatchers("/home_autenticado").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/comic_autenticado").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/usuario_autenticado").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/miUsuario").hasAnyRole("USER");
 
         // Login form
         http.formLogin().loginPage("/login");
