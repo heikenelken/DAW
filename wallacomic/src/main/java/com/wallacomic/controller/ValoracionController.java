@@ -70,7 +70,7 @@ public class ValoracionController {
 	}
 	@RequestMapping("/valoraciones")
 	@ResponseBody
-	public List<Valoracion> valoracion() throws Exception {
+	public List<Valoracion> valoraciones() throws Exception {
 		
 		List<Valoracion> valoraciones= valoracionRepository.findAll();
 	    return valoraciones;

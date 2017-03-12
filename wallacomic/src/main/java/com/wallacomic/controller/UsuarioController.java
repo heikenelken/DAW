@@ -66,6 +66,7 @@ public class UsuarioController {
 		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioRepository.findById(1), comicRepository.findById(5)));
 		anuncioRepository.save(new Anuncio(false, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioRepository.findById(1), comicRepository.findById(1)));
 		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioRepository.findById(1), comicRepository.findById(7)));
+		anuncioRepository.save(new Anuncio(true, 4, "dddddddddddddddddddddddddddddddddddddddddddddddddddd", usuarioRepository.findById(1), comicRepository.findById(1)));
 		
 		valoracionRepository.save(new Valoracion(usuarioRepository.findById(1), usuarioRepository.findById(2), "Comic muy bonito. Me ha gustado mucho.", 4));
 		valoracionRepository.save(new Valoracion(usuarioRepository.findById(2), usuarioRepository.findById(1),  "Buen tío, fiable, comic en perfecto estado", 5));
@@ -162,6 +163,7 @@ public class UsuarioController {
 		
 	    return usuarios;
 	}
+	
 	/*@RequestMapping("/login")
     public String login() {
     	return "login";

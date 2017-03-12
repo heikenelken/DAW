@@ -9,5 +9,6 @@ import com.wallacomic.domain.Comic;
 
 public interface ComicRepository extends JpaRepository<Comic, Long>{
 	Comic findById(long id);
+	Comic findByTitulo(String titulo);
 	
 }
