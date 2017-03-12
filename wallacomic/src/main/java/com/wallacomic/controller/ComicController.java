@@ -62,7 +62,7 @@ public class ComicController {
 		
 		if(page.hasPrevious()){
 			//resto de paginas 
-			List<Comic> listPrev = comicRepository.findAll(page).getContent();
+			Page<Comic> listPrev = comicRepository.findAll(page);
 			for(Comic c: listPrev){
 				
 				totalComics.add(c);
@@ -73,7 +73,7 @@ public class ComicController {
 			//primeros 10 comics
 			numeroComics = (comicRepository.findAll().size() > 10);
 			
-			List<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10)).getContent();
+			Page<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10));
 			for(Comic com: comFirst){
 				totalComics.add(com);
 			}
