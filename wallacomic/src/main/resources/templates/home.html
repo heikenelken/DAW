@@ -75,12 +75,7 @@
         </div>
     </div>
     <!--/Codigo popUp Registro-->
-    <form action="/login" method="post">
-		<label>User Name:</label><input type="text" name="username" /><br />
-		<label>Password:</label><input type="password" name="password" /><br />
-		<input type="submit" value="Sign In" /><br />				
-		<input type="hidden" name="_csrf" value="{{token}}"/>
-	</form>
+    
     <!-- Código popUp Acceso -->
     <div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -99,12 +94,9 @@
                             <label for="contraseña">Contraseña:</label>
                             <input type="password" class="form-control" name="password" placeholder="Contraseña">
                         </div>
+                        <button type="submit" class="btn btn-success" value="Sign In" >Acceder</button>
+                    	<input type="hidden" name="_csrf" value="{{token}}"/>
                     </form>
-                </div>
-                <!-- footer del popUp, con los botones de creación y cerrar. -->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" value="Sign In" >Acceder</button>
-                    <input type="hidden" name="_csrf" value="{{token}}"/>
                 </div>
             </div>
         </div>
