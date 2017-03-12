@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wallacomic.domain.Usuario;
+import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.domain.Valoracion;
 import com.wallacomic.repository.UsuarioRepository;
 import com.wallacomic.repository.ValoracionRepository;
@@ -27,6 +29,9 @@ public class ValoracionController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private UsuarioComponent usuarioComponent;
 	
 	@PostConstruct
 	public void init(){
@@ -41,15 +46,27 @@ public class ValoracionController {
 	}
 	
 	@RequestMapping("/guardarValoracion")
-	public String guardarValoracion(Model model, @RequestParam Usuario user_give, @RequestParam Usuario user_receive, @RequestParam String comentario,
-			@RequestParam int numEstrellas)throws Exception{
+	public String guardarValoracion(Model model, @RequestParam String comentario,
+			@RequestParam int numEstrellas, @RequestParam long user_receive_id)throws Exception{
 		
 		// TO-DO: Comprobar que user_give != user_receive antes de crear y guardar
-		Valoracion valoracion = new Valoracion(user_give, user_receive, comentario, numEstrellas);
+		// del form solo se recoje valoracion  y comentario
+		Usuario user_receive = usuarioRepository.findOne(user_receive_id);
 		
-		valoracionRepository.save(valoracion);
+		if((usuarioComponent.isLoggedUser()) && (user_receive != null)){
+			Usuario user_give = usuarioComponent.getLoggedUser();
+			
+			if(user_give != user_receive){
+				Valoracion valoracion = new Valoracion(user_give, user_receive, comentario, numEstrellas);
+				valoracionRepository.save(valoracion);
+			}
+		}else{
+			throw new BadCredentialsException("User not found");
+		}
 		
-	    return "usuario_guardado";
+		model.addAttribute("id", user_receive_id);
+		
+	    return "comentario_guardado";
 	}
 	@RequestMapping("/valoraciones")
 	@ResponseBody

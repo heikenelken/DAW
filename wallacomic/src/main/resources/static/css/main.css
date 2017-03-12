@@ -201,3 +201,7 @@ label > span:hover ~ label > span {
 #comment{
     padding-left: 1em;
 }
+
+#inputUserHide{
+	display: none;
+}

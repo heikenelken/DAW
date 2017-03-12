@@ -85,10 +85,15 @@ public class UsuarioController {
 		int totalValuations = 0;
 		int cont = 0;
 		List<Valoracion> valuations = valoracionRepository.findByuserReceive(usuario);
-		for(Valoracion v: valuations){
-			totalValuations += v.getNumEstrellas();
-			cont += 1;
+		if(!valuations.isEmpty()){
+			for(Valoracion v: valuations){
+				totalValuations += v.getNumEstrellas();
+				cont += 1;
+			}
+		}else{
+			cont = 1;
 		}
+		
 		int averageValuation = totalValuations / cont;
 		
 		String [] averageStars = new String[5];
