@@ -28,10 +28,10 @@
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="/usuario/{{usuario.id}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{usuario.nombre}} <span class="badge">2</span><span class="caret"></span></a>
+                        <a href="/usuario/{{usuario.id}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{usuario.nombre}} <!-- <span class="badge">2</span> --><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/usuario/{{usuario.id}}">Perfil</a></li>
-                            <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li>
+                            <!-- <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li> -->
                             <li role="separator" class="divider"></li>
                             <li>
                         	<form action="/logout" method="post">
@@ -81,6 +81,7 @@
                         <p><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#popUpConfiguracion">Configuración</button>
                         <a href="/crearAnuncio" class="btn btn-info">Publicar Anuncio</a>
+                        <a href="/crearComic" class="btn btn-info">Crear Comic</a>
                         
                         
                         <!-- Código popUp -->

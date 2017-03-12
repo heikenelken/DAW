@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -175,5 +176,30 @@ public class ComicController {
 		}else{
 			return "comic";
 		}
+	}
+	
+	@RequestMapping("/crearComic")
+	public String crearComic(Model model)throws Exception{
+		Usuario user = usuarioComponent.getLoggedUser();
+		model.addAttribute("user",user);
+		
+	    return "crearComic";
+	}
+	
+	@RequestMapping("/guardarComic")
+	public String guardarComic(Model model, @RequestParam String titulo, @RequestParam String autor,
+			@RequestParam String dibujante, @RequestParam String argumento)throws Exception{
+		comicRepository.save(new Comic(titulo, autor, dibujante, argumento, ""));
+		Usuario user = usuarioComponent.getLoggedUser();
+		model.addAttribute("user",user);
+		return "comic_guardado";
+	}
+	
+	@RequestMapping("/comics")
+	@ResponseBody
+	public List<Comic> comics() throws Exception {
+		
+		List<Comic> comics= comicRepository.findAll();
+	    return comics;
 	}
 }

@@ -30,7 +30,7 @@
                       <a href="/usuario/{{user.id}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.nombre}} <!-- <span class="badge">2</span> --><span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="/usuario/{{user.id}}">Perfil</a></li>
-                         <!-- <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li> -->
+                          <!-- <li><a href="mensajes.html">Mensajes <span class="badge">2</span></a></li> -->
                         <li role="separator" class="divider"></li>
                         <li>
                         	<form action="/logout" method="post">
@@ -59,35 +59,30 @@
             <div class="panel">
                 <div class="panel-body row">
                     <div class="col-md-12">
-                        <h1 id="name-perfil" class="text-purple">Publica un anuncio:</h1>
+                        <h1 id="name-perfil" class="text-purple">Publica un comic:</h1>
                         <p>¡Rellena todos los campos que se muestran a continuación y pulsa publicar!</p>
+                        <p>¡Por favor, asegúrate antes de que el comic no esté ya creado!</p>
                         <hr>
-                        <form role="form" action="guardarAnuncio" method="post">
+                        <form role="form" action="guardarComic" method="post">
                             <div class="form-group">
-                            	<label for="queComic">Elige el comic:</label>
-                                <select name="comic" class="form-control">
-                                	{{#comics}}
-                                    <option value="{{id}}">{{titulo}}</option>
-                                    {{/comics}}
-                                </select>
-                                <br>
-                                <label for="tipoAnuncio">Tipo de anuncio:</label>
-                                <select name="tipo" class="form-control">
-                                    <option value="true">Compra</option>
-                                    <option value="false">Venta</option>
-                                </select>
+                                <label for="precio">Titulo:</label>
+                                <input type="text" name="titulo" class="form-control" placeholder="Introduzca el título del comic">
                             </div>
                             <div class="form-group">
-                                <label for="precio">Precio:</label>
-                                <input type="number" name="precio" class="form-control" placeholder="Introduzca el precio del comic">
+                                <label for="precio">Autor:</label>
+                                <input type="text" name="autor" class="form-control" placeholder="Introduzca el autor del comic">
                             </div>
                             <div class="form-group">
-                                <label for="observaciones">Observaciones:</label>
+                                <label for="precio">Dibujante:</label>
+                                <input type="text" name="dibujante" class="form-control" placeholder="Introduzca el dibujante del comic">
+                            </div>
+                            <div class="form-group">
+                                <label for="observaciones">Argumento:</label>
                                 <br>
-                                <textarea class="form-control" name="observaciones"rows="3" placeholder="Escribe aquí los detalles de la transacción: Estado del comic, preferencias de pago..."></textarea>
+                                <textarea class="form-control" name="argumento"rows="3" placeholder="Introduzca aquí el argumento del cómic"></textarea>
                             </div>
                             <button type="button" class="btn btn-default">Descartar</button>
-                            <button type="submit" class="btn btn-success" id="botonCrear">Publicar!</button>
+                            <button type="submit" class="btn btn-success" id="botonCrear">Publicar</button>
                             <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>
                     </div>
