@@ -136,6 +136,23 @@ public class UsuarioController {
 		
 	    return "usuario_guardado";
 	}
+
+	@RequestMapping("/configuracion/{id}")
+	public String configuracion(Model model, @PathVariable int id, @RequestParam String nombre, @RequestParam String correo, @RequestParam String facebook,
+			 @RequestParam String twitter, @RequestParam String contraseña, @RequestParam String descripcion)throws Exception{
+		
+		if(nombre!="" && contraseña!=""){
+			Usuario updatedUser= new Usuario (nombre, contraseña, descripcion, correo, facebook, twitter, "", "ROLE_USER");
+			updatedUser.setId(id);
+			usuarioRepository.save(updatedUser);
+			model.addAttribute("user", updatedUser);
+			usuarioComponent.setLoggedUser(updatedUser);
+			return "usuario_guardado";
+		}
+		Usuario usuario = usuarioRepository.findById(id);
+		model.addAttribute("user", usuario);
+	    return "usuario_no_guardado";
+	}
 	
 	@RequestMapping("/usuarios")
 	@ResponseBody
