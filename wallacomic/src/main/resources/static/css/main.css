@@ -141,6 +141,11 @@ footer {
     font-size: 150%;
 }
 
+.glyphicon-remove{
+	color: red;
+	font-size: 150%;
+}
+
 .glyphicon-star-empty{
     color:#edc900;
     font-size: 150%;

@@ -144,12 +144,14 @@
                             <h4 class="text-purple">Vendo</h4>
                             <table class="table table-striped table-condensed table-responsive">
                                 <thead>
+                                	<th>Borrar</th>
                                     <th>Comic</th>
                                     <th>Observaciones</th>
                                     <th>Precio</th>
                                 </thead>
                                 {{#adsLoVendo}}
                                 <tr>
+                                	<td class="text-info"><a href="/borrarAnuncio/{{id}}"><span class="glyphicon glyphicon-remove"></span></button></a></td>
                                     <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
                                     <td>{{comment}}</td>
                                     <td class="text-success">{{price}}€</td>
@@ -161,12 +163,14 @@
                             <h4 class="text-purple">Compro</h4>
                             <table class="table table-striped table-condensed table-responsive">
                                 <thead>
+                                	<th>Borrar</th>
                                     <th>Comic</th>
                                     <th>Observaciones</th>
                                     <th>Precio</th>
                                 </thead>
                                 {{#adsLoCompro}}
                                 <tr>
+                                	<td class="text-info"><a href="/borrarAnuncio/{{id}}"><span class="glyphicon glyphicon-remove"></span></button></a></td>
                                     <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
                                     <td>{{comment}}</td>
                                     <td class="text-success">{{price}}€</td>

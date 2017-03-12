@@ -18,6 +18,7 @@ import com.wallacomic.domain.Valoracion;
 import com.wallacomic.repository.UsuarioRepository;
 import com.wallacomic.repository.ComicRepository;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,6 +68,17 @@ public class AnuncioController {
 		model.addAttribute("user",user);
 		return "anuncio_guardado";
 	}
+	@RequestMapping("/borrarAnuncio/{id}")
+	public String borrarAnuncio(Model model, @PathVariable long id)throws Exception{
+		
+		if (anuncioRepository.exists(id)) {
+			anuncioRepository.delete(id);
+		}
+		Usuario user = usuarioComponent.getLoggedUser();
+		model.addAttribute("user",user);
+		return "anuncio_borrado";
+	}
+	
 	@RequestMapping("/anuncios")
 	@ResponseBody
 	public List<Anuncio> anuncios() throws Exception {
