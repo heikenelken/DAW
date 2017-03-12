@@ -120,9 +120,9 @@
 	
     <!--Comics Grid-->
     <div class="row comic-grid">
-    	<div class="col-md-4"></div>
+    	<div class="col-md-2"></div>
     	<div class="col-md-2">
-    	{{#comOdd}}
+    	{{#comEvenEven}}
         <div class="card">
        			<div class="card-image">
                     <img class="img-responsive" src="../img/{{id}}.jpg">
@@ -134,10 +134,40 @@
                     <a href="/comic/{{id}}" target="new_blank">Link</a>
                 </div>
        </div>
-       {{/comOdd}}
+       {{/comEvenEven}}
+    	</div> 
+    	<div class="col-md-2">
+    	{{#comEvenOdd}}
+        <div class="card">
+       			<div class="card-image">
+                    <img class="img-responsive" src="../img/{{id}}.jpg">
+                </div>
+                <div class="card-content">
+                    <p>{{titulo}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/comic/{{id}}" target="new_blank">Link</a>
+                </div>
+       </div>
+       {{/comEvenOdd}}
+    	</div> 
+    	<div class="col-md-2">
+    	{{#comOddEven}}
+        <div class="card">
+       			<div class="card-image">
+                    <img class="img-responsive" src="../img/{{id}}.jpg">
+                </div>
+                <div class="card-content">
+                    <p>{{titulo}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/comic/{{id}}" target="new_blank">Link</a>
+                </div>
+       </div>
+       {{/comOddEven}}
     	</div> 
         <div class="col-md-2">
-       {{#comEven}}
+       {{#comOddOdd}}
        <div class="card">
        			<div class="card-image">
                     <img class="img-responsive" src="../img/{{id}}.jpg">
@@ -149,9 +179,9 @@
                     <a href="/comic/{{id}}" target="new_blank">Link</a>
                 </div>
        </div>
-       {{/comEven}}
+       {{/comOddOdd}}
        </div>
-       <div class="col-md-4"></div>
+       <div class="col-md-2"></div>
     </div>
     {{#numComics}}
     <div class="row">

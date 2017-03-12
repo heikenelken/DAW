@@ -58,6 +58,10 @@ public class ComicController {
 	public String home(Model model, Pageable page) throws Exception {
 		List<Comic> comEven = new ArrayList<Comic>();
 		List<Comic> comOdd = new ArrayList<Comic>();
+		List<Comic> comEvenEven = new ArrayList<Comic>(); //column 1
+		List<Comic> comEvenOdd = new ArrayList<Comic>(); // column 2
+		List<Comic> comOddEven = new ArrayList<Comic>(); // column 3
+		List<Comic> comOddOdd = new ArrayList<Comic>(); // column 4
 		boolean numeroComics;
 		
 		if(page.hasPrevious()){
@@ -81,14 +85,36 @@ public class ComicController {
 		
 		for(Comic com: totalComics){
 			if(com.getId() % 2 == 0){//par
-				comEven.add(com);
-			}else{
 				comOdd.add(com);
+			}else{
+				comEven.add(com);
+			}
+		}
+		boolean añadido = true;
+		for(Comic com: comEven){
+			if(añadido){//par
+				comEvenEven.add(com);
+				añadido = false;
+			}else{
+				comEvenOdd.add(com);
+				añadido = true;
+			}
+		}
+		boolean añadido2 = true;
+		for(Comic com: comOdd){
+			if(añadido2){//par
+				comOddEven.add(com);
+				añadido2 = false;
+			}else{
+				comOddOdd.add(com);
+				añadido2 = true;
 			}
 		}
 		
-		model.addAttribute("comEven", comEven);
-		model.addAttribute("comOdd", comOdd);
+		model.addAttribute("comEvenEven", comEvenEven);
+		model.addAttribute("comEvenOdd", comEvenOdd);
+		model.addAttribute("comOddEven", comOddEven);
+		model.addAttribute("comOddOdd", comOddOdd);
 		model.addAttribute("numComics", numeroComics);
 		
 		int nextPage = page.getPageNumber() + 1;
