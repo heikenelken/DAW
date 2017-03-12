@@ -132,13 +132,14 @@ public class UsuarioController {
 		Usuario usuario = new Usuario(nombre, contraseña, "", correo, "", "", "");
 		
 		usuarioRepository.save(usuario);
+		usuarioComponent.setLoggedUser(usuario);
 		
 	    return "usuario_guardado";
 	}
 	
 	@RequestMapping("/usuarios")
 	@ResponseBody
-	public List<Usuario> usuario() throws Exception {
+	public List<Usuario> usuarios() throws Exception {
 		
 		List<Usuario> usuarios= usuarioRepository.findAll();
 		
