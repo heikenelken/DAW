@@ -1,9 +1,12 @@
-package com.wallacomic.controller;
+﻿package com.wallacomic.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 
@@ -32,6 +35,9 @@ import com.wallacomic.repository.UsuarioRepository;
 @Controller
 public class ComicController {
 	
+	private static final String FOLDER_IMG = "./src/main/resources/static/img";
+	private static final String FOLDER_IMG2 = "./target/classes/static/img";
+
 	@Autowired
 	private ComicRepository comicRepository;
 	
@@ -214,8 +220,33 @@ public class ComicController {
 	
 	@RequestMapping("/guardarComic")
 	public String guardarComic(Model model, @RequestParam String titulo, @RequestParam String autor,
-			@RequestParam String dibujante, @RequestParam String argumento)throws Exception{
-		comicRepository.save(new Comic(titulo, autor, dibujante, argumento, ""));
+			@RequestParam String dibujante, @RequestParam String argumento , @RequestParam MultipartFile file)throws Exception{
+		
+		Comic comic= new Comic(titulo, autor, dibujante, argumento, "");
+		comicRepository.save(comic);
+		//tratamiento de file
+		String fileName= comic.getId()+".jpg";
+		
+		if (!file.isEmpty()) {
+			try {
+
+				File filesFolder = new File(FOLDER_IMG);
+				File filesFolder2 = new File(FOLDER_IMG2);
+				if (!filesFolder.exists()) {
+					filesFolder.mkdirs();
+				}
+				if (!filesFolder2.exists()) {
+					filesFolder2.mkdirs();
+				}
+				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
+				File uploadedFile2 = new File(filesFolder2.getAbsolutePath(), fileName);
+				file.transferTo(uploadedFile);
+				file.transferTo(uploadedFile2);
+			}catch(Exception e){
+				//nothing here
+			}
+		} //end if
+		
 		Usuario user = usuarioComponent.getLoggedUser();
 		model.addAttribute("user",user);
 		return "comic_guardado";

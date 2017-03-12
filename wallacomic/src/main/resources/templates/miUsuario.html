@@ -93,7 +93,7 @@
                                         <h4 class="modal-title" id="myModalLabel">Configuración</h4>
                                     </div>
                                     <div id="configuracion" class="modal-body">
-                                        <form role="form" action="/configuracion/{{usuario.id}}" method="post">
+                                        <form role="form" enctype="multipart/form-data" action="/configuracion/{{usuario.id}}" method="post">
                                             <div class="form-group">
                                                 <label for="usuario">Nombre usuario:</label>
                                                 <input type="text" class="form-control" name="nombre" value="{{usuario.nombre}}">
@@ -120,9 +120,9 @@
                                                 <textarea name="descripcion" rows="5" cols="40" value="{{usuario.descripcion}}"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label for="avatar">Selecciona tu imagen de avatar:</label>
-                                                <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
-                                            </div>
+                                				<label for="comic">Selecciona la portada del Comic:</label>
+                                				<input id="file-1" type="file" name="file">
+                            				</div>
                                             <br>
 											<button type="button" class="btn btn-default" data-dismiss="modal">Descartar</button>
                                         	<button type="submit" class="btn btn-success" id="botonGuardar">Guardar cambios</button>

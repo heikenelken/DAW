@@ -1,7 +1,8 @@
-package com.wallacomic.controller;
+﻿package com.wallacomic.controller;
 
 import java.util.List;
-
+import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ import com.wallacomic.repository.ValoracionRepository;
 
 @Controller
 public class UsuarioController {
+	
+	private static final String FOLDER_IMG_USER = "./src/main/resources/static/imgUsers";
+	private static final String FOLDER_IMG_USER2 = "./target/classes/static/imgUsers";
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -156,7 +160,30 @@ public class UsuarioController {
 
 	@RequestMapping("/configuracion/{id}")
 	public String configuracion(Model model, @PathVariable int id, @RequestParam String nombre, @RequestParam String correo, @RequestParam String facebook,
-			 @RequestParam String twitter, @RequestParam String contraseña, @RequestParam String descripcion)throws Exception{
+			 @RequestParam String twitter, @RequestParam String contraseña, @RequestParam String descripcion, @RequestParam MultipartFile file)throws Exception{
+		
+		//tratamiento de file
+		String fileName= id+".jpg";
+		
+		if (!file.isEmpty()) {
+			try {
+
+				File filesFolder = new File(FOLDER_IMG_USER);
+				File filesFolder2 = new File(FOLDER_IMG_USER2);
+				if (!filesFolder.exists()) {
+					filesFolder.mkdirs();
+				}
+				if (!filesFolder2.exists()) {
+					filesFolder2.mkdirs();
+				}
+				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
+				File uploadedFile2 = new File(filesFolder2.getAbsolutePath(), fileName);
+				file.transferTo(uploadedFile);
+				file.transferTo(uploadedFile2);
+			}catch(Exception e){
+				//nothing here
+			}
+		} //end if
 		
 		if(nombre!="" && contraseña!=""){
 			Usuario updatedUser= new Usuario (nombre, contraseña, descripcion, correo, facebook, twitter, "", "ROLE_USER");
@@ -169,6 +196,7 @@ public class UsuarioController {
 		Usuario usuario = usuarioRepository.findById(id);
 		model.addAttribute("user", usuario);
 	    return "usuario_no_guardado";
+	    
 	}
 	
 	@RequestMapping("/usuarios")

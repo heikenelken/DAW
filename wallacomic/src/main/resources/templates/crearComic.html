@@ -63,7 +63,7 @@
                         <p>¡Rellena todos los campos que se muestran a continuación y pulsa publicar!</p>
                         <p>¡Por favor, asegúrate antes de que el comic no esté ya creado!</p>
                         <hr>
-                        <form role="form" action="guardarComic" method="post">
+                        <form role="form" action="guardarComic" enctype="multipart/form-data" method="post">
                             <div class="form-group">
                                 <label for="precio">Titulo:</label>
                                 <input type="text" name="titulo" class="form-control" placeholder="Introduzca el título del comic">
@@ -75,6 +75,10 @@
                             <div class="form-group">
                                 <label for="precio">Dibujante:</label>
                                 <input type="text" name="dibujante" class="form-control" placeholder="Introduzca el dibujante del comic">
+                            </div>
+                            <div class="form-group">
+                                <label for="comic">Selecciona la portada del Comic:</label>
+                                <input id="file-1" type="file" name="file">
                             </div>
                             <div class="form-group">
                                 <label for="observaciones">Argumento:</label>
