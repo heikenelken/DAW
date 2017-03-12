@@ -86,7 +86,7 @@
                                 <br>
                                 <textarea class="form-control" name="observaciones"rows="3" placeholder="Escribe aquí los detalles de la transacción: Estado del comic, preferencias de pago..."></textarea>
                             </div>
-                            <button type="button" class="btn btn-default">Descartar</button>
+                            <a href="/usuario/{{user.id}}"><button type="button" class="btn btn-default">Descartar</button></a>
                             <button type="submit" class="btn btn-success" id="botonCrear">Publicar!</button>
                             <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>

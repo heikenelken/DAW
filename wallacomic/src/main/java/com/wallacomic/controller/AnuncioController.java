@@ -58,7 +58,7 @@ public class AnuncioController {
 		int idComic=Integer.parseInt(comic);
 		Comic com = comicRepository.findById(idComic);
 		boolean tipoAnuncio;
-		if (tipo=="true"){
+		if (tipo.equals("true")){
 			tipoAnuncio=true;
 		}else{
 			tipoAnuncio=false;
