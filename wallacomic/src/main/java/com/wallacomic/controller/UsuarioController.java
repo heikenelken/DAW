@@ -1,6 +1,7 @@
 ﻿package com.wallacomic.controller;
 
 import java.util.List;
+import java.util.Arrays;
 import java.io.File;
 import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.PostConstruct;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wallacomic.domain.Anuncio;
+import com.wallacomic.domain.Conversacion;
 import com.wallacomic.domain.Comic;
 import com.wallacomic.domain.Usuario;
 import com.wallacomic.domain.UsuarioComponent;
@@ -22,6 +24,7 @@ import com.wallacomic.repository.AnuncioRepository;
 import com.wallacomic.repository.ComicRepository;
 import com.wallacomic.repository.UsuarioRepository;
 import com.wallacomic.repository.ValoracionRepository;
+import com.wallacomic.repository.ConversacionRepository;
 
 @Controller
 public class UsuarioController {
@@ -36,8 +39,11 @@ public class UsuarioController {
 	private UsuarioComponent usuarioComponent;
 	
 	@Autowired
+	private ConversacionRepository conversacionRepository;
+
+	@Autowired
 	private ComicRepository comicRepository;
-	
+
 	@Autowired
 	private AnuncioRepository anuncioRepository;
 	
@@ -48,7 +54,8 @@ public class UsuarioController {
 	public void init(){
 		usuarioRepository.save(new Usuario("AdoptaUnAlien","123456", "Pequeña descripción sin sentido contando lo chupiguay que soy.", "adoptaunalien@gmail.com", "facebook/adoptaunalien", "@adoptaunalien","1","ROLE_USER"));
 		usuarioRepository.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2","ROLE_USER"));
-		
+		usuarioRepository.save(new Usuario("MarianoRajoy","123456", "Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh", "elputomariano@gmail.com", "facebook/mariano", "@yLaEuropea?","2","ROLE_USER"));
+
 		comicRepository.save(new Comic("The amazing Spiderman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "1"));
 		comicRepository.save(new Comic("Private Eye #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "2"));
 		comicRepository.save(new Comic("Groot #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "3"));
@@ -90,6 +97,12 @@ public class UsuarioController {
 		
 		valoracionRepository.save(new Valoracion(usuarioRepository.findById(1), usuarioRepository.findById(2), "Comic muy bonito. Me ha gustado mucho.", 4));
 		valoracionRepository.save(new Valoracion(usuarioRepository.findById(2), usuarioRepository.findById(1),  "Buen tío, fiable, comic en perfecto estado", 5));
+
+		List<String> list1 = Arrays.asList("Hola amigo estaba interesado en comprarte un puto comic", "Hola colega, pues resulta que ya lo he vendido menuda mierda", "Pues borra el anuncio pedazo de inútil");
+		List<String> list2 = Arrays.asList("-----------------------------------------------", "+++++++++++++++++++++++++++++++++++++++++++++++", "//////////////////////////////");
+
+		conversacionRepository.save(new Conversacion(usuarioRepository.findById(1),usuarioRepository.findById(2), list1));
+		conversacionRepository.save(new Conversacion(usuarioRepository.findById(1),usuarioRepository.findById(3), list2));
 	}
 	
 	@RequestMapping("/usuario/{id}")
