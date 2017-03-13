@@ -52,14 +52,6 @@ public class ComicController {
 	
     private List<Comic> totalComics = new ArrayList<Comic>();
     
-	/*@PostConstruct
-	public void init(){
-		List<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10)).getContent();
-		for(Comic com: comFirst){
-			totalComics.add(com);
-		}
-	}
-	*/
 	@RequestMapping("/home")
 	public String home(Model model, Pageable page) throws Exception {
 		List<Comic> comEven = new ArrayList<Comic>();
@@ -79,7 +71,8 @@ public class ComicController {
 			}
 			
 			numeroComics = (comicRepository.findAll(page).hasNext());
-		}else{
+		}else if(totalComics.isEmpty()){
+			
 			//primeros 10 comics
 			numeroComics = (comicRepository.findAll().size() > 10);
 			
@@ -87,6 +80,10 @@ public class ComicController {
 			for(Comic com: comFirst){
 				totalComics.add(com);
 			}
+			
+		}
+		else{
+			numeroComics = (totalComics.size() == 10);
 		}
 		
 		for(Comic com: totalComics){
@@ -118,6 +115,7 @@ public class ComicController {
 		}
 		
 		model.addAttribute("comEvenEven", comEvenEven);
+		//model.addAttribute("totalComics", totalComics);
 		model.addAttribute("comEvenOdd", comEvenOdd);
 		model.addAttribute("comOddEven", comOddEven);
 		model.addAttribute("comOddOdd", comOddOdd);
