@@ -12,4 +12,5 @@ public interface ConversacionRepository extends JpaRepository<Conversacion, Long
 	List<Conversacion> findByUserBuyerOrUserSeller(Usuario u1, Usuario u2);
 	List<Conversacion> findByUserBuyer(Usuario u);
 	Conversacion findById(long id);
+	Conversacion findByUserSellerAndUserBuyer(Usuario uS, Usuario uB);
 }

@@ -210,3 +210,15 @@ label > span:hover ~ label > span {
 #inputUserHide{
 	display: none;
 }
+
+.contact {
+	color: #a94442;
+}
+
+.contact:hover {
+	color: #a94442;
+}
+
+.minHeight {
+	min-height: 34em;
+}
