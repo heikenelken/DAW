@@ -1,8 +1,127 @@
-<!DOCTYPE html>
 <html>
-<body>
-	<p>Invalid credentials</p>
-	<a href="/home">Try again</a>
-</body>
-</html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wallacomic</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/cards.css">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="js/pagination.js"></script>
+</head>
+
+<body>
+
+    <!--Nav-->
+    <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-left" href="/home">Wallacomic</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
+                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/Nav-->
+
+    <!-- Código popUp Registro -->
+    <div class="modal fade" id="popupRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Registro en WallaComic</h4>
+                </div>
+                <div id="registro" class="modal-body">
+                    <form role="form" action="guardarUsuario" method="post">
+                        <div class="datosPersonales">
+                            <label for="nombre">Nombre usuario:</label>
+                            <input type="text" class="form-control" name="nombre" placeholder="Introduce tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" name="contraseña" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Email:</label>
+                            <input type="email" class="form-control" name="correo" placeholder="Introduce tu Email">
+                        </div>
+                		<!-- footer del popUp, con los botones de creación y cerrar. -->
+               		    <div class="modal-footer">
+                    		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    		<button type="submit" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
+                    		<input type="hidden" name="_csrf" value="{{token}}"/>
+                		</div>
+             		</form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Codigo popUp Registro-->
+    
+    <!-- Código popUp Acceso -->
+    <div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
+                </div>
+                <div id="registro" class="modal-body">
+                    <form role="form" action="/login" method="post">
+                        <div class="form-group">
+                            <label for="usuario">Nombre usuario:</label>
+                            <input class="form-control" type="text" name="username"  placeholder="Introduce tu nombre de usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                        </div>
+                        <button type="submit" class="btn btn-success" value="Sign In" >Acceder</button>
+                    	<input type="hidden" name="_csrf" value="{{token}}"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Codigo popUp Acceso-->
+    
+    <!--Content-->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <!--CONTENIDO AQUÍ-->
+                <p>Invalid credentials</p>
+				<a href="/home">Try again</a>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    <!--/Content-->
+    
+    <!--Footer-->
+    <footer>
+        <div class="footer-separator"></div>
+        <div class="footer-content">
+            <p>WallaComic | Proyecto 'Desarrollo de Aplicaciones Web' · URJC 2016-2017</p>
+            <p>Pablo Daganzo del Val · Carlos Sevilla Lozano · Jesús Amores Fernández-Caballero</p>
+        </div>
+    </footer>
+    <!--/Footer-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+
+</html>

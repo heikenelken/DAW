@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wallacomic.domain.Anuncio;
 import com.wallacomic.domain.Conversacion;
+import com.wallacomic.domain.Mensaje;
 import com.wallacomic.domain.Comic;
 import com.wallacomic.domain.Usuario;
 import com.wallacomic.domain.UsuarioComponent;
@@ -98,8 +99,8 @@ public class UsuarioController {
 		valoracionRepository.save(new Valoracion(usuarioRepository.findById(1), usuarioRepository.findById(2), "Comic muy bonito. Me ha gustado mucho.", 4));
 		valoracionRepository.save(new Valoracion(usuarioRepository.findById(2), usuarioRepository.findById(1),  "Buen tío, fiable, comic en perfecto estado", 5));
 
-		List<String> list1 = Arrays.asList("Hola amigo estaba interesado en comprarte un puto comic", "Hola colega, pues resulta que ya lo he vendido menuda mierda", "Pues borra el anuncio pedazo de inútil");
-		List<String> list2 = Arrays.asList("-----------------------------------------------", "+++++++++++++++++++++++++++++++++++++++++++++++", "//////////////////////////////");
+		List<Mensaje> list1 = Arrays.asList(new Mensaje(usuarioRepository.findById(1),"Hola amigo estaba interesado en comprarte un puto comic"), new Mensaje(usuarioRepository.findById(2),"Hola colega, pues resulta que ya lo he vendido menuda mierda"), new Mensaje(usuarioRepository.findById(1),"Pues borra el anuncio pedazo de inútil"));
+		List<Mensaje> list2 = Arrays.asList(new Mensaje(usuarioRepository.findById(1),"-----------------------------------------------"), new Mensaje(usuarioRepository.findById(3),"+++++++++++++++++++++++++++++++++++++++++++++++"), new Mensaje(usuarioRepository.findById(1),"//////////////////////////////"));
 
 		conversacionRepository.save(new Conversacion(usuarioRepository.findById(1),usuarioRepository.findById(2), list1));
 		conversacionRepository.save(new Conversacion(usuarioRepository.findById(1),usuarioRepository.findById(3), list2));

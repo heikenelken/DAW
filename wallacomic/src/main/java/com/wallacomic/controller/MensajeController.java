@@ -17,12 +17,11 @@ import com.wallacomic.domain.Usuario;
 import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.domain.Valoracion;
 import com.wallacomic.domain.Conversacion;
-import com.wallacomic.domain.Mensaje;
 import com.wallacomic.repository.ConversacionRepository;
 import com.wallacomic.repository.UsuarioRepository;
 
 @Controller
-public class ConversacionController {
+public class MensajeController {
 	
 	@Autowired
 	UsuarioComponent usuarioComponent;
@@ -33,38 +32,14 @@ public class ConversacionController {
 	@Autowired
 	ConversacionRepository conversacionRepository;
 	
-	@RequestMapping("/conversacion")
-	public String conversacion(Model model) throws Exception {
-	    
-		Usuario user = usuarioComponent.getLoggedUser();
-		List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
-		model.addAttribute("user", user);
-		model.addAttribute("conversaciones", conversaciones);
-	    return "conversacion";
-	}
-	
-	@RequestMapping("/conversacion/{id}")
-	public String conversacionConcreta(Model model, @PathVariable String id) throws Exception {
-		
-		Usuario user = usuarioComponent.getLoggedUser();
-		model.addAttribute("user", user);
-		int idcasted = Integer.parseInt(id);
-		Conversacion conversacion = conversacionRepository.findById(idcasted);
-		model.addAttribute("conversacion", conversacion);
-		List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
-		model.addAttribute("conversaciones", conversaciones);
-		
-		return "conversacion_concreta";
-	}
-	
-	@RequestMapping("/crearMensaje/{id}")
+	/*@RequestMapping("/crearMensaje/{id}")
 	public String conversacionConcreta(Model model, @PathVariable String id, @RequestParam String mensaje) throws Exception {
 		
 		Usuario user = usuarioComponent.getLoggedUser();
 		model.addAttribute("user", user);
 		int idcasted = Integer.parseInt(id);
 		Conversacion conversacion = conversacionRepository.findById(idcasted);
-		conversacion.getComentarios().add(new Mensaje(user, mensaje));
+		conversacion.getComentarios().add(mensaje);
 		
 		conversacionRepository.save(conversacion); //hay que sobreescribir
 		model.addAttribute("conversacion", conversacion);
@@ -72,5 +47,5 @@ public class ConversacionController {
 		model.addAttribute("conversaciones", conversaciones);
 		
 		return "conversacion_concreta";
-	}
+	}*/
 }
