@@ -35,6 +35,68 @@
     </nav>
     <!--/Nav-->
 
+	<!-- Código popUp Registro -->
+    <div class="modal fade" id="popupRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Registro en WallaComic</h4>
+                </div>
+                <div id="registro" class="modal-body">
+                    <form role="form" action="guardarUsuario" method="post">
+                        <div class="datosPersonales">
+                            <label for="nombre">Nombre usuario:</label>
+                            <input type="text" class="form-control" name="nombre" placeholder="Introduce tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" name="contraseña" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">Email:</label>
+                            <input type="email" class="form-control" name="correo" placeholder="Introduce tu Email">
+                        </div>
+                		<!-- footer del popUp, con los botones de creación y cerrar. -->
+               		    <div class="modal-footer">
+                    		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    		<button type="submit" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
+                    		<input type="hidden" name="_csrf" value="{{token}}"/>
+                		</div>
+             		</form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Codigo popUp Registro-->
+    
+    <!-- Código popUp Acceso -->
+    <div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
+                </div>
+                <div id="registro" class="modal-body">
+                    <form role="form" action="/login" method="post">
+                        <div class="form-group">
+                            <label for="usuario">Nombre usuario:</label>
+                            <input class="form-control" type="text" name="username"  placeholder="Introduce tu nombre de usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                        </div>
+                        <button type="submit" class="btn btn-success" value="Sign In" >Acceder</button>
+                    	<input type="hidden" name="_csrf" value="{{token}}"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Codigo popUp Acceso-->
+
     <!--Content-->
     <div class="row">
         <div class="col-md-1"></div>
@@ -83,14 +145,14 @@
                                     <th>Comic</th>
                                     <th>Observaciones</th>
                                     <th>Precio</th>
-                                    <th>Contactar</th>
+                                    <!--  <th>Contactar</th> -->
                                 </thead>
                                 {{#adsLoVendo}}
                                 <tr>
                                     <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
                                     <td>{{comment}}</td>
                                     <td class="text-success">{{price}}€</td>
-                                    <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
+                                    <!--  <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td> -->
                                 </tr>
                                 {{/adsLoVendo}}
                             </table>
@@ -102,14 +164,14 @@
                                     <th>Comic</th>
                                     <th>Observaciones</th>
                                     <th>Precio</th>
-                                    <th>Contactar</th>
+                                   <!--  <th>Contactar</th> -->
                                 </thead>
                                 {{#adsLoCompro}}
                                 <tr>
                                     <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
                                     <td>{{comment}}</td>
                                     <td class="text-success">{{price}}€</td>
-                                    <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
+                                    <!--  <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>-->
                                 </tr>
                                 {{/adsLoCompro}}
                             </table>

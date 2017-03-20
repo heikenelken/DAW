@@ -53,9 +53,9 @@ public class UsuarioController {
 	
 	@PostConstruct
 	public void init(){
-		usuarioRepository.save(new Usuario("AdoptaUnAlien","123456", "Pequeña descripción sin sentido contando lo chupiguay que soy.", "adoptaunalien@gmail.com", "facebook/adoptaunalien", "@adoptaunalien","1","ROLE_USER"));
-		usuarioRepository.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2","ROLE_USER"));
-		usuarioRepository.save(new Usuario("MarianoRajoy","123456", "Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh", "elputomariano@gmail.com", "facebook/mariano", "@yLaEuropea?","2","ROLE_USER"));
+		usuarioRepository.save(new Usuario("AdoptaUnAlien","123456", "Pequeña descripción sin sentido contando lo chupiguay que soy.", "adoptaunalien@gmail.com", "facebook/adoptaunalien", "@adoptaunalien","1","ROLE_USER","ROLE_ADMIN"));
+		usuarioRepository.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2","ROLE_USER","ROLE_ADMIN"));
+		usuarioRepository.save(new Usuario("MarianoRajoy","123456", "Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh", "elputomariano@gmail.com", "facebook/mariano", "@yLaEuropea?","2","ROLE_USER","ROLE_ADMIN"));
 
 		comicRepository.save(new Comic("The amazing Spiderman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "1"));
 		comicRepository.save(new Comic("Private Eye #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "2"));
@@ -146,10 +146,10 @@ public class UsuarioController {
 		model.addAttribute("avS4", averageStars[3]);
 		model.addAttribute("avS5", averageStars[4]);
 		
-		if(usuarioComponent.isLoggedUser() && usuarioComponent.getLoggedUser().getId()==id){
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.getLoggedUser().getId()==id && usuarioComponent.hasAdminPermissions()){
 			return "miUsuario";
 		}else{
-			if(usuarioComponent.isLoggedUser()){
+			if(usuarioComponent.isLoggedUser() && usuarioComponent.getLoggedUser().getId()!=id && usuarioComponent.hasUserPermissions()){
 				Usuario user = usuarioComponent.getLoggedUser();
 				model.addAttribute("user", user);
 				return "usuario_autenticado";
@@ -164,7 +164,7 @@ public class UsuarioController {
 	public String guardarUsuario(Model model, @RequestParam String nombre, @RequestParam String contraseña,
 			@RequestParam String correo)throws Exception{
 		
-		Usuario usuario = new Usuario(nombre, contraseña, "", correo, "", "", "");
+		Usuario usuario = new Usuario(nombre, contraseña, " ", correo, " ", " ", " ","ROLE_USER","ROLE_ADMIN");
 		
 		usuarioRepository.save(usuario);
 		usuarioComponent.setLoggedUser(usuario);

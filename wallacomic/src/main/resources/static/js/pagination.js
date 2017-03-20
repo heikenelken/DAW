@@ -2,9 +2,7 @@ $(document).ready(function(){
 	
 	loadMore = function(cont){
 
-		console.log('boton pulsado');
-		
-		console.log('en peticion');
+		$('#spinner-div').html("<img src='img/spinner.gif'/>");
 		
 	    console.log(cont);
 		$.get("/home" , {
@@ -12,7 +10,7 @@ $(document).ready(function(){
 			size: 10
 		})
 		.done(function(data){
-			console.log(JSON.stringify(data));
+			$('#spinner-div').empty();
 			var datos = JSON.stringify(data);
 			var datos1 = datos.replace("<html>\r\n\r\n","");
 			var datos2 = datos.replace("\r\n\r\n</html>","");
@@ -20,13 +18,6 @@ $(document).ready(function(){
 			$("html").empty();
 			$("html").append(datos3);
 			
-
-			/*var tag = document.createElement("div");
-		    //var resto = $(data);
-		    $(tag).add(data);
-		    primero: <html>\r\n\r\n
-		    segundo: \r\n\r\n</html>
-		    */
 		});
 	}
 
