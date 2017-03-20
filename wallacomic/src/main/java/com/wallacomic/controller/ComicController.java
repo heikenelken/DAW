@@ -84,7 +84,7 @@ public class ComicController {
 			
 		}
 		else{
-			numeroComics = (totalComics.size() == 10);
+			numeroComics = (totalComics.size() < comicRepository.findAll().size());
 		}
 		
 		for(Comic com: totalComics){
