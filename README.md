@@ -73,3 +73,12 @@
   Pantalla de visualización "mi perfil" con los datos de usuario, comics en venta y deseados, comentarios de otros usuarios así como       ventanas de configuración de perfil y publicar anuncio. 
     
 
+### Imágenes de la aplicación web (Generadas con Spring, fase 3)
+
+![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/main.png)
+![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfil.png)
+![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfilotro.png)
+![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/public.%20anuncio.png)
+![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/publica%20comic.png)
+![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/comic.png)
+![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png)
