@@ -79,19 +79,19 @@ Pantalla de inicio con los comics
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/main.png"/>
 
 Perfil de usuario propio
-<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfil.png/>
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfil.png"/>
 
 Perfil usuario externo
-<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfilotro.png/>
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfilotro.png"/>
 
 Publicar anuncio
-<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/public.%20anuncio.png/>
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/public.%20anuncio.png"/>
 
 Publicar comic nuevo
-<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/publica%20comic.png/>
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/publica%20comic.png"/>
 
 Vista de comic
-<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/comic.png/>
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/comic.png"/>
 
 Valoracion usuarios
-<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png/>
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png"/>
