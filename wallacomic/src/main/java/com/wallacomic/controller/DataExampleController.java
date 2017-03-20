@@ -3,9 +3,10 @@ package com.wallacomic.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.boot.CommandLineRunner;
 
 import com.wallacomic.domain.Anuncio;
 import com.wallacomic.domain.Comic;
@@ -21,7 +22,7 @@ import com.wallacomic.repository.UsuarioRepository;
 import com.wallacomic.repository.ValoracionRepository;
 
 @Controller
-public class DataExampleController implements CommandLineRunner {
+public class DataExampleController {
 	
 	private static final String FOLDER_IMG_USER = "./src/main/resources/static/imgUsers";
 	private static final String FOLDER_IMG_USER2 = "./target/classes/static/imgUsers";
@@ -44,8 +45,8 @@ public class DataExampleController implements CommandLineRunner {
 	@Autowired
 	private ValoracionRepository valoracionRepository;
 	
-	@Override
-	public void run(String... args) throws Exception{
+	@PostConstruct
+	public void init(){
 		usuarioRepository.save(new Usuario("AdoptaUnAlien","123456", "Pequeña descripción sin sentido contando lo chupiguay que soy.", "adoptaunalien@gmail.com", "facebook/adoptaunalien", "@adoptaunalien","1","ROLE_USER","ROLE_ADMIN"));
 		usuarioRepository.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2","ROLE_USER","ROLE_ADMIN"));
 		usuarioRepository.save(new Usuario("MarianoRajoy","123456", "Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh", "elputomariano@gmail.com", "facebook/mariano", "@yLaEuropea?","2","ROLE_USER","ROLE_ADMIN"));
