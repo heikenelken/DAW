@@ -49,7 +49,10 @@
     4. Entidad: Valoraciones (vendedor, comprador, producto)  // DEJAR PARA EL FINAL
     
     5. Entidad: Anuncios (productos ofertados)
- 
+
+### Mapa de navegación
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/mapa_de_navegaci%C3%B3n.jpg"/>
+
 ### Imágenes de la aplicación web
    
 ![alt tag](https://github.com/AdoptaUnAlien/DAW/blob/master/Fase%202/screenshots/index_no_registro.png)
@@ -72,4 +75,40 @@
 
   Pantalla de visualización "mi perfil" con los datos de usuario, comics en venta y deseados, comentarios de otros usuarios así como       ventanas de configuración de perfil y publicar anuncio. 
     
+
+### Imágenes de la aplicación web (Generadas con Spring, fase 3)
+
+Pantalla de inicio con los comics
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/main.png"/>
+
+Perfil de usuario propio
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfil.png"/>
+
+Perfil usuario externo
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfilotro.png"/>
+
+Publicar anuncio
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/public.%20anuncio.png"/>
+
+Publicar comic nuevo
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/publica%20comic.png"/>
+
+Vista de comic
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/comic.png"/>
+
+Valoracion usuarios
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png"/>
+
+
+
+### Diagrama de entidades de la base de datos
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/ER.bmp"/>
+
+
+### Diagrama de clases
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/clases.bmp"/>
+
+### Templates usados y sus relaciones con @Controller
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/tabla-relaciones.bmp"/>
+
 
