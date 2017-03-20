@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="js/pagination.js"></script>
 </head>
 
 <body>
@@ -26,78 +25,10 @@
                 </button>
                 <a class="navbar-brand navbar-left" href="/home">Wallacomic</a>
             </div>
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
-                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
-                </ul>
-            </div>
         </div>
     </nav>
     <!--/Nav-->
 
-    <!-- Código popUp Registro -->
-    <div class="modal fade" id="popupRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Registro en WallaComic</h4>
-                </div>
-                <div id="registro" class="modal-body">
-                    <form role="form" action="guardarUsuario" method="post">
-                        <div class="datosPersonales">
-                            <label for="nombre">Nombre usuario:</label>
-                            <input type="text" class="form-control" name="nombre" placeholder="Introduce tu nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" name="contraseña" placeholder="Contraseña">
-                        </div>
-                        <div class="form-group">
-                            <label for="mail">Email:</label>
-                            <input type="email" class="form-control" name="correo" placeholder="Introduce tu Email">
-                        </div>
-                		<!-- footer del popUp, con los botones de creación y cerrar. -->
-               		    <div class="modal-footer">
-                    		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    		<button type="submit" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
-                    		<input type="hidden" name="_csrf" value="{{token}}"/>
-                		</div>
-             		</form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/Codigo popUp Registro-->
-    
-    <!-- Código popUp Acceso -->
-    <div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
-                </div>
-                <div id="registro" class="modal-body">
-                    <form role="form" action="/login" method="post">
-                        <div class="form-group">
-                            <label for="usuario">Nombre usuario:</label>
-                            <input class="form-control" type="text" name="username"  placeholder="Introduce tu nombre de usuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña">
-                        </div>
-                        <button type="submit" class="btn btn-success" value="Sign In" >Acceder</button>
-                    	<input type="hidden" name="_csrf" value="{{token}}"/>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/Codigo popUp Acceso-->
-    
     <!--Content-->
         <div class="row">
             <div class="col-md-1"></div>
