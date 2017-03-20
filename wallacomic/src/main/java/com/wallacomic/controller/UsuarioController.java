@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -173,40 +174,45 @@ public class UsuarioController {
 	}
 
 	@RequestMapping("/configuracion/{id}")
-	public String configuracion(Model model, @PathVariable int id, @RequestParam String nombre, @RequestParam String correo, @RequestParam String facebook,
+	public String configuracion(Model model, @PathVariable long id, @RequestParam String nombre, @RequestParam String correo, @RequestParam String facebook,
 			 @RequestParam String twitter, @RequestParam String contraseña, @RequestParam String descripcion, @RequestParam MultipartFile file)throws Exception{
 		
-		//tratamiento de file
-		String fileName= id+".jpg";
-		
-		if (!file.isEmpty()) {
-			try {
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.getLoggedUser().getId()==id && usuarioComponent.hasAdminPermissions()){
+			//tratamiento de file
+			String fileName= id+".jpg";
+			
+			if (!file.isEmpty()) {
+				try {
 
-				File filesFolder = new File(FOLDER_IMG_USER);
-				File filesFolder2 = new File(FOLDER_IMG_USER2);
-				if (!filesFolder.exists()) {
-					filesFolder.mkdirs();
+					File filesFolder = new File(FOLDER_IMG_USER);
+					File filesFolder2 = new File(FOLDER_IMG_USER2);
+					if (!filesFolder.exists()) {
+						filesFolder.mkdirs();
+					}
+					if (!filesFolder2.exists()) {
+						filesFolder2.mkdirs();
+					}
+					File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
+					File uploadedFile2 = new File(filesFolder2.getAbsolutePath(), fileName);
+					file.transferTo(uploadedFile);
+					file.transferTo(uploadedFile2);
+				}catch(Exception e){
+					//nothing here
 				}
-				if (!filesFolder2.exists()) {
-					filesFolder2.mkdirs();
-				}
-				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
-				File uploadedFile2 = new File(filesFolder2.getAbsolutePath(), fileName);
-				file.transferTo(uploadedFile);
-				file.transferTo(uploadedFile2);
-			}catch(Exception e){
-				//nothing here
+			} //end if
+			
+			if(nombre!="" && contraseña!=""){
+				Usuario updatedUser= new Usuario (nombre, contraseña, descripcion, correo, facebook, twitter, "", "ROLE_USER", "ROLE_ADMIN");
+				updatedUser.setId(id);
+				usuarioRepository.save(updatedUser);
+				model.addAttribute("user", updatedUser);
+				usuarioComponent.setLoggedUser(updatedUser);
+				return "usuario_guardado";
 			}
-		} //end if
-		
-		if(nombre!="" && contraseña!=""){
-			Usuario updatedUser= new Usuario (nombre, contraseña, descripcion, correo, facebook, twitter, "", "ROLE_USER");
-			updatedUser.setId(id);
-			usuarioRepository.save(updatedUser);
-			model.addAttribute("user", updatedUser);
-			usuarioComponent.setLoggedUser(updatedUser);
-			return "usuario_guardado";
+		}else{
+			throw new BadCredentialsException("Error de modificacion de parametros");
 		}
+		
 		Usuario usuario = usuarioRepository.findById(id);
 		model.addAttribute("user", usuario);
 	    return "usuario_no_guardado";

@@ -36,24 +36,38 @@ public class ConversacionController {
 	
 	@RequestMapping("/conversacion")
 	public String conversacion(Model model) throws Exception {
-	    
-		Usuario user = usuarioComponent.getLoggedUser();
-		List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
-		model.addAttribute("user", user);
-		model.addAttribute("conversaciones", conversaciones);
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
+			
+			Usuario user = usuarioComponent.getLoggedUser();
+			List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
+			model.addAttribute("user", user);
+			model.addAttribute("conversaciones", conversaciones);
+			
+		}else{
+			throw new BadCredentialsException("Error de acceso");
+		}
+		
 	    return "conversacion";
 	}
 	
 	@RequestMapping("/conversacion/{id}")
 	public String conversacionConcreta(Model model, @PathVariable String id) throws Exception {
 		
-		Usuario user = usuarioComponent.getLoggedUser();
-		model.addAttribute("user", user);
 		int idcasted = Integer.parseInt(id);
 		Conversacion conversacion = conversacionRepository.findById(idcasted);
-		model.addAttribute("conversacion", conversacion);
-		List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
-		model.addAttribute("conversaciones", conversaciones);
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions() && 
+				(conversacion.getUserBuyer().getId() == usuarioComponent.getLoggedUser().getId() || 
+						conversacion.getUserSeller().getId() == usuarioComponent.getLoggedUser().getId())){
+			
+			Usuario user = usuarioComponent.getLoggedUser();
+			model.addAttribute("user", user);
+			model.addAttribute("conversacion", conversacion);
+			List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
+			model.addAttribute("conversaciones", conversaciones);
+			
+		}else{
+			throw new BadCredentialsException("Error de acceso");
+		}
 		
 		return "conversacion_concreta";
 	}
@@ -61,16 +75,22 @@ public class ConversacionController {
 	@RequestMapping("/crearMensaje/{id}")
 	public String conversacionConcreta(Model model, @PathVariable String id, @RequestParam String mensaje) throws Exception {
 		
-		Usuario user = usuarioComponent.getLoggedUser();
-		model.addAttribute("user", user);
-		int idcasted = Integer.parseInt(id);
-		Conversacion conversacion = conversacionRepository.findById(idcasted);
-		conversacion.getComentarios().add(new Mensaje(user, mensaje));
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
 		
-		conversacionRepository.save(conversacion); //hay que sobreescribir
-		model.addAttribute("conversacion", conversacion);
-		List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
-		model.addAttribute("conversaciones", conversaciones);
+			Usuario user = usuarioComponent.getLoggedUser();
+			model.addAttribute("user", user);
+			int idcasted = Integer.parseInt(id);
+			Conversacion conversacion = conversacionRepository.findById(idcasted);
+			conversacion.getComentarios().add(new Mensaje(user, mensaje));
+			
+			conversacionRepository.save(conversacion); //hay que sobreescribir
+			model.addAttribute("conversacion", conversacion);
+			List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
+			model.addAttribute("conversaciones", conversaciones);
+			
+		}else{
+			throw new BadCredentialsException("Error de acceso");
+		}
 		
 		return "conversacion_concreta";
 	}
@@ -78,7 +98,8 @@ public class ConversacionController {
 	@RequestMapping("/contactar/{id}")
 	public String contactar(Model model, @PathVariable long id) throws Exception {
 		
-		if((usuarioComponent.isLoggedUser()) && (usuarioComponent.getLoggedUser().getId() != usuarioRepository.findById(id).getId())){
+		if((usuarioComponent.isLoggedUser()) && usuarioComponent.hasAdminPermissions() && 
+				(usuarioComponent.getLoggedUser().getId() != usuarioRepository.findById(id).getId())){
 			
 			Usuario userMe = usuarioComponent.getLoggedUser();
 			model.addAttribute("user", userMe);
@@ -105,7 +126,7 @@ public class ConversacionController {
 			
 		}else{
 			
-			throw new BadCredentialsException("Error de acceso: no puedes acceder a una conversación contigo mismo tontopollas!!");
+			throw new BadCredentialsException("Error de acceso: no puedes acceder a una conversación contigo mismo");
 		}
 		
 		return "conversacion_concreta";

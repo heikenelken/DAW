@@ -49,11 +49,9 @@ public class ValoracionController {
 	public String guardarValoracion(Model model, @RequestParam String comentario,
 			@RequestParam int numEstrellas, @RequestParam long user_receive_id)throws Exception{
 		
-		// TO-DO: Comprobar que user_give != user_receive antes de crear y guardar
-		// del form solo se recoje valoracion  y comentario
 		Usuario user_receive = usuarioRepository.findOne(user_receive_id);
 		
-		if((usuarioComponent.isLoggedUser()) && (user_receive != null)){
+		if((usuarioComponent.isLoggedUser()) && (user_receive != null) && usuarioComponent.hasAdminPermissions()){
 			Usuario user_give = usuarioComponent.getLoggedUser();
 			
 			if(user_give != user_receive){

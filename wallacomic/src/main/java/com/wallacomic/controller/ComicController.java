@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -124,7 +125,7 @@ public class ComicController {
 		int nextPage = page.getPageNumber() + 1;
 		model.addAttribute("nextPage", nextPage);
 		
-		if(usuarioComponent.isLoggedUser()){
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasUserPermissions()){
 			Usuario user = usuarioComponent.getLoggedUser();
 			model.addAttribute("user", user);
 			return "home_autenticado";
@@ -133,7 +134,7 @@ public class ComicController {
 		}
 	}
 	
-	@RequestMapping("/home_autenticado")
+	/*@RequestMapping("/home_autenticado")
 	public String home_autenticado(Model model, Pageable page) throws Exception {
 		List<Comic> comEven = new ArrayList<Comic>();
 		List<Comic> comOdd = new ArrayList<Comic>();
@@ -203,19 +204,19 @@ public class ComicController {
 		model.addAttribute("user", user);
 		
 	    return "home_autenticado";
-	}
+	}*/
 	
 	//Este método según los apuntes deberia devolver el valor de la lista comics junto con 
 	//la vista home, pero en vez de eso devuelve y renderiza el string "home", y no se porq
 	// hay q preguntar en clase. SOLUCIONADO: no hay que usar las anotaciones @RestController
 	//ni @ResponseBody
-	@RequestMapping("/home2")
+	/*@RequestMapping("/home2")
 	public String home2(Model model) throws Exception {
 	    
 		List<Comic> comics= comicRepository.findAll();
 		model.addAttribute("comics",comics);
 	    return "home";
-	}
+	}*/
 
 	@RequestMapping("/comic/{id}")
 	public String comic(Model model, @PathVariable int id) throws Exception {
@@ -225,7 +226,7 @@ public class ComicController {
 		
 		model.addAttribute("adsCompra", anuncioRepository.findByComicAndType(comic,true));
 		model.addAttribute("adsVenta", anuncioRepository.findByComicAndType(comic,false));
-		if(usuarioComponent.isLoggedUser()){
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasUserPermissions()){
 			Usuario user = usuarioComponent.getLoggedUser();
 			model.addAttribute("user", user);
 			return "comic_autenticado";
@@ -236,8 +237,15 @@ public class ComicController {
 	
 	@RequestMapping("/crearComic")
 	public String crearComic(Model model)throws Exception{
-		Usuario user = usuarioComponent.getLoggedUser();
-		model.addAttribute("user",user);
+		
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
+		
+			Usuario user = usuarioComponent.getLoggedUser();
+			model.addAttribute("user",user);
+			
+		}else{
+			throw new BadCredentialsException("Error de acceso");
+		}
 		
 	    return "crearComic";
 	}
@@ -246,33 +254,40 @@ public class ComicController {
 	public String guardarComic(Model model, @RequestParam String titulo, @RequestParam String autor,
 			@RequestParam String dibujante, @RequestParam String argumento , @RequestParam MultipartFile file)throws Exception{
 		
-		Comic comic= new Comic(titulo, autor, dibujante, argumento, "");
-		comicRepository.save(comic);
-		//tratamiento de file
-		String fileName= comic.getId()+".jpg";
-		
-		if (!file.isEmpty()) {
-			try {
-
-				File filesFolder = new File(FOLDER_IMG);
-				File filesFolder2 = new File(FOLDER_IMG2);
-				if (!filesFolder.exists()) {
-					filesFolder.mkdirs();
-				}
-				if (!filesFolder2.exists()) {
-					filesFolder2.mkdirs();
-				}
-				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
-				File uploadedFile2 = new File(filesFolder2.getAbsolutePath(), fileName);
-				file.transferTo(uploadedFile);
-				file.transferTo(uploadedFile2);
-			}catch(Exception e){
-				//nothing here
-			}
-		} //end if
-		
 		Usuario user = usuarioComponent.getLoggedUser();
 		model.addAttribute("user",user);
+		
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
+			
+			Comic comic= new Comic(titulo, autor, dibujante, argumento, "");
+			comicRepository.save(comic);
+			//tratamiento de file
+			String fileName= comic.getId()+".jpg";
+			
+			if (!file.isEmpty()) {
+				try {
+
+					File filesFolder = new File(FOLDER_IMG);
+					File filesFolder2 = new File(FOLDER_IMG2);
+					if (!filesFolder.exists()) {
+						filesFolder.mkdirs();
+					}
+					if (!filesFolder2.exists()) {
+						filesFolder2.mkdirs();
+					}
+					File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
+					File uploadedFile2 = new File(filesFolder2.getAbsolutePath(), fileName);
+					file.transferTo(uploadedFile);
+					file.transferTo(uploadedFile2);
+				}catch(Exception e){
+					//nothing here
+				}
+			} //end if
+			
+		}else{
+			throw new BadCredentialsException("Error de acceso");
+		}
+		
 		return "comic_guardado";
 	}
 	
