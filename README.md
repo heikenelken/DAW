@@ -95,3 +95,7 @@ Vista de comic
 
 Valoracion usuarios
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png"/>
+
+### Diagrama de entidades de la base de datos
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/ER.bmp"/>
+
