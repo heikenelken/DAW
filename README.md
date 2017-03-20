@@ -75,10 +75,23 @@
 
 ### Imágenes de la aplicación web (Generadas con Spring, fase 3)
 
+Pantalla de inicio con los comics
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/main.png"/>
-![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfil.png)
-![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfilotro.png)
-![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/public.%20anuncio.png)
-![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/publica%20comic.png)
-![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/comic.png)
-![alt tag] (https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png)
+
+Perfil de usuario propio
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfil.png/>
+
+Perfil usuario externo
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/perfilotro.png/>
+
+Publicar anuncio
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/public.%20anuncio.png/>
+
+Publicar comic nuevo
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/publica%20comic.png/>
+
+Vista de comic
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/comic.png/>
+
+Valoracion usuarios
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png/>
