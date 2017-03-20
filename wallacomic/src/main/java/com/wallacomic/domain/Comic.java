@@ -1,17 +1,18 @@
 package com.wallacomic.domain;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
 
 
 @Entity
+@Table(name = "TB_COMIC")
 public class Comic {
 
 	@Id
@@ -19,10 +20,15 @@ public class Comic {
 	private long id;
 	
 	//Atributos basicos
+	@NotNull
 	private String titulo;
+	@NotNull
 	private String autor;
+	@NotNull
 	private String dibujante;
+	@NotNull
 	private String argumento;
+	@NotNull
 	private String foto;
 	
 	//Constructores

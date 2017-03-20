@@ -5,22 +5,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "TB_ANUNCIO")
 public class Anuncio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
+	@NotNull
 	private boolean type;//true if its "lo compro", false if its "lo vendo"
 	
+	@NotNull
 	private double price;//price of the announce
 	
+	@NotNull
 	private String comment;//short description of the announce
 	@OneToOne
+	@NotNull
 	private Usuario user;
+	
 	@OneToOne
+	@NotNull
 	private Comic comic;
 
 	//para mostrar toda la info de un anuncio se ha de mostar el usuario que lo vende/compra.

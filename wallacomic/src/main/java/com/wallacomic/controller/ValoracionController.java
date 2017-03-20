@@ -33,10 +33,6 @@ public class ValoracionController {
 	@Autowired
 	private UsuarioComponent usuarioComponent;
 	
-	@PostConstruct
-	public void init(){
-	}
-	
 	@RequestMapping("/valoracion/{id}")
 	public String valoracion(Model model, @PathVariable int id) throws Exception {
 	    

@@ -35,10 +35,6 @@ public class AnuncioController {
 	@Autowired
 	private ComicRepository comicRepository;
 	
-	@PostConstruct
-	public void init(){
-		
-	}
 	//cargar en ComicController /comic/{id} los anuncios asociados, al igual que en
 	// /usuario/{id} y en la interfaz perfil ¿con /usuario/{id}?
 	@RequestMapping("/crearAnuncio")

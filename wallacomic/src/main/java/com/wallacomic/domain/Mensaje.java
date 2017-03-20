@@ -1,16 +1,15 @@
 package com.wallacomic.domain;
 
-import java.util.List;
-
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "TB_MENSAJE")
 public class Mensaje {
 	
 	@Id
@@ -18,13 +17,15 @@ public class Mensaje {
 	private long id;
 	
 	@OneToOne
-	private Usuario user; //User who writes
+	@NotNull
+	private Usuario userMensaje; //User who writes
 	
+	@NotNull
 	private String message;
 	
 	protected Mensaje(){}
 	public Mensaje(Usuario u, String m){
-		this.user = u;
+		this.userMensaje = u;
 		this.message = m;
 	}
 	public long getId() {
@@ -34,10 +35,10 @@ public class Mensaje {
 		this.id = id;
 	}
 	public Usuario getUser() {
-		return user;
+		return userMensaje;
 	}
 	public void setUser(Usuario user) {
-		this.user = user;
+		this.userMensaje = user;
 	}
 	public String getMessage() {
 		return message;

@@ -11,10 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
+@Table(name = "TB_USUARIO")
 public class Usuario {
 
 	@Id
@@ -22,15 +25,23 @@ public class Usuario {
 	private long id;
 	
 	//Atributos basicos
+	@NotNull
 	private String nombre;
+	@NotNull
 	private String contraseñaHash; // al loro con esto, que no se si funciona así
+	@NotNull
 	private String descripcion;
+	@NotNull
 	private String correo;
+	@NotNull
 	private String facebook;
+	@NotNull
 	private String twitter;
+	@NotNull
 	private String foto;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
+	@NotNull
 	private List<String> roles;
 	
 	protected Usuario(){}

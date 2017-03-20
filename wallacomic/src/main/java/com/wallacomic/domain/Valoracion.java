@@ -1,16 +1,16 @@
 package com.wallacomic.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "TB_VALORACION")
 public class Valoracion {
 
 	@Id
@@ -19,10 +19,14 @@ public class Valoracion {
 	
 	//Atributos basicos
 	@OneToOne
+	@NotNull
 	private Usuario user_give; //User who gives the score
 	@OneToOne
+	@NotNull
 	private Usuario userReceive; //User who receives the score
+	@NotNull
 	private String comentario;
+	@NotNull
 	private int numEstrellas;
 	private String s1;
 	private String s2;

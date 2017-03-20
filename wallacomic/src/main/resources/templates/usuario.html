@@ -1,233 +1,280 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wallacomic</title>
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/cards.css">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <script src="../js/clicks.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wallacomic</title>
+<link
+	href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/cards.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<script src="../js/clicks.js"></script>
 </head>
 
 <body>
 
-    <!--Nav-->
-    <nav class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand navbar-left" href="/home">Wallacomic</a>
-            </div>
-            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#popupAcceso">Acceder</button>
-                    <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--/Nav-->
+	<!--Nav-->
+	<nav
+		class="navbar navbar-inverse navbar-top navbar-fixed-top navbar-shadow"
+		role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand navbar-left" href="/home">Wallacomic</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-right"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<button type="button" class="btn btn-primary navbar-btn"
+						data-toggle="modal" data-target="#popupAcceso">Acceder</button>
+					<button type="button" class="btn btn-success navbar-btn"
+						data-toggle="modal" data-target="#popupRegistro">Registrarse</button>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--/Nav-->
 
 	<!-- Código popUp Registro -->
-    <div class="modal fade" id="popupRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Registro en WallaComic</h4>
-                </div>
-                <div id="registro" class="modal-body">
-                    <form role="form" action="guardarUsuario" method="post">
-                        <div class="datosPersonales">
-                            <label for="nombre">Nombre usuario:</label>
-                            <input type="text" class="form-control" name="nombre" placeholder="Introduce tu nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" name="contraseña" placeholder="Contraseña">
-                        </div>
-                        <div class="form-group">
-                            <label for="mail">Email:</label>
-                            <input type="email" class="form-control" name="correo" placeholder="Introduce tu Email">
-                        </div>
-                		<!-- footer del popUp, con los botones de creación y cerrar. -->
-               		    <div class="modal-footer">
-                    		<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    		<button type="submit" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
-                    		<input type="hidden" name="_csrf" value="{{token}}"/>
-                		</div>
-             		</form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/Codigo popUp Registro-->
-    
-    <!-- Código popUp Acceso -->
-    <div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
-                </div>
-                <div id="registro" class="modal-body">
-                    <form role="form" action="/login" method="post">
-                        <div class="form-group">
-                            <label for="usuario">Nombre usuario:</label>
-                            <input class="form-control" type="text" name="username"  placeholder="Introduce tu nombre de usuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña">
-                        </div>
-                        <button type="submit" class="btn btn-success" value="Sign In" >Acceder</button>
-                    	<input type="hidden" name="_csrf" value="{{token}}"/>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/Codigo popUp Acceso-->
+	<div class="modal fade" id="popupRegistro" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span><span class="sr-only">Cerrar</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Registro en
+						WallaComic</h4>
+				</div>
+				<div id="registro" class="modal-body">
+					<form role="form" action="guardarUsuario" method="post">
+						<div class="datosPersonales">
+							<label for="nombre">Nombre usuario:</label> <input type="text"
+								class="form-control" name="nombre"
+								placeholder="Introduce tu nombre">
+						</div>
+						<div class="form-group">
+							<label for="contraseña">Contraseña:</label> <input
+								type="password" class="form-control" name="contraseña"
+								placeholder="Contraseña">
+						</div>
+						<div class="form-group">
+							<label for="mail">Email:</label> <input type="email"
+								class="form-control" name="correo"
+								placeholder="Introduce tu Email">
+						</div>
+						<!-- footer del popUp, con los botones de creación y cerrar. -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
+							<input type="hidden" name="_csrf" value="{{token}}" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/Codigo popUp Registro-->
 
-    <!--Content-->
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="panel">
-                <div class="panel-body row">
-                    <div class="col-md-4">
-                        <img src="../imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-perfil img-responsive" alt="">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row" id="info-header">
-                            <div class="col-md-6">
-                                <h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
-                            </div>
-                            <div class="col-md-3" id="stars">
-                                <span class="glyphicon glyphicon-star{{avS1}}" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star{{avS2}}" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star{{avS3}}" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star{{avS4}}" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-star{{avS5}}" aria-hidden="true"></span>
-                            </div>
-                            <div class="col-md-3" id="buttonComment">
-                                <button id="commentsButton" type="button" class="btn btn-default" onclick="clickar()">Ver comentarios</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p>{{usuario.descripcion}}</p>
-                                <hr>
-                                <p><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
-                                <p><em>Facebook: </em><a href="https://www.{{usuario.facebook}}">{{usuario.facebook}}</a></p>
-                                <p><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10 row">
-                        <h3 class="text-purple">Mis anuncios</h3>
-                        <hr>
-                        <div class="col-md-6">
-                            <h4 class="text-purple">Vendo</h4>
-                            <table class="table table-striped table-condensed table-responsive">
-                                <thead>
-                                    <th>Comic</th>
-                                    <th>Observaciones</th>
-                                    <th>Precio</th>
-                                    <!--  <th>Contactar</th> -->
-                                </thead>
-                                {{#adsLoVendo}}
-                                <tr>
-                                    <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
-                                    <td>{{comment}}</td>
-                                    <td class="text-success">{{price}}€</td>
-                                    <!--  <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td> -->
-                                </tr>
-                                {{/adsLoVendo}}
-                            </table>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-purple">Compro</h4>
-                            <table class="table table-striped table-condensed table-responsive">
-                                <thead>
-                                    <th>Comic</th>
-                                    <th>Observaciones</th>
-                                    <th>Precio</th>
-                                   <!--  <th>Contactar</th> -->
-                                </thead>
-                                {{#adsLoCompro}}
-                                <tr>
-                                    <td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
-                                    <td>{{comment}}</td>
-                                    <td class="text-success">{{price}}€</td>
-                                    <!--  <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>-->
-                                </tr>
-                                {{/adsLoCompro}}
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-                
-                <div id="commentsTable" class="panel-body row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10 row">
-                        <h3 class="text-purple">Comentarios</h3>
-                        <hr>
-                        <div class="col-md-12">
-                        <ul class="list-group">
-                        	{{#comments}}
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <p><span class="text-info text-rigth">{{user_give.nombre}}: </span>{{comentario}}</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                    	<span class="sComments glyphicon glyphicon-star{{s1}}" aria-hidden="true"></span>
-                                    	<span class="sComments glyphicon glyphicon-star{{s2}}" aria-hidden="true"></span>
-                                    	<span class="sComments glyphicon glyphicon-star{{s3}}" aria-hidden="true"></span>
-                                    	<span class="sComments glyphicon glyphicon-star{{s4}}" aria-hidden="true"></span>
-                                    	<span class="sComments glyphicon glyphicon-star{{s5}}" aria-hidden="true"></span>
-                            
-                                    </div>
-                                </div>
-                            </li>
-                            {{/comments}}
-                        </ul>
-                    </div>
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-    </div>
-    <!--/Content-->
+	<!-- Código popUp Acceso -->
+	<div class="modal fade" id="popupAcceso" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span><span class="sr-only">Cerrar</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
+				</div>
+				<div id="registro" class="modal-body">
+					<form role="form" action="/login" method="post">
+						<div class="form-group">
+							<label for="usuario">Nombre usuario:</label> <input
+								class="form-control" type="text" name="username"
+								placeholder="Introduce tu nombre de usuario">
+						</div>
+						<div class="form-group">
+							<label for="contraseña">Contraseña:</label> <input
+								type="password" class="form-control" name="password"
+								placeholder="Contraseña">
+						</div>
+						<button type="submit" class="btn btn-success" value="Sign In">Acceder</button>
+						<input type="hidden" name="_csrf" value="{{token}}" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/Codigo popUp Acceso-->
 
-    <!--Footer-->
-    <footer>
-        <div class="footer-separator"></div>
-        <div class="footer-content">
-            <p>WallaComic | Proyecto 'Desarrollo de Aplicaciones Web' · URJC 2016-2017</p>
-            <p>Pablo Daganzo del Val · Niel Torres Mariluz · Carlos Sevilla Lozano · Jesús Amores Fernández-Caballero</p>
-        </div>
-    </footer>
-    <!--/Footer-->
+	<!--Content-->
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="panel">
+				<div class="panel-body row">
+					<div class="col-md-4">
+						<img src="../imgUsers/{{usuario.foto}}.jpg"
+							class="circular-avatar-perfil img-responsive" alt="">
+					</div>
+					<div class="col-md-8">
+						<div class="row" id="info-header">
+							<div class="col-md-6">
+								<h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
+							</div>
+							<div class="col-md-3" id="stars">
+								<span class="glyphicon glyphicon-star{{avS1}}"
+									aria-hidden="true"></span> <span
+									class="glyphicon glyphicon-star{{avS2}}" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star{{avS3}}"
+									aria-hidden="true"></span> <span
+									class="glyphicon glyphicon-star{{avS4}}" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star{{avS5}}"
+									aria-hidden="true"></span>
+							</div>
+							<div class="col-md-3" id="buttonComment">
+								<button id="commentsButton" type="button"
+									class="btn btn-default" onclick="clickar()">Ver
+									comentarios</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<p>{{usuario.descripcion}}</p>
+								<hr>
+								<p>
+									<em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a>
+								</p>
+								<p>
+									<em>Facebook: </em><a href="https://www.{{usuario.facebook}}">{{usuario.facebook}}</a>
+								</p>
+								<p>
+									<em>Twitter: </em><a
+										href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="commentsTable" class="panel-body row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10 row">
+						<h3 class="text-purple">Comentarios</h3>
+						<hr>
+						<div class="col-md-12">
+							<ul class="list-group">
+								{{#comments}}
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-md-10">
+											<p>
+												<span class="text-info text-rigth">{{user_give.nombre}}:
+												</span>{{comentario}}
+											</p>
+										</div>
+										<div class="col-md-2">
+											<span class="sComments glyphicon glyphicon-star{{s1}}"
+												aria-hidden="true"></span> <span
+												class="sComments glyphicon glyphicon-star{{s2}}"
+												aria-hidden="true"></span> <span
+												class="sComments glyphicon glyphicon-star{{s3}}"
+												aria-hidden="true"></span> <span
+												class="sComments glyphicon glyphicon-star{{s4}}"
+												aria-hidden="true"></span> <span
+												class="sComments glyphicon glyphicon-star{{s5}}"
+												aria-hidden="true"></span>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    
+										</div>
+									</div>
+								</li> {{/comments}}
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+				<div class="panel-body row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10 row">
+						<h3 class="text-purple">Mis anuncios</h3>
+						<hr>
+						<div class="col-md-6">
+							<h4 class="text-purple">Vendo</h4>
+							<table
+								class="table table-striped table-condensed table-responsive">
+								<thead>
+									<th>Comic</th>
+									<th>Observaciones</th>
+									<th>Precio</th>
+									<!--  <th>Contactar</th> -->
+								</thead>
+								{{#adsLoVendo}}
+								<tr>
+									<td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
+									<td>{{comment}}</td>
+									<td class="text-success">{{price}}€</td>
+									<!--  <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td> -->
+								</tr>
+								{{/adsLoVendo}}
+							</table>
+						</div>
+						<div class="col-md-6">
+							<h4 class="text-purple">Compro</h4>
+							<table
+								class="table table-striped table-condensed table-responsive">
+								<thead>
+									<th>Comic</th>
+									<th>Observaciones</th>
+									<th>Precio</th>
+									<!--  <th>Contactar</th> -->
+								</thead>
+								{{#adsLoCompro}}
+								<tr>
+									<td class="text-info"><a href="/comic/{{comic.id}}">{{comic.titulo}}</a></td>
+									<td>{{comment}}</td>
+									<td class="text-success">{{price}}€</td>
+									<!--  <td class="text-center text-danger"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>-->
+								</tr>
+								{{/adsLoCompro}}
+							</table>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	<!--/Content-->
+
+	<!--Footer-->
+	<footer>
+		<div class="footer-separator"></div>
+		<div class="footer-content">
+			<p>WallaComic | Proyecto 'Desarrollo de Aplicaciones Web' · URJC
+				2016-2017</p>
+			<p>Pablo Daganzo del Val · Niel Torres Mariluz · Carlos Sevilla
+				Lozano · Jesús Amores Fernández-Caballero</p>
+		</div>
+	</footer>
+	<!--/Footer-->
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

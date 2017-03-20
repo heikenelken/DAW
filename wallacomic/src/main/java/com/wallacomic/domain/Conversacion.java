@@ -5,16 +5,16 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "TB_CONVERSACION")
 public class Conversacion {
 	
 	@Id
@@ -22,12 +22,15 @@ public class Conversacion {
 	private long id;
 	
 	@OneToOne
+	@NotNull
 	private Usuario userBuyer; //User que compra
 	@OneToOne
+	@NotNull
 	private Usuario userSeller; //Usuario que vende
 	
 	@ElementCollection
 	@OneToMany(cascade=CascadeType.ALL)
+	@NotNull
 	private List<Mensaje> comentarios;
 	
 	protected Conversacion(){}
