@@ -49,7 +49,10 @@
     4. Entidad: Valoraciones (vendedor, comprador, producto)  // DEJAR PARA EL FINAL
     
     5. Entidad: Anuncios (productos ofertados)
- 
+
+### Mapa de navegación
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/mapa_de_navegaci%C3%B3n.jpg"/>
+
 ### Imágenes de la aplicación web
    
 ![alt tag](https://github.com/AdoptaUnAlien/DAW/blob/master/Fase%202/screenshots/index_no_registro.png)
@@ -96,6 +99,16 @@ Vista de comic
 Valoracion usuarios
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/valoraciones.png"/>
 
+
+
 ### Diagrama de entidades de la base de datos
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/ER.bmp"/>
+
+
+### Diagrama de clases
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/clases.bmp"/>
+
+### Templates usados y sus relaciones con @Controller
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/tabla-relaciones.bmp"/>
+
 
