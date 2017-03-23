@@ -6,8 +6,8 @@
     <title>Wallacomic</title>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/cards.css">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 
@@ -38,8 +38,8 @@
                     	<div class="col-md-6">
                     		<h1>¡¡¡ Usuario no modificado !!!</h1>
 							<p>Debe rellenar al menos los campos de nombre y contraseña.</p>
-							<form action="/home">
-								<button type="submit" class="btn btn-success navbar-btn">Volver al inicio</button>
+							<form action="/usuario/{{user.id}}">
+								<button type="submit" class="btn btn-success navbar-btn">Volver</button>
 							</form>
                     	</div>
                     </div>

@@ -146,8 +146,8 @@ public class UsuarioController {
 				}
 			} //end if
 			
-			if(nombre!="" && contraseña!=""){
-				Usuario updatedUser= new Usuario (nombre, contraseña, descripcion, correo, facebook, twitter, "", "ROLE_USER", "ROLE_ADMIN");
+			if(!nombre.equals("") && !contraseña.equals("")){
+				Usuario updatedUser= new Usuario (nombre, contraseña, descripcion, correo, facebook, twitter, Long.toString(id), "ROLE_USER", "ROLE_ADMIN");
 				updatedUser.setId(id);
 				usuarioRepository.save(updatedUser);
 				model.addAttribute("user", updatedUser);

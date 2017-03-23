@@ -52,7 +52,7 @@
 								</form>
 							</li>
 						</ul></li>
-					<li><img src="../imgUsers/{{usuario.id}}.jpg"
+					<li><img src="../imgUsers/{{usuario.foto}}.jpg"
 						class="circular-avatar-menu" alt=""></li>
 				</ul>
 			</div>
@@ -67,7 +67,7 @@
 			<div class="panel">
 				<div class="panel-body row">
 					<div class="col-md-4">
-						<img src="../imgUsers/{{usuario.id}}.jpg"
+						<img src="../imgUsers/{{usuario.foto}}.jpg"
 							class="circular-avatar-perfil img-responsive" alt="">
 					</div>
 					<div class="col-md-8">
@@ -151,11 +151,10 @@
 											</div>
 											<div class="form-group">
 												<label for="descripcion">Sobre tí:</label> <br>
-												<textarea name="descripcion" rows="5" cols="40"
-													value="{{usuario.descripcion}}"></textarea>
+												<textarea name="descripcion" rows="5" cols="40">{{usuario.descripcion}}</textarea>
 											</div>
 											<div class="form-group">
-												<label for="comic">Selecciona la portada del Comic:</label>
+												<label for="comic">Selecciona tu foto de perfil:</label>
 												<input id="file-1" type="file" name="file">
 											</div>
 											<br>
@@ -273,8 +272,7 @@
 		<div class="footer-content">
 			<p>WallaComic | Proyecto 'Desarrollo de Aplicaciones Web' · URJC
 				2016-2017</p>
-			<p>Pablo Daganzo del Val · Niel Torres Mariluz · Carlos Sevilla
-				Lozano · Jesús Amores Fernández-Caballero</p>
+			<p>Pablo Daganzo del Val · Carlos Sevilla Lozano · Jesús Amores Fernández-Caballero</p>
 		</div>
 	</footer>
 	<!--/Footer-->

@@ -284,6 +284,10 @@ public class ComicController {
 				}
 			} //end if
 			
+			Comic cModified = comicRepository.findOne(comic.getId());
+			cModified.setFoto(Long.toString(comic.getId()));
+			comicRepository.save(cModified);
+			
 		}else{
 			throw new BadCredentialsException("Error de acceso");
 		}
