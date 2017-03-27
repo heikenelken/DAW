@@ -16,6 +16,7 @@ import com.wallacomic.domain.Anuncio;
 import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.domain.Valoracion;
 import com.wallacomic.repository.UsuarioRepository;
+import com.wallacomic.service.AnuncioService;
 import com.wallacomic.repository.ComicRepository;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +27,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AnuncioController {
 
+	/*@Autowired
+	private AnuncioRepository anuncioRepository;*/
 	@Autowired
-	private AnuncioRepository anuncioRepository;
+	private AnuncioService anuncioService;
+	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	@Autowired
@@ -69,7 +73,8 @@ public class AnuncioController {
 				tipoAnuncio=false;
 			}
 			Anuncio anuncio = new Anuncio(tipoAnuncio, precio, observaciones, user, com);
-			anuncioRepository.save(anuncio);
+			//anuncioRepository.save(anuncio);
+			anuncioService.save(anuncio);
 			model.addAttribute("user",user);
 			
 		}else{
@@ -81,8 +86,10 @@ public class AnuncioController {
 	@RequestMapping("/borrarAnuncio/{id}")
 	public String borrarAnuncio(Model model, @PathVariable long id)throws Exception{
 		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
-			if (anuncioRepository.exists(id)) {
-				anuncioRepository.delete(id);
+			//if (anuncioRepository.exists(id)) {
+			if (anuncioService.existAd(id)) {
+				//anuncioRepository.delete(id);
+				anuncioService.delete(id);
 			}
 			Usuario user = usuarioComponent.getLoggedUser();
 			model.addAttribute("user",user);
@@ -91,14 +98,6 @@ public class AnuncioController {
 		}
 		
 		return "anuncio_borrado";
-	}
-	
-	@RequestMapping("/anuncios")
-	@ResponseBody
-	public List<Anuncio> anuncios() throws Exception {
-		
-		List<Anuncio> anuncios= anuncioRepository.findAll();
-	    return anuncios;
 	}
 	
 }

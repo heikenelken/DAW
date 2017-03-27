@@ -26,6 +26,7 @@ import com.wallacomic.repository.AnuncioRepository;
 import com.wallacomic.repository.ComicRepository;
 import com.wallacomic.repository.UsuarioRepository;
 import com.wallacomic.repository.ValoracionRepository;
+import com.wallacomic.service.AnuncioService;
 import com.wallacomic.repository.ConversacionRepository;
 
 @Controller
@@ -52,14 +53,19 @@ public class UsuarioController {
 	@Autowired
 	private ValoracionRepository valoracionRepository;
 	
+	@Autowired
+	private AnuncioService anuncioService;
+	
 	@RequestMapping("/usuario/{id}")
 	public String usuario(Model model, @PathVariable int id) throws Exception {
 		//obtener anuncios de un determinado usuario
 		Usuario usuario= usuarioRepository.findById(id);
 		model.addAttribute("usuario", usuario);
 		
-		model.addAttribute("adsLoCompro", anuncioRepository.findByUserAndType(usuario,true));
-		model.addAttribute("adsLoVendo", anuncioRepository.findByUserAndType(usuario,false));
+		//model.addAttribute("adsLoCompro", anuncioRepository.findByUserAndType(usuario,true));
+		//model.addAttribute("adsLoVendo", anuncioRepository.findByUserAndType(usuario,false));
+		model.addAttribute("adsLoCompro", anuncioService.findByUserAndType(usuario,true));
+		model.addAttribute("adsLoVendo", anuncioService.findByUserAndType(usuario,false));
 		//cargar valoraciones del usuario
 		model.addAttribute("comments", valoracionRepository.findByuserReceive(usuario));
 		//extraer valoracion media del usuario

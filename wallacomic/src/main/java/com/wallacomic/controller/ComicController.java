@@ -32,9 +32,13 @@ import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.repository.AnuncioRepository;
 import com.wallacomic.repository.ComicRepository;
 import com.wallacomic.repository.UsuarioRepository;
+import com.wallacomic.service.AnuncioService;
+import com.wallacomic.service.ComicService;
 
 @Controller
-public class ComicController {
+public class ComicController {//implementar @service. Cuales son las verdaderas partes que van 
+							  //en el service?? lo unico comun que veo es la solicitud de comics,
+							  //el resto de logica será lo mismo pero implementado en Angular.
 	
 	private static final String FOLDER_IMG = "./src/main/resources/static/img";
 	private static final String FOLDER_IMG2 = "./target/classes/static/img";
@@ -51,6 +55,12 @@ public class ComicController {
 	@Autowired
 	private AnuncioRepository anuncioRepository;
 	
+	@Autowired
+	private ComicService comicService;
+	
+	@Autowired
+	private AnuncioService anuncioService;
+	
     private List<Comic> totalComics = new ArrayList<Comic>();
     
 	@RequestMapping("/home")
@@ -65,26 +75,30 @@ public class ComicController {
 		
 		if(page.hasPrevious()){
 			//resto de paginas 
-			Page<Comic> listPrev = comicRepository.findAll(page);
+			Page<Comic> listPrev = comicService.findAll(page);
+			//Page<Comic> listPrev = comicRepository.findAll(page);
 			for(Comic c: listPrev){
 				
 				totalComics.add(c);
 			}
 			
-			numeroComics = (comicRepository.findAll(page).hasNext());
+			numeroComics = (comicService.findAll(page).hasNext());
+			//numeroComics = (comicRepository.findAll(page).hasNext());
 		}else if(totalComics.isEmpty()){
 			
 			//primeros 10 comics
-			numeroComics = (comicRepository.findAll().size() > 10);
-			
-			Page<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10));
+			numeroComics = (comicService.findAll().size() > 10);
+			//numeroComics = (comicRepository.findAll().size() > 10);
+			Page<Comic> comFirst = comicService.findAll(new PageRequest(0,10));
+			//Page<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10));
 			for(Comic com: comFirst){
 				totalComics.add(com);
 			}
 			
 		}
 		else{
-			numeroComics = (totalComics.size() < comicRepository.findAll().size());
+			numeroComics = (totalComics.size() < comicService.findAll().size());
+			//numeroComics = (totalComics.size() < comicRepository.findAll().size());
 		}
 		
 		for(Comic com: totalComics){
@@ -133,99 +147,18 @@ public class ComicController {
 			return "home";
 		}
 	}
-	
-	/*@RequestMapping("/home_autenticado")
-	public String home_autenticado(Model model, Pageable page) throws Exception {
-		List<Comic> comEven = new ArrayList<Comic>();
-		List<Comic> comOdd = new ArrayList<Comic>();
-		List<Comic> comEvenEven = new ArrayList<Comic>(); //column 1
-		List<Comic> comEvenOdd = new ArrayList<Comic>(); // column 2
-		List<Comic> comOddEven = new ArrayList<Comic>(); // column 3
-		List<Comic> comOddOdd = new ArrayList<Comic>(); // column 4
-		boolean numeroComics;
-		
-		if(page.hasPrevious()){
-			//resto de paginas 
-			List<Comic> listPrev = comicRepository.findAll(page).getContent();
-			for(Comic c: listPrev){
-				
-				totalComics.add(c);
-			}
-			
-			numeroComics = (comicRepository.findAll(page).hasNext());
-		}else{
-			//primeros 10 comics
-			numeroComics = (comicRepository.findAll().size() > 10);
-			
-			List<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10)).getContent();
-			for(Comic com: comFirst){
-				totalComics.add(com);
-			}
-		}
-		
-		for(Comic com: totalComics){
-			if(com.getId() % 2 == 0){//par
-				comEven.add(com);
-			}else{
-				comOdd.add(com);
-			}
-		}
-		boolean añadido = true;
-		for(Comic com: comEven){
-			if(añadido){//par
-				comEvenEven.add(com);
-				añadido = false;
-			}else{
-				comEvenOdd.add(com);
-				añadido = true;
-			}
-		}
-		boolean añadido2 = true;
-		for(Comic com: comOdd){
-			if(añadido2){//par
-				comOddEven.add(com);
-				añadido2 = false;
-			}else{
-				comOddOdd.add(com);
-				añadido2 = true;
-			}
-		}
-		
-		model.addAttribute("comEvenEven", comEvenEven);
-		model.addAttribute("comEvenOdd", comEvenOdd);
-		model.addAttribute("comOddEven", comOddEven);
-		model.addAttribute("comOddOdd", comOddOdd);
-		model.addAttribute("numComics", numeroComics);
-		
-		int nextPage = page.getPageNumber() + 1;
-		model.addAttribute("nextPage", nextPage);
-		
-		Usuario user = usuarioComponent.getLoggedUser();
-		model.addAttribute("user", user);
-		
-	    return "home_autenticado";
-	}*/
-	
-	//Este método según los apuntes deberia devolver el valor de la lista comics junto con 
-	//la vista home, pero en vez de eso devuelve y renderiza el string "home", y no se porq
-	// hay q preguntar en clase. SOLUCIONADO: no hay que usar las anotaciones @RestController
-	//ni @ResponseBody
-	/*@RequestMapping("/home2")
-	public String home2(Model model) throws Exception {
-	    
-		List<Comic> comics= comicRepository.findAll();
-		model.addAttribute("comics",comics);
-	    return "home";
-	}*/
 
 	@RequestMapping("/comic/{id}")
 	public String comic(Model model, @PathVariable int id) throws Exception {
 		//obtener anuncios de un determinado comic
-		Comic comic= comicRepository.findById(id);
+		Comic comic= comicService.findById(id);
+		//Comic comic= comicRepository.findById(id);
 		model.addAttribute("comic", comic);
 		
-		model.addAttribute("adsCompra", anuncioRepository.findByComicAndType(comic,true));
-		model.addAttribute("adsVenta", anuncioRepository.findByComicAndType(comic,false));
+		//model.addAttribute("adsCompra", anuncioRepository.findByComicAndType(comic,true));
+		//model.addAttribute("adsVenta", anuncioRepository.findByComicAndType(comic,false));
+		model.addAttribute("adsCompra", anuncioService.findByComicAndType(comic,true));
+		model.addAttribute("adsVenta", anuncioService.findByComicAndType(comic,false));
 		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasUserPermissions()){
 			Usuario user = usuarioComponent.getLoggedUser();
 			model.addAttribute("user", user);
@@ -260,7 +193,8 @@ public class ComicController {
 		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
 			
 			Comic comic= new Comic(titulo, autor, dibujante, argumento, "");
-			comicRepository.save(comic);
+			comicService.save(comic);
+			//comicRepository.save(comic);
 			//tratamiento de file
 			String fileName= comic.getId()+".jpg";
 			
@@ -283,10 +217,11 @@ public class ComicController {
 					//nothing here
 				}
 			} //end if
-			
-			Comic cModified = comicRepository.findOne(comic.getId());
+			Comic cModified = comicService.findOne(comic.getId());
+			//Comic cModified = comicRepository.findOne(comic.getId());
 			cModified.setFoto(Long.toString(comic.getId()));
-			comicRepository.save(cModified);
+			comicService.save(cModified);
+			//comicRepository.save(cModified);
 			
 		}else{
 			throw new BadCredentialsException("Error de acceso");
@@ -295,11 +230,4 @@ public class ComicController {
 		return "comic_guardado";
 	}
 	
-	@RequestMapping("/comics")
-	@ResponseBody
-	public List<Comic> comics() throws Exception {
-		
-		List<Comic> comics= comicRepository.findAll();
-	    return comics;
-	}
 }
