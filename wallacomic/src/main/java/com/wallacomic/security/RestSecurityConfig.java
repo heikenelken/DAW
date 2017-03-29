@@ -30,10 +30,10 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/loginerror").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/logout").permitAll();
         //depercateds
-        http.authorizeRequests().antMatchers("/api/home_autenticado").permitAll();
+        /*http.authorizeRequests().antMatchers("/api/home_autenticado").permitAll();
         http.authorizeRequests().antMatchers("/api/comic_autenticado").permitAll();
         http.authorizeRequests().antMatchers("/api/usuario_autenticado").permitAll();
-        http.authorizeRequests().antMatchers("/api/miUsuario").permitAll();
+        http.authorizeRequests().antMatchers("/api/miUsuario").permitAll();*/
 		
 		// URLs that need authentication to access to it
 		/*http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/books/**").hasRole("USER");
