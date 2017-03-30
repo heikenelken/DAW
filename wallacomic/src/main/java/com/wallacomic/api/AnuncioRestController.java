@@ -13,22 +13,23 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wallacomic.domain.Anuncio;
+import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.service.AnuncioService;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/anuncios")
 public class AnuncioRestController {
 
 	@Autowired
 	private AnuncioService anuncioService;
 	
-	@RequestMapping(value = "/anuncios", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public Collection<Anuncio> getAnuncios() {
 		return anuncioService.findAll();
 	}
 	
-	@RequestMapping(value = "/anuncio/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Anuncio> getAnuncio(@PathVariable int id){
 		
 		Anuncio ad = anuncioService.findById(id);
@@ -39,8 +40,8 @@ public class AnuncioRestController {
 		}
 		
 	}
-	
-	@RequestMapping(value = "/guardarAnuncio", method = RequestMethod.POST)
+	//OJO!!! hay que poner las urls como peticiones de recursos, no con nombres de métodos
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Anuncio createAdvertisement(@RequestBody Anuncio ad) {
 
@@ -49,9 +50,9 @@ public class AnuncioRestController {
 		return ad;
 	}
 	
-	@RequestMapping(value = "/borrarAnuncio/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Anuncio> deleteAdvertisement(@PathVariable long id) {
-
+		
 		anuncioService.delete(id);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 		

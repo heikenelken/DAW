@@ -18,17 +18,19 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		//http.antMatcher("/api/**");
+		http.antMatcher("/api/**");
 		
-		http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/home").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/comic/{id}").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/home/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/comic/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/comics").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/usuario/{id}").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/guardarComic").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/usuario/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/guardarUsuario").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/login").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/anuncios/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/anuncios/**").permitAll();
+        
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/logIn").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/loginerror").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/logout").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/logOut").permitAll();
         //depercateds
         /*http.authorizeRequests().antMatchers("/api/home_autenticado").permitAll();
         http.authorizeRequests().antMatchers("/api/comic_autenticado").permitAll();
@@ -36,6 +38,9 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/api/miUsuario").permitAll();*/
 		
 		// URLs that need authentication to access to it
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/anuncios/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/anuncios/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/comics").hasRole("ADMIN");
 		/*http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/books/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/books/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN");*/		

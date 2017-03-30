@@ -21,6 +21,7 @@ import com.wallacomic.domain.Conversacion;
 import com.wallacomic.domain.Mensaje;
 import com.wallacomic.repository.ConversacionRepository;
 import com.wallacomic.repository.UsuarioRepository;
+import com.wallacomic.service.ConversacionService;
 
 @Controller
 public class ConversacionController {
@@ -32,14 +33,14 @@ public class ConversacionController {
 	UsuarioRepository usuarioRepository;
 	
 	@Autowired
-	ConversacionRepository conversacionRepository;
+	ConversacionService conversacionService;
 	
 	@RequestMapping("/conversacion")
 	public String conversacion(Model model) throws Exception {
 		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
 			
 			Usuario user = usuarioComponent.getLoggedUser();
-			List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
+			List<Conversacion> conversaciones = conversacionService.findByUserBuyerOrUserSeller(user, user);
 			model.addAttribute("user", user);
 			model.addAttribute("conversaciones", conversaciones);
 			
@@ -54,7 +55,7 @@ public class ConversacionController {
 	public String conversacionConcreta(Model model, @PathVariable String id) throws Exception {
 		
 		int idcasted = Integer.parseInt(id);
-		Conversacion conversacion = conversacionRepository.findById(idcasted);
+		Conversacion conversacion = conversacionService.findById(idcasted);
 		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions() && 
 				(conversacion.getUserBuyer().getId() == usuarioComponent.getLoggedUser().getId() || 
 						conversacion.getUserSeller().getId() == usuarioComponent.getLoggedUser().getId())){
@@ -62,7 +63,7 @@ public class ConversacionController {
 			Usuario user = usuarioComponent.getLoggedUser();
 			model.addAttribute("user", user);
 			model.addAttribute("conversacion", conversacion);
-			List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
+			List<Conversacion> conversaciones = conversacionService.findByUserBuyerOrUserSeller(user, user);
 			model.addAttribute("conversaciones", conversaciones);
 			
 		}else{
@@ -80,12 +81,11 @@ public class ConversacionController {
 			Usuario user = usuarioComponent.getLoggedUser();
 			model.addAttribute("user", user);
 			int idcasted = Integer.parseInt(id);
-			Conversacion conversacion = conversacionRepository.findById(idcasted);
+			Conversacion conversacion = conversacionService.findById(idcasted);
 			conversacion.getComentarios().add(new Mensaje(user, mensaje));
-			
-			conversacionRepository.save(conversacion); //hay que sobreescribir
+			conversacionService.save(conversacion); //hay que sobreescribir
 			model.addAttribute("conversacion", conversacion);
-			List<Conversacion> conversaciones = conversacionRepository.findByUserBuyerOrUserSeller(user, user);
+			List<Conversacion> conversaciones = conversacionService.findByUserBuyerOrUserSeller(user, user);
 			model.addAttribute("conversaciones", conversaciones);
 			
 		}else{
@@ -100,26 +100,26 @@ public class ConversacionController {
 		
 		if((usuarioComponent.isLoggedUser()) && usuarioComponent.hasAdminPermissions() && 
 				(usuarioComponent.getLoggedUser().getId() != usuarioRepository.findById(id).getId())){
-			
+			//cambiar o mover la logica de comprobar conversacion con alguien en la que se cambia el orden de los parametros
 			Usuario userMe = usuarioComponent.getLoggedUser();
 			model.addAttribute("user", userMe);
-			Conversacion converWithSeller = conversacionRepository.findByUserSellerAndUserBuyer(usuarioRepository.findById(id), userMe);
-			Conversacion converWithSeller2 = conversacionRepository.findByUserSellerAndUserBuyer(userMe, usuarioRepository.findById(id));
+			Conversacion converWithSeller = conversacionService.findByUserSellerAndUserBuyer(usuarioRepository.findById(id), userMe);
+			Conversacion converWithSeller2 = conversacionService.findByUserSellerAndUserBuyer(userMe, usuarioRepository.findById(id));
 			if(converWithSeller != null){
 				//hay conversacion previa	
-				model.addAttribute("conversaciones", conversacionRepository.findByUserBuyerOrUserSeller(userMe, userMe));
+				model.addAttribute("conversaciones", conversacionService.findByUserBuyerOrUserSeller(userMe, userMe));
 				model.addAttribute("conversacion", converWithSeller);
 
 			}else if(converWithSeller2 != null){//nueva conversacion
 				
-				model.addAttribute("conversaciones", conversacionRepository.findByUserBuyerOrUserSeller(userMe, userMe));
+				model.addAttribute("conversaciones", conversacionService.findByUserBuyerOrUserSeller(userMe, userMe));
 				model.addAttribute("conversacion", converWithSeller2);
 					
 			}else{
 				
 				Conversacion newConver = new Conversacion(userMe, usuarioRepository.findById(id), Arrays.asList());
-				conversacionRepository.save(newConver);
-				model.addAttribute("conversaciones", conversacionRepository.findByUserBuyerOrUserSeller(userMe, userMe));
+				conversacionService.save(newConver);
+				model.addAttribute("conversaciones", conversacionService.findByUserBuyerOrUserSeller(userMe, userMe));
 				model.addAttribute("conversacion", newConver);
 			
 			}
