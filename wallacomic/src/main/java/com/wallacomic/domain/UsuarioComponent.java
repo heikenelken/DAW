@@ -31,7 +31,7 @@ public class UsuarioComponent {
 		boolean hasPerm = false;
 		List<String> permissions = user.getRoles();
 		for(String r: permissions){
-			if(r.equals("ROLE_ADMIN")){
+			if(r.equals("ADMIN")){
 				hasPerm = true;
 			}
 		}
@@ -42,7 +42,7 @@ public class UsuarioComponent {
 		boolean hasPerm = false;
 		List<String> permissions = user.getRoles();
 		for(String r: permissions){
-			if(r.equals("ROLE_USER")){
+			if(r.equals("USER")){
 				hasPerm = true;
 			}
 		}

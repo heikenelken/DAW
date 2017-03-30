@@ -116,7 +116,7 @@ public class UsuarioController {
 	public String guardarUsuario(Model model, @RequestParam String nombre, @RequestParam String contraseña,
 			@RequestParam String correo)throws Exception{
 		
-		Usuario usuario = new Usuario(nombre, contraseña, " ", correo, " ", " ", " ","ROLE_USER","ROLE_ADMIN");
+		Usuario usuario = new Usuario(nombre, contraseña, " ", correo, " ", " ", " ","USER","ADMIN");
 		
 		usuarioRepository.save(usuario);
 		usuarioComponent.setLoggedUser(usuario);
@@ -184,6 +184,7 @@ public class UsuarioController {
     public String login() {
     	return "login";
     }*/
+	
 	@RequestMapping("/loginerror")
     public String loginerror() {
     	return "loginerror";
