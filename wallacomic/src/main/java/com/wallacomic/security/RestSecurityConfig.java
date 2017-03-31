@@ -41,10 +41,13 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/anuncios/**").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/anuncios/**").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/comics").hasRole("ADMIN");
-		/*http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/books/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/books/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN");*/		
-		
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/miUsuario").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/usuario/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/conversaciones/").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/conversaciones/**").permitAll();
+				
 		// Other URLs can be accessed without authentication
 		//http.authorizeRequests().anyRequest().permitAll();
 

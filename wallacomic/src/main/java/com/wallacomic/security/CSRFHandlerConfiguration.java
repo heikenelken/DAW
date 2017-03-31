@@ -1,4 +1,4 @@
-package com.wallacomic.security;
+/*package com.wallacomic.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,4 +34,4 @@ class CSRFHandlerInterceptor extends HandlerInterceptorAdapter {
 		}
 		    	
     }
-}
+}*/

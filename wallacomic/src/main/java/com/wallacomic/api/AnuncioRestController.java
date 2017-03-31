@@ -40,7 +40,7 @@ public class AnuncioRestController {
 		}
 		
 	}
-	//OJO!!! hay que poner las urls como peticiones de recursos, no con nombres de métodos
+
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Anuncio createAdvertisement(@RequestBody Anuncio ad) {
@@ -53,8 +53,12 @@ public class AnuncioRestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Anuncio> deleteAdvertisement(@PathVariable long id) {
 		
-		anuncioService.delete(id);
-		return new ResponseEntity<>(null, HttpStatus.OK);
+		if(anuncioService.existAd(id)){
+			anuncioService.delete(id);
+			return new ResponseEntity <>(null, HttpStatus.OK);
+		}else{
+			return new ResponseEntity <>(HttpStatus.NOT_FOUND);
+		}
 		
 	}
 	
