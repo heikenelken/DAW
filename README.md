@@ -111,4 +111,6 @@ Valoracion usuarios
 ### Templates usados y sus relaciones con @Controller
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/capturasFase3/tabla-relaciones.bmp"/>
 
+## API REST (Fase 4)
 
+[Link al documento](https://github.com/AdoptaUnAlien/DAW/blob/master/API.md)
