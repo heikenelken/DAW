@@ -40,7 +40,8 @@ public class ConversacionService {
 	
 	public Conversacion findConversationWithAnUser(int id){
 		
-		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions() &&
+				(usuarioComponent.getLoggedUser().getId() != usuarioRepository.findById(id).getId())){
 			Conversacion converWithSeller = conversacionRepository.findByUserSellerAndUserBuyer(usuarioRepository.findById(id), usuarioComponent.getLoggedUser());
 			Conversacion converWithSeller2 = conversacionRepository.findByUserSellerAndUserBuyer(usuarioComponent.getLoggedUser(), usuarioRepository.findById(id));
 			if(converWithSeller != null){
