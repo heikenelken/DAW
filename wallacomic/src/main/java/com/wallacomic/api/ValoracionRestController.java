@@ -22,8 +22,8 @@ public class ValoracionRestController {
 	@Autowired
 	private ValoracionService valoracionService;
 	
-	@Autowired
-	private UsuarioService usuarioService;
+	//@Autowired
+	//private UsuarioService usuarioService;
 	
 	@Autowired
 	private UsuarioComponent usuarioComponent;
