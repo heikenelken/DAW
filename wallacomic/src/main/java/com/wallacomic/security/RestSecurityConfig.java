@@ -41,12 +41,12 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/anuncios/**").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/anuncios/**").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/comics").hasRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/miUsuario").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/usuario/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/conversaciones/").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/conversaciones/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/miUsuario").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/usuario/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/**").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/conversaciones/").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/conversaciones/**").hasRole("ADMIN");
 				
 		// Other URLs can be accessed without authentication
 		//http.authorizeRequests().anyRequest().permitAll();
