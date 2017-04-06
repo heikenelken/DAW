@@ -24,9 +24,10 @@ import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.domain.Valoracion;
 import com.wallacomic.repository.AnuncioRepository;
 import com.wallacomic.repository.ComicRepository;
-import com.wallacomic.repository.UsuarioRepository;
+import com.wallacomic.service.UsuarioService;
 import com.wallacomic.repository.ValoracionRepository;
 import com.wallacomic.service.AnuncioService;
+import com.wallacomic.service.UsuarioService;
 import com.wallacomic.repository.ConversacionRepository;
 
 @Controller
@@ -35,8 +36,10 @@ public class UsuarioController {
 	private static final String FOLDER_IMG_USER = "./src/main/resources/static/imgUsers";
 	private static final String FOLDER_IMG_USER2 = "./target/classes/static/imgUsers";
 
+
+	
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioService usuarioService;
 	
 	@Autowired
 	private UsuarioComponent usuarioComponent;
@@ -59,7 +62,7 @@ public class UsuarioController {
 	@RequestMapping("/usuario/{id}")
 	public String usuario(Model model, @PathVariable int id) throws Exception {
 		//obtener anuncios de un determinado usuario
-		Usuario usuario= usuarioRepository.findById(id);
+		Usuario usuario= usuarioService.findById(id);
 		model.addAttribute("usuario", usuario);
 		
 		//model.addAttribute("adsLoCompro", anuncioRepository.findByUserAndType(usuario,true));
@@ -118,7 +121,7 @@ public class UsuarioController {
 		
 		Usuario usuario = new Usuario(nombre, contraseña, " ", correo, " ", " ", " ","USER","ADMIN");
 		
-		usuarioRepository.save(usuario);
+		usuarioService.save(usuario);
 		usuarioComponent.setLoggedUser(usuario);
 		
 	    return "usuario_guardado";
@@ -155,7 +158,7 @@ public class UsuarioController {
 			if(!nombre.equals("") && !contraseña.equals("")){
 				Usuario updatedUser= new Usuario (nombre, contraseña, descripcion, correo, facebook, twitter, Long.toString(id), "ROLE_USER", "ROLE_ADMIN");
 				updatedUser.setId(id);
-				usuarioRepository.save(updatedUser);
+				usuarioService.save(updatedUser);
 				model.addAttribute("user", updatedUser);
 				usuarioComponent.setLoggedUser(updatedUser);
 				return "usuario_guardado";
@@ -164,7 +167,7 @@ public class UsuarioController {
 			throw new BadCredentialsException("Error de modificacion de parametros");
 		}
 		
-		Usuario usuario = usuarioRepository.findById(id);
+		Usuario usuario = usuarioService.findById(id);
 		model.addAttribute("user", usuario);
 	    return "usuario_no_guardado";
 	    
@@ -174,7 +177,7 @@ public class UsuarioController {
 	@ResponseBody
 	public List<Usuario> usuarios(Model model) throws Exception {
 		
-		List<Usuario> usuarios= usuarioRepository.findAll();
+		List<Usuario> usuarios= usuarioService.findAll();
 		model.addAttribute("usuarios", usuarios);
 		
 	    return usuarios;

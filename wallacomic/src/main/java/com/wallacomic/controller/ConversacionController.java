@@ -14,7 +14,7 @@ import com.wallacomic.domain.Usuario;
 import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.domain.Conversacion;
 import com.wallacomic.domain.Mensaje;
-import com.wallacomic.repository.UsuarioRepository;
+import com.wallacomic.service.UsuarioService;
 import com.wallacomic.service.ConversacionService;
 
 @Controller
@@ -23,8 +23,9 @@ public class ConversacionController {
 	@Autowired
 	UsuarioComponent usuarioComponent;
 	
-	@Autowired//CUANDO SE IMPLEMENTE EL SERVICIO DE USUARIOS CAMBIAR REPOSITORY POR SERVICE
-	UsuarioRepository usuarioRepository;
+	@Autowired
+	UsuarioService usuarioService;
+	
 	
 	@Autowired
 	ConversacionService conversacionService;
@@ -154,7 +155,7 @@ public class ConversacionController {
 			model.addAttribute("conversaciones", conversacionService.getMyConversations());
 			model.addAttribute("conversacion", converWithSeller);
 		}else{//nueva conversacion
-			Conversacion newConver = new Conversacion(userMe, usuarioRepository.findById(id), Arrays.asList());
+			Conversacion newConver = new Conversacion(userMe, usuarioService.findById(id), Arrays.asList());
 			conversacionService.save(newConver);
 			model.addAttribute("conversaciones", conversacionService.getMyConversations());
 			model.addAttribute("conversacion", newConver);
