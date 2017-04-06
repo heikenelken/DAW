@@ -1,14 +1,14 @@
 package com.wallacomic.api;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wallacomic.domain.UsuarioComponent;
@@ -16,7 +16,7 @@ import com.wallacomic.domain.Valoracion;
 import com.wallacomic.service.ValoracionService;
 
 @RestController
-@RequestMapping("/api/valoraciones")
+@RequestMapping("/api")
 public class ValoracionRestController {
 
 	@Autowired
@@ -29,27 +29,25 @@ public class ValoracionRestController {
 	private UsuarioComponent usuarioComponent;
 	
 	@RequestMapping(value = "/valoracion/{id}", method = RequestMethod.GET)
-	public String valoracion(Model model, @PathVariable int id) throws Exception {
+	public Valoracion valoracion(@PathVariable int id) throws Exception {
 	    
 		Valoracion valoracion= valoracionService.findById(id);
-		model.addAttribute("usuario", valoracion);
-	    return "usuario";
+	    return valoracion;
 	}
 	
 	@RequestMapping(value = "/guardarValoracion", method = RequestMethod.POST)
-	public String guardarValoracion(@RequestParam String comentario,
-			@RequestParam int numEstrellas, @RequestParam long user_receive_id)throws Exception{
+	@ResponseStatus(HttpStatus.CREATED)
+	public Valoracion guardarValoracion(@RequestParam Valoracion val)throws Exception{
 		
-		valoracionService.guardarValoracion(user_receive_id, comentario, numEstrellas);
-		
-	    return "comentario_guardado";
+		valoracionService.save(val);
+	    return val;
 	}
 	
 	@RequestMapping(value = "/valoraciones", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Valoracion> valoraciones() throws Exception {
+	//@ResponseBody
+	public Collection<Valoracion> valoraciones() throws Exception {
 		
-		List<Valoracion> valoraciones= valoracionService.findAll();
+		Collection<Valoracion> valoraciones= valoracionService.findAll();
 	    return valoraciones;
 	}
 	
