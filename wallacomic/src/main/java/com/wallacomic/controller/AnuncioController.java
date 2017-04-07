@@ -52,16 +52,20 @@ public class AnuncioController {
 			@RequestParam double precio, @RequestParam String observaciones)throws Exception{
 		
 		Usuario user = usuarioComponent.getLoggedUser();
-		int idComic=Integer.parseInt(comic);
-		Comic com = comicRepository.findById(idComic);
-		boolean tipoAnuncio;
-		if (tipo.equals("true")){
-			tipoAnuncio=true;
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
+			int idComic=Integer.parseInt(comic);
+			Comic com = comicRepository.findById(idComic);
+			boolean tipoAnuncio;
+			if (tipo.equals("true")){
+				tipoAnuncio=true;
+			}else{
+				tipoAnuncio=false;
+			}
+			Anuncio anuncio = new Anuncio(tipoAnuncio, precio, observaciones, user, com);
+			anuncioService.save(anuncio);
 		}else{
-			tipoAnuncio=false;
+			throw new BadCredentialsException("Error de creacion");
 		}
-		Anuncio anuncio = new Anuncio(tipoAnuncio, precio, observaciones, user, com);
-		anuncioService.save(anuncio);
 		model.addAttribute("user",user);
 		
 		return "anuncio_guardado";
@@ -70,9 +74,12 @@ public class AnuncioController {
 	@RequestMapping("/borrarAnuncio/{id}")
 	public String borrarAnuncio(Model model, @PathVariable long id)throws Exception{
 		
-		if (anuncioService.existAd(id)) {
-			
-			anuncioService.delete(id);
+		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
+			if (anuncioService.existAd(id)) {
+				anuncioService.delete(id);
+			}
+		}else{
+			throw new BadCredentialsException("Error de creacion");
 		}
 		
 		Usuario user = usuarioComponent.getLoggedUser();

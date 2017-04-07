@@ -15,9 +15,6 @@ import com.wallacomic.repository.AnuncioRepository;
 
 @Service
 public class AnuncioService {
-	
-	@Autowired
-	UsuarioComponent usuarioComponent;
 
 	@Autowired
 	private AnuncioRepository anuncioRepository;
@@ -35,13 +32,7 @@ public class AnuncioService {
 	}
 	
 	public void save(Anuncio ad){
-		
-		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
-			anuncioRepository.save(ad);
-		}else{
-			throw new BadCredentialsException("Error de creacion");
-		}
-		
+		anuncioRepository.save(ad);
 	}
 	
 	public Anuncio findById(long id){
@@ -49,13 +40,7 @@ public class AnuncioService {
 	}
 	
 	public void delete(long id){
-		
-		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
-			anuncioRepository.delete(id);
-		}else{
-			throw new BadCredentialsException("Error de creacion");
-		}
-		
+		anuncioRepository.delete(id);	
 	}
 	
 	public boolean existAd(long id){

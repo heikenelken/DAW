@@ -2,7 +2,10 @@ package com.wallacomic.api;
 
 import java.util.Collection;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +29,7 @@ public class ConversacionRestController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public Collection<Conversacion> getConversaciones() {
 		return conversacionService.findAll();
+		
 	}
 	
 	//get the conversations of the user logged
