@@ -41,11 +41,16 @@
                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
 - https://localhost:8443/api/anuncios/ : crea un recurso de tipo Anuncio
 + Datos de entrada: {
-    "type": (boolean),
-    "price": (double),
-    "comment": "(string)",
-    "user": {(objeto de tipo Usuario transformado a JSON)},
-    "comic": {(objeto de tipo Usuario transformado a JSON)}
+
+                    "type": (boolean),
+    
+                    "price": (double),
+    
+                    "comment": "(string)",
+    
+                    "user": {(objeto de tipo Usuario transformado a JSON)},
+    
+                    "comic": {(objeto de tipo Usuario transformado a JSON)}
   }
 + Datos de salida (objeto JSON enviado): {
     "id": (long),
