@@ -13,14 +13,104 @@
 
 #### Públicas:
 - https://localhost:8443/api/anuncios/ : devuelve todos los recursos de tipo Anuncio disponibles
++ Datos de salida (array de objetos JSON):[ {
+
+                    "id": (long),
+
+                    "price": (double),
+
+                    "comment": "(string)",
+
+                    "user": {(objeto de tipo Comic transformado a JSON)},
+
+                    "comic": {(objeto de tipo Comic transformado a JSON)},
+
+                    "tipo": (boolean)
+    
+  }]
 - https://localhost:8443/api/anuncios/{id} : retorna un objeto JSON con el anuncio solicitado por id
++ Datos de salida (objeto JSON): {
+
+                    "id": (long),
+
+                    "price": (double),
+
+                    "comment": "(string)",
+
+                    "user": {(objeto de tipo Comic transformado a JSON)},
+
+                    "comic": {(objeto de tipo Comic transformado a JSON)},
+
+                    "tipo": (boolean)
+    
+  }
 #### Privadas (requiere loguearse en la web):
 ##### Cabeceras necesarias:
                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
 - https://localhost:8443/api/conversaciones/ : devuelve todos los resursos de tipo Conversacion almacenados en la BD
++ Datos de salida (array de objetos JSON): [{
+
+                    "id": (long),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": [
+                    
+                          {(objetos de tipo Mensaje transformado a JSON)}
+                    
+                    ]
+
+  }]
 - https://localhost:8443/api/conversaciones/{id} : devuelve un recurso Conversacion dado en la url su identificador
++ Datos de salida (objeto JSON): {
+
+                    "id": (long),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": [
+                    
+                          {(objetos de tipo Mensaje transformado a JSON)}
+                    
+                    ]
+
+  }
 - https://localhost:8443/api/conversaciones/miUsuario : retorna las conversaciones del usuario logueado
++ Datos de salida (array de objetos JSON): [{
+
+                    "id": (long),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": [
+                    
+                          {(objetos de tipo Mensaje transformado a JSON)}
+                    
+                    ]
+
+  }]
 - https://localhost:8443/api/conversaciones/usuario/{id} : devuelve un objeto JSON con la información de una conversacion entre el usuario logueado y un usuario dado su id
++ Datos de salida (objeto JSON): {
+
+                    "id": (long),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": [
+                    
+                          {(objetos de tipo Mensaje transformado a JSON)}
+                    
+                    ]
+
+  }
 
 ## Peticiones POST
 
@@ -52,25 +142,42 @@
     
                     "comic": {(objeto de tipo Usuario transformado a JSON)}
   }
+  
 + Datos de salida (objeto JSON enviado): {
-    "id": (long),
-    "type": (boolean),
-    "price": (double),
-    "comment": "(string)",
-    "user": {(objeto de tipo Usuario transformado a JSON)},
-    "comic": {(objeto de tipo Usuario transformado a JSON)}
+
+                    "id": (long),
+
+                    "type": (boolean),
+
+                    "price": (double),
+
+                    "comment": "(string)",
+
+                    "user": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comic": {(objeto de tipo Usuario transformado a JSON)}
+    
   }
 - https://localhost:8443/api/conversaciones/ : crea un recurso de tipo Conversacion
 + Datos de entrada: {
-    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
-    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
-    "comentarios": [(Array con objetos de tipo Mensaje transformados a JSON)]
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": []
+    
   }
 + Datos de salida (objeto JSON enviado): {
-    "id": (identificador del objeto Conversacion creado),
-    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
-    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
-    "comentarios": [(Array con objetos de tipo Mensaje transformados a JSON)]
+
+                    "id": (identificador del objeto Conversacion creado),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": []
+    
   }
 
 ## Peticiones PUT
@@ -89,16 +196,34 @@
                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
 - https://localhost:8443/api/conversaciones/{id} :
 + Datos de entrada: {
-    "id": (identificador del objeto Conversacion a modificar),
-    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
-    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
-    "comentarios": [(Array con objetos de tipo Mensaje transformados a JSON)]
+
+                    "id": (identificador del objeto Conversacion a modificar),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": [
+                    
+                          {(objetos de tipo Mensaje transformados a JSON)}
+                    
+                    ]
+    
   }
 + Datos de salida (objeto JSON enviado): {
-    "id": (identificador del objeto Conversacion),
-    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
-    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
-    "comentarios": [(Array con objetos de tipo Mensaje transformados a JSON)]
+
+                    "id": (identificador del objeto Conversacion),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": [
+                    
+                          {(objetos de tipo Mensaje transformados a JSON)}
+                    
+                    ]
+    
   }
 
 ## Peticiones DELETE
@@ -116,4 +241,4 @@
 ##### Cabeceras necesarias:
                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
 - https://localhost:8443/api/anuncios/{id} : borra el recurso Anuncio con el id solicitado
-
++ Datos de salida: null (no existe el objeto por lo que se borró con éxito)
