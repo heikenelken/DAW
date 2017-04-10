@@ -44,6 +44,74 @@
                     "tipo": (boolean)
     
   }
+- https://localhost:8443/api/comics/ : retorna un objeto JSON con el listado de comics paginado
++ Datos de entrada: {
+
+                    "page": (string),
+    
+  }
++ Datos de salida (objeto JSON): {
+
+                    "number": (integer),
+
+                    "numberOfElements": (integer),
+
+                    "totalElements": "(integer)",
+                    
+                    "totalPages": "(integer)",
+                    
+                    "size": "(integer)",
+                    
+                    "content": [
+
+                      "id": "(integer)",
+
+                      "titulo": "(string)",
+
+                      "foto": "(string)"
+                    ]
+    
+  }
+- https://localhost:8443/api/valoraciones/ : retorna un objeto JSON con listado de valoraciones
++ Datos de salida (objeto JSON): {
+
+                    "id": (long),
+
+                    "price": (double),
+
+                    "comment": "(string)",
+
+                    "user_give": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comic": {(objeto de tipo Comic transformado a JSON)},
+
+                    "comentario": "(string)",
+                    
+                    "numEstrellas": "(integer)",
+                    
+                    "user_receive": {(objeto de tipo Usuario transformado a JSON)},
+    
+  }
+- https://localhost:8443/api/valoracion/{id} : retorna un objeto JSON con la valoración indicada mediante id
++ Datos de salida (objeto JSON): {
+
+                    "id": (long),
+
+                    "price": (double),
+
+                    "comment": "(string)",
+
+                    "user_give": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comic": {(objeto de tipo Comic transformado a JSON)},
+
+                    "comentario": "(string)",
+                    
+                    "numEstrellas": "(integer)",
+                    
+                    "user_receive": {(objeto de tipo Usuario transformado a JSON)},
+    
+  }
 #### Privadas (requiere loguearse en la web):
 ##### Cabeceras necesarias:
                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
@@ -179,6 +247,40 @@
                     "comentarios": []
     
   }
+- https://localhost:8443/api/comics/ : crea un recurso de tipo Comic
++ Datos de entrada: {
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": []
+    
+  }
++ Datos de salida (objeto JSON enviado): {
+
+                    "id": (identificador del objeto Conversacion creado),
+
+                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentarios": []
+    
+  }
+- https://localhost:8443/api/guardarValoracion/ : crea un recurso de tipo Valoracion
++ Datos de entrada: {
+
+                    "user_give": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "user_receive": {(objeto de tipo Usuario transformado a JSON)},
+
+                    "comentario": (string),
+                    
+                    "numEstrellas": (integer),
+    
+  }
++ Datos de salida (objeto JSON enviado): true
 
 ## Peticiones PUT
 
