@@ -21,8 +21,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/**");
 		
 		http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/home/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/comic/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/comics").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/comics/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/comics/").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/usuario/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/guardarUsuario").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/anuncios/**").permitAll();
@@ -42,7 +42,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		// URLs that need authentication to access to it
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/anuncios/**").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/anuncios/**").hasRole("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/comics").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/comics/").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/miUsuario").hasRole("ADMIN");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/conversaciones/usuario/**").hasRole("ADMIN");

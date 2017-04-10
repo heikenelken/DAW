@@ -8,19 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 
 
 @Entity
 @Table(name = "TB_COMIC")
 public class Comic {
+	
+	public interface MainView{}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(MainView.class)
 	private long id;
 	
 	//Atributos basicos
 	@NotNull
+	@JsonView(MainView.class)
 	private String titulo;
 	@NotNull
 	private String autor;
@@ -29,6 +35,7 @@ public class Comic {
 	@NotNull
 	private String argumento;
 	@NotNull
+	@JsonView(MainView.class)
 	private String foto;
 	
 	//Constructores

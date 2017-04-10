@@ -1,34 +1,45 @@
 package com.wallacomic.api;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.wallacomic.domain.Comic;
 import com.wallacomic.service.ComicService;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/comics")
 public class ComicRestController {
 
 	@Autowired
 	private ComicService comicService;
 	
-	@RequestMapping(value = "/comics", method = RequestMethod.GET)
-	public Collection<Comic> getComics() {
-		return comicService.findAll();
+	@JsonView(Comic.MainView.class)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public Page<Comic> getComics(@RequestParam (required=false) String page) {
+		if(page != null){
+			int nPage =  Integer.parseInt(page);
+			return comicService.findAll(new PageRequest(nPage,10));
+		
+		}else{
+			return comicService.findAll(new PageRequest(0,10));
+		}
 	}
 	
-	@RequestMapping(value = "/comic/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Comic> getComic(@PathVariable int id){
 		
 		Comic comic = comicService.findById(id);
@@ -40,13 +51,13 @@ public class ComicRestController {
 		
 	}
 	
-	@RequestMapping(value = "/guardarComic", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Comic createComic(@RequestBody Comic comic) {
-
+	public Comic createComic(@RequestBody Comic comic, @RequestParam MultipartFile file) {
 		comicService.save(comic);
+		Comic comUpdated = comicService.updatePicAndSave(comic,file);
 
-		return comic;
+		return comUpdated;
 	}
 	
 	//we don't update or delete comics, so we don't need put and delete methods

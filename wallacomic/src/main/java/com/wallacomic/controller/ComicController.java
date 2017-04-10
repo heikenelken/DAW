@@ -44,16 +44,7 @@ public class ComicController {//implementar @service. Cuales son las verdaderas 
 	private static final String FOLDER_IMG2 = "./target/classes/static/img";
 
 	@Autowired
-	private ComicRepository comicRepository;
-	
-	@Autowired
-	private UsuarioRepository usuarioRepository;
-	
-	@Autowired
 	private UsuarioComponent usuarioComponent;
-	
-	@Autowired
-	private AnuncioRepository anuncioRepository;
 	
 	@Autowired
 	private ComicService comicService;
@@ -76,21 +67,17 @@ public class ComicController {//implementar @service. Cuales son las verdaderas 
 		if(page.hasPrevious()){
 			//resto de paginas 
 			Page<Comic> listPrev = comicService.findAll(page);
-			//Page<Comic> listPrev = comicRepository.findAll(page);
 			for(Comic c: listPrev){
 				
 				totalComics.add(c);
 			}
-			
 			numeroComics = (comicService.findAll(page).hasNext());
-			//numeroComics = (comicRepository.findAll(page).hasNext());
+			
 		}else if(totalComics.isEmpty()){
 			
 			//primeros 10 comics
 			numeroComics = (comicService.findAll().size() > 10);
-			//numeroComics = (comicRepository.findAll().size() > 10);
 			Page<Comic> comFirst = comicService.findAll(new PageRequest(0,10));
-			//Page<Comic> comFirst = comicRepository.findAll(new PageRequest(0,10));
 			for(Comic com: comFirst){
 				totalComics.add(com);
 			}
@@ -98,7 +85,6 @@ public class ComicController {//implementar @service. Cuales son las verdaderas 
 		}
 		else{
 			numeroComics = (totalComics.size() < comicService.findAll().size());
-			//numeroComics = (totalComics.size() < comicRepository.findAll().size());
 		}
 		
 		for(Comic com: totalComics){
@@ -130,7 +116,6 @@ public class ComicController {//implementar @service. Cuales son las verdaderas 
 		}
 		
 		model.addAttribute("comEvenEven", comEvenEven);
-		//model.addAttribute("totalComics", totalComics);
 		model.addAttribute("comEvenOdd", comEvenOdd);
 		model.addAttribute("comOddEven", comOddEven);
 		model.addAttribute("comOddOdd", comOddOdd);
@@ -152,11 +137,8 @@ public class ComicController {//implementar @service. Cuales son las verdaderas 
 	public String comic(Model model, @PathVariable int id) throws Exception {
 		//obtener anuncios de un determinado comic
 		Comic comic= comicService.findById(id);
-		//Comic comic= comicRepository.findById(id);
 		model.addAttribute("comic", comic);
 		
-		//model.addAttribute("adsCompra", anuncioRepository.findByComicAndType(comic,true));
-		//model.addAttribute("adsVenta", anuncioRepository.findByComicAndType(comic,false));
 		model.addAttribute("adsCompra", anuncioService.findByComicAndType(comic,true));
 		model.addAttribute("adsVenta", anuncioService.findByComicAndType(comic,false));
 		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasUserPermissions()){
@@ -189,14 +171,14 @@ public class ComicController {//implementar @service. Cuales son las verdaderas 
 		
 		Usuario user = usuarioComponent.getLoggedUser();
 		model.addAttribute("user",user);
-		
+		//meter lógica de gestión de fotos en service??
 		if(usuarioComponent.isLoggedUser() && usuarioComponent.hasAdminPermissions()){
 			
 			Comic comic= new Comic(titulo, autor, dibujante, argumento, "");
 			comicService.save(comic);
-			//comicRepository.save(comic);
+			comicService.updatePicAndSave(comic, file);
 			//tratamiento de file
-			String fileName= comic.getId()+".jpg";
+			/*String fileName= comic.getId()+".jpg";
 			
 			if (!file.isEmpty()) {
 				try {
@@ -218,10 +200,8 @@ public class ComicController {//implementar @service. Cuales son las verdaderas 
 				}
 			} //end if
 			Comic cModified = comicService.findOne(comic.getId());
-			//Comic cModified = comicRepository.findOne(comic.getId());
 			cModified.setFoto(Long.toString(comic.getId()));
-			comicService.save(cModified);
-			//comicRepository.save(cModified);
+			comicService.save(cModified);*/
 			
 		}else{
 			throw new BadCredentialsException("Error de acceso");
