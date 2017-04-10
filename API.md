@@ -169,6 +169,60 @@
                     "user_receive": {(objeto de tipo Usuario transformado a JSON)},
     
   }
+  
+  - https://localhost:8443/api/usuarios/} : retorna un objeto JSON con el listado de usuarios de la aplicación
+  + Datos de salida (objeto JSON): [{
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } ]
+  
+  - https://localhost:8443/api/usuarios/{id}} : retorna un objeto JSON con el usuario solicitado
+  + Datos de salida (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+  
+  
 #### Privadas (requiere loguearse en la web):
 ##### Cabeceras necesarias:
                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
@@ -249,6 +303,56 @@
 ### URL´S disponibles:
 
 #### Públicas:
+
+ - https://localhost:8443/api/usuarios/ : crea un recurso de tipo Usuario.
+  + Datos de Entrada (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+   + Datos de Salida (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
 
 #### Privadas (requiere loguearse en la web):
 ##### Cabeceras necesarias:
@@ -392,6 +496,56 @@
                     ]
     
   }
+  
+   - https://localhost:8443/api/usuarios/{id} : modifica un recurso de tipo Usuario.
+  + Datos de Entrada (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+   + Datos de Salida (objeto con las modificaciones en formato JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
 
 ## Peticiones DELETE
 
