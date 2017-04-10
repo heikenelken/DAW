@@ -1,0 +1,286 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Fase4_Peticiones",
+		"_postman_id": "e92850b5-858b-2d50-7cfa-33c11479427a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": " https://localhost:8443/api/logIn",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "PdrSnchz",
+						"password": "123456",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": " https://localhost:8443/api/logOut",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/logOut",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "PdrSnchz",
+						"password": "123456",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": " https://localhost:8443/api/logOut",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/comics/",
+			"request": {
+				"url": " https://localhost:8443/api/comics/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/comics/?page=1&size=10",
+			"request": {
+				"url": " https://localhost:8443/api/comics/?page=1&size=10",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/anuncios/",
+			"request": {
+				"url": " https://localhost:8443/api/anuncios/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/anuncios/1",
+			"request": {
+				"url": " https://localhost:8443/api/anuncios/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/conversaciones/",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "PdrSnchz",
+						"password": "123456",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": " https://localhost:8443/api/conversaciones/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/conversaciones/miUsuario",
+			"request": {
+				"url": " https://localhost:8443/api/conversaciones/miUsuario",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/conversaciones/usuario/1",
+			"request": {
+				"url": "https://localhost:8443/api/conversaciones/usuario/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": " https://localhost:8443/api/conversaciones/1",
+			"request": {
+				"url": " https://localhost:8443/api/conversaciones/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/conversaciones/",
+			"request": {
+				"url": "https://localhost:8443/api/conversaciones/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userBuyer\": {\n    \"id\": 3,\n   \"nombre\": \"MarianoRajoy\",\n   \"contraseñaHash\": \"$2a$10$EEcZHv8eUk1Ge/aCDUDhxONl3PdAq8NekZ9kfr1C4KLu.CBpbfwqm\",\n   \"descripcion\": \"Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh\",\n   \"correo\": \"elputomariano@gmail.com\",\n   \"facebook\": \"facebook/mariano\",\n   \"twitter\": \"@yLaEuropea?\",\n   \"foto\": \"2\",\n   \"roles\": [\n     \"ROLE_USER\",\n     \"ROLE_ADMIN\"\n   ]\n  },\n  \"userSeller\": {\n    \"id\": 2,\n    \"nombre\": \"PdrSnchz\",\n    \"contraseñaHash\": \"$2a$10$Cdriss7/9gGCs1xnPV0sQO1IEsy1HQWe6dJX9WjWvdBg.lwvG1.P6\",\n    \"descripcion\": \"Vendo Opel Corsa en perfecto estado\",\n    \"correo\": \"adoptaunpdrsnchz@gmail.com\",\n    \"facebook\": \"facebook/pdrsnchz\",\n    \"twitter\": \"@pdrsnchz\",\n    \"foto\": \"2\",\n    \"roles\": [\n      \"ROLE_USER\",\n      \"ROLE_ADMIN\"\n    ]\n  },\n  \"comentarios\": []\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/conversaciones/4",
+			"request": {
+				"url": "https://localhost:8443/api/conversaciones/4",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 4,\n  \"userBuyer\": {\n    \"id\": 3,\n    \"nombre\": \"MarianoRajoy\",\n    \"contraseñaHash\": \"$2a$10$EEcZHv8eUk1Ge/aCDUDhxONl3PdAq8NekZ9kfr1C4KLu.CBpbfwqm\",\n    \"descripcion\": \"Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh\",\n    \"correo\": \"elputomariano@gmail.com\",\n    \"facebook\": \"facebook/mariano\",\n    \"twitter\": \"@yLaEuropea?\",\n    \"foto\": \"2\",\n    \"roles\": [\n      \"ROLE_USER\",\n      \"ROLE_ADMIN\"\n    ]\n  },\n  \"userSeller\": {\n    \"id\": 2,\n    \"nombre\": \"PdrSnchz\",\n    \"contraseñaHash\": \"$2a$10$Cdriss7/9gGCs1xnPV0sQO1IEsy1HQWe6dJX9WjWvdBg.lwvG1.P6\",\n    \"descripcion\": \"Vendo Opel Corsa en perfecto estado\",\n    \"correo\": \"adoptaunpdrsnchz@gmail.com\",\n    \"facebook\": \"facebook/pdrsnchz\",\n    \"twitter\": \"@pdrsnchz\",\n    \"foto\": \"2\",\n    \"roles\": [\n      \"ROLE_USER\",\n      \"ROLE_ADMIN\"\n    ]\n  },\n  \"comentarios\": [\n\t{\n        \"message\": \"Hola queria comprarte un comic\",\n        \"user\": {\n\t        \"id\": 2,\n\t\t\t\"nombre\": \"PdrSnchz\",\n\t    \t\"contraseñaHash\": \"$2a$10$Cdriss7/9gGCs1xnPV0sQO1IEsy1HQWe6dJX9WjWvdBg.lwvG1.P6\",\n\t    \t\"descripcion\": \"Vendo Opel Corsa en perfecto estado\",\n\t    \t\"correo\": \"adoptaunpdrsnchz@gmail.com\",\n\t    \t\"facebook\": \"facebook/pdrsnchz\",\n\t    \t\"twitter\": \"@pdrsnchz\",\n\t    \t\"foto\": \"2\",\n\t    \t\"roles\": [\n\t    \t\t\"ROLE_USER\",\n\t    \t\t\"ROLE_ADMIN\"\n\t    \t]\n    \t}\t\n\t}\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/anuncios/",
+			"request": {
+				"url": "https://localhost:8443/api/anuncios/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 4,\n  \"userBuyer\": {\n    \"id\": 3,\n    \"nombre\": \"MarianoRajoy\",\n    \"contraseñaHash\": \"$2a$10$EEcZHv8eUk1Ge/aCDUDhxONl3PdAq8NekZ9kfr1C4KLu.CBpbfwqm\",\n    \"descripcion\": \"Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh\",\n    \"correo\": \"elputomariano@gmail.com\",\n    \"facebook\": \"facebook/mariano\",\n    \"twitter\": \"@yLaEuropea?\",\n    \"foto\": \"2\",\n    \"roles\": [\n      \"ROLE_USER\",\n      \"ROLE_ADMIN\"\n    ]\n  },\n  \"userSeller\": {\n    \"id\": 2,\n    \"nombre\": \"PdrSnchz\",\n    \"contraseñaHash\": \"$2a$10$Cdriss7/9gGCs1xnPV0sQO1IEsy1HQWe6dJX9WjWvdBg.lwvG1.P6\",\n    \"descripcion\": \"Vendo Opel Corsa en perfecto estado\",\n    \"correo\": \"adoptaunpdrsnchz@gmail.com\",\n    \"facebook\": \"facebook/pdrsnchz\",\n    \"twitter\": \"@pdrsnchz\",\n    \"foto\": \"2\",\n    \"roles\": [\n      \"ROLE_USER\",\n      \"ROLE_ADMIN\"\n    ]\n  },\n  \"comentarios\": [\n\t{\n        \"message\": \"Hola queria comprarte un comic\",\n        \"user\": {\n\t        \"id\": 2,\n\t\t\t\"nombre\": \"PdrSnchz\",\n\t    \t\"contraseñaHash\": \"$2a$10$Cdriss7/9gGCs1xnPV0sQO1IEsy1HQWe6dJX9WjWvdBg.lwvG1.P6\",\n\t    \t\"descripcion\": \"Vendo Opel Corsa en perfecto estado\",\n\t    \t\"correo\": \"adoptaunpdrsnchz@gmail.com\",\n\t    \t\"facebook\": \"facebook/pdrsnchz\",\n\t    \t\"twitter\": \"@pdrsnchz\",\n\t    \t\"foto\": \"2\",\n\t    \t\"roles\": [\n\t    \t\t\"ROLE_USER\",\n\t    \t\t\"ROLE_ADMIN\"\n\t    \t]\n    \t}\t\n\t}\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/anuncios/2",
+			"request": {
+				"url": "https://localhost:8443/api/anuncios/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/anuncios/",
+			"request": {
+				"url": "https://localhost:8443/api/anuncios/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"price\": 4,\n  \"comment\": \"Vendo comic de batman bien cuidado\",\n  \"user\": {\n    \"id\": 2,\n    \"nombre\": \"PdrSnchz\",\n    \"contraseñaHash\": \"$2a$10$Cdriss7/9gGCs1xnPV0sQO1IEsy1HQWe6dJX9WjWvdBg.lwvG1.P6\",\n    \"descripcion\": \"Vendo Opel Corsa en perfecto estado\",\n    \"correo\": \"adoptaunpdrsnchz@gmail.com\",\n    \"facebook\": \"facebook/pdrsnchz\",\n    \"twitter\": \"@pdrsnchz\",\n    \"foto\": \"2\",\n    \"roles\": [\n      \"ROLE_USER\",\n      \"ROLE_ADMIN\"\n    ]\n  },\n  \"comic\": {\n\t  \"id\": 4,\n\t  \"titulo\": \"Batman #001\",\n\t  \"autor\": \"Carlos Sevilla\",\n\t  \"dibujante\": \"Carlos Sevilla\",\n\t  \"argumento\": \"El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.\",\n\t  \"foto\": \"4\"\n  },\n  \"tipo\": false\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/anuncios/10",
+			"request": {
+				"url": "https://localhost:8443/api/anuncios/10",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
