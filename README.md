@@ -114,3 +114,6 @@ Valoracion usuarios
 ## API REST (Fase 4)
 
 [Link al documento](https://github.com/AdoptaUnAlien/DAW/blob/master/API.md)
+
+### Diagrama de clases actualizado con @RestController y @Service
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/DiagramaConRest2.png"/>
