@@ -122,41 +122,49 @@
     
   }
 - https://localhost:8443/api/valoraciones/ : retorna un objeto JSON con listado de valoraciones
-+ Datos de salida (objeto JSON): {
++ Datos de salida (objeto JSON): [{
 
                     "id": (long),
 
-                    "price": (double),
-
-                    "comment": "(string)",
-
                     "user_give": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "comic": {(objeto de tipo Comic transformado a JSON)},
 
                     "comentario": "(string)",
                     
-                    "numEstrellas": "(integer)",
+                    "numEstrellas": (integer),
                     
-                    "user_receive": {(objeto de tipo Usuario transformado a JSON)},
+                    "s1": "(string)",
+                    
+                    "s2": "(string)",
+                    
+                    "s3": "(string)",
+                    
+                    "s4": "(string)",
+                    
+                    "s5": "(string)",
+                    
+                    "user_receive": {(objeto de tipo Usuario transformado a JSON)}
     
-  }
+  }]
 - https://localhost:8443/api/valoracion/{id} : retorna un objeto JSON con la valoración indicada mediante id
 + Datos de salida (objeto JSON): {
 
                     "id": (long),
 
-                    "price": (double),
-
-                    "comment": "(string)",
-
                     "user_give": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "comic": {(objeto de tipo Comic transformado a JSON)},
 
                     "comentario": "(string)",
                     
-                    "numEstrellas": "(integer)",
+                    "numEstrellas": (integer),
+                    
+                    "s1": "(string)",
+                    
+                    "s2": "(string)",
+                    
+                    "s3": "(string)",
+                    
+                    "s4": "(string)",
+                    
+                    "s5": "(string)",
                     
                     "user_receive": {(objeto de tipo Usuario transformado a JSON)},
     
