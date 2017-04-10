@@ -170,7 +170,7 @@
     
   }
   
-  - https://localhost:8443/api/usuarios/} : retorna un objeto JSON con el listado de usuarios de la aplicación
+  - https://localhost:8443/api/usuarios/ : retorna un objeto JSON con el listado de usuarios de la aplicación
   + Datos de salida (objeto JSON): [{
 
                     "id": (Long),
@@ -196,7 +196,7 @@
                     
   } ]
   
-  - https://localhost:8443/api/usuarios/{id}} : retorna un objeto JSON con el usuario solicitado
+  - https://localhost:8443/api/usuarios/{id} : retorna un objeto JSON con el usuario solicitado
   + Datos de salida (objeto JSON): {
 
                     "id": (Long),
