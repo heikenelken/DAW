@@ -1,7 +1,9 @@
 import {Component, Output, EventEmitter, OnInit}   from '@angular/core';
-import {ROUTER_DIRECTIVES, RouteParams, Router} from '@angular/router';
-import { MODAL_DIRECTIVES } from 'ng2-bs3-modal/ng2-bs3-modal';
+import {/*ROUTER_DIRECTIVES, RouteParams,*/ Router} from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+//import { MODAL_DIRECTIVES } from 'ng2-bs3-modal/ng2-bs3-modal';
 //import {User, UserService} from './user.service';
+
 
 interface Usuario {
 	nombre:string;
@@ -10,11 +12,34 @@ interface Usuario {
 
 @Component({
     selector: 'navbar',
-    directives: [ROUTER_DIRECTIVES, MODAL_DIRECTIVES],
-    templateUrl: 'app/navbar.component.html',
-    styleUrls: ['main.component.css']
+    //directives: [ROUTER_DIRECTIVES, MODAL_DIRECTIVES],
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./main.component.css']
 })
 export class NavbarComponent {
+
+	/*closeResult: string;
+
+	constructor(private modalService: NgbModal) {}
+
+	open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+	private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }*/
+
   @Output()
   hidden = new EventEmitter<boolean>();
 

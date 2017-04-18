@@ -19,11 +19,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
         "styles.css",
-        "css/cards.css",
-        "css/main.css",
-        "css/mostrarComic.css",
-        "css/registro.css"
+        "assets/css/cards.css",
+        "assets/css/main.css",
+        "assets/css/mostrarComic.css",
+        "assets/css/registro.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
