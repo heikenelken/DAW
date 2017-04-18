@@ -1,0 +1,111 @@
+{
+	"variables": [],
+	"info": {
+		"name": "peticionesF4",
+		"_postman_id": "599652d0-e358-8288-035c-d233b4b0d1fe",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:8443/api/usuarios/2",
+			"request": {
+				"url": "https://localhost:8443/api/usuarios/2",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "Application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"PdrSnchz\",\n    \"contraseñaHash\": \"$2a$10$sq5xWAymdhEQcXGFSmo3uOdXh.FxBtPLLy4A2caVW478KWYSapfyy\",\n    \"descripcion\": \"Ya no vendo el puñetero opel corsa\",\n    \"correo\": \"adoptaunpdrsnchz@gmail.com\",\n    \"facebook\": \"facebook/pdrsnchz\",\n    \"twitter\": \"@pdrsnchz\",\n    \"foto\": \"2\",\n    \"roles\": [\n      \"ROLE_USER\",\n      \"ROLE_ADMIN\"\n    ]\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/usuarios/",
+			"request": {
+				"url": "https://localhost:8443/api/usuarios/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "Application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"pericon\",\n    \"contraseñaHash\": \"1234\",\n    \"descripcion\": \"Pequeña descripción sin sentido contando lo chupiguay que soy.\",\n    \"correo\": \"adoptaunalien@gmail.com\",\n    \"facebook\": \"facebook/adoptaunalien\",\n    \"twitter\": \"@adoptaunalien\",\n    \"foto\": \"1\",\n    \"roles\": [\n      \"USER\",\n      \"ADMIN\"\n    ]\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/usuarios/3",
+			"request": {
+				"url": "https://localhost:8443/api/usuarios/3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "Application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"pericon\",\n    \"contraseñaHash\": \"1234\",\n    \"descripcion\": \"Pequeña descripción sin sentido contando lo chupiguay que soy.\",\n    \"correo\": \"adoptaunalien@gmail.com\",\n    \"facebook\": \"facebook/adoptaunalien\",\n    \"twitter\": \"@adoptaunalien\",\n    \"foto\": \"1\",\n    \"roles\": [\n      \"USER\",\n      \"ADMIN\"\n    ]\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/usuarios/",
+			"request": {
+				"url": "https://localhost:8443/api/usuarios/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic UGRyU25jaHo6MTIzNDU2",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "Application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"AlbertRivera\",\n    \"contraseñaHash\": \"123456\",\n    \"descripcion\": \"Blaaaanca navidaaaaad\",\n    \"correo\": \"albert@gmail.com\",\n    \"facebook\": \"facebook/albert\",\n    \"twitter\": \"@albert\",\n    \"foto\": \"1\",\n    \"roles\": [\n      \"USER\",\n      \"ADMIN\"\n    ]\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

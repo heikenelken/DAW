@@ -12,6 +12,39 @@
 ### URL´S disponibles:
 
 #### Públicas:
+- https://localhost:8443/api/logIn : se inicia sesión con las credenciales requeridas y hacer uso de Basic Authorization con dichas credenciales, generando la siguiente cabecera:
+
+                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
+                 
++ Datos de salida (objeto JSON):{
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+- https://localhost:8443/api/logOut: cierre de sesión en la aplicación. Devuelve true si se ha cerrado correctamente. Para su correcto uso, se necesita un usuario logueado: 
+
+                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
+                  
++ Datos de salida: (boolean)
 - https://localhost:8443/api/anuncios/ : devuelve todos los recursos de tipo Anuncio disponibles
 + Datos de salida (array de objetos JSON):[ {
 
@@ -64,7 +97,7 @@
                     
                     "content": [
 
-                      "id": "(integer)",
+                      "id": "(Long)",
 
                       "titulo": "(string)",
 
@@ -72,46 +105,124 @@
                     ]
     
   }
-- https://localhost:8443/api/valoraciones/ : retorna un objeto JSON con listado de valoraciones
+- https://localhost:8443/api/comics/{id} : retorna un objeto JSON con el comic solicitado
 + Datos de salida (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "titulo": "(string)",
+                    
+                    "autor": "(string)",
+                    
+                    "dibujante": "(string)",
+                    
+                    "argumento": "(string)",
+                    
+                    "foto": "(string)"
+    
+  }
+- https://localhost:8443/api/valoraciones/ : retorna un objeto JSON con listado de valoraciones
++ Datos de salida (objeto JSON): [{
 
                     "id": (long),
 
-                    "price": (double),
-
-                    "comment": "(string)",
-
                     "user_give": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "comic": {(objeto de tipo Comic transformado a JSON)},
 
                     "comentario": "(string)",
                     
-                    "numEstrellas": "(integer)",
+                    "numEstrellas": (integer),
                     
-                    "user_receive": {(objeto de tipo Usuario transformado a JSON)},
+                    "s1": "(string)",
+                    
+                    "s2": "(string)",
+                    
+                    "s3": "(string)",
+                    
+                    "s4": "(string)",
+                    
+                    "s5": "(string)",
+                    
+                    "user_receive": {(objeto de tipo Usuario transformado a JSON)}
     
-  }
+  }]
 - https://localhost:8443/api/valoracion/{id} : retorna un objeto JSON con la valoración indicada mediante id
 + Datos de salida (objeto JSON): {
 
                     "id": (long),
 
-                    "price": (double),
-
-                    "comment": "(string)",
-
                     "user_give": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "comic": {(objeto de tipo Comic transformado a JSON)},
 
                     "comentario": "(string)",
                     
-                    "numEstrellas": "(integer)",
+                    "numEstrellas": (integer),
+                    
+                    "s1": "(string)",
+                    
+                    "s2": "(string)",
+                    
+                    "s3": "(string)",
+                    
+                    "s4": "(string)",
+                    
+                    "s5": "(string)",
                     
                     "user_receive": {(objeto de tipo Usuario transformado a JSON)},
     
   }
+  
+  - https://localhost:8443/api/usuarios/ : retorna un objeto JSON con el listado de usuarios de la aplicación
+  + Datos de salida (objeto JSON): [{
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } ]
+  
+  - https://localhost:8443/api/usuarios/{id} : retorna un objeto JSON con el usuario solicitado
+  + Datos de salida (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+  
+  
 #### Privadas (requiere loguearse en la web):
 ##### Cabeceras necesarias:
                 - Authorization   Basic (String generado con las credenciales de un usuario registrado)
@@ -193,6 +304,56 @@
 
 #### Públicas:
 
+ - https://localhost:8443/api/usuarios/ : crea un recurso de tipo Usuario.
+  + Datos de Entrada (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+   + Datos de Salida (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+
 #### Privadas (requiere loguearse en la web):
 ##### Cabeceras necesarias:
                 - Content-Type    application/json
@@ -250,22 +411,30 @@
 - https://localhost:8443/api/comics/ : crea un recurso de tipo Comic
 + Datos de entrada: {
 
-                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "comentarios": []
+                    "titulo": "(string)",
+                    
+                    "autor": "(string)",
+                    
+                    "dibujante": "(string)",
+                    
+                    "argumento": "(string)",
+                    
+                    "foto": "(string)"
     
   }
 + Datos de salida (objeto JSON enviado): {
 
-                    "id": (identificador del objeto Conversacion creado),
-
-                    "userBuyer": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "userSeller": {(objeto de tipo Usuario transformado a JSON)},
-
-                    "comentarios": []
+                    "id": (identificador generado, tipo Long),
+                    
+                    "titulo": "(string)",
+                    
+                    "autor": "(string)",
+                    
+                    "dibujante": "(string)",
+                    
+                    "argumento": "(string)",
+                    
+                    "foto": "(string)"
     
   }
 - https://localhost:8443/api/guardarValoracion/ : crea un recurso de tipo Valoracion
@@ -327,6 +496,56 @@
                     ]
     
   }
+  
+   - https://localhost:8443/api/usuarios/{id} : modifica un recurso de tipo Usuario.
+  + Datos de Entrada (objeto JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
+   + Datos de Salida (objeto con las modificaciones en formato JSON): {
+
+                    "id": (Long),
+                    
+                    "nombre": "(string)",
+                    
+                    "contraseñaHash": "(string con contraseña encriptada)",
+                    
+                    "descripcion": "(string)",
+                    
+                    "correo": "(string)",
+                    
+                    "facebook": "(string)",
+                    
+                    "twitter": "(string)",
+                    
+                    "foto": "(string)",
+                    
+                    "roles": [
+                      "ROLE_USER",
+                      "ROLE_ADMIN"
+                    ]
+                    
+  } 
 
 ## Peticiones DELETE
 

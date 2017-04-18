@@ -30,11 +30,11 @@ public class UsuarioService {
 	
 	public void save(Usuario us){
 		
-		if(usuarioRepository.findByNombre(us.getNombre())!=null){
-			throw new BadCredentialsException("Error de creacion");
-		}else{
+		//if(usuarioRepository.findByNombre(us.getNombre())!=null){
+		//	throw new BadCredentialsException("Error de creacion");
+		//}else{
 			usuarioRepository.save(us);
-		}
+		//}
 		
 	}
 }
