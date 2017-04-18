@@ -19,7 +19,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "css/cards.css",
+        "css/main.css",
+        "css/mostrarComic.css",
+        "css/registro.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
