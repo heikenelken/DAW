@@ -18,7 +18,7 @@ interface Usuario {
 })
 export class NavbarComponent {
 
-	/*closeResult: string;
+	closeResult: string;
 
 	constructor(private modalService: NgbModal) {}
 
@@ -30,6 +30,11 @@ export class NavbarComponent {
     });
   }
 
+	//en el ejemplo de la pagina ng-bootstrap no usa un metodo close en el componente
+	/*close(content) {
+		this.modalService.close(result).then(() => {})
+	}*/
+
 	private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -38,7 +43,7 @@ export class NavbarComponent {
     } else {
       return  `with: ${reason}`;
     }
-  }*/
+  }
 
   @Output()
   hidden = new EventEmitter<boolean>();

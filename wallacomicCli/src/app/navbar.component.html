@@ -40,7 +40,7 @@
     <!--/Nav-->
 
     <!-- Código popUp Registro -->
-    <!--<template #content let-c="close" let-d="dismiss">
+    <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title">Modal title</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -53,9 +53,9 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
       </div>
-    </template>
+    </ng-template>
     <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>-->
-    <modal #modalRegistro>
+    <!--<modal #modalRegistro>
       <modal-header class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
           <h4 class="modal-title" id="myModalLabel">Registro en WallaComic</h4>
@@ -87,17 +87,17 @@
               </div>
 
           </form>
-      </modal-body>
+      </modal-body>-->
       <!-- footer del popUp, con los botones de creación y cerrar. -->
-      <modal-footer class="modal-footer">
+      <!--<modal-footer class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success" id="botonCrear">¡Regístrame!</button>
       </modal-footer>
-    </modal>
+    </modal>-->
     <!--/Codigo popUp Registro-->
 
     <!-- Código popUp Acceso -->
-    <modal #modalAcceso>
+    <!--<modal #modalAcceso>
       <modal-header class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
           <h4 class="modal-title" id="myModalLabel">Accede a WallaComic</h4>
@@ -113,10 +113,10 @@
                   <input #contrAcceso type="password" class="form-control" id="campoContraseña" placeholder="Contraseña">
               </div>
           </form>
-      </modal-body>
+      </modal-body>-->
       <!-- footer del popUp, con los botones de creación y cerrar. -->
-      <modal-footer class="modal-footer">
+      <!--<modal-footer class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal" id="botonCrear" (click)="clickLogin(nombreAcceso.value, contrAcceso.value) ">Acceder</button>
       </modal-footer>
-    </modal>
+    </modal>-->
     <!--/Codigo popUp Acceso-->

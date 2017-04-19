@@ -8,12 +8,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar.component';
 import { FooterComponent } from './footer.component';
+import { IndexComponent } from './index.component';
+import { SearchComponent } from './search.component';
+import { ComicGridComponent } from './comicGrid.component';
+import {ComicService} from './comic.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    IndexComponent,
+    SearchComponent,
+    ComicGridComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +30,7 @@ import { FooterComponent } from './footer.component';
     routing,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [ComicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
