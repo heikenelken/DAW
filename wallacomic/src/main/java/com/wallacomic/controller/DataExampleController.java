@@ -51,13 +51,13 @@ public class DataExampleController {
 		usuarioService.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2","ROLE_USER","ROLE_ADMIN"));
 		usuarioService.save(new Usuario("MarianoRajoy","123456", "Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh", "elputomariano@gmail.com", "facebook/mariano", "@yLaEuropea?","2","ROLE_USER","ROLE_ADMIN"));
 
-		comicRepository.save(new Comic("The amazing Spiderman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "1"));
-		comicRepository.save(new Comic("Private Eye #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "2"));
-		comicRepository.save(new Comic("Groot #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "3"));
-		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
-		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
-		comicRepository.save(new Comic("IronMan #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "6"));
-		comicRepository.save(new Comic("Barrier #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "7"));
+		comicRepository.save(new Comic("The amazing Spiderman #001", "John Freeman", "John Freeman", "A pesar de su poderes, Parker se esfuerza por ayudar a su viuda tía May a pagar el alquiler de su casa.", "1"));
+		comicRepository.save(new Comic("Private Eye #001", "Carlos González", "Carlos González", "La serie tiene lugar en 2076 tras la 'explosión de la nube', un hecho que reveló los secretos de todo el mundo.", "2"));
+		comicRepository.save(new Comic("Groot #001", "Adam Smith", "Adam Smith", "Groot (también conocido como el 'Monarca del Planeta X') es un superhéroe ficticio que aparece como personaje en publicaciones de la serie Marvel Comics.", "3"));
+		comicRepository.save(new Comic("Batman #001", "Michael Pérez", "Michael Pérez", "La identidad secreta de Batman es Bruce Wayne (Bruno Díaz, en algunos países de habla hispana), un empresario multimillonario y filántropo de Gotham City.", "4"));
+		comicRepository.save(new Comic("Deadpool #001", "Peter West", "Peter West", "Como un mercenario mentalmente inestable y desfigurado, Deadpool apareció originalmente como un villano en una edición del cómic New Mutants, y más tarde en ediciones de X-Force.", "5"));
+		comicRepository.save(new Comic("Invincible Ironman #001", "Pablo Yeah", "Pablo Yeah", "Tony Stark es un exitoso multimillonario, empresario e ingeniero, con una lujosa vida y una enorme fortuna gracias a sus inventos y a la herencia de su padre.", "6"));
+		comicRepository.save(new Comic("Barrier #001", "Sergio Santos", "Sergio Santos", "Barrier es un alumno de la URJC desesperado, que lucha contra el villano Micael por aprobar la asignatura de DAW sin morir en el intento. Sus compañeros, typescript y angular2 le ayudan en su cruzada que, de momento, no tiene muy buena pinta", "7"));
 		comicRepository.save(new Comic("Private Eye #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "2"));
 		comicRepository.save(new Comic("Groot #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "3"));
 		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
@@ -73,14 +73,14 @@ public class DataExampleController {
 		comicRepository.save(new Comic("Barrier #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "7"));
 		
 		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(1), comicRepository.findById(1)));
-		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(2), comicRepository.findById(2)));
-		anuncioRepository.save(new Anuncio(false, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(2), comicRepository.findById(6)));
-		anuncioRepository.save(new Anuncio(false, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(2), comicRepository.findById(4)));
-		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(1), comicRepository.findById(3)));
-		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(1), comicRepository.findById(5)));
-		anuncioRepository.save(new Anuncio(false, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(1), comicRepository.findById(1)));
-		anuncioRepository.save(new Anuncio(true, 15.0, "Busco ejemplar de Spiderman en óptimas condiciones. Precio negociable", usuarioService.findById(1), comicRepository.findById(7)));
-		anuncioRepository.save(new Anuncio(true, 4.0, "dddddd dddddddddddddd dddddddddddd dddddddddddddddddddd", usuarioService.findById(1), comicRepository.findById(1)));
+		anuncioRepository.save(new Anuncio(true, 8.0, "Ando buscando un ejemplar de Private Eye medio decente.", usuarioService.findById(2), comicRepository.findById(2)));
+		anuncioRepository.save(new Anuncio(false, 50.0, "Se vende nº1 de Iron Man en perfecto estado de revista. Mejor verlo. Precio no negociable.", usuarioService.findById(2), comicRepository.findById(6)));
+		anuncioRepository.save(new Anuncio(false, 20.0, "Vendo comic de Batman al que quiero como si fuera mi hijo.", usuarioService.findById(2), comicRepository.findById(4)));
+		anuncioRepository.save(new Anuncio(true, 15.0, "Quiero comprar un ejemplar de Groot #001, da igual como esté. No paso de 12€", usuarioService.findById(1), comicRepository.findById(3)));
+		anuncioRepository.save(new Anuncio(true, 10.0, "Me gustaría comprar mi primer comic de Deadpool, que no esté muy usado.", usuarioService.findById(1), comicRepository.findById(5)));
+		anuncioRepository.save(new Anuncio(false, 500.0, "Vendo comic de SpiderMan #001 edición limitada. Abstenerse pobretones.", usuarioService.findById(2), comicRepository.findById(1)));
+		anuncioRepository.save(new Anuncio(true, 100.0, "Busco comics en general. Me sobra el dinero", usuarioService.findById(1), comicRepository.findById(7)));
+		anuncioRepository.save(new Anuncio(true, 4.0, "En realidad no quero comics, busco recambios para mi moto", usuarioService.findById(3), comicRepository.findById(1)));
 		
 		valoracionRepository.save(new Valoracion(usuarioService.findById(1), usuarioService.findById(2), "Comic muy bonito. Me ha gustado mucho.", 4));
 		valoracionRepository.save(new Valoracion(usuarioService.findById(2), usuarioService.findById(1),  "Buen tío, fiable, comic en perfecto estado", 5));

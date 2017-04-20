@@ -17,7 +17,7 @@ import {ComicService} from './comic.service';
   //directives: [ROUTER_DIRECTIVES, Alert, NavbarComponent, FooterComponent, IndexComponent, PerfilComponent, ComicDetailComponent]
 })
 export class AppComponent {
-  /*hiddenNavbar(hidden: boolean){
+  hiddenNavbar(hidden: boolean){
       console.log("Hidden: "+hidden)
-  }*/
+  }
 }

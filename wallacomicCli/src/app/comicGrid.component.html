@@ -5,8 +5,7 @@
             <div *ngFor="let comic of comics" class="card">
                 <div class="card-content">
                     <p>{{comic.titulo}}</p>
-                    <p>{{comic.autor}}</p>
-                    <p><a [routerLink]="['ComicDetail', {id: comic.id}]">Mostrar Anuncio</a></p>
+                    <p><a [routerLink]="['/comic', comic.id]">Ver más</a></p>
                 </div>
             </div>
         <div class="col-md-2"></div>

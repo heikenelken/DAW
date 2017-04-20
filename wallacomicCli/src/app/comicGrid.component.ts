@@ -1,6 +1,7 @@
 import {Component, OnInit}   from '@angular/core';
 import {/*ROUTER_DIRECTIVES, RouteParams,*/ Router} from '@angular/router';
-import {Comic, ComicService} from './comic.service';
+import {ComicService} from './comic.service';
+import {Comic} from './comic.model';
 
 @Component({
     selector: 'comicGrid',

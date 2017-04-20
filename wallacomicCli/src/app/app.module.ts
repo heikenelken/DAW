@@ -11,7 +11,10 @@ import { FooterComponent } from './footer.component';
 import { IndexComponent } from './index.component';
 import { SearchComponent } from './search.component';
 import { ComicGridComponent } from './comicGrid.component';
-import {ComicService} from './comic.service';
+import { ComicDetailComponent } from './comicDetail.component';
+import { PerfilComponent } from './perfil.component';
+
+import { ComicService } from './comic.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import {ComicService} from './comic.service';
     FooterComponent,
     IndexComponent,
     SearchComponent,
-    ComicGridComponent
+    ComicGridComponent,
+    ComicDetailComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,32 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {withObserver} from './utils';
+//import {withObserver} from './utils';
+import { Http, Response } from '@angular/http';
 
-export class Comic {
+import 'rxjs/Rx';
 
-  constructor(
-    public id: number,
-    public titulo: string,
-    public autor: string,
-    public dibujante: string,
-    public descripcion: string
-    //public foto: string
-    ) {}
-
-}
+const BASIC_URL = 'https://localhost:8443/api/comics/';
 
 @Injectable()
 export class ComicService {
 
-  private comics = [
+  constructor(private http: Http){}
+
+  getComics(){
+		return this.http.get(BASIC_URL).map(
+			response => {
+          return response.json().content;
+      }
+		).catch(error => Observable.throw('Error: resource not found'));
+	}
+
+  getComic(id: number | string){
+    return this.http.get(BASIC_URL + id).map(
+      response => response.json()
+    ).catch(error => Observable.throw('Error: resource not found'));
+  }
+
+  /*private comics = [
     new Comic(1,'The Amazing Spiderman #001','John Freeman','John Freeman','A pesar de su poderes, Parker se esfuerza por ayudar a su viuda tía May a pagar el alquiler de su casa. Parker es molestado a veces por algunos de sus colegas (especialmente la estrella de fútbol, Flash Thompson) y, como Spider-Man, engendra la ira del editor J. Jonah Jameson. Cuando pelea contra sus enemigos por primera vez, Parker se encuentra haciendo malabares en su vida personal y se le dificulta aventurarse como Spider-Man. Con el tiempo, Peter se gradúa de la preparatoria y se inscribe en la Empire State University, donde se encuentra con su mejor amigo Harry Osborn y su primer interés amoroso Gwen Stacy, y su tía May le presenta a Mary Jane Watson.'),
     new Comic(2,'Private Eye #001','Carlos González','Carlos González','La serie tiene lugar en 2076 tras la "explosión de la nube", un hecho que reveló los secretos de todo el mundo. Como resultado de esto ya no hay Internet, y la gente es excesivamente celosa respecto a su privacidad, llegando hasta el punto de aparecer en público completamente enmascarados. La historia narra la aventura de un periodista sin licencia, un "paparazzi", que se ve envuelto en un misteriosa trama.'),
     new Comic(3,'Groot #001','Adam Smith','Adam Smith','Groot (también conocido como el "Monarca del Planeta X") es un superhéroe ficticio que aparece como personaje en publicaciones de la serie Marvel Comics. Creado por Stan Lee, Jack Kirby y Dick Ayers, el personaje hizo su primera aparición en Tales t Astonish #13 (Noviembre de 1990). Un extraterrestre, criatura con forma de árbol viviente, Groot originalmente apareció como un invasor que trataba de capturar humanos para su experimentación, una biografía lejos de su caracterización final.'),
@@ -60,5 +68,5 @@ export class ComicService {
       this.comics.push(comic);
     }
     return withObserver(comic);
-  }
+  }*/
 }

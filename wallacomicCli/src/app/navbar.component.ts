@@ -22,18 +22,13 @@ export class NavbarComponent {
 
 	constructor(private modalService: NgbModal) {}
 
-	open(content) {
-    this.modalService.open(content).result.then((result) => {
+	open(modalRegistro) {
+    this.modalService.open(modalRegistro).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-
-	//en el ejemplo de la pagina ng-bootstrap no usa un metodo close en el componente
-	/*close(content) {
-		this.modalService.close(result).then(() => {})
-	}*/
 
 	private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
