@@ -58,12 +58,12 @@ public class DataExampleController {
 		comicRepository.save(new Comic("Deadpool #001", "Peter West", "Peter West", "Como un mercenario mentalmente inestable y desfigurado, Deadpool apareció originalmente como un villano en una edición del cómic New Mutants, y más tarde en ediciones de X-Force.", "5"));
 		comicRepository.save(new Comic("Invincible Ironman #001", "Pablo Yeah", "Pablo Yeah", "Tony Stark es un exitoso multimillonario, empresario e ingeniero, con una lujosa vida y una enorme fortuna gracias a sus inventos y a la herencia de su padre.", "6"));
 		comicRepository.save(new Comic("Barrier #001", "Sergio Santos", "Sergio Santos", "Barrier es un alumno de la URJC desesperado, que lucha contra el villano Micael por aprobar la asignatura de DAW sin morir en el intento. Sus compañeros, typescript y angular2 le ayudan en su cruzada que, de momento, no tiene muy buena pinta", "7"));
-		comicRepository.save(new Comic("Private Eye #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "2"));
-		comicRepository.save(new Comic("Groot #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "3"));
-		comicRepository.save(new Comic("Batman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "4"));
-		comicRepository.save(new Comic("Deadpool #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "5"));
-		comicRepository.save(new Comic("IronMan #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "6"));
-		comicRepository.save(new Comic("Barrier #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "7"));
+		comicRepository.save(new Comic("The Incredible Hulk #001", "Stan Lee", "Jack Kirby", "Hulk es un pedazo de bicho capaz de hacerte caquita con la mirada y va rompiendo cosas por ahi cuando le viene en gana.", "8"));
+		comicRepository.save(new Comic("Captain America #275", "Stan Lee", "Su tio el del pueblo", "El Capitán América viste un traje que lleva un motivo de la bandera de los Estados Unidos, y está armado con un escudo compuesto de una aleación de un metal Extraterrestre 'Adamantium' y de Vibranium que se encuentra en continente Africano.", "9"));
+		comicRepository.save(new Comic("X-Men", "Stan Lee", "Jack Kirby", "La serie parte de la idea de que la evolución humana seguiría activa, encontrándose de hecho ante una encrucijada en la que nacería una nueva especie con grandes poderes y capacidades, los mutantes. Los protagonistas de X-Men son un grupo de ellos", "10"));
+		comicRepository.save(new Comic("Wolverine #001", "Len Wein", "Herb Trimpe", "Wolverine, cuyo nombre de nacimiento es James Howlett (también conocido como James Logan o simplemente Logan) es un personaje ficticio, superhéroe de Marvel Comics, miembro de los X-Men. Él es el puto amo y con sus garras de Adamantium hace mucha pupita.", "11"));
+		comicRepository.save(new Comic("Daredevil", "Stan Lee", "Bill Everett", "No tengo ni puta idea de que trata Daredevil y cual es su superpoder, pero se que esta cegato el pobre y reparte ostias como panes.", "12"));
+		comicRepository.save(new Comic("The Punisher #003", "Lamin Gafloja", "Medasun Besito", "Bueno bueno bueno este tio se pone a repartir justicia y se queda solo el cabrón. Se dedica a castigar a la gente, de ahí su nombre (Punisher = Castigador)", "13"));
 		comicRepository.save(new Comic("The amazing Spiderman #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "1"));
 		comicRepository.save(new Comic("Private Eye #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "2"));
 		comicRepository.save(new Comic("Groot #001", "Carlos Sevilla", "Carlos Sevilla", "El argumento es que Spiderman es el puto amo y se pasea por el mundo tirando telas de araña.", "3"));
@@ -80,7 +80,7 @@ public class DataExampleController {
 		anuncioRepository.save(new Anuncio(true, 10.0, "Me gustaría comprar mi primer comic de Deadpool, que no esté muy usado.", usuarioService.findById(1), comicRepository.findById(5)));
 		anuncioRepository.save(new Anuncio(false, 500.0, "Vendo comic de SpiderMan #001 edición limitada. Abstenerse pobretones.", usuarioService.findById(2), comicRepository.findById(1)));
 		anuncioRepository.save(new Anuncio(true, 100.0, "Busco comics en general. Me sobra el dinero", usuarioService.findById(1), comicRepository.findById(7)));
-		anuncioRepository.save(new Anuncio(true, 4.0, "En realidad no quero comics, busco recambios para mi moto", usuarioService.findById(3), comicRepository.findById(1)));
+		anuncioRepository.save(new Anuncio(true, 4.0, "En realidad no quero comics, busco recambios para mi moto", usuarioService.findById(3), comicRepository.findById(13)));
 		
 		valoracionRepository.save(new Valoracion(usuarioService.findById(1), usuarioService.findById(2), "Comic muy bonito. Me ha gustado mucho.", 4));
 		valoracionRepository.save(new Valoracion(usuarioService.findById(2), usuarioService.findById(1),  "Buen tío, fiable, comic en perfecto estado", 5));

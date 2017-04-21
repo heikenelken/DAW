@@ -18,6 +18,7 @@ export class ComicDetailComponent {
             comic => this.comic = comic,
             error => console.error(error)
         );
+
     }
 
 }

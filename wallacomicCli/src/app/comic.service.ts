@@ -14,9 +14,7 @@ export class ComicService {
 
   getComics(){
 		return this.http.get(BASIC_URL).map(
-			response => {
-          return response.json().content;
-      }
+			response => response.json().content
 		).catch(error => Observable.throw('Error: resource not found'));
 	}
 
