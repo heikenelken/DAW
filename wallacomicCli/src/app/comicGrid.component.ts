@@ -10,12 +10,25 @@ import {Comic} from './comic.model';
 })
 export class ComicGridComponent {
   comics: Comic[] = [];
+  private actualPage = 0;
 
       constructor(private router:Router, private service: ComicService) {}
 
       ngOnInit(){
-        this.service.getComics().subscribe(
+        this.service.getComics('').subscribe(
           comics => this.comics = comics,
+          error => console.log(error)
+        );
+      }
+
+      loadMoreComics(){
+        this.actualPage += 1;
+        this.service.getComics('?page='+ this.actualPage +'&size=10').subscribe(
+          comics => {
+            let moreComics = comics;
+            this.comics.push(moreComics);
+            console.log(moreComics);
+          },
           error => console.log(error)
         );
       }

@@ -12,9 +12,16 @@ export class ComicService {
 
   constructor(private http: Http){}
 
-  getComics(){
-		return this.http.get(BASIC_URL).map(
+  getComics(page?: String){
+		return this.http.get(BASIC_URL+page).map(
 			response => response.json().content
+        //console.log(response.json().totalpages.map(totalPages => response.json().totalpages));
+        /*if(page != undefined){
+
+          if((response.json().totalpages.map(totalPages => response.json().totalpages)) == page){//obtener numero de paginas totales
+
+          }
+        }*/
 		).catch(error => Observable.throw('Error: resource not found'));
 	}
 
