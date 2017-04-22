@@ -13,21 +13,20 @@ export class ComicService {
   constructor(private http: Http){}
 
   getComics(page?: String){
-		return this.http.get(BASIC_URL+page).map(
+		return this.http.get(BASIC_URL + page).map(
 			response => response.json().content
-        //console.log(response.json().totalpages.map(totalPages => response.json().totalpages));
-        /*if(page != undefined){
-
-          if((response.json().totalpages.map(totalPages => response.json().totalpages)) == page){//obtener numero de paginas totales
-
-          }
-        }*/
 		).catch(error => Observable.throw('Error: resource not found'));
 	}
 
   getComic(id: number | string){
     return this.http.get(BASIC_URL + id).map(
       response => response.json()
+    ).catch(error => Observable.throw('Error: resource not found'));
+  }
+
+  getAmountComics(){
+    return this.http.get(BASIC_URL + '').map(
+      response => response.json().totalElements
     ).catch(error => Observable.throw('Error: resource not found'));
   }
 

@@ -17,11 +17,6 @@ footer {
     background-color: #4A235A;
 }
 
-.navbar-inverse {
-    border: 0px;
-    background-color: #4A235A;
-}
-
 .navbar-inverse .navbar-brand {
     font-family: 'Ubuntu', sans-serif;
     padding-left: 100px;
@@ -64,8 +59,7 @@ footer {
 }
 
 .jumbotron {
-    background-image: url("../img/search-section-background.jpg");
-    background-image: no-repeat;
+    background-image: url(../img/search-section-background.jpg);
     padding-bottom: 100px;
     color: #ffffff;
     -moz-box-shadow: 0px 1px 12px 0px #2F2E2E;
@@ -128,6 +122,103 @@ footer {
     -moz-border-radius: 150px;
 }
 
-#name-perfil {
+#name-perfil{
     margin-top: 60px;
+}
+
+#info-header{
+    margin-top: 60px;
+}
+
+#stars{
+    padding-left: 1.3em;
+    padding-right: 0em;
+    padding-top: 1.9em;
+}
+
+.glyphicon-star{
+    color:#edc900;
+    font-size: 150%;
+}
+
+.glyphicon-remove{
+	color: red;
+	font-size: 150%;
+}
+
+.glyphicon-star-empty{
+    color:#edc900;
+    font-size: 150%;
+}
+
+#buttonComment{
+    padding-top: 1.7em;
+    padding-bottom: 1.7em;
+}
+
+#commentsTable{
+    display:none;
+}
+
+.sComments{
+    color:#edc900;
+    font-size: 100%;
+}
+
+.linkUser{
+    color: #31708f;
+}
+
+.linkUser:hover{
+    color: #31708f;
+}
+
+/*animación valoración estrellas*/
+
+#valueSystem{
+    padding-bottom: 1em;
+}
+
+.inputRadio{
+    display: none;
+}
+
+.evaluar {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label > span {
+    opacity: 0.5;
+}
+
+label > span:hover,
+label > span:hover ~ label > span {
+    color:#edc900;
+    opacity: 1;
+}
+
+.inputRadio:checked ~ label > span {
+    color:#edc900;
+    opacity: 1;
+}
+
+#comment{
+    padding-left: 1em;
+}
+
+#inputUserHide{
+	display: none;
+}
+
+.contact {
+	color: #a94442;
+}
+
+.contact:hover {
+	color: #a94442;
+}
+
+.minHeight {
+	min-height: 34em;
 }

@@ -1,27 +1,70 @@
 <!--Comics Grid-->
     <div class="row comic-grid">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div *ngFor="let comic of comics" class="card">
-                <div class="card-content">
-                    <p>{{comic.titulo}}</p>
-                    <p><a [routerLink]="['/comic', comic.id]">Ver más</a></p>
-                </div>
+        <div class="col-md-2">
+            <div *ngFor="let comic of comEvenEven" class="card">
+              <div class="card-image">
+                  <img class="img-responsive" src="assets/img/{{comic.foto}}.jpg">
+              </div>
+              <div class="card-content">
+                  <p>{{comic.titulo}}</p>
+              </div>
+              <div class="card-action">
+                  <p><a [routerLink]="['/comic', comic.id]">Link</a></p>
+              </div>
             </div>
+        </div>
+
+        <div class="col-md-2">
+            <div *ngFor="let comic of comEvenOdd" class="card">
+              <div class="card-image">
+                  <img class="img-responsive" src="assets/img/{{comic.foto}}.jpg">
+              </div>
+              <div class="card-content">
+                  <p>{{comic.titulo}}</p>
+              </div>
+              <div class="card-action">
+                  <p><a [routerLink]="['/comic', comic.id]">Link</a></p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div *ngFor="let comic of comOddEven" class="card">
+              <div class="card-image">
+                  <img class="img-responsive" src="assets/img/{{comic.foto}}.jpg">
+              </div>
+              <div class="card-content">
+                  <p>{{comic.titulo}}</p>
+              </div>
+              <div class="card-action">
+                  <p><a [routerLink]="['/comic', comic.id]">Link</a></p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div *ngFor="let comic of comOddOdd" class="card">
+              <div class="card-image">
+                  <img class="img-responsive" src="assets/img/{{comic.foto}}.jpg">
+              </div>
+              <div class="card-content">
+                  <p>{{comic.titulo}}</p>
+              </div>
+              <div class="card-action">
+                  <p><a [routerLink]="['/comic', comic.id]">Link</a></p>
+              </div>
+            </div>
+        </div>
+
         <div class="col-md-2"></div>
     </div>
-    <div class="row">
+    <!-- Comic load -->
+    <div class="row" *ngIf="loadMore">
     	<div class="col-md-4"></div>
     	<div class="col-md-4">
     		<button id="moreComics" (click)="loadMoreComics()">Más comics</button>
     	</div>
     	<div class="col-md-4"></div>
     </div>
-    <div class="row">
-    	<div class="col-md-4"></div>
-    	<div id="spinner-div" class="col-md-4">
-
-    	</div>
-    	<div class="col-md-4"></div>
-    </div>
-    <!--/Comics Grid-->
+<!--/Comics Grid-->
