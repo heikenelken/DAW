@@ -12,17 +12,17 @@
                   </ul>
               </div>
               <div *ngIf="logeado" class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AdoptaUnAlien <span class="badge">2</span><span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a [routerLink]="['Perfil']">Perfil</a></li>
-                          <li><a [routerLink]="['Mensajes']">Mensajes <span class="badge">2</span></a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a [routerLink]="['Index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a></li>
-                      </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">AdoptaUnAlien</a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" [routerLink]="['Perfil']">Perfil</a>
+                        <a class="dropdown-item" [routerLink]="['Mensajes']">Mensajes</a>
+                        <a class="dropdown-item" [routerLink]="['Index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a>
+                      </div>
                     </li>
-                    <li><img src="img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
+                    <li><img src="./assets/img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
               </div>
     </nav>
