@@ -12,14 +12,14 @@
                           <h1 id="name-profile" class="text-purple">AdoptaUnAlien</h1>
                         </div>
                         <div class="col-md-3" id="stars">
-                          <span class="glyphicon glyphicon-star{{avS1}}"
-                            aria-hidden="true"></span> <span
-                            class="glyphicon glyphicon-star{{avS2}}" aria-hidden="true"></span>
-                          <span class="glyphicon glyphicon-star{{avS3}}"
-                            aria-hidden="true"></span> <span
-                            class="glyphicon glyphicon-star{{avS4}}" aria-hidden="true"></span>
-                          <span class="glyphicon glyphicon-star{{avS5}}"
-                            aria-hidden="true"></span>
+                          <i class="fa fa-star"
+                            aria-hidden="true"></i> <i
+                            class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star"
+                            aria-hidden="true"></i> <i
+                            class="fa fa-star-o" aria-hidden="true"></i>
+                          <i class="fa fa-star-o"
+                            aria-hidden="true"></i>
                         </div>
                         <div class="col-md-3" id="buttonComment">
                           <button (click)="showHide()" id="commentsButton" type="button"
@@ -91,7 +91,7 @@
                 </div>
                 <!-- Comments -->
                 <div *ngIf="active">
-                  <div id="commentsTable" class="panel-body row">
+                  <div  [ngClass]="commentsTable" class="panel-body row">
           					<div class="col-md-1"></div>
           					<div class="col-md-10 row">
           						<h3 class="text-purple">Comentarios</h3>
@@ -106,16 +106,16 @@
           											</p>
           										</div>
           										<div class="col-md-2">
-          											<span class="sComments glyphicon glyphicon-star{{s1}}"
-          												aria-hidden="true"></span> <span
-          												class="sComments glyphicon glyphicon-star{{s2}}"
-          												aria-hidden="true"></span> <span
-          												class="sComments glyphicon glyphicon-star{{s3}}"
-          												aria-hidden="true"></span> <span
-          												class="sComments glyphicon glyphicon-star{{s4}}"
-          												aria-hidden="true"></span> <span
-          												class="sComments glyphicon glyphicon-star{{s5}}"
-          												aria-hidden="true"></span>
+          											<i class="sComments fa fa-star"
+          												aria-hidden="true"></i> <i
+          												class="sComments fa fa-star"
+          												aria-hidden="true"></i> <i
+          												class="sComments fa fa-star"
+          												aria-hidden="true"></i> <i
+          												class="sComments fa fa-star-o"
+          												aria-hidden="true"></i> <i
+          												class="sComments fa fa-star-o"
+          												aria-hidden="true"></i>
 
           										</div>
           									</div>
@@ -145,7 +145,7 @@
                                             <th>Precio</th>
                                         </thead>
                                         <tr>
-                                            <td class="text-info"><a href="/borrarAnuncio/{{id}}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                                            <td class="text-info"><a href="/borrarAnuncio/{{id}}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                             <td class="text-info"><a href="comic.html">The Amazing Spider-Man #001</a></td>
                                             <td>En buen estado, como nuevo</td>
                                             <td class="text-success">5€</td>

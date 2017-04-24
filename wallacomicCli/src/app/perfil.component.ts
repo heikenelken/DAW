@@ -10,9 +10,11 @@ import {/*ROUTER_DIRECTIVES, RouteParams,*/ Router} from '@angular/router';
 export class PerfilComponent {
 
     private active = false;
+    private commentsTable;
 
     showHide(){
       this.active = ! this.active;
+      this.commentsTable.display = "block";
     }
-
+    //cambiar display en parte de comentarios css
 }
