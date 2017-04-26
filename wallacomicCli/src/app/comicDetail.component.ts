@@ -1,4 +1,4 @@
-import {Component}   from '@angular/core';
+import {Component,Input,EventEmitter}   from '@angular/core';
 import {/*ROUTER_DIRECTIVES, RouteParams,*/ Router, ActivatedRoute} from '@angular/router';
 import {ComicService} from './comic.service';
 import {Comic} from './comic.model';
@@ -10,7 +10,11 @@ import {Comic} from './comic.model';
 })
 export class ComicDetailComponent {
 
-    comic: Comic;
+    private comic: Comic;
+    comicRef: number | string;
+
+    @Input()
+    private isLogged: boolean;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ComicService) {
         let id = activatedRoute.snapshot.params['id'];
@@ -18,7 +22,7 @@ export class ComicDetailComponent {
             comic => this.comic = comic,
             error => console.error(error)
         );
-
+        this.comicRef = id;
     }
 
 }
