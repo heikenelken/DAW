@@ -27,6 +27,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/guardarUsuario").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/anuncios/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/anuncios/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/anuncios/venta/comic/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/anuncios/compra/comic/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/valoraciones/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/valoracion/**").permitAll();
         

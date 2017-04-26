@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wallacomic.domain.Anuncio;
+import com.wallacomic.domain.Comic;
 import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.service.AnuncioService;
+import com.wallacomic.service.ComicService;
 
 
 @RestController
@@ -23,6 +25,9 @@ public class AnuncioRestController {
 
 	@Autowired
 	private AnuncioService anuncioService;
+	
+	@Autowired
+	private ComicService comicService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public Collection<Anuncio> getAnuncios() {
@@ -40,7 +45,22 @@ public class AnuncioRestController {
 		}
 		
 	}
-
+	 //falta añadir getAnuncios de un tipo determinado de cierto usuario pasado por parámetro
+	
+	@RequestMapping(value = "/venta/comic/{id}", method = RequestMethod.GET)
+	public Collection<Anuncio> getAdvertisementsOnSaleByComic(@PathVariable int id){
+		
+		return anuncioService.findByComicAndType(comicService.findById(id), false);
+		
+	}
+	
+	@RequestMapping(value = "/compra/comic/{id}", method = RequestMethod.GET)
+	public Collection<Anuncio> getAdvertisementsOnBuyByComic(@PathVariable int id){
+		
+		return anuncioService.findByComicAndType(comicService.findById(id), true);
+		
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Anuncio createAdvertisement(@RequestBody Anuncio ad) {
