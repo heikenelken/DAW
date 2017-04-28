@@ -17,7 +17,11 @@ import {ComicService} from './comic.service';
   //directives: [ROUTER_DIRECTIVES, Alert, NavbarComponent, FooterComponent, IndexComponent, PerfilComponent, ComicDetailComponent]
 })
 export class AppComponent {
+
+  private logged: boolean;
+
   hiddenNavbar(hidden: boolean){
-      console.log("Hidden: "+hidden)
+      console.log("Hidden: "+hidden);
+      this.logged = hidden;
   }
 }

@@ -1,7 +1,6 @@
 import {Component, Input, OnInit}   from '@angular/core';
 
 import {AdvertisementService} from './advertisement.service';
-//import {Comic} from './comic.model';
 import {Advertisement} from './advertisement.model';
 
 @Component({
@@ -16,9 +15,7 @@ export class AdvertisementComponent {
     @Input()
     private id: number | string;
 
-    constructor(private advertisementService: AdvertisementService){
-
-    }
+    constructor(private advertisementService: AdvertisementService){}
 
     ngOnInit(){
       this.advertisementService.getAdsOnSaleByComic(this.id).subscribe(

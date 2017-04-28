@@ -13,8 +13,11 @@ import { SearchComponent } from './search.component';
 import { ComicGridComponent } from './comicGrid.component';
 import { ComicDetailComponent } from './comicDetail.component';
 import { PerfilComponent } from './perfil.component';
+import { AdvertisementComponent } from './advertisement.component';
 
 import { ComicService } from './comic.service';
+import { AdvertisementService } from './advertisement.service';
+import { PerfilService } from './perfil.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { ComicService } from './comic.service';
     SearchComponent,
     ComicGridComponent,
     ComicDetailComponent,
-    PerfilComponent
+    PerfilComponent,
+    AdvertisementComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,11 @@ import { ComicService } from './comic.service';
     routing,
     NgbModule.forRoot()
   ],
-  providers: [ComicService],
+  providers: [
+    ComicService,
+    AdvertisementService,
+    PerfilService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

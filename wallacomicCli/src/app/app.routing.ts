@@ -8,7 +8,7 @@ import { ComicDetailComponent } from './comicDetail.component';
 
 const appRoutes = [
   {path: 'index', name: 'Index', component: IndexComponent, useAsDefault: true},
-  {path: 'perfil', name: 'Perfil', component: PerfilComponent},
+  {path: 'usuario/:id', name: 'Perfil', component: PerfilComponent},
   {path: 'comic/:id', name: 'ComicDetail', component: ComicDetailComponent},
   //{path: 'mensajes', name: 'Mensajes', component: MensajesComponent},
   //{path: 'publicarAnuncio', name:'PublicarAnuncio', component: PublicarAnuncioComponent},
