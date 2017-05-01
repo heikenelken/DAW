@@ -15,17 +15,38 @@ export class AdvertisementComponent {
     @Input()
     private id: number | string;
 
+    @Input()
+    private comicCom: boolean;
+
+    @Input()
+    private adsFromUser: boolean;
+
+    @Input()
+    private idUser: number | string;
+
     constructor(private advertisementService: AdvertisementService){}
 
     ngOnInit(){
-      this.advertisementService.getAdsOnSaleByComic(this.id).subscribe(
-        adsSale => this.adsSale = adsSale,
-        error => console.log(error)
-      );
-      this.advertisementService.getAdsOnBuyByComic(this.id).subscribe(
-        adsBuy => this.adsBuy = adsBuy,
-        error => console.log(error)
-      );
+      if(this.comicCom){
+        this.advertisementService.getAdsOnSaleByComic(this.id).subscribe(
+          adsSale => this.adsSale = adsSale,
+          error => console.log(error)
+        );
+        this.advertisementService.getAdsOnBuyByComic(this.id).subscribe(
+          adsBuy => this.adsBuy = adsBuy,
+          error => console.log(error)
+        );
+      }
+      if(this.adsFromUser){
+        this.advertisementService.getAdsOnSaleByUser(this.idUser).subscribe(
+          adsSale => this.adsSale = adsSale,
+          error => console.log(error)
+        );
+        this.advertisementService.getAdsOnBuyByUser(this.idUser).subscribe(
+          adsBuy => this.adsBuy = adsBuy,
+          error => console.log(error)
+        );
+      }
     }
 
 }

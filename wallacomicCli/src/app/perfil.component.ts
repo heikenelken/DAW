@@ -11,13 +11,16 @@ export class PerfilComponent {
 
     private usuario: Usuario;
     private active = false;
+    private comicsUser: boolean;
+    private id: number | string;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService) {
-      let id = activatedRoute.snapshot.params['id'];
-      perfilService.getUser(id).subscribe(
+      this.id = activatedRoute.snapshot.params['id'];
+      perfilService.getUser(this.id).subscribe(
           usuario => this.usuario = usuario,
           error => console.error(error)
       );
+      this.comicsUser = true;
     }
 
     showHide(){

@@ -8,13 +8,15 @@
                     <h4 class="text-purple">En venta</h4>
                     <table class="table table-striped table-condensed table-responsive">
                         <thead>
-                            <th>Usuario</th>
+                            <th *ngIf="comicCom">Usuario</th>
+                            <th *ngIf="adsFromUser">Comic</th>
                             <th>Observaciones</th>
                             <th>Precio</th>
-                            <th>Contactar</th><!-- Sincronizar atributo logueado con columna contactar -->
+                            <th >Contactar</th><!-- Sincronizar atributo logueado con columna contactar -->
                         </thead>
                         <tr *ngFor="let adS of adsSale">
-                            <td class="text-info"><a class="linkUser" [routerLink]="['/usuario', adS.user.id]">{{adS.user.nombre}}</a></td>
+                            <td class="text-info" *ngIf="comicCom"><a class="linkUser" [routerLink]="['/usuario', adS.user.id]">{{adS.user.nombre}}</a></td>
+                            <td class="text-info" *ngIf="adsFromUser"><a [routerLink]="['/comic', adS.comic.id]">{{adS.comic.titulo}}</a></td>
                             <td>{{adS.comment}}</td>
                             <td class="text-success">{{adS.price}}€</td>
                             <td class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open" aria-hidden="true"></i></a></td>
@@ -25,13 +27,15 @@
                     <h4 class="text-purple">Deseados</h4>
                     <table class="table table-striped table-condensed table-responsive">
                         <thead>
-                            <th>Usuario</th>
+                            <th *ngIf="comicCom">Usuario</th>
+                            <th *ngIf="adsFromUser">Comic</th>
                             <th>Observaciones</th>
                             <th>Precio</th>
                             <th>Contactar</th>
                         </thead>
                         <tr *ngFor="let adB of adsBuy">
-                            <td class="text-info"><a class="linkUser" [routerLink]="['/usuario', adB.user.id]">{{adB.user.nombre}}</a></td>
+                            <td class="text-info" *ngIf="comicCom"><a class="linkUser" [routerLink]="['/usuario', adB.user.id]">{{adB.user.nombre}}</a></td>
+                            <td class="text-info" *ngIf="adsFromUser"><a [routerLink]="['/comic', adB.comic.id]">{{adB.comic.titulo}}</a></td>
                             <td>{{adB.comment}}</td>
                             <td class="text-success">{{adB.price}}€</td>
                             <td class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open" aria-hidden="true"></i></a></td>

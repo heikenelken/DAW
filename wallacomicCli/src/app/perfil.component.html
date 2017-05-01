@@ -31,7 +31,7 @@
                         <hr>
                         <p><em>Correo: </em><a href="mailto:"><!--{{usuario.correo}}--></a></p>
                         <p><em>Facebook: </em><a href="https://www.facebook.com/">facebook.com/<!--{{usuario.facebook}}--></a></p>
-                        <p><em>Twitter: </em><a href="https://twitter.com/">{{usuario.twitter}}</a></p>
+                        <p><em>Twitter: </em><a href="https://twitter.com/"><!--{{usuario.twitter}}--></a></p>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#popUpConfiguracion">Configuración</button>
                         <a [routerLink]="['publicarAnuncio']" class="btn btn-info">Publicar Anuncio</a>
                         <a [routerLink]="['PublicarAnuncio']" class="btn btn-info">Crear Comic</a>
@@ -125,8 +125,9 @@
         				</div>
                 <!-- Falta añadir modal de valorar -->
 
+                <advertisements [idUser]='id' [adsFromUser]='comicsUser'></advertisements>
                 <!-- Advertisements -->
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
                         <h3 class="text-purple">Mis anuncios</h3>
@@ -166,5 +167,5 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>-->
     </div>

@@ -13,6 +13,8 @@ export class ComicDetailComponent {
     private comic: Comic;
     comicRef: number | string;
 
+    chargeComics: boolean;
+
     @Input()
     private isLogged: boolean;
 
@@ -23,6 +25,7 @@ export class ComicDetailComponent {
             error => console.error(error)
         );
         this.comicRef = id;
+        this.chargeComics = true;
     }
 
 }

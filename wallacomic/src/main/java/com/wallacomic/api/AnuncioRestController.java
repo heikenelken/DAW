@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wallacomic.domain.Anuncio;
 import com.wallacomic.domain.Comic;
+import com.wallacomic.domain.Usuario;
 import com.wallacomic.domain.UsuarioComponent;
 import com.wallacomic.service.AnuncioService;
 import com.wallacomic.service.ComicService;
+import com.wallacomic.service.UsuarioService;
 
 
 @RestController
@@ -28,6 +30,9 @@ public class AnuncioRestController {
 	
 	@Autowired
 	private ComicService comicService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public Collection<Anuncio> getAnuncios() {
@@ -58,6 +63,20 @@ public class AnuncioRestController {
 	public Collection<Anuncio> getAdvertisementsOnBuyByComic(@PathVariable int id){
 		
 		return anuncioService.findByComicAndType(comicService.findById(id), true);
+		
+	}
+	
+	@RequestMapping(value = "/venta/usuario/{id}", method = RequestMethod.GET)
+	public Collection<Anuncio> getAdvertisementsOnSaleByUser(@PathVariable int id){
+		
+		return anuncioService.findByUserAndType(usuarioService.findById(Long.valueOf(id)), false);
+		
+	}
+	
+	@RequestMapping(value = "/compra/usuario/{id}", method = RequestMethod.GET)
+	public Collection<Anuncio> getAdvertisementsOnBuyByUser(@PathVariable int id){
+		
+		return anuncioService.findByUserAndType(usuarioService.findById(Long.valueOf(id)), true);
 		
 	}
 	

@@ -23,4 +23,16 @@ export class AdvertisementService {
 		).catch(error => Observable.throw('Error: resource not found'));
 	}
 
+  getAdsOnSaleByUser(id: number | string){
+    return this.http.get(BASIC_URL + 'venta/usuario/' + id).map(
+      response => response.json(),
+    ).catch(error => Observable.throw('Error: resource not found'));
+  }
+
+  getAdsOnBuyByUser(id: number | string){
+		return this.http.get(BASIC_URL + 'compra/usuario/' + id).map(
+			response => response.json(),
+		).catch(error => Observable.throw('Error: resource not found'));
+	}
+
 }
