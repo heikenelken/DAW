@@ -90,7 +90,8 @@
                     </div>
                 </div>
                 <!-- Comments -->
-                <div *ngIf="active" id="commentsTable" class="panel-body row">
+                <comments [userId]='id' [showing]='active'></comments>
+                <!--<div *ngIf="active" id="commentsTable" class="panel-body row">
         					<div class="col-md-1"></div>
         					<div class="col-md-10 row">
         						<h3 id="commentsTitle" class="text-purple">Comentarios</h3>
@@ -98,7 +99,7 @@
         						<div class="col-md-12">
         							<ul class="list-group">
         								<li class="list-group-item">
-        									<div class="row" style="width:100%"><!-- cambiar luego por dios -->
+        									<div id="commentItem" class="row">
         										<div class="col-md-10">
         											<p>
         												<span class="text-info text-rigth">Pepe: </span>vaya mierda de vendedor
@@ -122,50 +123,8 @@
         						</div>
         					</div>
         					<div class="col-md-1"></div>
-        				</div>
+        				</div>-->
                 <!-- Falta añadir modal de valorar -->
 
                 <advertisements [idUser]='id' [adsFromUser]='comicsUser'></advertisements>
-                <!-- Advertisements -->
-                <!--<div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <h3 class="text-purple">Mis anuncios</h3>
-                        <hr>
-                        <div class="col-md-6">
-                            <h4 class="text-purple">Vendo</h4>
-                            <table class="table table-striped table-condensed table-responsive">
-                                <thead>
-                                    <th>Borrar</th>
-                                    <th>Comic</th>
-                                    <th>Observaciones</th>
-                                    <th>Precio</th>
-                                </thead>
-                                <tr>
-                                    <td class="text-info"><a href="/borrarAnuncio/{{id}}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                    <td class="text-info"><a href="comic.html">The Amazing Spider-Man #001</a></td>
-                                    <td>En buen estado, como nuevo</td>
-                                    <td class="text-success">5€</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-purple">Compro</h4>
-                            <table class="table table-striped table-condensed table-responsive">
-                                <thead>
-                                    <th>Borrar</th>
-                                    <th>Comic</th>
-                                    <th>Observaciones</th>
-                                    <th>Precio</th>
-                                </thead>
-                                <tr>
-                                    <td class="text-info"><a href="/borrarAnuncio/{{id}}"><span class="glyphicon glyphicon-remove"></span></a></td>
-                                    <td class="text-info"><a href="comic.html">The Amazing Spider-Man #001</a></td>
-                                    <td>En buen estado, como nuevo</td>
-                                    <td class="text-success">5€</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-md-1"></div>-->
     </div>

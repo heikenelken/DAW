@@ -1,0 +1,37 @@
+<!-- Comments -->
+<div *ngIf="showing" id="commentsTable" class="panel-body row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10 row">
+    <h3 id="commentsTitle" class="text-purple">Comentarios</h3>
+    <hr>
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let comment of comments">
+          <div id="commentItem" class="row">
+            <div class="col-md-10">
+              <p>
+                <span class="text-info text-rigth">{{comment.user_give.nombre}}: </span>{{comment.comentario}}
+              </p>
+            </div>
+            <div class="col-md-2">
+              <i class="sComments fa fa-star{{comment.s1}}"
+                aria-hidden="true"></i><i
+                class="sComments fa fa-star{{comment.s2}}"
+                aria-hidden="true"></i><i
+                class="sComments fa fa-star{{comment.s3}}"
+                aria-hidden="true"></i><i
+                class="sComments fa fa-star{{comment.s4}}"
+                aria-hidden="true"></i><i
+                class="sComments fa fa-star{{comment.s5}}"
+                aria-hidden="true"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- boton valorar y modal -->
+
+      <!--Fin modal y boton-->
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>

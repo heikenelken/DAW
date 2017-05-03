@@ -22,9 +22,6 @@ public class ValoracionRestController {
 	@Autowired
 	private ValoracionService valoracionService;
 	
-	//@Autowired
-	//private UsuarioService usuarioService;
-	
 	@Autowired
 	private UsuarioComponent usuarioComponent;
 	
@@ -33,6 +30,12 @@ public class ValoracionRestController {
 	    
 		Valoracion valoracion= valoracionService.findById(id);
 	    return valoracion;
+	}
+	//falta obtener valoración de un usuario
+	@RequestMapping(value = "/valoracion/usuario/{id}", method = RequestMethod.GET)
+	public Collection<Valoracion> getValoracionesByUser(@PathVariable int id) throws Exception {
+	    
+	    return valoracionService.findByUser(Long.valueOf(id));
 	}
 	
 	@RequestMapping(value = "/guardarValoracion", method = RequestMethod.POST)

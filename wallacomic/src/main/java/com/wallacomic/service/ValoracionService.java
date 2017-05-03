@@ -32,6 +32,12 @@ public class ValoracionService {
 		return valoracionRepository.findById(id);
 	}
 	
+	public List<Valoracion> findByUser(long id){
+		
+		return valoracionRepository.findByuserReceive(usuarioService.findById(id));
+		
+	}
+	
 	public void guardarValoracion(long user_receive_id, String comentario, int numEstrellas) {
 		
 		Usuario user_receive = usuarioService.findById(user_receive_id);

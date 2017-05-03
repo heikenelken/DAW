@@ -14,10 +14,12 @@ import { ComicGridComponent } from './comicGrid.component';
 import { ComicDetailComponent } from './comicDetail.component';
 import { PerfilComponent } from './perfil.component';
 import { AdvertisementComponent } from './advertisement.component';
+import { CommentsComponent } from './comments.component';
 
 import { ComicService } from './comic.service';
 import { AdvertisementService } from './advertisement.service';
 import { PerfilService } from './perfil.service';
+import { CommentsService } from './comments.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { PerfilService } from './perfil.service';
     ComicGridComponent,
     ComicDetailComponent,
     PerfilComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { PerfilService } from './perfil.service';
   providers: [
     ComicService,
     AdvertisementService,
-    PerfilService
+    PerfilService,
+    CommentsService
   ],
   bootstrap: [AppComponent]
 })
