@@ -9,7 +9,7 @@ import {Usuario} from './usuario.model';
 })
 export class PerfilComponent {
 
-    private usuario: Usuario;
+    usuario: Usuario;
     private active = false;
     private comicsUser: boolean;
     private id: number | string;
