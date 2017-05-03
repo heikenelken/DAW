@@ -157,7 +157,12 @@ footer {
 }
 
 #commentsTable{
-    display: block;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#commentsTitle {
+  padding-left: 0.5em;
 }
 
 .sComments{
@@ -254,4 +259,18 @@ label > span:hover ~ label > span {
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+#moreComics {
+    background-color: #4A235A;
+    margin-bottom: 1em;
+    color: white;
+}
+
+#moreComics:hover {
+    background-color: #32193c;
+}
+
+#userContainer {
+  margin-bottom: 1.5em;
 }
