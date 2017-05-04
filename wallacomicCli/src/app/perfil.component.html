@@ -4,12 +4,12 @@
             <div class="panel">
                 <div id="userContainer" class="panel-body row">
                     <div class="col-md-4">
-                        <img src="assets/img/avatar.jpg" class="circular-avatar-perfil img-responsive" alt="">
+                        <img *ngIf="usuario" src="assets/imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-perfil img-responsive" alt="">
                     </div>
                     <div class="col-md-8">
-                      <div class="row" id="info-header">
+                      <div class="row" id="info-header" *ngIf="usuario">
                         <div class="col-md-6">
-                          <h1 id="name-profile" class="text-purple"><!--{{usuario.nombre}}--></h1>
+                          <h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
                         </div>
                         <div class="col-md-3" id="stars">
                           <i class="fa fa-star"
@@ -27,11 +27,11 @@
                             comentarios</button>
                         </div>
                       </div>
-                        <p><!--{{usuario.descripcion}}--></p>
+                        <p *ngIf="usuario">{{usuario.descripcion}}</p>
                         <hr>
-                        <p><em>Correo: </em><a href="mailto:"><!--{{usuario.correo}}--></a></p>
-                        <p><em>Facebook: </em><a href="https://www.facebook.com/">facebook.com/<!--{{usuario.facebook}}--></a></p>
-                        <p><em>Twitter: </em><a href="https://twitter.com/"><!--{{usuario.twitter}}--></a></p>
+                        <p *ngIf="usuario"><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
+                        <p *ngIf="usuario"><em>Facebook: </em><a href="https://www.facebook.com/{{usuario.facebook}}">facebook.com/{{usuario.facebook}}</a></p>
+                        <p *ngIf="usuario"><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#popUpConfiguracion">Configuración</button>
                         <a [routerLink]="['publicarAnuncio']" class="btn btn-info">Publicar Anuncio</a>
                         <a [routerLink]="['PublicarAnuncio']" class="btn btn-info">Crear Comic</a>

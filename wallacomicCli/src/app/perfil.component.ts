@@ -14,9 +14,11 @@ export class PerfilComponent {
     private comicsUser: boolean;
     private id: number | string;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService) {
-      this.id = activatedRoute.snapshot.params['id'];
-      perfilService.getUser(this.id).subscribe(
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService) {}
+
+    ngOnInit(){
+      this.id = this.activatedRoute.snapshot.params['id'];
+      this.perfilService.getUser(this.id).subscribe(
           usuario => this.usuario = usuario,
           error => console.error(error)
       );
