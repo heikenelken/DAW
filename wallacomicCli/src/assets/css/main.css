@@ -133,7 +133,7 @@ footer {
 #stars{
     padding-left: 1.3em;
     padding-right: 0em;
-    padding-top: 1.9em;
+    padding-top: 0.9em;
 }
 
 .fa-star{
@@ -152,7 +152,7 @@ footer {
 }
 
 #buttonComment{
-    padding-top: 1.7em;
+    padding-top: 0.7em;
     padding-bottom: 1.7em;
 }
 
@@ -197,17 +197,17 @@ footer {
     unicode-bidi: bidi-override;
 }
 
-label > span {
+label > i {
     opacity: 0.5;
 }
 
-label > span:hover,
-label > span:hover ~ label > span {
+label > i:hover,
+label > i:hover ~ label > i {
     color:#edc900;
     opacity: 1;
 }
 
-.inputRadio:checked ~ label > span {
+.inputRadio:checked ~ label > i {
     color:#edc900;
     opacity: 1;
 }
@@ -272,6 +272,30 @@ label > span:hover ~ label > span {
 }
 
 #moreComics:hover {
+    background-color: #32193c;
+}
+
+#contVU {
+    padding-top: 1em;
+}
+
+#voteUser {
+    background-color: #4A235A;
+    margin-bottom: 1em;
+    color: white;
+}
+
+#voteUser:hover {
+    background-color: #32193c;
+}
+
+#commentsButton {
+    background-color: #4A235A;
+    margin-bottom: 1em;
+    color: white;
+}
+
+#commentsButton:hover {
     background-color: #32193c;
 }
 

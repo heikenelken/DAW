@@ -38,6 +38,16 @@ public class ValoracionRestController {
 	    return valoracionService.findByUser(Long.valueOf(id));
 	}
 	
+	@RequestMapping(value = "/valoracion/usuario/{id}/media", method = RequestMethod.GET)
+	public int getValoracionMediaUsuario(@PathVariable int id) throws Exception {
+	    int media = 0;
+	    Collection<Valoracion> valoracionesU = valoracionService.findByUser(Long.valueOf(id));
+	    for(Valoracion v: valoracionesU){
+	    	media += v.getNumEstrellas();
+	    }
+	    return (int) media / valoracionesU.size();
+	}
+	
 	@RequestMapping(value = "/guardarValoracion", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Valoracion guardarValoracion(@RequestParam Valoracion val)throws Exception{

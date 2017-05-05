@@ -29,7 +29,80 @@
         </li>
       </ul>
       <!-- boton valorar y modal -->
+      <div class="row">
+        <div class="col-md-12" id="contVU">
+          <button type="button" id="voteUser" class="btn" (click)="open(modalVotar)">Valorar usuario</button>
+        </div>
+        <ng-template id="valorarUsuario" #modalVotar let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+            <h4 class="modal-title" id="myModalLabel">Valorar usuario</h4>
+          </div>
+          <div class="modal-body" id="configuracion">
+            <form role="form" action="/guardarValoracion" method="post">
+              <div id="comment" class="form-group">
+                <label for="comentario">Tu comentario:</label> <br>
+                <textarea name="comentario" rows="5" cols="40"
+                  placeholder="introduce un breve comentario"></textarea>
+              </div>
+              <div id="valueSystem" class="form-group">
+                <div class="col-md-3">
+                  <label for="valoracion">Valoración:</label>
+                </div>
+                <div class="col-md-4 evaluar">
 
+                  <input type="radio" id="radioS1" class="inputRadio"
+                    name="numEstrellas"[(ngModel)]="numEstrellas" value="5">
+                  <!--
+                                        -->
+                  <label for="radioS1"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
+                  <!--
+                                        -->
+                  <input type="radio" id="radioS2" class="inputRadio"
+                    name="numEstrellas"[(ngModel)]="numEstrellas" value="4">
+                  <!--
+                                        -->
+                  <label for="radioS2"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
+                  <!--
+                                        -->
+                  <input type="radio" id="radioS3" class="inputRadio"
+                    name="numEstrellas"[(ngModel)]="numEstrellas" value="3">
+                  <!--
+                                        -->
+                  <label for="radioS3"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
+                  <!--
+                                        -->
+                  <input type="radio" id="radioS4" class="inputRadio"
+                    name="numEstrellas"[(ngModel)]="numEstrellas" value="2">
+                  <!--
+                                        -->
+                  <label for="radioS4"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
+                  <!--
+                                        -->
+                  <input type="radio" id="radioS5" class="inputRadio"
+                    name="numEstrellas"[(ngModel)]="numEstrellas" value="1">
+                  <!--
+                                        -->
+                  <label for="radioS5"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
+                </div>
+                <div class="col-md-5"></div>
+
+              </div>
+              <div class="form-group" id="inputUserHide">
+                <!-- usuario a valorar(campo oculto) -->
+                <label for="user_receive_id"></label> <input
+                  name="user_receive_id" value="{{userId}}">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default"
+              data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success"
+              id="botonGuardar">Enviar</button>
+          </div>
+        </ng-template>
+      </div>
       <!--Fin modal y boton-->
     </div>
   </div>

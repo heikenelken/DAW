@@ -12,13 +12,7 @@
                           <h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
                         </div>
                         <div class="col-md-3" id="stars">
-                          <i class="fa fa-star"
-                            aria-hidden="true"></i> <i
-                            class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star"
-                            aria-hidden="true"></i> <i
-                            class="fa fa-star-o" aria-hidden="true"></i>
-                          <i class="fa fa-star-o"
+                          <i *ngFor="let star of stars" class="fa fa-star{{star}}"
                             aria-hidden="true"></i>
                         </div>
                         <div class="col-md-3" id="buttonComment">

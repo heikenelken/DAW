@@ -49,7 +49,7 @@ public class DataExampleController {
 	public void init(){
 		usuarioService.save(new Usuario("AdoptaUnAlien","123456", "Pequeña descripción sin sentido contando lo chupiguay que soy.", "adoptaunalien@gmail.com", "facebook/adoptaunalien", "@adoptaunalien","1","ROLE_USER","ROLE_ADMIN"));
 		usuarioService.save(new Usuario("PdrSnchz","123456", "Vendo Opel Corsa en perfecto estado", "adoptaunpdrsnchz@gmail.com", "facebook/pdrsnchz", "@pdrsnchz","2","ROLE_USER","ROLE_ADMIN"));
-		usuarioService.save(new Usuario("MarianoRajoy","123456", "Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh", "elputomariano@gmail.com", "facebook/mariano", "@yLaEuropea?","2","ROLE_USER","ROLE_ADMIN"));
+		usuarioService.save(new Usuario("MarianoRajoy","123456", "Losh eshpañolesh, mucho eshpañolesh y muy eshpañolesh", "elputomariano@gmail.com", "facebook/mariano", "@yLaEuropea?","3","ROLE_USER","ROLE_ADMIN"));
 
 		comicRepository.save(new Comic("The amazing Spiderman #001", "John Freeman", "John Freeman", "A pesar de su poderes, Parker se esfuerza por ayudar a su viuda tía May a pagar el alquiler de su casa.", "1"));
 		comicRepository.save(new Comic("Private Eye #001", "Carlos González", "Carlos González", "La serie tiene lugar en 2076 tras la 'explosión de la nube', un hecho que reveló los secretos de todo el mundo.", "2"));

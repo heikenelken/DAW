@@ -1,11 +1,12 @@
 import {Component, OnInit, Input}   from '@angular/core';
 import {Router} from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { CommentsService } from './comments.service';
 
 import { Comment } from './comments.model';
 
-const EMPTY_STAR = '-empty';
+const EMPTY_STAR = '-o';
 
 @Component({
     selector: 'comments',
@@ -14,6 +15,8 @@ const EMPTY_STAR = '-empty';
 export class CommentsComponent {
 
   comments: Comment[] = [];
+  closeResult: string;
+  private numEstrellas: number;
 
   @Input()
   private userId: number;
@@ -21,29 +24,30 @@ export class CommentsComponent {
   @Input()
   private showing: boolean;
 
-  constructor(private commentsService: CommentsService) {}
+  constructor(private commentsService: CommentsService, private modalService: NgbModal) {}
 
   ngOnInit(){
     this.commentsService.getCommentsFromUser(this.userId).subscribe(
       comments => this.comments = comments,
       error => console.log(error)
     );
-    for(let com of this.comments){
-      if(com.s1 === '-empty'){
-        com.s1 = EMPTY_STAR;
-      }
-      if(com.s2 === '-empty'){
-        com.s2 = EMPTY_STAR;
-      }
-      if(com.s3 === '-empty'){
-        com.s3 = EMPTY_STAR;
-      }
-      if(com.s4 === '-empty'){
-        com.s4 = EMPTY_STAR;
-      }
-      if(com.s5.toString() === '-empty'){
-        com.s5 = '-o';
-      }
+  }
+
+	open(modalVotar) {
+    this.modalService.open(modalVotar).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+	private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
     }
   }
 
