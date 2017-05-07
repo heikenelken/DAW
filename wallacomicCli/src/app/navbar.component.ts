@@ -22,13 +22,22 @@ export class NavbarComponent {
 
 	constructor(private modalService: NgbModal) {}
 
-	open(modalRegistro) {
+	openRegistro(modalRegistro) {
     this.modalService.open(modalRegistro).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
+	openAcceso(modalAcceso) {
+		this.modalService.open(modalAcceso).result.then((result) => {
+			this.closeResult = `Closed with: ${result}`;
+		}, (reason) => {
+			this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
+	}
+
 
 	private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
