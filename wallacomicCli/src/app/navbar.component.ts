@@ -1,14 +1,10 @@
 import {Component, Output, EventEmitter, OnInit}   from '@angular/core';
-import {/*ROUTER_DIRECTIVES, RouteParams,*/ Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-//import { MODAL_DIRECTIVES } from 'ng2-bs3-modal/ng2-bs3-modal';
-//import {User, UserService} from './user.service';
+import {PerfilService} from './perfil.service';
 
+import {Usuario} from './usuario.model';
 
-interface Usuario {
-	nombre:string;
-	contr:string;
-}
 
 @Component({
     selector: 'navbar',
@@ -19,8 +15,18 @@ interface Usuario {
 export class NavbarComponent {
 
 	closeResult: string;
+	usuario: Usuario;
+	private id: number | string;
 
 	constructor(private modalService: NgbModal) {}
+
+	ngOnInit(){
+		this.id = this.activatedRoute.snapshot.params['id'];
+		this.perfilService.getUser(this.id).subscribe(
+				usuario => this.usuario = usuario,
+				error => console.error(error)
+		);
+	}
 
 	openRegistro(modalRegistro) {
     this.modalService.open(modalRegistro).result.then((result) => {
