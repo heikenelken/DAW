@@ -18,14 +18,14 @@ export class NavbarComponent {
 	usuario: Usuario;
 	private id: number | string;
 
-	constructor(private modalService: NgbModal) {}
+	constructor(private modalService: NgbModal, private activatedRoute: ActivatedRoute, private perfilService: PerfilService) {}
 
 	ngOnInit(){
-		this.id = this.activatedRoute.snapshot.params['id'];
+		/*this.id = this.activatedRoute.snapshot.params['id'];
 		this.perfilService.getUser(this.id).subscribe(
 				usuario => this.usuario = usuario,
 				error => console.error(error)
-		);
+		);*/
 	}
 
 	openRegistro(modalRegistro) {
@@ -58,7 +58,7 @@ export class NavbarComponent {
   @Output()
   hidden = new EventEmitter<boolean>();
 
-  logeado = true;
+  logeado = false;
   clickLogin(nombre: string, pass: string){
     this.logeado = !this.logeado;
     this.hidden.next(this.logeado);
