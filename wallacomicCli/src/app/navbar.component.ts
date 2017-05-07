@@ -52,7 +52,7 @@ export class NavbarComponent {
   @Output()
   hidden = new EventEmitter<boolean>();
 
-  logeado = false;
+  logeado = true;
   clickLogin(nombre: string, pass: string){
     this.logeado = !this.logeado;
     this.hidden.next(this.logeado);

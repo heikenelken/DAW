@@ -1,5 +1,6 @@
 import {Component, OnInit}   from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import {PerfilService} from './perfil.service';
 import {CommentsService} from './comments.service';
@@ -18,9 +19,10 @@ export class PerfilComponent {
     private comicsUser: boolean;
     private id: number | string;
     private stars: string[] = [];
+    closeResult: string;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService,
-                private commentsService: CommentsService) {}
+                private commentsService: CommentsService, private modalService: NgbModal) {}
 
     ngOnInit(){
       this.id = this.activatedRoute.snapshot.params['id'];
@@ -42,6 +44,24 @@ export class PerfilComponent {
         error => console.log(error)
       );
 
+    }
+
+    openConfig(modalConfig) {
+  		this.modalService.open(modalConfig).result.then((result) => {
+  			this.closeResult = `Closed with: ${result}`;
+  		}, (reason) => {
+  			this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  		});
+  	}
+
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
     }
 
     showHide(){

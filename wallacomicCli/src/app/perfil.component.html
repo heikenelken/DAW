@@ -26,17 +26,15 @@
                         <p *ngIf="usuario"><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
                         <p *ngIf="usuario"><em>Facebook: </em><a href="https://www.facebook.com/{{usuario.facebook}}">facebook.com/{{usuario.facebook}}</a></p>
                         <p *ngIf="usuario"><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#popUpConfiguracion">Configuración</button>
+                        <button type="button" class="btn btn-default" (click)="openConfig(modalConfig)">Configuración</button>
                         <a [routerLink]="['publicarAnuncio']" class="btn btn-info">Publicar Anuncio</a>
                         <a [routerLink]="['PublicarAnuncio']" class="btn btn-info">Crear Comic</a>
 
                         <!-- Código popUp -->
-                        <div class="modal fade" id="popUpConfiguracion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
+                        <ng-template #modalConfig let-c="close" let-d="dismiss">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Configuración</h4>
+                                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                                      <h4 class="modal-title" id="myModalLabel">Configuración</h4>
                                     </div>
                                     <div id="configuracion" class="modal-body">
                                         <form role="form">
@@ -77,12 +75,8 @@
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Descartar</button>
                                         <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- /Código popUp -->
-                    </div>
-                </div>
+              </ng-template>
                 <!-- Comments -->
                 <comments [userId]='id' [showing]='active'></comments>
                 <!--<div *ngIf="active" id="commentsTable" class="panel-body row">
