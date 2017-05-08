@@ -18,7 +18,7 @@ export class NavbarComponent {
 	usuario: Usuario;
 	private id: number | string;
 
-	constructor(private modalService: NgbModal) {}
+	constructor(private activatedRoute: ActivatedRoute, private perfilService: PerfilService, private modalService: NgbModal) {}
 
 	ngOnInit(){
 		this.id = this.activatedRoute.snapshot.params['id'];

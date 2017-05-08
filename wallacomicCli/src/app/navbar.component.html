@@ -12,17 +12,21 @@
                   </ul>
               </div>
               <div *ngIf="logeado" class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">{{usuario.nombre}}</a>
+                        aria-haspopup="true" aria-expanded="false">user</a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" [routerLink]="['Perfil']">Perfil</a>
                         <a class="dropdown-item" [routerLink]="['Mensajes']">Mensajes</a>
                         <a class="dropdown-item" [routerLink]="['Index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a>
                       </div>
                     </li>
-                    <li><img src="./assets/img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
+                    
+                    <li class="nav-item"><a class="nav-link" [routerLink]="['Perfil']">user</a></li>
+                    <li class="nav-item"><a class="nav-link" [routerLink]="['Mensajes']">Mensajes</a></li>
+                    <li class="nav-item"><a class="nav-link" [routerLink]="['Index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+                    <li class="nav-item"><img src="./assets/img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
               </div>
     </nav>
