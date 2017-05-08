@@ -15,18 +15,18 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">user</a>
+                        aria-haspopup="true" aria-expanded="false" *ngIf="usuario">{{usuario.nombre}}</a>
+
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" [routerLink]="['Perfil']">Perfil</a>
                         <a class="dropdown-item" [routerLink]="['Mensajes']">Mensajes</a>
                         <a class="dropdown-item" [routerLink]="['Index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a>
                       </div>
                     </li>
-                    
                     <li class="nav-item"><a class="nav-link" [routerLink]="['Perfil']">user</a></li>
                     <li class="nav-item"><a class="nav-link" [routerLink]="['Mensajes']">Mensajes</a></li>
                     <li class="nav-item"><a class="nav-link" [routerLink]="['Index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a></li>
-                    <li class="nav-item"><img src="./assets/img/avatar.jpg" class="circular-avatar-menu" alt=""></li>
+                    <li><img *ngIf="usuario" src="./assets/imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>
               </div>
     </nav>
