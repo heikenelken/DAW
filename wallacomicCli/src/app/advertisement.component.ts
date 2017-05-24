@@ -1,6 +1,8 @@
 import {Component, Input, OnInit}   from '@angular/core';
 
 import {AdvertisementService} from './advertisement.service';
+import {LoginService} from './login.service';
+
 import {Advertisement} from './advertisement.model';
 
 @Component({
@@ -24,7 +26,7 @@ export class AdvertisementComponent {
     @Input()
     private idUser: number | string;
 
-    constructor(private advertisementService: AdvertisementService){}
+    constructor(private advertisementService: AdvertisementService, private loginService: LoginService){}
 
     ngOnInit(){
       if(this.comicCom){

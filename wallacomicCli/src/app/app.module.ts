@@ -20,6 +20,7 @@ import { ComicService } from './comic.service';
 import { AdvertisementService } from './advertisement.service';
 import { PerfilService } from './perfil.service';
 import { CommentsService } from './comments.service';
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CommentsService } from './comments.service';
     ComicService,
     AdvertisementService,
     PerfilService,
-    CommentsService
+    CommentsService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

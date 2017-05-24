@@ -2,6 +2,7 @@ import {Component, Output, EventEmitter, OnInit}   from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {PerfilService} from './perfil.service';
+import {LoginService} from './login.service';
 
 import {Usuario} from './usuario.model';
 
@@ -17,17 +18,14 @@ export class NavbarComponent {
 	closeResult: string;
 	usuario: Usuario;
 	private id: number | string;
+  //logeado = true;
 
-
-	constructor(private activatedRoute: ActivatedRoute, private perfilService: PerfilService, private modalService: NgbModal) {}
+	constructor(private activatedRoute: ActivatedRoute, private perfilService: PerfilService, private modalService: NgbModal,
+              private loginService: LoginService) {}
 
 
 	ngOnInit(){
-		/*this.id = this.activatedRoute.snapshot.params['id'];
-		this.perfilService.getUser(this.id).subscribe(
-				usuario => this.usuario = usuario,
-				error => console.error(error)
-		);*/
+    this.loginService.reqIsLogged();
 	}
 
 	openRegistro(modalRegistro) {
@@ -60,13 +58,16 @@ export class NavbarComponent {
   @Output()
   hidden = new EventEmitter<boolean>();
 
-  logeado = false;
   clickLogin(nombre: string, pass: string){
-    this.logeado = !this.logeado;
-    this.hidden.next(this.logeado);
+    this.loginService.logIn(nombre, pass).subscribe(
+      usuario => this.usuario = usuario,
+      error => alert('Invalid user or password')
+    );
   }
   clickLogout(){
-    this.logeado = !this.logeado;
-    this.hidden.next(this.logeado);
+    this.loginService.logOut().subscribe(
+      response => { },
+      error => console.log('Error when trying to log out: ' + error)
+    );
   }
 }

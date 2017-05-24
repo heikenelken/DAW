@@ -45,7 +45,11 @@ public class ValoracionRestController {
 	    for(Valoracion v: valoracionesU){
 	    	media += v.getNumEstrellas();
 	    }
-	    return (int) media / valoracionesU.size();
+	    if(valoracionesU.size() == 0){
+	    	return 0;
+	    }else{
+	    	return (int) media / valoracionesU.size();
+	    }
 	}
 	
 	@RequestMapping(value = "/guardarValoracion", method = RequestMethod.POST)
