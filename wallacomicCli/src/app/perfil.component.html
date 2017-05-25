@@ -26,9 +26,9 @@
                         <p *ngIf="usuario"><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
                         <p *ngIf="usuario"><em>Facebook: </em><a href="https://www.facebook.com/{{usuario.facebook}}">facebook.com/{{usuario.facebook}}</a></p>
                         <p *ngIf="usuario"><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
-                        <button type="button" class="btn btn-default" (click)="openConfig(modalConfig)">Configuración</button>
-                        <button type="button" class="btn btn-info" (click)="openPublicarAnuncio(modalPublicarAnuncio)">Publicar Anuncio</button>
-                        <button type="button" class="btn btn-info" (click)="openCrearComic(modalCrearComic)">Crear Comic</button>
+                        <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-default" (click)="openConfig(modalConfig)">Configuración</button>
+                        <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-info" (click)="openPublicarAnuncio(modalPublicarAnuncio)">Publicar Anuncio</button>
+                        <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-info" (click)="openCrearComic(modalCrearComic)">Crear Comic</button>
 
                         <!-- modal configuracion -->
                         <ng-template #modalConfig let-c="close" let-d="dismiss">

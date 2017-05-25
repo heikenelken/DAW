@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { CommentsService } from './comments.service';
+import {LoginService} from './login.service';
 
 import { Comment } from './comments.model';
 
@@ -24,7 +25,7 @@ export class CommentsComponent {
   @Input()
   private showing: boolean;
 
-  constructor(private commentsService: CommentsService, private modalService: NgbModal) {}
+  constructor(private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService) {}
 
   ngOnInit(){
     this.commentsService.getCommentsFromUser(this.userId).subscribe(

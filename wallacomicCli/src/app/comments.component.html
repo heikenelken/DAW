@@ -29,7 +29,7 @@
         </li>
       </ul>
       <!-- boton valorar y modal -->
-      <div class="row">
+      <div *ngIf="loginService.isLogged && (loginService.user.id != userId)" class="row">
         <div class="col-md-12" id="contVU">
           <button type="button" id="voteUser" class="btn" (click)="open(modalVotar)">Valorar usuario</button>
         </div>

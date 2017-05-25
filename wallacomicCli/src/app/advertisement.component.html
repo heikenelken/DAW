@@ -18,12 +18,12 @@
                             <th *ngIf="loginService.isLogged && (idUser != loginService.user.id)">Contactar</th><!-- Sincronizar atributo logueado con columna contactar -->
                         </thead>
                         <tr *ngFor="let adS of adsSale">
-                            <td *ngIf="loginService.isLogged && (idUser == loginService.user.id)" class="text-center text-danger"><a [routerLink]="['/borrar']"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                            <td *ngIf="loginService.isLogged && (idUser == loginService.user.id)" class="text-center text-danger"><i class="fa fa-times fa-lg" aria-hidden="true" (click)="removeAd(adS)"></i></td>
                             <td class="text-info" *ngIf="comicCom"><a class="linkUser" [routerLink]="['/usuario', adS.user.id]">{{adS.user.nombre}}</a></td>
                             <td class="text-info" *ngIf="adsFromUser"><a [routerLink]="['/comic', adS.comic.id]">{{adS.comic.titulo}}</a></td>
                             <td>{{adS.comment}}</td>
                             <td class="text-success">{{adS.price}}€</td>
-                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open" aria-hidden="true"></i></a></td>
+                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id) && (adS.user.id != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i></a></td>
                         </tr>
                     </table>
                 </div>
@@ -39,12 +39,12 @@
                             <th *ngIf="loginService.isLogged && (idUser != loginService.user.id)">Contactar</th>
                         </thead>
                         <tr *ngFor="let adB of adsBuy">
-                            <td *ngIf="loginService.isLogged && (idUser == loginService.user.id)" class="text-center text-danger"><a [routerLink]="['/borrar']"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                            <td *ngIf="loginService.isLogged && (idUser == loginService.user.id)" class="text-center text-danger"><i class="fa fa-times fa-lg" aria-hidden="true" (click)="removeAd(adB)"></i></td>
                             <td class="text-info" *ngIf="comicCom"><a class="linkUser" [routerLink]="['/usuario', adB.user.id]">{{adB.user.nombre}}</a></td>
                             <td class="text-info" *ngIf="adsFromUser"><a [routerLink]="['/comic', adB.comic.id]">{{adB.comic.titulo}}</a></td>
                             <td>{{adB.comment}}</td>
                             <td class="text-success">{{adB.price}}€</td>
-                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open" aria-hidden="true"></i></a></td>
+                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id) && (adB.user.id != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i></a></td>
                         </tr>
                     </table>
                 </div>

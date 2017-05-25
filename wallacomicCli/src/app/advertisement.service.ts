@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
+
+import {Advertisement} from './advertisement.model';
 
 import 'rxjs/Rx';
 
@@ -34,6 +36,18 @@ export class AdvertisementService {
 			response => response.json(),
 		).catch(error => this.handleError(error));
 	}
+
+  deleteAdvertisement(ad: Advertisement){
+
+    const headers = new Headers({
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const options = new RequestOptions({ withCredentials: true, headers });
+
+    return this.http.delete(BASIC_URL + ad.id, options).map(
+      response => undefined,
+    ).catch(error => this.handleError(error));
+  }
 
   private handleError(error: any) {
     console.error(error);

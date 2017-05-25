@@ -4,6 +4,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import {PerfilService} from './perfil.service';
 import {CommentsService} from './comments.service';
+import {LoginService} from './login.service';
 
 import {Usuario} from './usuario.model';
 
@@ -22,7 +23,7 @@ export class PerfilComponent {
     closeResult: string;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService,
-                private commentsService: CommentsService, private modalService: NgbModal) {}
+                private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService) {}
 
     ngOnInit(){
       this.id = this.activatedRoute.snapshot.params['id'];

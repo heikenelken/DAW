@@ -51,4 +51,11 @@ export class AdvertisementComponent {
       }
     }
 
+    removeAd(ad: Advertisement){
+      this.advertisementService.deleteAdvertisement(ad).subscribe(
+        _ => this.ngOnInit(),
+        error => console.error(error)
+      );
+    }
+
 }
