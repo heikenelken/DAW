@@ -8,7 +8,7 @@ const URL = 'https://localhost:8443/api';
 @Injectable()
 export class LoginService {
 
-    isLogged = false;
+    isLogged: boolean = false;
     //isAdmin = false;
     user: Usuario;
 
@@ -24,8 +24,11 @@ export class LoginService {
 
         const options = new RequestOptions({ withCredentials: true, headers });
 
-        this.http.get(URL + '/logIn', options).subscribe(
-            response => this.processLogInResponse(response),
+        return this.http.get(URL + '/logIn', options).map(
+            response => {
+              this.processLogInResponse(response);
+              return this.user;
+            },
             error => {
                 if (error.status !== 401) {
                     console.error('Error when asking if logged: ' +

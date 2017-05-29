@@ -25,7 +25,10 @@ export class NavbarComponent {
 
 
 	ngOnInit(){
-    this.loginService.reqIsLogged();
+    this.loginService.reqIsLogged().subscribe(
+      response => this.usuario = response,
+      error => console.log('Error when asking isLogged, or not user logged')
+    );
 	}
 
 	openRegistro(modalRegistro) {
