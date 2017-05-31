@@ -18,6 +18,12 @@ export class ComicService {
 		).catch(error => this.handleError(error));
 	}
 
+  getAllComics(){
+		return this.http.get(BASIC_URL + 'all', { withCredentials: true }).map(
+			response => response.json()
+		).catch(error => this.handleError(error));
+	}
+
   getComic(id: number | string){
     return this.http.get(BASIC_URL + id, { withCredentials: true }).map(
       response => response.json()

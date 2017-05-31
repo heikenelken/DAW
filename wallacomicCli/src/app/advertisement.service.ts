@@ -37,6 +37,23 @@ export class AdvertisementService {
 		).catch(error => this.handleError(error));
 	}
 
+  saveAd(ad: Advertisement) {
+
+    const body = JSON.stringify(ad);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const options = new RequestOptions({ withCredentials: true, headers });
+    console.log(body);
+    if (!ad.id) {
+      return this.http.post(BASIC_URL, body, options)
+        .map(response => response.json())
+        .catch(error => this.handleError(error));
+    }
+
+  }
+
   deleteAdvertisement(ad: Advertisement){
 
     const headers = new Headers({

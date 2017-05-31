@@ -85,36 +85,34 @@
                 <div id="configuracion" class="modal-body">
                             <p>¡Rellena todos los campos que se muestran a continuación y pulsa publicar!</p>
                             <hr>
-                            <form role="form" action="guardarAnuncio" method="post">
+                            <form *ngIf="anuncio" role="form" action="guardarAnuncio" method="post">
                                 <div class="form-group">
                                 	<label for="queComic">Elige el comic:</label>
-                                    <!--<select name="comic" class="form-control">
-                                    	{{#comics}}
-                                        <option value="{{id}}">{{titulo}}</option>
-                                        {{/comics}}
-                                    </select>-->
+                                    <select name="comic" [(ngModel)]="idComic" class="form-control">
+                                        <option *ngFor="let comic of comics" [value]="comic.id">{{comic.titulo}}</option>
+                                    </select>
                                     <br>
                                     <label for="tipoAnuncio">Tipo de anuncio:</label>
-                                    <select name="tipo" class="form-control">
-                                        <option value="true">Compra</option>
-                                        <option value="false">Venta</option>
+                                    <select name="tipo" [(ngModel)]="anuncio.type" class="form-control">
+                                        <option [value]=true>Compra</option>
+                                        <option [value]=false>Venta</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="precio">Precio:</label>
-                                    <input type="number" name="precio" class="form-control" placeholder="Introduzca el precio del comic">
+                                    <input type="number" name="precio" [(ngModel)]="anuncio.price" class="form-control" placeholder="Introduzca el precio del comic">
                                 </div>
                                 <div class="form-group">
                                     <label for="observaciones">Observaciones:</label>
                                     <br>
-                                    <textarea class="form-control" name="observaciones"rows="3" placeholder="Escribe aquí los detalles de la transacción: Estado del comic, preferencias de pago..."></textarea>
+                                    <textarea class="form-control" name="observaciones" [(ngModel)]="anuncio.comment" rows="3" placeholder="Escribe aquí los detalles de la transacción: Estado del comic, preferencias de pago..."></textarea>
                                 </div>
                             </form>
                 </div>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Descartar</button>
-                  <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
+                  <button type="button" class="btn btn-success" id="botonGuardar" (click)="createAd()">Publicar anuncio</button>
                 </div>
               </ng-template>
               <!-- modal crear comic -->
