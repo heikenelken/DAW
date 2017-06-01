@@ -47,9 +47,10 @@ export class AdvertisementService {
     const options = new RequestOptions({ withCredentials: true, headers });
     console.log(body);
     if (!ad.id) {
-      return this.http.post(BASIC_URL, body, options)
-        .map(response => response.json())
-        .catch(error => this.handleError(error));
+      return this.http.post(BASIC_URL, body, options).map(
+        response => response.json()
+      ).catch(
+        error => this.handleError(error));
     }
 
   }

@@ -3,7 +3,7 @@ import {Usuario} from './usuario.model';
 
 export interface Advertisement{
   id?: number,
-  type: boolean,
+  tipo: boolean,
   price: number,
   comment: string,
   user: Usuario,

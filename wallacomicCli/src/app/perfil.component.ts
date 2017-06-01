@@ -25,9 +25,13 @@ export class PerfilComponent {
     private id: number | string;
     private stars: string[] = [];
     closeResult: string;
-    private comics: Comic[] = [];
-    anuncio: Advertisement;
+    private comics: Comic[];
+    private anuncio: Advertisement;
     private idComic: number;
+    private comicChosen : Comic;
+    private typeChosen : string;
+    private price: number;
+    private comment: string;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService,
                 private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService,
@@ -52,26 +56,45 @@ export class PerfilComponent {
         },
         error => console.log(error)
       );
-      if(this.loginService.user != undefined){
+      //console.log("Checking condicion carga de comics")
+      if(this.loginService.isLogged){
+        //console.log("Hay user logueado")
         if(this.loginService.user.id == this.id){
+          //console.log("mismo id")
           this.comicService.getAllComics().subscribe(
             comics => this.comics = comics,
             error => console.error(error)
           );
         }
       }
-      this.anuncio = { type: false, price: 0, comment: '', user: this.usuario, comic: undefined};
     }
 
     createAd(){
       this.comicService.getComic(this.idComic).subscribe(
-        comic => this.anuncio.comic = comic,
+        comic => {
+          this.comicChosen = comic;
+          if(this.typeChosen === "true"){
+            this.anuncio = { tipo: true, price: this.price, comment: this.comment, user: this.loginService.user, comic: this.comicChosen};
+          }else{
+            this.anuncio = { tipo: false, price: this.price, comment: this.comment, user: this.loginService.user, comic: this.comicChosen};
+          }
+          this.adService.saveAd(this.anuncio).subscribe(
+            anuncio => {
+              console.log(anuncio);
+              this.idComic = 0;
+              this.comicChosen = undefined;
+              this.typeChosen = '';
+              this.price = undefined;
+              this.comment = '';
+            },
+            error => console.error(error)
+          );
+        },
         error => console.error(error)
       );
-      this.adService.saveAd(this.anuncio).subscribe(
-        anuncio => this.ngOnInit(),
-        error => console.error(error)
-      );
+
+      //this.comicChosen = undefined
+      //this.anuncio = { type: true, price: 0, comment: '', user: this.loginService.user, comic: this.comicChosen};
     }
 
     openConfig(modalConfig) {
