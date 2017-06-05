@@ -51,6 +51,12 @@ export class AdvertisementComponent {
       }
     }
 
+    /*loadComponent(load: boolean){
+      if(load == true){
+        this.ngOnInit();
+      }
+    }*/
+
     removeAd(ad: Advertisement){
       this.advertisementService.deleteAdvertisement(ad).subscribe(
         _ => this.ngOnInit(),

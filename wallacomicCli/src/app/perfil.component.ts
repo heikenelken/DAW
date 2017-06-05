@@ -1,4 +1,4 @@
-import {Component, OnInit}   from '@angular/core';
+import {Component, OnInit, Input, EventEmitter}   from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -32,6 +32,9 @@ export class PerfilComponent {
     private typeChosen : string;
     private price: number;
     private comment: string;
+  /*  @Input()
+    private reloadAds = new EventEmitter<boolean>();*/
+    load: boolean;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService,
                 private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService,
@@ -69,6 +72,12 @@ export class PerfilComponent {
       }
     }
 
+  /*  reloadProfile(event: boolean){
+      if(event){
+          this.ngOnInit()
+      }
+    }*/
+
     createAd(){
       this.comicService.getComic(this.idComic).subscribe(
         comic => {
@@ -86,6 +95,8 @@ export class PerfilComponent {
               this.typeChosen = '';
               this.price = undefined;
               this.comment = '';
+              this.load = true;//para recargar los anuncios lanzamos un evento al componente Advertisement
+              //this.reloadAds.emit(this.load);
             },
             error => console.error(error)
           );

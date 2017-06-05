@@ -72,7 +72,7 @@
                                     </div>
                                     <!-- footer del popUp, con los botones de guardar cambios y descartar. -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Descartar</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
                                         <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
                                     </div>
               </ng-template>
@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Descartar</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
                   <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
                 </div>
               </ng-template>
@@ -159,4 +159,4 @@
 
     <comments [userId]='id' [showing]='active'></comments><!-- Falta añadir modal de valorar -->
 
-    <advertisements [idUser]='id' [adsFromUser]='comicsUser'></advertisements>
+    <advertisements [idUser]='id' [adsFromUser]='comicsUser' (onLoad)='reloadAds'></advertisements>
