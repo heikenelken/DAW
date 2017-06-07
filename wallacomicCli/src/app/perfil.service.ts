@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 //import {withObserver} from './utils';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+
+import { Usuario } from './usuario.model';
 
 import 'rxjs/Rx';
 
@@ -17,6 +19,22 @@ export class PerfilService {
 			response => response.json()
 		).catch(error => this.handleError(error));
 	}
+
+  saveUser(user: Usuario){
+    const body = JSON.stringify(user);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const options = new RequestOptions({ withCredentials: true, headers });
+    console.log(body);
+    if (!user.id) {
+      return this.http.post(BASIC_URL, body, options).map(
+        response => response.json()
+      ).catch(
+        error => this.handleError(error));
+    }//poner con un else la petición put
+  }
 
   private handleError(error: any) {
     console.error(error);

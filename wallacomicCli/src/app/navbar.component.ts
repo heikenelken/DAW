@@ -18,7 +18,6 @@ export class NavbarComponent {
 	closeResult: string;
 	usuario: Usuario;
 	private id: number | string;
-  //logeado = true;
 
 	constructor(private activatedRoute: ActivatedRoute, private perfilService: PerfilService, private modalService: NgbModal,
               private loginService: LoginService) {}
@@ -67,10 +66,27 @@ export class NavbarComponent {
       error => alert('Invalid user or password')
     );
   }
+
   clickLogout(){
     this.loginService.logOut().subscribe(
       response => { },
       error => console.log('Error when trying to log out: ' + error)
     );
   }
+
+  clickRegistrar(userName: string, pass: string, email: string){
+    let newUser = {nombre: userName, contraseñaHash: pass, descripcion: '', correo: email, facebook: '', twitter: '',
+                  foto: 'default', roles: ['ROLE_USER', 'ROLE_ADMIN']}
+    this.perfilService.saveUser(newUser).subscribe(
+      usuario => {
+        console.log(usuario)
+        this.loginService.logIn(userName, pass).subscribe(
+          usuario => this.usuario = usuario,
+          error => alert('Invalid user or password')
+        );
+      },
+      error => console.log(error)
+    );
+  }
+
 }
