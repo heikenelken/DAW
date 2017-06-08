@@ -7,6 +7,7 @@ import {LoginService} from './login.service';
 import {PerfilService} from './perfil.service';
 
 import { Comment } from './comments.model';
+import { Usuario } from './usuario.model';
 
 const EMPTY_STAR = '-o';
 
@@ -19,8 +20,6 @@ export class CommentsComponent {
   comments: Comment[] = [];
   closeResult: string;
   private numEstrellas: number;
-
-  private comment: Comment;
 
   @Input()
   private userId: number;
@@ -39,44 +38,43 @@ export class CommentsComponent {
       comments => this.comments = comments,
       error => console.log(error)
     );
-    if(this.loginService.isLogged){
-      console.log('logueado')
-      this.comment = {user_give: this.loginService.user, user_receive: undefined, comentario: '', numEstrellas: 0,
-                      s1: '', s2: '', s3: '', s4: '', s5: ''}
-    }
+    this.numEstrellas = 0;
   }
 
-  createComment(){
-    //meter -empty
-    if(this.comment.numEstrellas == 1){
-      this.comment.s2 = '-empty'
-      this.comment.s3 = '-empty'
-      this.comment.s4 = '-empty'
-      this.comment.s5 = '-empty'
-    } else if(this.comment.numEstrellas == 2){
-      this.comment.s3 = '-empty'
-      this.comment.s4 = '-empty'
-      this.comment.s5 = '-empty'
-    } else if(this.comment.numEstrellas == 3){
-      this.comment.s4 = '-empty'
-      this.comment.s5 = '-empty'
-    } else if(this.comment.numEstrellas == 4){
-      this.comment.s5 = '-empty'
-    }
+  createComment(comentario: string){
+    let user_receive: Usuario;
+    let comment: Comment;
+    console.log(this.numEstrellas)
     this.userService.getUser(this.userId).subscribe(
       user => {
-        this.comment.user_receive = user;
+        user_receive = user
+        if(this.numEstrellas == 1){
+          comment = { user_give: this.loginService.user, user_receive: user_receive, comentario: comentario,
+                      numEstrellas: this.numEstrellas, s1: '', s2: '-empty', s3: '-empty', s4: '-empty', s5: '-empty' }
+        } else if(this.numEstrellas == 2){
+          comment = { user_give: this.loginService.user, user_receive: user_receive, comentario: comentario,
+                      numEstrellas: this.numEstrellas, s1: '', s2: '', s3: '-empty', s4: '-empty', s5: '-empty' }
+        } else if(this.numEstrellas == 3){
+          comment = { user_give: this.loginService.user, user_receive: user_receive, comentario: comentario,
+                      numEstrellas: this.numEstrellas, s1: '', s2: '', s3: '', s4: '-empty', s5: '-empty' }
+        } else if(this.numEstrellas == 4){
+          comment = { user_give: this.loginService.user, user_receive: user_receive, comentario: comentario,
+                      numEstrellas: this.numEstrellas, s1: '', s2: '', s3: '', s4: '', s5: '-empty' }
+        } else {
+          comment = { user_give: this.loginService.user, user_receive: user_receive, comentario: comentario,
+                      numEstrellas: this.numEstrellas, s1: '', s2: '', s3: '', s4: '', s5: '' }
+        }
         //enviar comentario
-        this.commentsService.saveComment(this.comment).subscribe(
+        this.commentsService.saveComment(comment).subscribe(
           comment => {
             console.log(comment)
             this.ngOnInit()
-            this.comment = {user_give: this.loginService.user, user_receive: undefined, comentario: '', numEstrellas: 0,
-                            s1: '', s2: '', s3: '', s4: '', s5: ''}
+            window.confirm('¡Comentario añadido con éxito!');
             //this.event.emit(true);
           },
           error => console.log(error)
         );
+        this.numEstrellas = 0;
       },
       error => console.log(error)
     );

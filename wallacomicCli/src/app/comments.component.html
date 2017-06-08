@@ -42,7 +42,7 @@
             <form role="form" action="guardarValoracion" method="post">
               <div id="comment" class="form-group">
                 <label for="comentario">Tu comentario:</label> <br>
-                <textarea name="comentario" [(ngModel)]="comment.comentario" rows="5" cols="40"
+                <textarea name="comentario" #comentario rows="5" cols="40"
                   placeholder="introduce un breve comentario"></textarea>
               </div>
               <div id="valueSystem" class="form-group">
@@ -52,35 +52,35 @@
                 <div class="col-md-4 evaluar">
 
                   <input type="radio" id="radioS1" class="inputRadio"
-                    name="numEstrellas"[(ngModel)]="comment.numEstrellas" [value]="5">
+                    name="numEstrellas" [(ngModel)]="numEstrellas" [value]="5">
                   <!--
                                         -->
                   <label for="radioS1"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
                   <!--
                                         -->
                   <input type="radio" id="radioS2" class="inputRadio"
-                    name="numEstrellas"[(ngModel)]="comment.numEstrellas" [value]="4">
+                    name="numEstrellas" [(ngModel)]="numEstrellas" [value]="4">
                   <!--
                                         -->
                   <label for="radioS2"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
                   <!--
                                         -->
                   <input type="radio" id="radioS3" class="inputRadio"
-                    name="numEstrellas"[(ngModel)]="comment.numEstrellas" [value]="3">
+                    name="numEstrellas" [(ngModel)]="numEstrellas" [value]="3">
                   <!--
                                         -->
                   <label for="radioS3"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
                   <!--
                                         -->
                   <input type="radio" id="radioS4" class="inputRadio"
-                    name="numEstrellas"[(ngModel)]="comment.numEstrellas" [value]="2">
+                    name="numEstrellas" [(ngModel)]="numEstrellas" [value]="2">
                   <!--
                                         -->
                   <label for="radioS4"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
                   <!--
                                         -->
                   <input type="radio" id="radioS5" class="inputRadio"
-                    name="numEstrellas"[(ngModel)]="comment.numEstrellas" [value]="1">
+                    name="numEstrellas" [(ngModel)]="numEstrellas" [value]="1">
                   <!--
                                         -->
                   <label for="radioS5"><i class="sComments fa fa-star" aria-hidden="true"></i></label>
@@ -88,15 +88,11 @@
                 <div class="col-md-5"></div>
 
               </div>
-              <!--<div class="form-group" id="inputUserHide">
-                <label for="user_receive_id"></label> <input
-                  name="user_receive_id" value="{{userId}}">
-              </div>-->
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Cancelar</button>
-            <button type="submit" class="btn btn-success" id="botonGuardar" (click)="createComment()">Enviar</button>
+            <button type="submit" class="btn btn-success" id="botonGuardar" (click)="createComment(comentario.value); d('Cross click')">Enviar</button>
           </div>
         </ng-template>
       </div>

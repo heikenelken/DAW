@@ -26,12 +26,7 @@ export class PerfilComponent {
     private stars: string[] = [];
     closeResult: string;
     private comics: Comic[];
-    private anuncio: Advertisement;
-    private idComic: number;
-    private comicChosen : Comic;
-    private typeChosen : string;
-    private price: number;
-    private comment: string;
+  //  private comicChosen : Comic;
   /*  @Input()
     private reloadAds = new EventEmitter<boolean>();*/
     load: boolean;
@@ -78,24 +73,19 @@ export class PerfilComponent {
       }
     }*/
 
-    createAd(){
-      this.comicService.getComic(this.idComic).subscribe(
+    createAd(idComic: number, typeChosen: string, price: number, comment: string){
+      this.comicService.getComic(idComic).subscribe(
         comic => {
-          this.comicChosen = comic;
-          if(this.typeChosen === "true"){
-            this.anuncio = { tipo: true, price: this.price, comment: this.comment, user: this.loginService.user, comic: this.comicChosen};
-          }else{
-            this.anuncio = { tipo: false, price: this.price, comment: this.comment, user: this.loginService.user, comic: this.comicChosen};
+          let comicChosen = comic;
+          let anuncio = { tipo: false, price: price, comment: comment, user: this.loginService.user, comic: comicChosen };
+          if(typeChosen === "true"){
+            anuncio = { tipo: true, price: price, comment: comment, user: this.loginService.user, comic: comicChosen };
           }
-          this.adService.saveAd(this.anuncio).subscribe(
+          this.adService.saveAd(anuncio).subscribe(
             anuncio => {
               console.log(anuncio);
-              this.idComic = 0;
-              this.comicChosen = undefined;
-              this.typeChosen = '';
-              this.price = undefined;
-              this.comment = '';
-              this.load = true;//para recargar los anuncios lanzamos un evento al componente Advertisement
+              window.confirm('Anuncio creado con éxito (Recarga la página para ver el resultado)');
+              //this.load = true;//para recargar los anuncios lanzamos un evento al componente Advertisement
               //this.reloadAds.emit(this.load);
             },
             error => console.error(error)
@@ -103,9 +93,6 @@ export class PerfilComponent {
         },
         error => console.error(error)
       );
-
-      //this.comicChosen = undefined
-      //this.anuncio = { type: true, price: 0, comment: '', user: this.loginService.user, comic: this.comicChosen};
     }
 
     openConfig(modalConfig) {

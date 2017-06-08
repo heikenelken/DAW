@@ -58,10 +58,13 @@ export class AdvertisementComponent {
     }*/
 
     removeAd(ad: Advertisement){
-      this.advertisementService.deleteAdvertisement(ad).subscribe(
-        _ => this.ngOnInit(),
-        error => console.error(error)
-      );
+      const okResponse = window.confirm('¿Deseas borrar este libro?');
+      if(okResponse){
+        this.advertisementService.deleteAdvertisement(ad).subscribe(
+          _ => this.ngOnInit(),
+          error => console.error(error)
+        );
+      }
     }
 
 }
