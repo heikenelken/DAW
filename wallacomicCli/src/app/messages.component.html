@@ -1,0 +1,56 @@
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 row">
+            <div class="panel minHeight"><!--poner un isLogged, si no esta registrado dar un mensaje de error-->
+                <div class="panel-body row">
+                    <div class="col-md-4">
+                        <h1 id="messagesTitle" class="text-purple">Conversaciones</h1>
+                        <ul class="list-group">
+                          <li class="list-group-item">
+                              <p class="text-info">pablo1991</p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-info">naruto23</p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-info">sHuRmAnO</p>
+                          </li>
+                          <li class="list-group-item">
+                              <p class="text-info">el que vende y el que compra</p>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <ul id="conversationPanel" class="list-group">
+                          <li class="list-group-item">
+                              <p><span class="text-info text-rigth">AdoptaUnAlien: </span> Hola, khbjhvjbsvckjbsdvcsjbc sjdc sjbc sdj csc skcnb dsbc asbnc </p>
+                          </li>
+                          <li class="list-group-item">
+                              <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
+                          </li>
+                          <li class="list-group-item">
+                              <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
+                          </li>
+                          <li class="list-group-item">
+                              <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
+                          </li>
+                        	<!--{{#conversacion.comentarios}}
+                            <li class="list-group-item">
+                                <p><span class="text-info text-rigth">{{user.nombre}}:</span> {{message}}</p>
+                            </li>
+                            {{/conversacion.comentarios}}-->
+                            <li class="list-group-item">
+                                <form role="form" class="form-inline" action="crearMensaje" method="post">
+                                    <div class="form-group">
+                                        <input type="text" name="mensaje" class="form-control input" placeholder="Mensaje...">
+                                        <button class="btn btn-info">Enviar</button>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>

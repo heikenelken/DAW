@@ -15,6 +15,7 @@ import { ComicDetailComponent } from './comicDetail.component';
 import { PerfilComponent } from './perfil.component';
 import { AdvertisementComponent } from './advertisement.component';
 import { CommentsComponent } from './comments.component';
+import { MessagesComponent } from './messages.component';
 
 import { ComicService } from './comic.service';
 import { AdvertisementService } from './advertisement.service';
@@ -33,7 +34,8 @@ import { LoginService } from './login.service';
     ComicDetailComponent,
     PerfilComponent,
     AdvertisementComponent,
-    CommentsComponent
+    CommentsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

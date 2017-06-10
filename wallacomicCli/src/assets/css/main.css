@@ -159,6 +159,7 @@ footer {
 #commentsTable{
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+  margin-left: 1em;
 }
 
 #commentsTitle {
@@ -230,6 +231,16 @@ label > i:hover ~ label > i {
 
 .minHeight {
 	min-height: 34em;
+  width: 100%;
+}
+
+#messagesTitle {
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+}
+
+#conversationPanel {
+  margin-top: 1em;
 }
 
 .imgHome {
