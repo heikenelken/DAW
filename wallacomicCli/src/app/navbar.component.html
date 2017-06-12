@@ -24,7 +24,7 @@
                       </div>
                     </li>-->
                     <li class="nav-item"><a class="nav-link" [routerLink]="['/usuario', usuario.id]">{{usuario.nombre}}</a></li>
-                    <li class="nav-item"><a class="nav-link" [routerLink]="['Mensajes']">Mensajes</a></li>
+                    <li class="nav-item"><a class="nav-link" [routerLink]="['/mensajes', usuario.id]">Mensajes</a></li>
                     <li class="nav-item"><a class="nav-link" [routerLink]="['/index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a></li>
                     <li><img src="./assets/imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-menu" alt=""></li>
                 </ul>

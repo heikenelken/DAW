@@ -10,7 +10,7 @@ const appRoutes = [
   {path: 'index', name: 'Index', component: IndexComponent, useAsDefault: true},
   {path: 'usuario/:id', name: 'Perfil', component: PerfilComponent},
   {path: 'comic/:id', name: 'ComicDetail', component: ComicDetailComponent},
-  {path: 'mensajes', name: 'Mensajes', component: MessagesComponent},
+  {path: 'mensajes/:id', name: 'Mensajes', component: MessagesComponent},
   {path: '', redirectTo: 'index', pathMatch: 'full' }
 ]
 

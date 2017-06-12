@@ -243,6 +243,10 @@ label > i:hover ~ label > i {
   margin-top: 1em;
 }
 
+#errorPanel{
+  margin-top: 3em;
+}
+
 .imgHome {
   padding-top: 0px;
   padding-bottom: 0px;

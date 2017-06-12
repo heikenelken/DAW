@@ -23,7 +23,7 @@
                             <td class="text-info" *ngIf="adsFromUser"><a [routerLink]="['/comic', adS.comic.id]">{{adS.comic.titulo}}</a></td>
                             <td>{{adS.comment}}</td>
                             <td class="text-success">{{adS.price}}€</td>
-                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id) && (adS.user.id != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i></a></td>
+                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id) && (adS.user.id != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes', adS.user.id]"><i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i></a></td>
                         </tr>
                     </table>
                 </div>
@@ -44,7 +44,7 @@
                             <td class="text-info" *ngIf="adsFromUser"><a [routerLink]="['/comic', adB.comic.id]">{{adB.comic.titulo}}</a></td>
                             <td>{{adB.comment}}</td>
                             <td class="text-success">{{adB.price}}€</td>
-                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id) && (adB.user.id != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes']"><i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i></a></td>
+                            <td *ngIf="loginService.isLogged && (idUser != loginService.user.id) && (adB.user.id != loginService.user.id)" class="text-center text-danger"><a class="contact" [routerLink]="['/mensajes', adB.user.id]"><i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i></a></td>
                         </tr>
                     </table>
                 </div>

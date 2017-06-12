@@ -21,6 +21,7 @@ import { ComicService } from './comic.service';
 import { AdvertisementService } from './advertisement.service';
 import { PerfilService } from './perfil.service';
 import { CommentsService } from './comments.service';
+import { MessagesService } from './messages.service';
 import { LoginService } from './login.service';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { LoginService } from './login.service';
     AdvertisementService,
     PerfilService,
     CommentsService,
+    MessagesService,
     LoginService
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10 row">
-            <div class="panel minHeight"><!--poner un isLogged, si no esta registrado dar un mensaje de error-->
+            <div *ngIf="loginService.isLogged && userContact != undefined" class="panel minHeight">
                 <div class="panel-body row">
                     <div class="col-md-4">
                         <h1 id="messagesTitle" class="text-purple">Conversaciones</h1>
@@ -50,6 +50,14 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div *ngIf="!loginService.isLogged || userContact == undefined" class="panel minHeight">
+              <div id="errorPanel" class="col-md-12">
+                <h1>EEEEEEERROR</h1>
+							  <h3>404 bitch</h3>
+							  <h3>La que has liado pollito(Fijo que Carlos ha jodido algo)</h3>
+                <button type="button" class="btn btn-info" (click)="back()">Volver al inicio</button>
+              </div>
             </div>
         </div>
         <div class="col-md-1"></div>
