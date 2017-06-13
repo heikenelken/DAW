@@ -317,3 +317,11 @@ label > i:hover ~ label > i {
 #userContainer {
   margin-bottom: 1.5em;
 }
+
+.linkHovered {
+  color: #5bc0de !important;
+}
+
+.linkHovered:hover {
+  color: #4A235A !important;
+}

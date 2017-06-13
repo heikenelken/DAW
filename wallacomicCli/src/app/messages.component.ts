@@ -21,16 +21,26 @@ export class MessagesComponent {
               private messagesService: MessagesService) {
 
     let id = activatedRoute.snapshot.params['id'];
+    let created = false;
     perfilService.getUser(id).subscribe(
       user => {
           this.userContact = user
           messagesService.getLoggedUserConversations().subscribe(
             conversations => {
               this.conversations = conversations
-              if(this.userContact.id == loginService.user.id){
-                console.log('cargados mis mensajes, accediendo desde nav')
-              }else{
-                console.log('cargados mis mensajes, accediendo desde algun contacto')
+              if(this.userContact.id != loginService.user.id){
+                for(let conver of this.conversations){
+                  if((this.userContact.id == conver.userBuyer.id) || (this.userContact.id == conver.userSeller.id)){
+                    created = true
+                  }
+                }
+                if(!created){
+                  let newConver = { userBuyer: loginService.user, userSeller: this.userContact, comentarios: [] }
+                  messagesService.saveConversation(newConver).subscribe(
+                    conversation => this.ngOnInit(),
+                    error => console.log(error)
+                  );
+                }
               }
             },
             error => console.log(error)
@@ -41,8 +51,20 @@ export class MessagesComponent {
 
   }
 
+  ngOnInit(){
+    this.conversations = []
+    this.messagesService.getLoggedUserConversations().subscribe(
+      conversations => this.conversations = conversations,
+      error => console.log(error)
+    );
+  }
+
   back() {
     window.history.back();
+  }
+
+  openConversation(idUser: number){
+    console.log('recibido id: ' + idUser)
   }
 
 }

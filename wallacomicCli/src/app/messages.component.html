@@ -6,17 +6,9 @@
                     <div class="col-md-4">
                         <h1 id="messagesTitle" class="text-purple">Conversaciones</h1>
                         <ul class="list-group">
-                          <li class="list-group-item">
-                              <p class="text-info">pablo1991</p>
-                          </li>
-                          <li class="list-group-item">
-                              <p class="text-info">naruto23</p>
-                          </li>
-                          <li class="list-group-item">
-                              <p class="text-info">sHuRmAnO</p>
-                          </li>
-                          <li class="list-group-item">
-                              <p class="text-info">el que vende y el que compra</p>
+                          <li *ngFor="let conversation of conversations" class="list-group-item">
+                              <a *ngIf="conversation.userBuyer.nombre !== loginService.user.nombre" class="linkHovered" (click)="openConversation(conversation.userBuyer.id)">{{conversation.userBuyer.nombre}}</a>
+                              <a *ngIf="conversation.userSeller.nombre !== loginService.user.nombre" class="linkHovered" (click)="openConversation(conversation.userSeller.id)">{{conversation.userSeller.nombre}}</a>
                           </li>
                         </ul>
                     </div>
@@ -56,7 +48,7 @@
                 <h1>EEEEEEERROR</h1>
 							  <h3>404 bitch</h3>
 							  <h3>La que has liado pollito(Fijo que Carlos ha jodido algo)</h3>
-                <button type="button" class="btn btn-info" (click)="back()">Volver al inicio</button>
+                <button type="button" class="btn btn-info" (click)="back()">Volver</button>
               </div>
             </div>
         </div>
