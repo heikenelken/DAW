@@ -1,7 +1,7 @@
 <!-- Advertisements -->
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div *ngIf="isUserLoaded || isComicLoaded" class="col-md-10">
         <h3 class="text-purple">Mis anuncios</h3>
         <hr>
         <div class="panel">
@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
+    <div *ngIf="!isUserLoaded || !isComicLoaded" class="col-md-10"></div>
     <div class="col-md-1"></div>
 </div>
 

@@ -1,5 +1,13 @@
 <div class="row">
         <div class="col-md-1"></div>
+        <div *ngIf="!usuario" class="col-md-10">
+          <div id="errorPanel" class="col-md-12 panel minErrorHeight">
+            <h1>EEEEEEERROR</h1>
+            <h3>404 bitch</h3>
+            <h3>La que has liado pollito(Fijo que Carlos ha jodido algo)</h3>
+            <button type="button" class="btn btn-info" (click)="back()">Volver</button>
+          </div>
+        </div>
         <div class="col-md-10">
             <div class="panel">
                 <div id="userContainer" class="panel-body row">
@@ -157,6 +165,6 @@
               </ng-template>
     </div>
 
-    <comments [userId]='id' [showing]='active'></comments><!-- Falta añadir modal de valorar -->
+    <comments [userId]='id' [showing]='active'></comments>
 
-    <advertisements [idUser]='id' [adsFromUser]='comicsUser' (onLoad)='reloadAds'></advertisements>
+    <advertisements [idUser]='id' [adsFromUser]='comicsUser' (onLoad)='reloadAds' [isUserLoaded]='load'></advertisements>

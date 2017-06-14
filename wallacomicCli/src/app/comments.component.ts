@@ -19,6 +19,7 @@ export class CommentsComponent {
 
   comments: Comment[] = [];
   closeResult: string;
+  private loaded: boolean;
   private numEstrellas: number;
 
   @Input()
@@ -31,14 +32,30 @@ export class CommentsComponent {
   private event = new EventEmitter<boolean>();*/
 
   constructor(private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService,
-              private userService: PerfilService) {}
+              private userService: PerfilService) {
+
+        this.loaded = false
+        this.commentsService.getCommentsFromUser(this.userId).subscribe(
+          comments => {
+            this.comments = comments
+            this.loaded = true
+          },
+          error => console.log(error)
+        );
+        this.numEstrellas = 0
+
+              }
 
   ngOnInit(){
+    this.loaded = false
     this.commentsService.getCommentsFromUser(this.userId).subscribe(
-      comments => this.comments = comments,
+      comments => {
+        this.comments = comments
+        this.loaded = true
+      },
       error => console.log(error)
     );
-    this.numEstrellas = 0;
+    this.numEstrellas = 0
   }
 
   createComment(comentario: string){

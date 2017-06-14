@@ -234,6 +234,11 @@ label > i:hover ~ label > i {
   width: 100%;
 }
 
+.minErrorHeight {
+	min-height: 24em;
+  width: 100%;
+}
+
 #messagesTitle {
   margin-top: 0.5em;
   margin-left: 0.5em;

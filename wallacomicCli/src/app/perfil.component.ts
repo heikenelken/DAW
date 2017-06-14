@@ -33,9 +33,37 @@ export class PerfilComponent {
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService,
                 private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService,
-                private comicService: ComicService, private adService: AdvertisementService) {}
+                private comicService: ComicService, private adService: AdvertisementService) {
 
-    ngOnInit(){
+                  this.id = this.activatedRoute.snapshot.params['id'];
+                  this.load = false;
+                  perfilService.getUser(this.id).subscribe(
+                      usuario => {
+                        this.usuario = usuario
+                        this.load = true
+                      },
+                      error => console.error(error)
+                  );
+                  this.comicsUser = true;
+                  commentsService.getStarsAverage(this.id).subscribe(
+                    averageCom => {
+                      this.averageCom = averageCom;
+                      for(let i=0; i < this.averageCom; i++){
+                        this.stars.push('');
+                      }
+                      for(let j=this.averageCom; j < 5; j++){
+                        this.stars.push('-o');
+                      }
+                    },
+                    error => console.log(error)
+                  );
+                  comicService.getAllComics().subscribe(
+                    comics => this.comics = comics,
+                    error => console.error(error)
+                  );
+    }
+
+    /*ngOnInit(){
       this.id = this.activatedRoute.snapshot.params['id'];
       this.perfilService.getUser(this.id).subscribe(
           usuario => this.usuario = usuario,
@@ -54,18 +82,19 @@ export class PerfilComponent {
         },
         error => console.log(error)
       );
+      console.log('logueado: ' + this.loginService.isLogged)
       //console.log("Checking condicion carga de comics")
       if(this.loginService.isLogged){
-        //console.log("Hay user logueado")
+        console.log("Hay user logueado")
         if(this.loginService.user.id == this.id){
-          //console.log("mismo id")
+          console.log("mismo id")
           this.comicService.getAllComics().subscribe(
             comics => this.comics = comics,
             error => console.error(error)
           );
         }
       }
-    }
+    }*/
 
   /*  reloadProfile(event: boolean){
       if(event){
@@ -93,6 +122,14 @@ export class PerfilComponent {
         },
         error => console.error(error)
       );
+    }
+
+    showHide(){
+      this.active = ! this.active;
+    }
+
+    back() {
+      window.history.back();
     }
 
     openConfig(modalConfig) {
@@ -127,10 +164,6 @@ export class PerfilComponent {
       } else {
         return  `with: ${reason}`;
       }
-    }
-
-    showHide(){
-      this.active = ! this.active;
     }
 
 }

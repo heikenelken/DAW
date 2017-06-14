@@ -4,7 +4,7 @@
   <div class="col-md-10 row">
     <h3 id="commentsTitle" class="text-purple">Comentarios</h3>
     <hr>
-    <div class="col-md-12">
+    <div *ngIf="loaded" class="col-md-12">
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let comment of comments">
           <div id="commentItem" class="row">
@@ -98,6 +98,9 @@
       </div>
       <!--Fin modal y boton-->
     </div>
+  </div>
+  <div *ngIf="!loaded" class="col-md-12">
+    <h1 id="commentsTitle" class="text-purple">Aún no hay comentarios</h1>
   </div>
   <div class="col-md-1"></div>
 </div>

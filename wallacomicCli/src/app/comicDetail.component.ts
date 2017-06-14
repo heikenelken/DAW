@@ -18,14 +18,24 @@ export class ComicDetailComponent {
     @Input()
     private isLogged: boolean;
 
+    private loaded: boolean;
+
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ComicService) {
         let id = activatedRoute.snapshot.params['id'];
+        this.loaded = false;
         service.getComic(id).subscribe(
-            comic => this.comic = comic,
+            comic => {
+              this.comic = comic
+              this.loaded = true
+            },
             error => console.error(error)
         );
         this.comicRef = id;
         this.chargeComics = true;
+    }
+
+    back() {
+      window.history.back();
     }
 
 }

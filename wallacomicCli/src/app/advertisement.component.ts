@@ -26,6 +26,12 @@ export class AdvertisementComponent {
     @Input()
     private idUser: number | string;
 
+    @Input()
+    private isUserLoaded: boolean;
+
+    @Input()
+    private isComicLoaded: boolean;
+
     constructor(private advertisementService: AdvertisementService, private loginService: LoginService){}
 
     ngOnInit(){

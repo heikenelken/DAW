@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div *ngIf="loaded" class="col-md-10">
         <div class="panel">
             <div class="panel-body row">
                 <div class="col-md-4" *ngIf="comic">
@@ -17,6 +17,14 @@
             </div>
         </div>
     </div>
+    <div *ngIf="!loaded" class="col-md-10 panel minHeight">
+      <div id="errorPanel" class="col-md-12 minErrorHeight">
+        <h1>EEEEEEERROR</h1>
+        <h3>404 bitch</h3>
+        <h3>La que has liado pollito(Fijo que Carlos ha jodido algo)</h3>
+        <button type="button" class="btn btn-info" (click)="back()">Volver</button>
+      </div>
+    </div>
     <div class="col-md-1"></div>
 </div>
-<advertisements [id]='comicRef' [comicCom]='chargeComics'></advertisements>
+<advertisements [id]='comicRef' [comicCom]='chargeComics' [isComicLoaded]='loaded'></advertisements>
