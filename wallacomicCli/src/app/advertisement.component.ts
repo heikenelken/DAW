@@ -64,7 +64,7 @@ export class AdvertisementComponent {
     }*/
 
     removeAd(ad: Advertisement){
-      const okResponse = window.confirm('¿Deseas borrar este libro?');
+      const okResponse = window.confirm('¿Deseas eliminar este anuncio?');
       if(okResponse){
         this.advertisementService.deleteAdvertisement(ad).subscribe(
           _ => this.ngOnInit(),
