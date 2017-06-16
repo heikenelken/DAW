@@ -13,32 +13,18 @@
                         </ul>
                     </div>
                     <div class="col-md-8">
-                        <ul id="conversationPanel" class="list-group">
-                          <li class="list-group-item">
-                              <p><span class="text-info text-rigth">AdoptaUnAlien: </span> Hola, khbjhvjbsvckjbsdvcsjbc sjdc sjbc sdj csc skcnb dsbc asbnc </p>
+                        <ul *ngIf="actualConversation != undefined" id="conversationPanel" class="list-group">
+                          <li *ngFor="let messages of actualConversation.comentarios" class="list-group-item">
+                              <p><span class="text-info text-rigth">{{messages.user.nombre}}: </span>{{messages.message}}</p>
                           </li>
                           <li class="list-group-item">
-                              <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
+                              <form role="form" class="form-inline" action="crearMensaje" method="post">
+                                  <div class="form-group">
+                                      <input #message type="text" name="mensaje" class="form-control input" placeholder="Mensaje...">
+                                      <button class="btn btn-info" (click)="sendMessage(message.value); message.value=''">Enviar</button>
+                                  </div>
+                              </form>
                           </li>
-                          <li class="list-group-item">
-                              <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
-                          </li>
-                          <li class="list-group-item">
-                              <p><span class="text-info text-left">pablo1991: </span> sdcjhvdl sdjcb wcjl sjbd cdjb dj d ih d j fjb jbdfbfd ihdbfdih </p>
-                          </li>
-                        	<!--{{#conversacion.comentarios}}
-                            <li class="list-group-item">
-                                <p><span class="text-info text-rigth">{{user.nombre}}:</span> {{message}}</p>
-                            </li>
-                            {{/conversacion.comentarios}}-->
-                            <li class="list-group-item">
-                                <form role="form" class="form-inline" action="crearMensaje" method="post">
-                                    <div class="form-group">
-                                        <input type="text" name="mensaje" class="form-control input" placeholder="Mensaje...">
-                                        <button class="btn btn-info">Enviar</button>
-                                    </div>
-                                </form>
-                            </li>
                         </ul>
                     </div>
                 </div>

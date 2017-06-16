@@ -19,6 +19,12 @@ export class MessagesService {
 		).catch(error => this.handleError(error));
 	}
 
+  getSelectedConversation(id: number){
+    return this.http.get(BASIC_URL + 'usuario/' + id, { withCredentials: true }).map(
+			response => response.json()
+		).catch(error => this.handleError(error));
+  }
+
   saveConversation(conver: Conversation){
     const body = JSON.stringify(conver);
     const headers = new Headers({
@@ -32,7 +38,7 @@ export class MessagesService {
       ).catch(
         error => this.handleError(error));
     }else {
-      return this.http.put(BASIC_URL + 'conver.id', body, options).map(
+      return this.http.put(BASIC_URL + conver.id, body, options).map(
         response => response.json()
       ).catch(
         error => this.handleError(error));

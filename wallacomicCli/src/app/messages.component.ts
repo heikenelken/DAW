@@ -16,6 +16,7 @@ export class MessagesComponent {
 
   private userContact: Usuario;
   private conversations: Conversation[];
+  private actualConversation: Conversation;
 
   constructor(private activatedRoute: ActivatedRoute, private perfilService: PerfilService, private loginService: LoginService,
               private messagesService: MessagesService) {
@@ -54,7 +55,10 @@ export class MessagesComponent {
   ngOnInit(){
     this.conversations = []
     this.messagesService.getLoggedUserConversations().subscribe(
-      conversations => this.conversations = conversations,
+      conversations => {
+        this.conversations = conversations
+        console.log(this.conversations)
+      },
       error => console.log(error)
     );
   }
@@ -64,7 +68,18 @@ export class MessagesComponent {
   }
 
   openConversation(idUser: number){
-    console.log('recibido id: ' + idUser)
+    this.messagesService.getSelectedConversation(idUser).subscribe(
+      conversation => this.actualConversation = conversation,
+      error => console.log(error)
+    );
+  }
+
+  sendMessage(message: string){
+    this.actualConversation.comentarios.push({message: message, user: this.loginService.user})
+    this.messagesService.saveConversation(this.actualConversation).subscribe(
+      conversation => this.ngOnInit(),
+      error => console.log(error)
+    );
   }
 
 }
