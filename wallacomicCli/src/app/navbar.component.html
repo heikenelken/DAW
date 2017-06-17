@@ -1,17 +1,17 @@
 <!--Nav-->
 <nav class="navbar navbar-inverse navbar-toggleable-md navbar-top fixed-top navbar-shadow bg-faded" role="navigation">
-    <button type="button" class="navbar-toggler navbar-toggler-right hidden-sm-up" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+    <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
     <a class="navbar-brand navbar-left" [routerLink]="['/index']">Wallacomic</a>
-    <div [ngbCollapse]="isNavbarCollapsed" *ngIf="!loginService.isLogged" class="collapse navbar-toggleable-xs my-2 my-lg-0" id="bs-example-navbar-collapse-1">
+    <div *ngIf="!loginService.isLogged" class="collapse navbar-collapse my-2 my-lg-0" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav ml-auto">
             <button type="button" class="btn btn-primary navbar-btn" (click)="openAcceso(modalAcceso)">Acceder</button>
             <div style="min-width: 10px;"> </div>
             <button type="button" class="btn btn-success navbar-btn" (click)="openRegistro(modalRegistro)">Registrarse</button>
         </ul>
     </div>
-    <div [ngbCollapse]="isNavbarCollapsed" *ngIf="loginService.isLogged" class="collapse navbar-toggleable-xs my-2 my-lg-0" id="bs-example-navbar-collapse-1">
+    <div *ngIf="loginService.isLogged" class="collapse navbar-collapse my-2 my-lg-0" id="bs-example-navbar-collapse-1">
         <ul class="navbar-nav ml-auto" *ngIf="usuario">
             <li ngbDropdown class="d-inline-block nav-item">
                 <a class="nav-link" id="navbarDropdownMenuLink" *ngIf="usuario" ngbDropdownToggle>{{usuario.nombre}}</a>
