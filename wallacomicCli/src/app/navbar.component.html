@@ -1,44 +1,39 @@
-
 <!--Nav-->
-    <nav class="navbar navbar-inverse navbar-toggleable-md navbar-top fixed-top navbar-shadow bg-faded" role="navigation">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<nav class="navbar navbar-inverse navbar-toggleable-md navbar-top fixed-top navbar-shadow bg-faded" role="navigation">
+    <button type="button" class="navbar-toggler navbar-toggler-right hidden-sm-up" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand navbar-left" [routerLink]="['/index']">Wallacomic</a>
-              <div *ngIf="!loginService.isLogged" class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                      <button type="button" class="btn btn-primary navbar-btn" (click)="openAcceso(modalAcceso)">Acceder</button>
-                      <button type="button" class="btn btn-success navbar-btn" (click)="openRegistro(modalRegistro)">Registrarse</button>
-                  </ul>
-              </div>
-              <div *ngIf="loginService.isLogged" class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-                <ul class="navbar-nav mr-auto" *ngIf="usuario">
-                    <!--<li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" *ngIf="usuario">user</a>
+    <a class="navbar-brand navbar-left" [routerLink]="['/index']">Wallacomic</a>
+    <div [ngbCollapse]="isNavbarCollapsed" *ngIf="!loginService.isLogged" class="collapse navbar-toggleable-xs my-2 my-lg-0" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav ml-auto">
+            <button type="button" class="btn btn-primary navbar-btn" (click)="openAcceso(modalAcceso)">Acceder</button>
+            <div style="min-width: 10px;"> </div>
+            <button type="button" class="btn btn-success navbar-btn" (click)="openRegistro(modalRegistro)">Registrarse</button>
+        </ul>
+    </div>
+    <div [ngbCollapse]="isNavbarCollapsed" *ngIf="loginService.isLogged" class="collapse navbar-toggleable-xs my-2 my-lg-0" id="bs-example-navbar-collapse-1">
+        <ul class="navbar-nav ml-auto" *ngIf="usuario">
+            <li ngbDropdown class="d-inline-block nav-item">
+                <a class="nav-link" id="navbarDropdownMenuLink" *ngIf="usuario" ngbDropdownToggle>{{usuario.nombre}}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" [routerLink]="['/usuario', usuario.id]">Perfil</a>
+                    <a class="dropdown-item" [routerLink]="['/mensajes', usuario.id]">Mensajes</a>
+                    <a class="dropdown-item" [routerLink]="['/index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a>
+                </div>
+            </li>
+            <li><img src="./assets/imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-menu" alt=""></li>
+        </ul>
+    </div>
+</nav>
+<!--/Nav-->
 
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" [routerLink]="['Usuario']">Perfil</a>
-                        <a class="dropdown-item" [routerLink]="['Mensajes']">Mensajes</a>
-                        <a class="dropdown-item" [routerLink]="['/index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a>
-                      </div>
-                    </li>-->
-                    <li class="nav-item"><a class="nav-link" [routerLink]="['/usuario', usuario.id]">{{usuario.nombre}}</a></li>
-                    <li class="nav-item"><a class="nav-link" [routerLink]="['/mensajes', usuario.id]">Mensajes</a></li>
-                    <li class="nav-item"><a class="nav-link" [routerLink]="['/index']" (click)="clickLogout() "><span class="glyphicon glyphicon-off"></span> Salir</a></li>
-                    <li><img src="./assets/imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-menu" alt=""></li>
-                </ul>
-              </div>
-    </nav>
-    <!--/Nav-->
-
-    <!-- Código popUp Registro -->
-    <ng-template #modalRegistro let-c="close" let-d="dismiss">
-      <div class="modal-header">
+<!-- Código popUp Registro -->
+<ng-template #modalRegistro let-c="close" let-d="dismiss">
+    <div class="modal-header">
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
         <h4 class="modal-title" id="myModalLabel">Registro en WallaComic</h4>
-      </div>
-      <div class="modal-body" id="registro">
+    </div>
+    <div class="modal-body" id="registro">
         <form role="form">
             <div class="form-group">
                 <label for="usuario">Nombre usuario:</label>
@@ -53,22 +48,22 @@
                 <input type="mail" #email class="form-control" id="campoEmail" placeholder="Introduce tu Email">
             </div>
         </form>
-      </div>
-      <!-- footer del popUp, con los botones de creación y cerrar. -->
-      <div class="modal-footer">
+    </div>
+    <!-- footer del popUp, con los botones de creación y cerrar. -->
+    <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Cancelar</button>
         <button type="button" class="btn btn-success" id="botonCrear" (click)="clickRegistrar(userName.value, pass.value, email.value); d('Cross click')">¡Regístrame!</button>
-      </div>
-    </ng-template>
-    <!--/Codigo popUp Registro-->
+    </div>
+</ng-template>
+<!--/Codigo popUp Registro-->
 
-    <!-- Código popUp Acceso -->
-    <ng-template #modalAcceso let-c="close" let-d="dismiss">
-      <div class="modal-header">
+<!-- Código popUp Acceso -->
+<ng-template #modalAcceso let-c="close" let-d="dismiss">
+    <div class="modal-header">
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
         <h4 class="modal-title" id="myModalLabel">Acceder a WallaComic</h4>
-      </div>
-      <div class="modal-body" id="registro">
+    </div>
+    <div class="modal-body" id="registro">
         <form role="form">
             <div class="form-group">
                 <label for="usuario">Nombre usuario:</label>
@@ -79,11 +74,11 @@
                 <input type="password" #credential2 class="form-control" id="campoContraseña" placeholder="Contraseña">
             </div>
         </form>
-      </div>
-      <!-- footer del popUp, con los botones de creación y cerrar. -->
-      <div class="modal-footer">
+    </div>
+    <!-- footer del popUp, con los botones de creación y cerrar. -->
+    <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Cancelar</button>
         <button type="button" class="btn btn-success" id="botonCrear" (click)="clickLogin(credential1.value,credential2.value); d('Cross click')">¡Acceder!</button>
-      </div>
-    </ng-template>
-    <!--/Codigo popUp Acceso-->
+    </div>
+</ng-template>
+<!--/Codigo popUp Acceso-->
