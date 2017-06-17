@@ -1,101 +1,99 @@
 <div class="row">
-        <div class="col-md-1"></div>
-        <div *ngIf="!usuario" class="col-md-10">
-          <div id="errorPanel" class="col-md-12 panel minErrorHeight">
+    <div class="col-md-1"></div>
+    <div *ngIf="!usuario" class="col-md-10">
+        <div id="errorPanel" class="col-md-12 panel minErrorHeight">
             <h1>EEEEEEERROR</h1>
             <h3>404 bitch</h3>
             <h3>La que has liado pollito(Fijo que Carlos ha jodido algo)</h3>
             <button type="button" class="btn btn-info" (click)="back()">Volver</button>
-          </div>
         </div>
-        <div class="col-md-10">
-            <div class="panel">
-                <div id="userContainer" class="panel-body row">
-                    <div class="col-md-4">
-                        <img *ngIf="usuario" src="assets/imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-perfil img-responsive" alt="">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="row" id="info-header" *ngIf="usuario">
+    </div>
+    <div class="col-md-10">
+        <div class="panel">
+            <div id="userContainer" class="panel-body row">
+                <div class="col-md-4">
+                    <img *ngIf="usuario" src="assets/imgUsers/{{usuario.foto}}.jpg" class="circular-avatar-perfil img-responsive" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="row" id="info-header" *ngIf="usuario">
                         <div class="col-md-6">
-                          <h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
+                            <h1 id="name-profile" class="text-purple">{{usuario.nombre}}</h1>
                         </div>
                         <div class="col-md-3" id="stars">
-                          <i *ngFor="let star of stars" class="fa fa-star{{star}}"
-                            aria-hidden="true"></i>
+                            <i *ngFor="let star of stars" class="fa fa-star{{star}}" aria-hidden="true"></i>
                         </div>
                         <div class="col-md-3" id="buttonComment">
-                          <button (click)="showHide()" id="commentsButton" type="button"
-                            class="btn btn-default">Ver
+                            <button (click)="showHide()" id="commentsButton" type="button" class="btn btn-default">Ver
                             comentarios</button>
                         </div>
-                      </div>
-                        <p *ngIf="usuario">{{usuario.descripcion}}</p>
-                        <hr>
-                        <p *ngIf="usuario"><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
-                        <p *ngIf="usuario"><em>Facebook: </em><a href="https://www.facebook.com/{{usuario.facebook}}">facebook.com/{{usuario.facebook}}</a></p>
-                        <p *ngIf="usuario"><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
-                        <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-default" (click)="openConfig(modalConfig)">Configuración</button>
-                        <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-info" (click)="openPublicarAnuncio(modalPublicarAnuncio)">Publicar Anuncio</button>
-                        <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-info" (click)="openCrearComic(modalCrearComic)">Crear Comic</button>
+                    </div>
+                    <p *ngIf="usuario">{{usuario.descripcion}}</p>
+                    <hr>
+                    <p *ngIf="usuario"><em>Correo: </em><a href="mailto:{{usuario.correo}}">{{usuario.correo}}</a></p>
+                    <p *ngIf="usuario"><em>Facebook: </em><a href="https://www.facebook.com/{{usuario.facebook}}">facebook.com/{{usuario.facebook}}</a></p>
+                    <p *ngIf="usuario"><em>Twitter: </em><a href="https://twitter.com/{{usuario.twitter}}">{{usuario.twitter}}</a></p>
+                    <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-default" (click)="openConfig(modalConfig)">Configuración</button>
+                    <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-info" (click)="openPublicarAnuncio(modalPublicarAnuncio)">Publicar Anuncio</button>
+                    <button *ngIf="loginService.isLogged && (id == loginService.user.id)" type="button" class="btn btn-info" (click)="openCrearComic(modalCrearComic)">Crear Comic</button>
 
-                        <!-- modal configuracion -->
-                        <ng-template #modalConfig let-c="close" let-d="dismiss">
-                                    <div class="modal-header">
-                                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                                      <h4 class="modal-title" id="myModalLabel">Configuración</h4>
-                                    </div>
-                                    <div id="configuracion" class="modal-body">
-                                        <form role="form">
-                                            <div class="form-group">
-                                                <label for="usuario">Nombre usuario:</label>
-                                                <input type="text" class="form-control" id="cambioUsuario" placeholder="introduce tu nuevo nombre de usuario">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="mail">Email:</label>
-                                                <input type="mail" class="form-control" id="cambioMail" placeholder="introduce tu nuevo Email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="facebook">Cuenta facebook:</label>
-                                                <input type="text" class="form-control" id="cambioFacebook" placeholder="por ejemplo: facebook.com/YoSoyTuPadreLuck">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="twitter">Usuario Twitter:</label>
-                                                <input type="text" class="form-control" id="cambioTwitter" placeholder="por ejemplo: @JonDoe">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="contraseña">Contraseña:</label>
-                                                <input type="password" class="form-control" id="cambioContraseña" placeholder="Introduce tu nueva contraseña">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="descripcion">Sobre tí:</label>
-                                                <br>
-                                                <textarea name="descripcion" rows="5" cols="40" placeholder="Cuéntanos algo sobre tí."></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="avatar">Selecciona tu imagen de avatar:</label>
-                                                <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
-                                            </div>
+                    <!-- modal configuracion -->
+                    <ng-template #modalConfig let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Configuración</h4>
+                        </div>
+                        <div id="configuracion" class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="usuario">Nombre usuario:</label>
+                                    <input type="text" class="form-control" id="cambioUsuario" placeholder="introduce tu nuevo nombre de usuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mail">Email:</label>
+                                    <input type="mail" class="form-control" id="cambioMail" placeholder="introduce tu nuevo Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="facebook">Cuenta facebook:</label>
+                                    <input type="text" class="form-control" id="cambioFacebook" placeholder="por ejemplo: facebook.com/YoSoyTuPadreLuck">
+                                </div>
+                                <div class="form-group">
+                                    <label for="twitter">Usuario Twitter:</label>
+                                    <input type="text" class="form-control" id="cambioTwitter" placeholder="por ejemplo: @JonDoe">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contraseña">Contraseña:</label>
+                                    <input type="password" class="form-control" id="cambioContraseña" placeholder="Introduce tu nueva contraseña">
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion">Sobre tí:</label>
+                                    <br>
+                                    <textarea name="descripcion" rows="5" cols="40" placeholder="Cuéntanos algo sobre tí."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="avatar">Selecciona tu imagen de avatar:</label>
+                                    <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+                                </div>
 
-                                        </form>
-                                    </div>
-                                    <!-- footer del popUp, con los botones de guardar cambios y descartar. -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
-                                        <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
-                                    </div>
-              </ng-template>
-              <!-- modal publicar anuncio -->
-              <ng-template #modalPublicarAnuncio let-c="close" let-d="dismiss">
-                <div class="modal-header">
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Publicar Anuncio</h4>
-                </div>
-                <div id="configuracion" class="modal-body">
+                            </form>
+                        </div>
+                        <!-- footer del popUp, con los botones de guardar cambios y descartar. -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
+                            <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
+                        </div>
+                    </ng-template>
+                    <!-- modal publicar anuncio -->
+                    <ng-template #modalPublicarAnuncio let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Publicar Anuncio</h4>
+                        </div>
+                        <div id="configuracion" class="modal-body">
                             <p>¡Rellena todos los campos que se muestran a continuación y pulsa publicar!</p>
                             <hr>
                             <form role="form" action="guardarAnuncio" method="post">
                                 <div class="form-group">
-                                	<label for="queComic">Elige el comic:</label>
+                                    <label for="queComic">Elige el comic:</label>
                                     <select name="comic" #idComic class="form-control">
                                         <option *ngFor="let comic of comics" [value]="comic.id">{{comic.titulo}}</option>
                                     </select>
@@ -116,20 +114,20 @@
                                     <textarea class="form-control" name="observaciones" #comment rows="3" placeholder="Escribe aquí los detalles de la transacción: Estado del comic, preferencias de pago..."></textarea>
                                 </div>
                             </form>
-                </div>
+                        </div>
 
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
-                  <button type="button" class="btn btn-success" id="botonGuardar" (click)="createAd(idComic.value, typeChosen.value, price.value, comment.value); d('Cross click')">Publicar anuncio</button>
-                </div>
-              </ng-template>
-              <!-- modal crear comic -->
-              <ng-template #modalCrearComic let-c="close" let-d="dismiss">
-                <div class="modal-header">
-                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Crear Comic</h4>
-                </div>
-                <div id="configuracion" class="modal-body">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
+                            <button type="button" class="btn btn-success" id="botonGuardar" (click)="createAd(idComic.value, typeChosen.value, price.value, comment.value); d('Cross click')">Publicar anuncio</button>
+                        </div>
+                    </ng-template>
+                    <!-- modal crear comic -->
+                    <ng-template #modalCrearComic let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Crear Comic</h4>
+                        </div>
+                        <div id="configuracion" class="modal-body">
                             <p>¡Rellena todos los campos que se muestran a continuación y pulsa publicar!</p>
                             <p>¡Por favor, asegúrate antes de que el comic no esté ya creado!</p>
                             <hr>
@@ -153,18 +151,23 @@
                                 <div class="form-group">
                                     <label for="observaciones">Argumento:</label>
                                     <br>
-                                    <textarea class="form-control" name="argumento"rows="3" placeholder="Introduzca aquí el argumento del cómic"></textarea>
+                                    <textarea class="form-control" name="argumento" rows="3" placeholder="Introduzca aquí el argumento del cómic"></textarea>
                                 </div>
                             </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
+                            <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
+                        </div>
+                    </ng-template>
                 </div>
 
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
-                  <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
-                </div>
-              </ng-template>
+                <comments [userId]='id' [showing]='active' class="col-md-12"></comments>
+
+                <advertisements [idUser]='id' [adsFromUser]='comicsUser' (onLoad)='reloadAds' [isUserLoaded]='load' class="col-md-12"></advertisements>
+            </div>
+        </div>
     </div>
-
-    <comments [userId]='id' [showing]='active'></comments>
-
-    <advertisements [idUser]='id' [adsFromUser]='comicsUser' (onLoad)='reloadAds' [isUserLoaded]='load'></advertisements>
+    <div class="col-md-1"></div>
+</div>

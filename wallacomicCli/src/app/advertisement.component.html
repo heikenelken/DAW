@@ -15,7 +15,8 @@
                             <th *ngIf="adsFromUser">Comic</th>
                             <th>Observaciones</th>
                             <th>Precio</th>
-                            <th *ngIf="loginService.isLogged && (idUser != loginService.user.id)">Contactar</th><!-- Sincronizar atributo logueado con columna contactar -->
+                            <th *ngIf="loginService.isLogged && (idUser != loginService.user.id)">Contactar</th>
+                            <!-- Sincronizar atributo logueado con columna contactar -->
                         </thead>
                         <tr *ngFor="let adS of adsSale">
                             <td *ngIf="loginService.isLogged && (idUser == loginService.user.id)" class="text-center text-danger"><i class="fa fa-times fa-lg" aria-hidden="true" (click)="removeAd(adS)"></i></td>

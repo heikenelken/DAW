@@ -29,17 +29,17 @@ footer {
     background-color: #7D3C98;
 }
 
-.navbar-inverse .navbar-nav > li {
+.navbar-inverse .navbar-nav>li {
     font-family: 'Ubuntu', sans-serif;
     color: #ffffff;
 }
 
-.navbar-inverse .navbar-nav > li > a {
+.navbar-inverse .navbar-nav>li>a {
     font-family: 'Ubuntu', sans-serif;
     color: #ffffff;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover {
+.navbar-inverse .navbar-nav>li>a:hover {
     font-family: 'Ubuntu', sans-serif;
     color: #979A9A;
 }
@@ -122,74 +122,75 @@ footer {
     -moz-border-radius: 150px;
 }
 
-#name-perfil{
+#name-perfil {
     margin-top: 60px;
 }
 
-#info-header{
+#info-header {
     margin-top: 60px;
 }
 
-#stars{
+#stars {
     padding-left: 1.3em;
     padding-right: 0em;
     padding-top: 0.9em;
 }
 
-.fa-star{
-    color:#edc900;
+.fa-star {
+    color: #edc900;
     font-size: 150%;
 }
 
-.glyphicon-remove{
-	color: red;
-	font-size: 150%;
-}
-
-.fa-star-o{
-    color:#edc900;
+.glyphicon-remove {
+    color: red;
     font-size: 150%;
 }
 
-#buttonComment{
+.fa-star-o {
+    color: #edc900;
+    font-size: 150%;
+}
+
+#buttonComment {
     padding-top: 0.7em;
     padding-bottom: 1.7em;
 }
 
-#commentsTable{
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-  margin-left: 1em;
+#commentsTable {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    margin-left: 1em;
 }
 
 #commentsTitle {
-  padding-left: 0.5em;
+    padding-left: 0.5em;
 }
 
 #commentItem {
-  width:100%;
+    width: 100%;
 }
 
-.sComments{
-    color:#edc900;
+.sComments {
+    color: #edc900;
     font-size: 100%;
 }
 
-.linkUser{
+.linkUser {
     color: #31708f;
 }
 
-.linkUser:hover{
+.linkUser:hover {
     color: #31708f;
 }
+
 
 /*animaci�n valoraci�n estrellas*/
 
-#valueSystem{
+#valueSystem {
     padding-bottom: 1em;
 }
 
-.inputRadio{
+.inputRadio {
     display: none;
 }
 
@@ -198,91 +199,92 @@ footer {
     unicode-bidi: bidi-override;
 }
 
-label > i {
+label>i {
     opacity: 0.5;
 }
 
-label > i:hover,
-label > i:hover ~ label > i {
-    color:#edc900;
+label>i:hover,
+label>i:hover~label>i {
+    color: #edc900;
     opacity: 1;
 }
 
-.inputRadio:checked ~ label > i {
-    color:#edc900;
+.inputRadio:checked~label>i {
+    color: #edc900;
     opacity: 1;
 }
 
-#comment{
+#comment {
     padding-left: 1em;
 }
 
-#inputUserHide{
-	display: none;
+#inputUserHide {
+    display: none;
 }
 
 .contact {
-	color: #a94442;
+    color: #a94442;
 }
 
 .contact:hover {
-	color: #a94442;
+    color: #a94442;
 }
 
 .minHeight {
-	min-height: 34em;
-  width: 100%;
+    min-height: 34em;
+    width: 100%;
 }
 
 .minErrorHeight {
-	min-height: 24em;
-  width: 100%;
+    min-height: 24em;
+    width: 100%;
 }
 
 #messagesTitle {
-  margin-top: 0.5em;
-  margin-left: 0.5em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
 }
 
 #conversationPanel {
-  margin-top: 1em;
+    margin-top: 1em;
 }
 
-#errorPanel{
-  margin-top: 3em;
+#errorPanel {
+    margin-top: 3em;
 }
 
 .imgHome {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 0px;
-  padding-left: 0px;
-  width: 100%;
-  height: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 .imgDetail {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-right: 0px;
-  padding-left: 15px;
-  width: 100%;
-  height: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 0px;
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
 }
 
 .panel {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
 }
 
 .titleComic {
-  margin-top: 20px;
-  margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .adsTable {
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #moreComics {
@@ -320,13 +322,13 @@ label > i:hover ~ label > i {
 }
 
 #userContainer {
-  margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .linkHovered {
-  color: #5bc0de !important;
+    color: #5bc0de !important;
 }
 
 .linkHovered:hover {
-  color: #4A235A !important;
+    color: #4A235A !important;
 }
