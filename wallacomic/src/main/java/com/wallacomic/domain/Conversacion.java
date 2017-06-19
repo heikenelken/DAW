@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -28,7 +29,8 @@ public class Conversacion {
 	@NotNull
 	private Usuario userSeller; //Usuario que vende
 	
-	@ElementCollection
+	//@ElementCollection
+	@OrderColumn(name="ID")
 	@OneToMany(cascade=CascadeType.ALL)
 	@NotNull
 	private List<Mensaje> comentarios;
