@@ -163,7 +163,7 @@
                     </ng-template>
                 </div>
 
-                <comments [userId]='id' [showing]='active' class="col-md-12"></comments>
+                <comments [userId]='id' [showing]='active' (event)="reloadAverage($event)" class="col-md-12"></comments>
 
                 <advertisements [idUser]='id' [adsFromUser]='comicsUser' [isUserLoaded]='load' class="col-md-12"></advertisements>
             </div>

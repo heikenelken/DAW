@@ -45,18 +45,7 @@ export class PerfilComponent {
                       error => console.error(error)
                   );
                   this.comicsUser = true;
-                  commentsService.getStarsAverage(this.id).subscribe(
-                    averageCom => {
-                      this.averageCom = averageCom;
-                      for(let i=0; i < this.averageCom; i++){
-                        this.stars.push('');
-                      }
-                      for(let j=this.averageCom; j < 5; j++){
-                        this.stars.push('-o');
-                      }
-                    },
-                    error => console.log(error)
-                  );
+                  this.loadAverage();
                   comicService.getAllComics().subscribe(
                     comics => this.comics = comics,
                     error => console.error(error)
@@ -73,7 +62,6 @@ export class PerfilComponent {
           }
           this.adService.saveAd(anuncio).subscribe(
             anuncio => {
-              console.log(anuncio);
               window.confirm('¡Anuncio creado con éxito!');
               this.adComponent.ngOnInit();
             },
@@ -81,6 +69,28 @@ export class PerfilComponent {
           );
         },
         error => console.error(error)
+      );
+    }
+
+    reloadAverage(event: boolean){
+      if(event){
+        this.stars = []
+        this.loadAverage()
+      }
+    }
+
+    loadAverage(){
+      this.commentsService.getStarsAverage(this.id).subscribe(
+        averageCom => {
+          this.averageCom = averageCom;
+          for(let i=0; i < this.averageCom; i++){
+            this.stars.push('');
+          }
+          for(let j=this.averageCom; j < 5; j++){
+            this.stars.push('-o');
+          }
+        },
+        error => console.log(error)
       );
     }
 

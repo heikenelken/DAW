@@ -9,7 +9,6 @@ import {Usuario} from './usuario.model';
 
 @Component({
     selector: 'navbar',
-    //directives: [ROUTER_DIRECTIVES, MODAL_DIRECTIVES],
     templateUrl: './navbar.component.html',
     styleUrls: ['./main.component.css']
 })
@@ -18,6 +17,9 @@ export class NavbarComponent {
 	closeResult: string;
 	usuario: Usuario;
 	private id: number | string;
+
+  @Output()
+  hidden = new EventEmitter<boolean>();
 
 	constructor(private activatedRoute: ActivatedRoute, private perfilService: PerfilService, private modalService: NgbModal,
               private loginService: LoginService) {}
@@ -57,9 +59,6 @@ export class NavbarComponent {
     }
   }
 
-  @Output()
-  hidden = new EventEmitter<boolean>();
-
   clickLogin(nombre: string, pass: string){
     this.loginService.logIn(nombre, pass).subscribe(
       usuario => this.usuario = usuario,
@@ -79,7 +78,6 @@ export class NavbarComponent {
                   foto: 'default', roles: ['ROLE_USER', 'ROLE_ADMIN']}
     this.perfilService.saveUser(newUser).subscribe(
       usuario => {
-        console.log(usuario)
         this.loginService.logIn(userName, pass).subscribe(
           usuario => this.usuario = usuario,
           error => alert('Invalid user or password')

@@ -9,8 +9,6 @@ import {PerfilService} from './perfil.service';
 import { Comment } from './comments.model';
 import { Usuario } from './usuario.model';
 
-const EMPTY_STAR = '-o';
-
 @Component({
     selector: 'comments',
     templateUrl: './comments.component.html'
@@ -23,13 +21,13 @@ export class CommentsComponent {
   private numEstrellas: number;
 
   @Input()
-  private userId: number;
+  userId: number | string;
 
   @Input()
   private showing: boolean;
 
-  /*@Output()
-  private event = new EventEmitter<boolean>();*/
+  @Output()
+  event = new EventEmitter<boolean>();
 
   constructor(private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService,
               private userService: PerfilService) {
@@ -61,7 +59,6 @@ export class CommentsComponent {
   createComment(comentario: string){
     let user_receive: Usuario;
     let comment: Comment;
-    console.log(this.numEstrellas)
     this.userService.getUser(this.userId).subscribe(
       user => {
         user_receive = user
@@ -84,10 +81,9 @@ export class CommentsComponent {
         //enviar comentario
         this.commentsService.saveComment(comment).subscribe(
           comment => {
-            console.log(comment)
             this.ngOnInit()
             window.confirm('¡Comentario añadido con éxito!');
-            //this.event.emit(true);
+            this.event.emit(true);
           },
           error => console.log(error)
         );

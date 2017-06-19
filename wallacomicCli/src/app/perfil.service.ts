@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-//import {withObserver} from './utils';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 import { Usuario } from './usuario.model';
@@ -27,7 +26,6 @@ export class PerfilService {
       'X-Requested-With': 'XMLHttpRequest'
     });
     const options = new RequestOptions({ withCredentials: true, headers });
-    console.log(body);
     if (!user.id) {
       return this.http.post(BASIC_URL, body, options).map(
         response => response.json()

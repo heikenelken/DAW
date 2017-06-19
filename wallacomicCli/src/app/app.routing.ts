@@ -4,7 +4,6 @@ import { IndexComponent } from './index.component';
 import { PerfilComponent } from './perfil.component';
 import { ComicDetailComponent } from './comicDetail.component';
 import { MessagesComponent } from './messages.component';
-//import { PublicarAnuncioComponent } from './publicarAnuncio.component';*/
 
 const appRoutes = [
   {path: 'index', name: 'Index', component: IndexComponent, useAsDefault: true},

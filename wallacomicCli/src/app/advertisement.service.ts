@@ -45,7 +45,6 @@ export class AdvertisementService {
       'X-Requested-With': 'XMLHttpRequest'
     });
     const options = new RequestOptions({ withCredentials: true, headers });
-    console.log(body);
     if (!ad.id) {
       return this.http.post(BASIC_URL, body, options).map(
         response => response.json()

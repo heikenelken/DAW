@@ -55,10 +55,7 @@ export class MessagesComponent {
   ngOnInit(){
     this.conversations = []
     this.messagesService.getLoggedUserConversations().subscribe(
-      conversations => {
-        this.conversations = conversations
-        console.log(this.conversations)
-      },
+      conversations => this.conversations = conversations,
       error => console.log(error)
     );
   }
