@@ -57,12 +57,6 @@ export class AdvertisementComponent {
       }
     }
 
-    /*loadComponent(load: boolean){
-      if(load == true){
-        this.ngOnInit();
-      }
-    }*/
-
     removeAd(ad: Advertisement){
       const okResponse = window.confirm('¿Deseas eliminar este anuncio?');
       if(okResponse){
