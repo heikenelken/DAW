@@ -53,11 +53,11 @@ public class ComicRestController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Comic createComic(@RequestBody Comic comic, @RequestParam MultipartFile file) {
+	public Comic createComic(@RequestBody Comic comic/*, @RequestParam MultipartFile file*/) {
 		comicService.save(comic);
-		Comic comUpdated = comicService.updatePicAndSave(comic,file);
+		//Comic comUpdated = comicService.updatePicAndSave(comic,file);
 
-		return comUpdated;
+		return comic;
 	}
 	
 	//we don't update or delete comics, so we don't need put and delete methods

@@ -126,6 +126,15 @@ export class PerfilComponent {
   		});
   	}
 
+    sendComic(title: string, autor: string, cartoonist: string, image:string , argument:string){
+        let comic = {titulo:title, autor:autor, dibujante:cartoonist, argumento:argument, foto:image};
+        this.comicService.saveComic(comic).subscribe(
+            comic => {window.confirm('El comic se creó correctamente')
+                     },
+            error => console.error('error creando nuevo comic: '+ error)
+        );
+    }
+    
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';

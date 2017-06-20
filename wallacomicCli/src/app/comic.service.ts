@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import 'rxjs/Rx';
 
@@ -27,6 +27,22 @@ export class ComicService {
     return this.http.get(BASIC_URL + id, { withCredentials: true }).map(
       response => response.json()
     ).catch(error => this.handleError(error));
+  }
+    
+  saveComic(c){
+    const body = JSON.stringify(c);
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const options = new RequestOptions({ withCredentials: true, headers });
+    // window.confirm(body);
+    if (!c.id) {
+      return this.http.post(BASIC_URL, body, options).map(
+        response => response.json()
+      ).catch(
+        error => this.handleError(error));
+    }
   }
 
   getAmountComics(){
