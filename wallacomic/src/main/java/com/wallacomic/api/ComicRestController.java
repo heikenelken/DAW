@@ -1,5 +1,7 @@
 package com.wallacomic.api;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -37,6 +39,13 @@ public class ComicRestController {
 		}else{
 			return comicService.findAll(new PageRequest(0,10));
 		}
+	}
+	
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public Collection<Comic> getAllComics(){
+		
+		return comicService.findAll();
+		
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
