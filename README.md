@@ -117,3 +117,6 @@ Valoracion usuarios
 
 ### Diagrama de clases actualizado con @RestController y @Service
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/DiagramaConRest2.png"/>
+
+### Spa Angular2 diagrama relaciones component service
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/spa_angular_2.PNG/>
