@@ -119,4 +119,4 @@ Valoracion usuarios
 <img src="https://github.com/AdoptaUnAlien/DAW/blob/master/DiagramaConRest2.png"/>
 
 ### Spa Angular2 diagrama relaciones component service
-<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/spa_angular_2.PNG/>
+<img src="https://github.com/AdoptaUnAlien/DAW/blob/master/spa_angular_2.PNG"/>
