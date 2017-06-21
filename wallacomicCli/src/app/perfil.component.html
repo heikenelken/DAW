@@ -46,32 +46,32 @@
                             <form role="form">
                                 <div class="form-group">
                                     <label for="usuario">Nombre usuario:</label>
-                                    <input type="text" class="form-control" id="cambioUsuario" placeholder="introduce tu nuevo nombre de usuario">
+                                    <input type="text" class="form-control" #name id="cambioUsuario" placeholder="introduce tu nuevo nombre de usuario">
                                 </div>
                                 <div class="form-group">
                                     <label for="mail">Email:</label>
-                                    <input type="mail" class="form-control" id="cambioMail" placeholder="introduce tu nuevo Email">
+                                    <input type="mail" class="form-control" #email id="cambioMail" placeholder="introduce tu nuevo Email">
                                 </div>
                                 <div class="form-group">
                                     <label for="facebook">Cuenta facebook:</label>
-                                    <input type="text" class="form-control" id="cambioFacebook" placeholder="por ejemplo: facebook.com/YoSoyTuPadreLuck">
+                                    <input type="text" class="form-control" #facebook id="cambioFacebook" placeholder="por ejemplo: facebook.com/YoSoyTuPadreLuck">
                                 </div>
                                 <div class="form-group">
                                     <label for="twitter">Usuario Twitter:</label>
-                                    <input type="text" class="form-control" id="cambioTwitter" placeholder="por ejemplo: @JonDoe">
+                                    <input type="text" class="form-control" #twitter id="cambioTwitter" placeholder="por ejemplo: @JonDoe">
                                 </div>
                                 <div class="form-group">
                                     <label for="contraseña">Contraseña:</label>
-                                    <input type="password" class="form-control" id="cambioContraseña" placeholder="Introduce tu nueva contraseña">
+                                    <input type="password" class="form-control" #password id="cambioContraseña" placeholder="Introduce tu nueva contraseña">
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Sobre tí:</label>
                                     <br>
-                                    <textarea name="descripcion" rows="5" cols="40" placeholder="Cuéntanos algo sobre tí."></textarea>
+                                    <textarea name="descripcion" rows="5" cols="40" #description placeholder="Cuéntanos algo sobre tí."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="avatar">Selecciona tu imagen de avatar:</label>
-                                    <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+                                    <input id="file-1" type="file" class="file" #image multiple=true data-preview-file-type="any">
                                 </div>
 
                             </form>
@@ -79,7 +79,7 @@
                         <!-- footer del popUp, con los botones de guardar cambios y descartar. -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" (click)="d('Cross click')">Descartar</button>
-                            <button type="button" class="btn btn-success" id="botonGuardar">Guardar cambios</button>
+                            <button type="button" class="btn btn-success" id="botonGuardar" (click)="changeConfig(name.value, email.value, facebook.value, twitter.value, password.value, description.value, image.value); d('Cross click')">Guardar cambios</button>
                         </div>
                     </ng-template>
                     <!-- modal publicar anuncio -->

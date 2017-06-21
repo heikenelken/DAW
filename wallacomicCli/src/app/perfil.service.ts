@@ -34,6 +34,19 @@ export class PerfilService {
     }//poner con un else la petición put
   }
 
+  updateUser(user){
+      const body = JSON.stringify(user);
+      const headers = new Headers({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      });
+      const options = new RequestOptions({ withCredentials: true, headers });
+      return this.http.put(BASIC_URL+"/"+user.id, body, options).map(
+        response => response.json()
+      ).catch(
+        error => this.handleError(error));
+  }
+
   private handleError(error: any) {
     console.error(error);
     return Observable.throw('Server error (' + error.status + '): ' + error.text());

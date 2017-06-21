@@ -58,7 +58,8 @@ public class UsuarioRestController {
 
 		Usuario user = usuarioService.findById(id);
 		if (user != null) {
-
+			String s=updatedUser.getContraseñaHash();
+			updatedUser.setContraseñaHash(new BCryptPasswordEncoder().encode(s));
 			updatedUser.setId(id);
 			usuarioService.save(updatedUser);
 

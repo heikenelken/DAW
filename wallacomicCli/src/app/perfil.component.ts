@@ -134,6 +134,17 @@ export class PerfilComponent {
             error => console.error('error creando nuevo comic: '+ error)
         );
     }
+
+    changeConfig(name: string, email:string, facebook:string, twitter:string, password:string, description:string, image:string){
+        let user={id:this.id, nombre:name, contraseñaHash:password, descripcion:description, correo:email, facebook:facebook, twitter:twitter, foto:image, roles:["ROLE_USER","ROLE_ADMIN"] }
+        this.perfilService.updateUser(user).subscribe(
+            user => {window.confirm('El usuario se actualizó correctamente')
+                    },
+            error => console.error('error actualizando usuario: '+error)
+        );
+        
+        
+    }
     
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
