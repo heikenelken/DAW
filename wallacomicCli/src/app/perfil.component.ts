@@ -30,6 +30,7 @@ export class PerfilComponent {
     private comics: Comic[];
     load: boolean;
     @ViewChild(AdvertisementComponent) adComponent: AdvertisementComponent;
+    evento: any;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService,
                 private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService,
@@ -50,6 +51,16 @@ export class PerfilComponent {
                     comics => this.comics = comics,
                     error => console.error(error)
                   );
+    }
+
+    ngOnInit(){
+      this.perfilService.getUser(this.id).subscribe(
+          usuario => {
+            this.usuario = usuario
+            this.load = true
+          },
+          error => console.error(error)
+      );
     }
 
     createAd(idComic: number, typeChosen: string, price: number, comment: string){
@@ -136,16 +147,62 @@ export class PerfilComponent {
     }
 
     changeConfig(name: string, email:string, facebook:string, twitter:string, password:string, description:string, image:string){
-        let user={id:this.id, nombre:name, contraseñaHash:password, descripcion:description, correo:email, facebook:facebook, twitter:twitter, foto:image, roles:["ROLE_USER","ROLE_ADMIN"] }
-        this.perfilService.updateUser(user).subscribe(
-            user => {window.confirm('El usuario se actualizó correctamente')
-                    },
-            error => console.error('error actualizando usuario: '+error)
-        );
-        
-        
+        let profile: Usuario
+        let userName = name
+        let userEmail = email
+        let userF = facebook
+        let userT = twitter
+        let userPass = password
+        let userDescr = description
+        this.perfilService.getUser(this.id).subscribe(
+          user => {
+            profile = user
+            if(userName === ''){
+              userName = profile.nombre
+            }
+            if(userEmail === ''){
+              userEmail = profile.correo
+            }
+            if(userF === ''){
+              userF = profile.facebook
+            }
+            if(userT === ''){
+              userT = profile.twitter
+            }
+            if(userPass === ''){
+              userPass = '123456'
+            }
+            if(userDescr === ''){
+              userDescr = ''
+            }
+            let userN = {id:this.id, nombre:userName, contraseñaHash:userPass, descripcion:userDescr, correo:userEmail, facebook:userF, twitter:userT, foto:this.id, roles:["ROLE_USER","ROLE_ADMIN"] }
+            this.perfilService.updateUser(userN).subscribe(
+                user => {
+                  if(this.evento != null){
+                    this.changeProfileImage(this.evento, this.id)
+                  }
+                  window.confirm('El usuario se actualizó correctamente')
+                  this.ngOnInit()
+                  },
+                error => console.error('error actualizando usuario: '+error)
+            );
+          },
+          error => console.error(error)
+        )
     }
-    
+
+    saveEvent(event: any){
+      this.evento = event
+    }
+
+    changeProfileImage(event: any, idUser: number | string){
+      let files = event.target.files
+      this.perfilService.updateImage(idUser,files).subscribe(
+        image => console.log(image),
+        error => console.error(error)
+      );
+    }
+
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';

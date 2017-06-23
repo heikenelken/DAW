@@ -41,10 +41,24 @@ export class PerfilService {
         'X-Requested-With': 'XMLHttpRequest'
       });
       const options = new RequestOptions({ withCredentials: true, headers });
-      return this.http.put(BASIC_URL+"/"+user.id, body, options).map(
+      return this.http.put(BASIC_URL + user.id, body, options).map(
         response => response.json()
       ).catch(
         error => this.handleError(error));
+  }
+
+  updateImage(idUser: number | string, files){
+    let formData = new FormData()
+    for(let file of files){
+      formData.append('file',file)
+    }
+    let headers = new Headers({})
+    const options = new RequestOptions({ withCredentials: true, headers });
+    headers.delete("Content-Type")
+    return this.http.post(BASIC_URL + 'updatePhoto/' + idUser, formData, options).map(
+      response => response.json()
+    ).catch(
+      error => this.handleError(error));
   }
 
   private handleError(error: any) {

@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="avatar">Selecciona tu imagen de avatar:</label>
-                                    <input id="file-1" type="file" class="file" #image multiple=true data-preview-file-type="any">
+                                    <input id="file-1" type="file" (change)="saveEvent($event)" class="file" #image multiple=true data-preview-file-type="any">
                                 </div>
 
                             </form>
