@@ -15,6 +15,8 @@ import com.wallacomic.repository.ComicRepository;
 @Service
 public class ComicService {
 	
+	//private static final String FOLDER_IMG_USER_FRONT = "../wallacomicCli/src/assets/img";	
+	private static final String FOLDER_IMG_USER_FRONT = "C:/Users/yiiiisus/Desktop/Universidad/DAW/Parte 3/wallacomicCli/src/assets/img";
 	private static final String FOLDER_IMG = "./src/main/resources/static/img";
 	private static final String FOLDER_IMG2 = "./target/classes/static/img";
 
@@ -47,17 +49,26 @@ public class ComicService {
 	
 		if (!file.isEmpty()) {
 			try {
-
+				
+				File filesFolderFront = new File(FOLDER_IMG_USER_FRONT);
 				File filesFolder = new File(FOLDER_IMG);
 				File filesFolder2 = new File(FOLDER_IMG2);
+				
+				if (!filesFolderFront.exists()) {
+					filesFolderFront.mkdirs();
+				}
 				if (!filesFolder.exists()) {
 					filesFolder.mkdirs();
 				}
 				if (!filesFolder2.exists()) {
 					filesFolder2.mkdirs();
 				}
+				
+				File uploadedFileFront = new File(filesFolderFront.getAbsolutePath(), fileName);
 				File uploadedFile = new File(filesFolder.getAbsolutePath(), fileName);
 				File uploadedFile2 = new File(filesFolder2.getAbsolutePath(), fileName);
+				
+				file.transferTo(uploadedFileFront);
 				file.transferTo(uploadedFile);
 				file.transferTo(uploadedFile2);
 			}catch(Exception e){

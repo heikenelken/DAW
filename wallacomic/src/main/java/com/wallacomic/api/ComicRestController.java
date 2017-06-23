@@ -1,5 +1,6 @@
 package com.wallacomic.api;
 
+import java.io.File;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wallacomic.domain.Comic;
+import com.wallacomic.domain.Usuario;
 import com.wallacomic.service.ComicService;
 
 
@@ -62,11 +64,19 @@ public class ComicRestController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Comic createComic(@RequestBody Comic comic/*, @RequestParam MultipartFile file*/) {
+	public Comic createComic(@RequestBody Comic comic) {
+		
 		comicService.save(comic);
 		//Comic comUpdated = comicService.updatePicAndSave(comic,file);
-
 		return comic;
+	}
+	
+	@RequestMapping(value = "/uploadPhoto/{id}", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public Comic uploadPhoto(@RequestBody MultipartFile file, @PathVariable int id) {
+		
+		Comic comUpdated = comicService.updatePicAndSave(comicService.findById(id),file);
+		return comUpdated;
 	}
 	
 	//we don't update or delete comics, so we don't need put and delete methods

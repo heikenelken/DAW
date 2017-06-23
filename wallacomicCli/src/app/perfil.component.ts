@@ -31,6 +31,7 @@ export class PerfilComponent {
     load: boolean;
     @ViewChild(AdvertisementComponent) adComponent: AdvertisementComponent;
     evento: any;
+    eventoC: any;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private perfilService: PerfilService,
                 private commentsService: CommentsService, private modalService: NgbModal, private loginService: LoginService,
@@ -138,12 +139,21 @@ export class PerfilComponent {
   	}
 
     sendComic(title: string, autor: string, cartoonist: string, image:string , argument:string){
-        let comic = {titulo:title, autor:autor, dibujante:cartoonist, argumento:argument, foto:image};
-        this.comicService.saveComic(comic).subscribe(
-            comic => {window.confirm('El comic se creó correctamente')
-                     },
-            error => console.error('error creando nuevo comic: '+ error)
-        );
+        let files = this.eventoC.target.files
+        if(this.eventoC != null){
+          let comic = {titulo:title, autor:autor, dibujante:cartoonist, argumento:argument, foto:''};//asignar id una vez se haya creado el comic
+          this.comicService.saveComic(comic).subscribe(
+              comic => {
+                  let comicN = comic
+                  this.comicService.uploadComicImage(files, comic.id).subscribe(
+                    image => console.log(image),
+                    error => console.error(error)
+                  );
+                  window.confirm('El comic se creó correctamente')
+                },
+              error => console.error('error creando nuevo comic: '+ error)
+          );
+        }
     }
 
     changeConfig(name: string, email:string, facebook:string, twitter:string, password:string, description:string, image:string){
@@ -195,6 +205,10 @@ export class PerfilComponent {
       this.evento = event
     }
 
+    saveEventC(event: any){
+      this.eventoC = event
+    }
+
     changeProfileImage(event: any, idUser: number | string){
       let files = event.target.files
       this.perfilService.updateImage(idUser,files).subscribe(
@@ -202,6 +216,14 @@ export class PerfilComponent {
         error => console.error(error)
       );
     }
+
+  /*  changeComicImage(event: any){
+      let files = event.target.files
+      this.comicService.uploadComicImage(files).subscribe(
+        image => console.log(image),
+        error => console.error(error)
+      );
+    }*/
 
     private getDismissReason(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
