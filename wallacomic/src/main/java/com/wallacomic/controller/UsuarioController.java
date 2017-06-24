@@ -1,4 +1,4 @@
-﻿package com.wallacomic.controller;
+package com.wallacomic.controller;
 
 import java.util.List;
 import java.util.Arrays;
@@ -119,7 +119,7 @@ public class UsuarioController {
 	public String guardarUsuario(Model model, @RequestParam String nombre, @RequestParam String contraseña,
 			@RequestParam String correo)throws Exception{
 		
-		Usuario usuario = new Usuario(nombre, contraseña, " ", correo, " ", " ", " ","USER","ADMIN");
+		Usuario usuario = new Usuario(nombre, contraseña, " ", correo, " ", " ", " ","ROLE_USER","ROLE_ADMIN");
 		
 		usuarioService.save(usuario);
 		usuarioComponent.setLoggedUser(usuario);

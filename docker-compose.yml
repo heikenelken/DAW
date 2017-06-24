@@ -1,0 +1,22 @@
+version: "2.0"
+
+services: 
+  wallacomicmysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=wallacomic
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+  wallacomicspring:
+    image: wallacomic-spring
+    depends_on:
+      - wallacomicmysql
+    ports:
+      - 8080:8443
+    environment:
+      - DATABASE_HOST=wallacomicmysql
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=wallacomic
+      - DATABASE_PORT=3306
