@@ -1,5 +1,7 @@
 # PRACTICA DAW
 
+## [Demo de la aplicación](https://youtu.be/MUJe19gjoCY)
+
 ### Integrantes del grupo:
 
 + Carlos Sevilla Lozano
@@ -7,12 +9,6 @@
   correo: c.sevilla@alumnos.urjc.es
   
   github: https://github.com/adoptaunalien
-  
-+ Niel Torres Mariluz
-  
-  correo: on.torres@alumnos.urjc.es
-
-  github: https://github.com/nieltorres
   
 + Pablo Daganzo del Val
 
