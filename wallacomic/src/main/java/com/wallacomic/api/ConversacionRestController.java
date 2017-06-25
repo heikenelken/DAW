@@ -44,7 +44,6 @@ public class ConversacionRestController {
 	@RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
 	public  ResponseEntity<Conversacion> getConversationWithUser(@PathVariable int id){
 		
-		//return conversacionService.getMyConversations();
 		Conversacion conver = conversacionService.findConversationWithAnUser(id);
 		if (conver != null) {
 			return new ResponseEntity<>(conver, HttpStatus.OK);

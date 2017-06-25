@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,9 +53,9 @@ public class ValoracionRestController {
 	    }
 	}
 	
-	@RequestMapping(value = "/guardarValoracion", method = RequestMethod.POST)
+	@RequestMapping(value = "/valoracion/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Valoracion guardarValoracion(@RequestParam Valoracion val)throws Exception{
+	public Valoracion guardarValoracion(@RequestBody Valoracion val)throws Exception{
 		
 		valoracionService.save(val);
 	    return val;
